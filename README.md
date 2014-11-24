@@ -46,18 +46,18 @@ To get it running on your own machine, here's what you need to know:
   
 #### Running DayJot
 
-1 Install the requirements listed above. 
-2 Fork this repository, and lone it to your machine.
-3 Change into the dayjot/ember directory. Then run:
+__1__ Install the requirements listed above.  
+__2__ Fork this repository, and lone it to your machine.  
+__3__ Change into the dayjot/ember directory. Then run:
 
 ```
 bower install
 npm install
 ```
 
-4 Change into the dayjot/rails directory.
-5 Update the DB settings in config/database.yml as appropriate (most likely just the username).
-6 Copy config/application.example.yml to config/application.yml, and fill in anything you want (all optional). Then run:
+__4__ Change into the dayjot/rails directory.  
+__5__ Update the DB settings in config/database.yml as appropriate (most likely just the username).  
+__6__ Copy config/application.example.yml to config/application.yml, and fill in anything you want (all optional). Then run:
 
 ```
 bundle install
@@ -66,7 +66,7 @@ rake db:migrate
 foreman start -f Procfile.local
 ```
 
-7 Visit http://localhost:3000/ in your browser and you should be all set!
+__7__ Visit http://localhost:3000/ in your browser and you should be all set!
 
 ## How do I Contribute?
 
