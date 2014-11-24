@@ -1,0 +1,8 @@
+<%= yield %>
+
+---
+
+Reply with entry for date: <%= Time.now.in_time_zone(@user.time_zone).strftime("%Y-%m-%d") %>.
+
+You can always send a new email to <%= "#{@user.email_key}@post.dayjot.com" %> to create a new entry.
+The entry will be created for the current date, and any subsequent emails within the same day will be appended to that entry.

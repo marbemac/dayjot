@@ -1,0 +1,22 @@
+== README
+
+DayJot uses pgcrypto to encrypt the body text of entries. To set this up on your local machine, you must generate
+the PGP Keys.
+
+If you are on some Linux OS you probably have the command line tool called gpg that you can use already available. If you are on windows, you need to download them from somewhere like this page GNU Pg binaries. Way at the bottom of the page you should find gnupg-w32cli-1.4.10b.exe. Download and install that or you can simply extract the folder instead of installing and run from anywhere. By default it installs in folder C:\Program Files\GNU\GnuPG. You can copy these files anywhere. Really no need for installation.
+
+Next we do the following more or less verbatim from the PostgreSQL pgcrypto docs. These steps will work on Linux/Unix/Mac OSX or windows
+
+gpg --gen-key and follow the directions. Note if you don't need super security, you can just click enter to the password phrase thus one less argument you need to pass when decrypting your data.
+gpg --list-secret-keys This will provide you a list of keys one being the one you generated. It will look something like: 
+sec   1024R/123ABCD 2010-06-15
+uid                  My data key (super data encrypt) 
+ssb   1024R/999DEFG 2010-06-15
+
+Where the 1024R is the bit strength I chose and 123ABCD is the private key and 999DEFG is the public key.
+gpg -a --export 999DEFG > public.key Replacing the 999DEFG with hmm your public key code. This is the key you will need to encrypt data.
+gpg -a --export-secret-keys 123ABCD > secret.key again Replacing the 123ABCD with hmm yourprivate key code. This is the key you will need to decrypt data.
+
+Put your public key in .pgcrypto in the project root.
+
+Put your private key in secret.key in the project root.

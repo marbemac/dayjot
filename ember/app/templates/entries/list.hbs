@@ -1,0 +1,17 @@
+{{#if length}}
+  <ul class='d-entry-list'>
+    {{#each}}
+      <li>
+        {{partial "entries/list_item" withActions=true}}
+      </li>
+    {{/each}}
+
+    {{#if endOfList}}
+      <div class='btn btn-default disabled d-load-more-entries'>No More Entries</div>
+    {{else}}
+      <div class='btn btn-default d-load-more-entries' {{action "loadMore" target="view"}}>Load More</div>
+    {{/if}}    
+  </ul> 
+{{else}}
+  <div class='d-none'>No Entries</div>
+{{/if}}

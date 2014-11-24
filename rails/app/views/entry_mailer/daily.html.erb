@@ -1,0 +1,17 @@
+<p>Just reply to this email with your entry for <b><%= Time.now.in_time_zone(@user.time_zone).strftime("%B %-d") %></b>.</p>
+
+<p>---</p>
+
+<% if @show_entry %>
+  <p><%= @entry.time_ago(@user) %> ago you wrote...</p>
+
+  <%= markdown(@entry.body) %>
+
+  <p>View Entry: <a href="<%= entry_url(@entry.entry_date) %>"><%= entry_url(@entry.entry_date) %></a></p>
+<% else %>
+  <p><b>Keep writing...once you have a few entries you'll see a blast from the past show up here!</b></p>
+<% end %>
+
+<p>Past entries: https://dayjot.com/entries</p>
+
+<p>Unsubscribe: https://dayjot.com/settings</p>

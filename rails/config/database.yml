@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: dayjot_development
+  pool: 5
+  username: Marc
+  password: 
