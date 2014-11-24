@@ -1,4 +1,7 @@
 .d-home
+  .row
+    margin-left 0
+    margin-right 0
   .d-top-half
     text-align center
     background-image url($contrast-texture-url)
@@ -115,11 +118,25 @@
       line-height 34px
       
 .d-home-nav
-  background-image url($contrast-texture-url)
-  background-color #191919
   position relative
   z-index 10
   margin-top -1 * $header-spacing
+  .navbar-default
+    margin-bottom 0
+    box-shadow none
+    .navbar-toggle
+      border-color white
+      font-size 16px
+      padding 3px 8px
+      color white
+      &:hover
+        color $action-color
+  .navbar-header
+    margin 0
+  .navbar
+    background-image url($contrast-texture-url)
+    background-color #191919
+    position relative  
   .d-logo
     a 
       color white
@@ -127,9 +144,16 @@
       background-color white
       color $highlight-color
   .nav
-    a
-      color white
-      &:hover
-        text-decoration underline
-        background-color transparent !important
+    li
+      a
+        color white
+        &:hover
+          text-decoration underline
+          background-color transparent !important
+          color white
+        &.active
+          color white
+          &:hover
+            color white
+            text-decoration none
   
