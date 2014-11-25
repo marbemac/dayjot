@@ -60,10 +60,10 @@ class User < ActiveRecord::Base
       elsif exactly_last_year_entry = entries.where(entry_date: entry_date.last_year.strftime("%Y-%m-%d")).first
         exactly_last_year_entry
       # return entry from 30 days ago        
-      elsif (emails_sent % 3 == 0) && (exactly_30_days_ago = entries.where(entry_date: entry_date.last_month.strftime("%Y-%m-%d")).first)
+      elsif (reminder_emails_sent % 3 == 0) && (exactly_30_days_ago = entries.where(entry_date: entry_date.last_month.strftime("%Y-%m-%d")).first)
         exactly_30_days_ago
       # return entry from 7 days ago
-      elsif (emails_sent % 5 == 0) && (exactly_7_days_ago = entries.where(entry_date: (entry_date - 7.days).strftime("%Y-%m-%d")).first)
+      elsif (reminder_emails_sent % 5 == 0) && (exactly_7_days_ago = entries.where(entry_date: (entry_date - 7.days).strftime("%Y-%m-%d")).first)
         exactly_7_days_ago
       else 
         count = entries.where("entry_date < ?", entry_date.last_year.strftime("%Y-%m-%d")).count
