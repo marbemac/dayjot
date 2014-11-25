@@ -36,7 +36,7 @@ export default DS.Model.extend({
   }.property('planActive'),
 
   trialActive: function() {
-    return this.get('trialEnd') >= new Date ? true : false;
+    return (this.get('trialEnd') >= new Date) ? true : false;
   }.property('createdAt'),
 
   shouldSubscribe: function() {
