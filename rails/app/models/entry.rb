@@ -1,4 +1,6 @@
 class Entry < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+  include ActionView::Helpers::NumberHelper
   include PgSearch
   pg_search_scope :search_by_body, :against => :body
 
