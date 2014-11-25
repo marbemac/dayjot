@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   randomized_field :email_key, :length => 20, :prefix => 'dj'
 
   scope :not_new, -> { where("created_at < (?)", DateTime.now - 24.hours) }
+  scope :active, -> { where("status = ?", "active") }
+  scope :in_good_standing, -> { where("(plan_status = ? OR trial_end > ?)", "active", DateTime.now) }
 
   attr_accessor :stripe_token
 
@@ -22,6 +24,8 @@ class User < ActiveRecord::Base
   #############
 
   def set_default_settings
+    self.trial_end = Time.now + 1.month.to_i
+
     # default is 8PM
     unless email_times.present?
       self.email_times = {

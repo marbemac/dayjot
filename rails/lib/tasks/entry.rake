@@ -2,12 +2,12 @@ namespace :entry do
 
   # rake entry:send_entries_test
   task :send_hourly_entries_test => :environment do
-    user = User.where(:email=>"marbemac@gmail.com").first
+    user = User.where(:email=>"test@example.com").first
     user.send_entry_email
   end
 
   task :send_hourly_entries => :environment do
-    users = User.not_new
+    users = User.active.in_good_standing
     users.each do |user|
       if user.send_entry_email_now?
         user.send_entry_email
@@ -31,6 +31,8 @@ namespace :entry do
     entry_count = 0
 
     user_hash["results"].each do |u|
+      next unless u["email"] == "test@example.com"
+      
       email_times = {}
       u["emailTimes"].each do |day,time|
         if time

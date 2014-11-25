@@ -15,6 +15,7 @@ export default DS.Model.extend({
   planStatus: DS.attr('string', {readOnly: true}),
   planStarted: DS.attr('date', {readOnly: true}),
   planCanceled: DS.attr('date', {readOnly: true}),
+  trialEnd: DS.attr('date', {readOnly: true}),
   entryMonths: DS.attr('object', {readOnly: true}),
   
   timeZone: DS.attr('string'),
@@ -35,21 +36,11 @@ export default DS.Model.extend({
   }.property('planActive'),
 
   trialActive: function() {
-    var createdAt = moment(this.get('createdAt'));
-    var now = moment();
-    if (now.diff(createdAt, 'days') > 7) {
-      return false;
-    } else {
-      return true;
-    }
-  }.property('createdAt'),
-
-  trialEnd: function() {
-    return moment(this.get('createdAt')).add(7, 'days');
+    return this.get('trialEnd') >= new Date ? true : false;
   }.property('createdAt'),
 
   shouldSubscribe: function() {
-    if (this.get('status') !== 'active' || this.get('planStatus') !== 'active') {
+    if (this.get('planStatus') !== 'active') {
       return true;
     } else {
       return false;
