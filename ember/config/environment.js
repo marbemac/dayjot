@@ -55,7 +55,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
     
-    ENV.APP.API_HOST = "https://dayjot.herokuapp.com/"
+    ENV.APP.API_HOST = "https://dayjot.com"
     ENV.APP.STRIPE_KEY = "pk_live_0pfal3NW90qouuEPy6LDuuUm";
   }
 
