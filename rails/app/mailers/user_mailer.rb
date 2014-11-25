@@ -18,8 +18,6 @@ class UserMailer < ActionMailer::Base
     filename = "dayjot_entries_#{Time.now.to_i}.txt"
     attachments[filename] = {:mime_type => 'text/plain', :content => export_text}    
 
-    mail to: @user.email, subject: "Your DayJot Entry Export"    
-
-    @user.increment!(:reminder_emails_sent)
+    mail to: @user.email, subject: "Your DayJot Entry Export"        
   end
 end

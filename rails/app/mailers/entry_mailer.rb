@@ -7,11 +7,14 @@ class EntryMailer < ActionMailer::Base
     return unless @user
     
     mail to: @user.email, from: "DayJot <#{@user.email_key}@post.dayjot.com>", subject: "Your first DayJot entry"
+    
+    @user.update_column(:last_reminder_sent_at, DateTime.now.utc)
   end
 
   def daily(user_id)
     @user = User.find(user_id)
-    return unless @user
+    # Don't email if we can't find the user, or they've already been sent an email today.
+    return if !@user || @user.daily_email_sent_today?
     
     @entry = @user.random_entry(Time.now.in_time_zone(@user.time_zone).strftime("%Y-%m-%d"))
     @show_entry = @user.entries.count > 5 && @entry ? true : false
@@ -19,5 +22,8 @@ class EntryMailer < ActionMailer::Base
     mail to: @user.email, 
          from: "DayJot <#{@user.email_key}@post.dayjot.com>", 
          subject: "It's #{Time.now.in_time_zone(@user.time_zone).strftime("%A, %b %-d")} - How did your day go?"
+
+    @user.update_column(:last_reminder_sent_at, DateTime.now.utc)
+    @user.increment!(:reminder_emails_sent)
   end
 end

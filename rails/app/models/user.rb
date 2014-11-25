@@ -95,6 +95,10 @@ class User < ActiveRecord::Base
     true if preference && preference == Time.now.in_time_zone(time_zone).hour.to_s
   end
 
+  def daily_email_sent_today?
+    last_reminder_sent_at && last_reminder_sent_at.in_time_zone(time_zone).strftime('%Y-%m-%d') == Time.now.in_time_zone(time_zone).strftime('%Y-%m-%d')
+  end
+
   ############
   # PAYMENTS #
   ############
