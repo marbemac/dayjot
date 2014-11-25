@@ -1,9 +1,7 @@
 <form {{action 'authenticate' on='submit'}} class='d-auth-form fade-in'>
 
-  {{#if loginErrorMessage}}
-    <div class="d-error">
-      {{loginErrorMessage}}
-    </div>
+  {{#if error}}
+    <div class="d-error">{{error}}</div>
   {{/if}}
 
   {{input id='identification' placeholder='Email' value=identification autocomplete='off' autocapitalize="none"}}  
