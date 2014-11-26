@@ -14,6 +14,7 @@ DayJot is a simple, private journaling app. It's built to provide many features 
 * Enjoy __multiple, beautiful ways to browse__ your journal. Skip to random entries, view by month, and more.
 * OhLife importer. __The perfect OhLife replacement__, built to last. Easily import your OhLife entries. 
 * 1-Click __export__ of all of your entries.
+* It __supports markdown formatting__ in entries and entry reminders.
 
 ## How do I use it?
 
