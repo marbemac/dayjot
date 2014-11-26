@@ -1,3 +1,6 @@
+DB_USERNAME: "Marc"
+DB_PASSWORD: ""
+
 ADMIN_USER: "admin"
 ADMIN_PASSWORD: "1234"
 

@@ -47,7 +47,7 @@ To get it running on your own machine, here's what you need to know:
 #### Running DayJot
 
 __1__ Install the requirements listed above.  
-__2__ Fork this repository, and lone it to your machine.  
+__2__ Fork this repository, and clone it to your machine.  
 __3__ Change into the dayjot/ember directory. Then run:
 
 ```
@@ -56,8 +56,7 @@ npm install
 ```
 
 __4__ Change into the dayjot/rails directory.  
-__5__ Update the DB settings in config/database.yml as appropriate (most likely just the username).  
-__6__ Copy config/application.example.yml to config/application.yml, and fill in anything you want (all optional). Then run:
+__6__ Copy config/application.example.yml to config/application.yml, and fill in anything you want. __The only required fields are DB_USERNAME and DB_PASSWORD__. Then run:
 
 ```
 bundle install

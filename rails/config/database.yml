@@ -3,5 +3,5 @@ development:
   encoding: unicode
   database: dayjot_development
   pool: 5
-  username: Marc
-  password: 
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
