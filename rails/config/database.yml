@@ -4,4 +4,9 @@ development:
   database: dayjot_development
   pool: 5
   username: Marc
-  password: 
+  password:
+test:
+  adapter: postgresql
+  database: dayjot_test
+  username: Marc
+  password:
