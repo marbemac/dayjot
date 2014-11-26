@@ -73,7 +73,10 @@ Gee I'm so glad you asked that, great question!
 
 1. Fork it.
 2. Hack it.
-3. Test it. Whoops! There are no tests yet. More on this below.
+3. Test it. 
+  * Rails tests are scaffolded and can be run from within the rails directory with the command "rspec".
+  * Ember tests have not been setup yet.
+  * There are very limited tests right now. More on this below.
 4. Send a pull request.
 
 The biggest issue right now is that there are no tests (for the Ember or Rails parts of the project). Coincidentally, writing tests is one of the best ways to familiarize oneself with a new codebase. I would be very grateful to anybody who's up for writing tests for this project. In fact, __for anybody who submits a PR with one or more tests (one is fine!), I'll set you up on DayJot.com for free, for life__.
