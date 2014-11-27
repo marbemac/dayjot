@@ -3,3 +3,4 @@
 /rails/public/*
 rails/.ruby-gemset
 rails/.ruby-version
+/rails/config/application.yml
