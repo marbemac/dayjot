@@ -3,11 +3,7 @@ class UsersController < ApplicationController
   before_action :assert_reset_token_passed, only: [:finish_password_reset]
 
   def create
-    p = register_params
-    # for some reason, rails isn't letting time_zone through, so manually assign it here if present
-    p["time_zone"] = params["user"]["time_zone"] if params["user"] && params["user"]["time_zone"].present?
-    user = User.new(p)
-
+    user = User.new(register_params)
     if user.save
       render json: user, status: :created
     else
@@ -16,15 +12,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    p = user_params
-    # for some reason, rails isn't letting time_zone through strong parameters, so manually assign it here if present
-    p["time_zone"] = params["user"]["time_zone"] if params["user"] && params["user"]["time_zone"].present?
-    
-    if current_user.update(p)
+    if current_user.update(user_params)
       render json: current_user
     else
       render json: {errors: current_user.errors.full_messages}, status: :unprocessable_entity
-    end    
+    end
   end
 
   def me
@@ -59,11 +51,11 @@ class UsersController < ApplicationController
   private
 
     def register_params
-      params.require(:user).permit(:email, :password, :time_zome)
+      params.require(:user).permit(:email, :password, :time_zone)
     end
 
     def user_params
-      params.require(:user).permit(:time_zome, {:email_times => [:monday,:tuesday,:wednesday,:thursday,:friday,:saturday,:sunday]})
+      params.require(:user).permit(:time_zone, {:email_times => [:monday,:tuesday,:wednesday,:thursday,:friday,:saturday,:sunday]})
     end
 
     def reset_params
