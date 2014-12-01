@@ -8,7 +8,7 @@ class PlansController < ApplicationController
     if @user.update_plan(params[:plan]) && @user.save
       render json: @user, status: 200
     else
-      render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -17,8 +17,7 @@ class PlansController < ApplicationController
     if @user.cancel_plan && @user.save
       render json: @user, status: 200
     else
-      render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
-
 end

@@ -7,39 +7,35 @@ class ApplicationController < ActionController::Base
   around_action :user_time_zone, if: :current_user
 
   def index
-    render :file => 'public/index.html'
+    render file: 'public/index.html'
   end
 
   protected
 
-    def authenticate_user!
-      unless current_user
-        render json: {}, status: 401
-      end
-    end
+  def authenticate_user!
+    render(json: {}, status: 401) unless current_user
+  end
 
   private
 
-    def authenticate_user_from_token!
-      authenticate_with_http_token do |token, options|
-        user_email = options[:user_email].presence
-        user       = user_email && User.find_by_email(user_email)
+  def authenticate_user_from_token!
+    authenticate_with_http_token do |token, options|
+      user_email = options[:user_email].presence
+      user       = user_email && User.find_by_email(user_email)
 
-        if user && Devise.secure_compare(user.authentication_token, token)
-          request.env["devise.skip_trackable"] = true
-          sign_in user, store: false
-        end
+      if user && Devise.secure_compare(user.authentication_token, token)
+        request.env['devise.skip_trackable'] = true
+        sign_in user, store: false
       end
     end
+  end
 
-    def user_time_zone(&block)
-      Time.use_zone(current_user.time_zone, &block)
-    end
+  def user_time_zone(&block)
+    Time.use_zone(current_user.time_zone, &block)
+  end
 
-    # If this is a get request for HTML, just render the ember app.
-    def handle_html
-      if request.method == 'GET' && request.headers["Accept"].match(/html/)
-        render 'public/index.html'
-      end
-    end
+  # If this is a get request for HTML, just render the ember app.
+  def handle_html
+    render 'public/index.html' if request.method == 'GET' && request.headers['Accept'].match(/html/)
+  end
 end

@@ -15,21 +15,21 @@ class EntriesController < ApplicationController
 
     page = params[:page].present? ? params[:page] : 1
     @entries = @entries.page(page).per(10)
-    
+
     render json: @entries.order('entry_date DESC')
   end
 
   def show
     unless @entry
-      entry_date = Time.now.strftime("%Y-%m-%d")
+      entry_date = Time.now.strftime('%Y-%m-%d')
       @entry = Entry.new(entry_date: entry_date, user_id: current_user.id)
     end
-    meta = {current_entry: @entry.entry_date, prev_entry: @entry.prev_entry, random_entry: @entry.random_entry, next_entry: @entry.next_entry}
+    meta = { current_entry: @entry.entry_date, prev_entry: @entry.prev_entry, random_entry: @entry.random_entry, next_entry: @entry.next_entry }
 
     if @entry.persisted?
-      render json: {entry: @entry.as_json, meta: meta}
+      render json: { entry: @entry.as_json, meta: meta }
     else
-      render json: {meta: meta}, status: 404
+      render json: { meta: meta }, status: 404
     end
   end
 
@@ -37,8 +37,8 @@ class EntriesController < ApplicationController
     @entry = current_user.entries.new(entry_params)
     if @entry.save
       render json: @entry
-    else    
-      render json: {errors: @entry.errors.full_messages}, status: :unprocessable_entity
+    else
+      render json: { errors: @entry.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -57,62 +57,63 @@ class EntriesController < ApplicationController
       UserMailer.delay.export_entries(current_user.id)
       render json: {}
     else
-      render json: {error: 'You may only export your entries once every 24 hours.'}, status: 400
-    end    
+      render json: { error: 'You may only export your entries once every 24 hours.' }, status: 400
+    end
   end
 
   # Handles incoming emails from Mailchimp
   def handle_email
-    token = params["recipient"].split('@')[0]
+    token = params['recipient'].split('@')[0]
     user = User.where(email_key: token).first
 
     # TODO: Notify the user that they couldn't be found..
     unless user
-      render json: {error: "User not found for recipient #{params["recipient"]} and token #{token}."}
+      render json: { error: "User not found for recipient #{params['recipient']} and token #{token}." }
       return
     end
 
     # Parse out the entry date from the email
     # If not found, use today's date
     entry_date_regex = /Reply\ with\ entry\ for\ date:\ ([\d]{4}-[\d]{2}-[\d]{2})\./
-    m = params["body-plain"].match(entry_date_regex)
+    m = params['body-plain'].match(entry_date_regex)
     if m && m.captures[0]
       entry_date = m.captures[0]
     else
-      entry_date = Time.now.in_time_zone(user.time_zone).strftime("%Y-%m-%d")
+      entry_date = Time.now.in_time_zone(user.time_zone).strftime('%Y-%m-%d')
     end
 
     # Find or create the entry
     entry = user.entries.where(entry_date: entry_date).first
     unless entry
-      entry = Entry.new(user_id: user.id, entry_date: entry_date, source: "email")
+      entry = Entry.new(user_id: user.id, entry_date: entry_date, source: 'email')
     end
 
     # If the entry already exists, append the new content onto the body
     if entry.persisted?
-      entry.body = entry.body + "\n\n" + params["stripped-text"]
+      entry.body = entry.body + '\n\n' + params['stripped-text']
     else
-      entry.body = params["stripped-text"]
+      entry.body = params['stripped-text']
     end
 
     if entry.save
       render json: entry
     else
-      render json: {errors: entry.errors.full_messages}
+      render json: { errors: entry.errors.full_messages }
     end
   end
 
   private
-    def set_entry
-      # if the id is in the format YYYY-MM-DD, search on entry date, else search by id
-      if /[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}/.match(params[:id])
-        @entry = current_user.entries.where(entry_date: params[:id]).first
-      else
-        @entry = current_user.entries.find(params[:id])
-      end      
-    end
 
-    def entry_params
-      params.require(:entry).permit(:body, :entry_date)
+  def set_entry
+    # if the id is in the format YYYY-MM-DD, search on entry date, else search by id
+    if /[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}/.match(params[:id])
+      @entry = current_user.entries.where(entry_date: params[:id]).first
+    else
+      @entry = current_user.entries.find(params[:id])
     end
+  end
+
+  def entry_params
+    params.require(:entry).permit(:body, :entry_date)
+  end
 end
