@@ -1,0 +1,54 @@
+#!/usr/bin/env sh
+
+# Set up Rails app. Run this script immediately after cloning the codebase.
+# https://github.com/thoughtbot/guides/tree/master/protocol
+
+# Exit if any subcommand fails
+set -e
+
+# Setup ember deps
+cd ../ember
+if ! command -v npm &>/dev/null; then
+  echo "npm is not installed."
+  echo "See http://bower.io for install instructions."
+fi
+echo "Installing npm dependencies.."
+npm install
+
+if ! command -v bower &>/dev/null; then
+  echo "bower is not installed."
+  echo "See https://www.npmjs.org for install instructions."
+fi
+echo "Installing bower dependencies.."
+bower install
+
+# Setup rails deps
+cd ../rails
+
+# Set up Ruby dependencies via Bundler
+echo "Installing ruby dependencies.."
+bundle install
+
+# Set up configurable environment variables
+if [ ! -f config/application.yml ]; then
+  cp config/application.example.yml config/application.yml
+fi
+
+# Set up database and add any development seed data
+echo "Setting up the database.."
+bundle exec rake db:create
+bundle exec rake db:migrate
+
+# Add binstubs to PATH via export PATH=".git/safe/../../bin:$PATH" in ~/.zshenv
+mkdir -p .git/safe
+
+# Pick a port for Foreman
+echo "port: 3000" > .foreman
+
+# Print warning if Foreman is not installed
+if ! command -v foreman &>/dev/null; then
+  echo "foreman is not installed."
+  echo "See https://github.com/ddollar/foreman for install instructions."
+fi
+
+echo "Setup finished! Run 'foreman start -f Procfile.local' from the rails directory to start the server."

@@ -37,23 +37,26 @@ To get it running on your own machine, here's what you need to know:
 2. `npm install -g ember-cli`
 3. `npm install -g bower`
 4. Ruby 2.1.4, I recommend installing via [RVM](http://rvm.io)
+5. `gem install foreman`
 5. [PostgreSQL](http://postgresapp.com.)
+
+[This script][dep] provides an easy way to install the above dependencies.
 
 #### Running [DayJot][dj]
 
-1. Install the requirements listed above.
-2. `git clone marbemac/dayjot`
-3. `cd dayjot/ember`
-4. `bower install`
-5. `npm install`
-6. `cd ../dayjot/rails`
-7. Duplicate `config/application.example.yml` & rename to `config/application.yml`.
-8. The only required fields are **DB_USERNAME** and **DB_PASSWORD**.
-9. `bundle install`
-10. `rake db:create`
-11. `rake db:migrate`
-12. `foreman start -f Procfile.local`
-13. You should be set to use the app at `http://localhost:3000`
+After you have cloned this repo, and installed the dependencies above, run this setup script to set up your machine with the necessary dependencies to run and test DayJot:
+
+    % cd rails && ./bin/setup
+
+After setup, you can run the application from the rails directory with:
+
+    % foreman start -f Procfile.local
+
+You should be set to use the app at `http://localhost:3000`. 
+
+Relevant config variables can be found in the rails/config/application.yml file.
+
+Depending on your PostgreSQL setup, you may need to update the DB_USERNAME and DB_PASSWORD properties in `rails/config/application.yml`.
 
 ## How do I Contribute?
 
@@ -64,12 +67,11 @@ Gee I'm so glad you asked that, great question!
 3. Test (Rails tests can be run via rspec; Tests haven't been setup for Ember)
 4. Send a pull request.
 
-The biggest issue right now is that there are no tests (for the Ember or Rails parts of the project). Coincidentally, writing tests is one of the best ways to familiarize oneself with a new codebase.
+The biggest issue right now is that there are very few tests (none for Ember and just a skeleton for Rails). Coincidentally, writing tests is one of the best ways to familiarize oneself with a new codebase.
 
 ### Gift for contributors
 
- I would be very grateful to anybody who's up for writing tests for this project. In fact, for anybody who submits a PR with one or more tests (one is fine!), I'll set you up on [DayJot][dj] for free, for life.
-
+I would be very grateful to anybody who's up for writing tests for this project. In fact, for anybody who submits a PR with one or more tests (one is fine!), I'll set you up on [DayJot][dj] for free, for life.
 
 ## Contact
 
@@ -82,3 +84,4 @@ Please direct any questions, concerns, or general chat to hi@dayjot.com. I'm als
 [dj]: https://dayjot.com.
 [mb]: http://twitter.com/marbemac
 [ol]: http://ohlife.com
+[dep]: https://github.com/thoughtbot/laptop
