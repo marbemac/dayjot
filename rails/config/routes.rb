@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :entries do
     post 'handle_email' => 'entries#handle_email', on: :collection
     post 'export' => 'entries#export', on: :collection
+    delete '' => 'entries#destroy_all', on: :collection
   end
 
   # PLANS

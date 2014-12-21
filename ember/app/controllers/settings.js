@@ -9,6 +9,7 @@ export default Ember.ObjectController.extend({
   emailTimesUpdated: null,
   correctedEmailTimes: {},
   exporting: false,
+  deleting: false,
 
   planInDollars: function() {
     return this.get('model.plan').split('_')[1];
@@ -63,6 +64,26 @@ export default Ember.ObjectController.extend({
         _this.set('exporting', false);
         Notify.error(err.responseJSON.error, {closeAfter: 5000});
       });
+    },
+    delete: function() {
+      var r = confirm("Are you sure you want to erase ALL of your entries? This cannot be undone.");
+      if (r === true) {
+        var r2 = confirm("Ok.. but really? Are you sure.. just double checking.");
+        if (r2 === true) {
+          var _this = this;
+          this.set('deleting', true);
+          Ember.$.ajax({
+            url: ENV.APP.API_HOST + '/entries',
+            type: 'DELETE',
+            dataType: 'json'
+          }).then(function() {
+            window.location = "/entries";
+          }, function(err) {
+            _this.set('deleting', false);
+            Notify.error(err.responseJSON.error, {closeAfter: 5000});
+          });
+        }
+      }
     }
   },
 

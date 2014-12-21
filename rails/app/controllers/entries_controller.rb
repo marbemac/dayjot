@@ -52,6 +52,11 @@ class EntriesController < ApplicationController
     render json: @entry
   end
 
+  def destroy_all
+    current_user.entries.delete_all
+    render json: {}
+  end
+
   def export
     if current_user.can_export?
       UserMailer.delay.export_entries(current_user.id)

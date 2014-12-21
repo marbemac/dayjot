@@ -1,9 +1,7 @@
 {{#if length}}
-  <ul class='d-entry-list'>
+  <div class='d-entry-list'>
     {{#each}}
-      <li>
-        {{partial "entries/list_item" withActions=true}}
-      </li>
+      {{partial "entries/list_item" withActions=true}}
     {{/each}}
 
     {{#if endOfList}}
@@ -11,7 +9,7 @@
     {{else}}
       <div class='btn btn-default d-load-more-entries' {{action "loadMore" target="view"}}>Load More</div>
     {{/if}}    
-  </ul> 
+  </div> 
 {{else}}
   <div class='d-none'>No Entries</div>
 {{/if}}

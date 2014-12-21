@@ -66,6 +66,17 @@
 
       <div class='d-section'>
         <h2>
+          Reset Entries
+          <small class='d-subheader'>Click the button below to permanently remove all of your entries.</small>
+        </h2>
+        
+        <div>
+          <button {{action "delete"}} {{bind-attr class=":btn :btn-primary deleting:disabled"}} {{bind-attr disabled=deleting}}>Delete All Entries</button>
+        </div>
+      </div>
+
+      <div class='d-section'>
+        <h2>
           Subscription
           {{#if planWasCanceled}}
             <small class='d-subheader'>Canceled on {{pretty-time planCanceled}}</small>
