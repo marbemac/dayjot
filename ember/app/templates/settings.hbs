@@ -50,6 +50,14 @@
           {{view "users/email-time" day="sunday" emailTimes=emailTimes}}
         </div>
 
+        <br />
+        <div class="checkbox">
+          <label>
+            {{input checked=session.currentUser.includeEmailMemory type="checkbox" class="form-control"}} Include a previous entry in my reminder emails
+          </label>
+        </div>        
+        <br />
+
         <button {{action "saveEmailSettings"}} {{bind-attr class=":btn :btn-primary saving:disabled"}} {{bind-attr disabled=saving}}>Save Email Settings</button>
       </div>
 

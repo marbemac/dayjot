@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:time_zone, email_times: [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday])
+    params.require(:user).permit(:include_email_memory, :time_zone, email_times: [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday])
   end
 
   def reset_params

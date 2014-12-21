@@ -2,17 +2,19 @@
 
 <p>---</p>
 
-<% if @show_entry %>
-  <p><%= @entry.time_ago(@user) %> ago you wrote...</p>
+<% if @user.include_email_memory %>
+  <% if @show_entry %>
+    <p><%= @entry.time_ago(@user) %> ago you wrote...</p>
 
-  <%= markdown(@entry.body) %>
+    <%= markdown(@entry.body) %>
 
-  <p>---</p>
+    <p>---</p>
 
-  <p>View Entry: <a href="<%= entry_url(@entry.entry_date) %>"><%= entry_url(@entry.entry_date) %></a></p>
+    <p>View Entry: <a href="<%= entry_url(@entry.entry_date) %>"><%= entry_url(@entry.entry_date) %></a></p>
 
-<% else %>
-  <p><b>Keep writing...once you have a few entries you'll see a blast from the past show up here!</b></p>
+  <% else %>
+    <p><b>Keep writing...once you have a few entries you'll see a blast from the past show up here!</b></p>
+  <% end %>
 <% end %>
 
 <p>Past entries: https://dayjot.com/entries</p>

@@ -20,6 +20,7 @@ export default DS.Model.extend({
   
   timeZone: DS.attr('string'),
   emailTimes: DS.attr('object'),
+  includeEmailMemory: DS.attr('boolean'),
 
   createdAt: DS.attr('date', {readOnly: true}),
 
