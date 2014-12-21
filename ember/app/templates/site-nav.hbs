@@ -51,7 +51,7 @@
     {{#if session.isAuthenticated}}
       <ul class='nav navbar-nav navbar-right'>
         <li>{{#link-to 'entries.show' view.todayDate}}<i class='fa fa-book'></i> Now{{/link-to}}</li>
-        <li>{{#link-to 'entries.index'}}<i class='fa fa-calendar'></i> Past{{/link-to}}</li>
+        <li>{{#link-to "entries.index" (query-params when="" search="")}}<i class='fa fa-calendar'></i> Past{{/link-to}}</li>
         <li>{{#link-to 'entries.new'}}<i class='fa fa-pencil'></i> Write{{/link-to}}</li>
       </ul>
     {{/if}}
