@@ -17,14 +17,18 @@
 
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/dayjot.css">
+
+    {{content-for 'head-footer'}}
   </head>
   <body>
     {{content-for 'body'}}
   
-    <script src="/assets/vendor.js"></script>
-    <script src="/assets/dayjot.js"></script>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/dayjot.js"></script>    
     
     <script src="//checkout.stripe.com/checkout.js"></script>
-    <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>    
+    <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+
+    {{content-for 'body-footer'}}
   </body>
 </html>
