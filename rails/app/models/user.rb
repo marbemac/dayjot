@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :trackable, :validatable
 
   before_create :set_default_settings
-  before_destroy :cancel_subscription
+  before_destroy :cancel_plan
   after_create :send_welcome_email
   # after_save :updated_encrypted_entries
 
@@ -167,6 +167,7 @@ class User < ActiveRecord::Base
         if subscription.status == 'active'
           customer.cancel_subscription
         end
+        puts "subscription cancelled"
         puts subscription
       end
     end
