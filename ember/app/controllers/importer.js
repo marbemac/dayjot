@@ -44,7 +44,7 @@ export default Ember.Controller.extend({
           continue;  
         }
         
-        entryDate = moment(line);
+        entryDate = moment(line, 'YYYY-MM-DD', true);
         if (entryDate.isValid()) {
           if (currentEntry) {
             currentEntry.text = $.trim(currentEntry.text);
