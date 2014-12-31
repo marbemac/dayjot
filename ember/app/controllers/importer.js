@@ -60,11 +60,13 @@ export default Ember.Controller.extend({
             currentEntry.text = currentEntry.text + line + "\n";
           }
         }
+      }
 
-        if (typeof lines[i+1] === 'undefined' && currentEntry) {
-          currentEntry.text = $.trim(currentEntry.text);
-          entries.push(currentEntry);
-        }
+      // ran out of lines, need to handle the last entry
+      // this must happen even if the last line was a newline
+      if (currentEntry) {
+        currentEntry.text = $.trim(currentEntry.text);
+        entries.push(currentEntry);
       }
 
       this.set('entryCount', entries.length);
