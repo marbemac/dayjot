@@ -55,6 +55,17 @@ export default Ember.Controller.extend({
             date: entryDate.utc().toDate(),
             text: ""
           };
+
+          // DailyDiary text exports are formatted as such:
+          // 2015-01-01
+          // 22:00
+          //
+          // Rest of entry...
+          //
+          // So if the next line is a time, skip it to support DailyDiary exports.
+          if (moment(lines[i+1], 'HH:mm', true).isValid()) {
+            i++;
+          }
         } else {
           if (currentEntry) {
             currentEntry.text = currentEntry.text + line + "\n";
