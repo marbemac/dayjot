@@ -38,7 +38,7 @@ To get it running on your own machine, here's what you need to know:
 3. `npm install -g bower`
 4. Ruby 2.1.4, I recommend installing via [RVM](http://rvm.io)
 5. `gem install foreman`
-5. [PostgreSQL](http://postgresapp.com.)
+5. [PostgreSQL](http://postgresapp.com)
 
 [This script][dep] provides an easy way to install the above dependencies.
 
@@ -81,7 +81,7 @@ Please direct any questions, concerns, or general chat to hi@dayjot.com. I'm als
 
 [DayJot][dj] is released under the GNU V2 License.
 
-[dj]: https://dayjot.com.
+[dj]: https://dayjot.com
 [mb]: http://twitter.com/marbemac
 [ol]: http://ohlife.com
 [dep]: https://github.com/thoughtbot/laptop
