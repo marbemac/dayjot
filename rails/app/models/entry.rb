@@ -18,7 +18,9 @@ class Entry < ActiveRecord::Base
 
   # A user may only have one entry per day
   def unique_entry_date
-    existing = user.entries.select('id, entry_date').where("entry_date = ? AND id != ?", entry_date, id).first
+    if user && user.entries
+      existing = user.entries.select('id, entry_date').where("entry_date = ? AND id != ?", entry_date, id).first
+    end
     if existing
       errors.add(:entry, "already exists for this date")
     end
@@ -26,7 +28,7 @@ class Entry < ActiveRecord::Base
 
   #############
   # ACCESSORS #
-  #############  
+  #############
 
   def unencrypted_body
     if encrypted_body
@@ -38,7 +40,7 @@ class Entry < ActiveRecord::Base
 
   ###########
   # HELPERS #
-  ###########  
+  ###########
 
   def prev_entry
     entry = Entry.select('id, entry_date').where("user_id = ? AND entry_date < ?", user_id, entry_date).order("entry_date DESC").first
