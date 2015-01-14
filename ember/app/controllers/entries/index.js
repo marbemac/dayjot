@@ -12,7 +12,7 @@ export default Ember.ArrayController.extend({
   
   // Pagination
   page: 1,
-  perPage: 15,
+  perPage: 10,
   loadingMore: false,
   endOfList: false,
 
