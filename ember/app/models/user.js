@@ -24,6 +24,10 @@ export default DS.Model.extend({
 
   createdAt: DS.attr('date', {readOnly: true}),
 
+  timeZoneDidChange: function() {
+    moment.tz.setDefault(this.get('timeZone'))
+  }.observes('timeZone'),
+
   planActive: function() {
     if (this.get('status') === 'active' && (this.get('planStatus') === 'active' || this.get('trialActive'))) {
       return true;

@@ -23,6 +23,7 @@ app.import('vendor/js/pikaday.js');
 app.import('vendor/js/pikaday.jquery.js');
 app.import('vendor/js/jquery-ui.js');
 app.import('bower_components/jquery-autosize/jquery.autosize.js');
+app.import('bower_components/moment/min/moment.min.js');
 app.import('bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.min.js');
 
 module.exports = app.toTree();
