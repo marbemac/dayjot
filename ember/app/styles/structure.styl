@@ -7,12 +7,12 @@ body
   height 100%
   -webkit-overflow-scrolling touch
 
-body 
+body
   background-color $body-bg-color
   background-image url($texture-url)
   >.ember-view
     height 100%
-    
+
 h1
 h2
 h3
@@ -37,7 +37,7 @@ textarea
 select
   font-family 'Oxygen', sans-serif
 
-a 
+a
   outline none
   text-decoration none
   color $purple
@@ -59,7 +59,7 @@ p
     display inline-block
     line-height 22px
     padding 3px 4px 0
-    
+
 .navbar
   position fixed
   top 0
@@ -67,12 +67,12 @@ p
   right 0
   z-index 1000
   back
-  
+
 .d-body
   padding $header-spacing 0 $footer-height 0
   min-height 100%
 
-.d-logo  
+.d-logo
   text-transform uppercase
   a
     color $site-text-color + 10%
@@ -84,18 +84,18 @@ p
     border-radius 2px
     transition all 0.2s ease-in-out
   &:hover
-    a    
+    a
       color $highlight-color
     span
       background $highlight-color
       color #FFF
-        
+
 .calendar-date-picker
   position relative
   .btn
     position absolute
     top -1px
-    left 0
+    left -30px
   input
     cursor pointer !important
     background-color transparent !important
@@ -104,11 +104,11 @@ p
     text-align center
 
 .d-panel
-  margin auto  
+  margin auto
   position relative
   margin-bottom $base-padding
   max-width $site-width
-  
+
   h2
     color $secondary-color
     font-size 24px
@@ -190,11 +190,11 @@ p
  .d-panel_name
    .calendar-date-picker
     input
-      padding 0 
-      
+      padding 0
+
 .d-panel_content
   background-color white
-  border-radius 10px  
+  border-radius 10px
   padding $base-padding
   box-shadow 0 0 2px rgba(black, 0.34)
   font-size 18px
@@ -224,7 +224,7 @@ p
   text-align center
   margin $base-padding 0
   display block
-  
+
 .d-footer
   height $footer-height
   text-align center
@@ -235,7 +235,7 @@ p
   border-top 5px solid rgba($highlight-color, 0.75)
   color rgba(white, 0.75)
   margin-top -1 * $footer-height
-  a 
+  a
     color white
     &:hover
       text-decoration underline
@@ -248,7 +248,7 @@ p
     font-size 24px
     span
       background-color #fff
-      color $highlight-color  
+      color $highlight-color
       margin-right 6px
       padding 0 5px
       border-radius 1px
@@ -262,13 +262,13 @@ p
     color rgba(white, 0.7)
     font-weight 300
     margin 15px 0 60px
-    
+
 .d-screen-cover
   position fixed
   top 0
   left 0
   right 0
-  bottom $footer-height  
+  bottom $footer-height
 
 .d-center-container
   text-align center
@@ -285,4 +285,4 @@ p
       margin-bottom 50px
   &.dark
     background-image url($contrast-texture-url)
-    background-color #191919 
+    background-color #191919
