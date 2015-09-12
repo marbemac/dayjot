@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
 
   ####################
   # CUSTOM ACCESSORS #
-  #################### 
+  ####################
 
   def entry_months
     data = entries.select("COUNT(id) as count, to_char(entry_date,'YYYY-MM') as year_month").group("year_month").order("year_month DESC").to_a
@@ -57,19 +57,19 @@ class User < ActiveRecord::Base
   def random_entry(entry_date=nil)
     if entry_date.present?
       entry_date = Date.parse(entry_date.to_s)
-      # return entry in the case of a leap year        
+      # return entry in the case of a leap year
       if Date.leap?(entry_date.year) && entry_date.month == 2 && entry_date.day == 29 && leap_year_entry = entries.where(entry_date: (entry_date - 4.years).strftime("%Y-%m-%d")).first
         leap_year_entry
-      # return entry from 1 year ago        
+      # return entry from 1 year ago
       elsif exactly_last_year_entry = entries.where(entry_date: entry_date.last_year.strftime("%Y-%m-%d")).first
         exactly_last_year_entry
-      # return entry from 30 days ago        
+      # return entry from 30 days ago
       elsif (reminder_emails_sent % 3 == 0) && (exactly_30_days_ago = entries.where(entry_date: entry_date.last_month.strftime("%Y-%m-%d")).first)
         exactly_30_days_ago
       # return entry from 7 days ago
       elsif (reminder_emails_sent % 5 == 0) && (exactly_7_days_ago = entries.where(entry_date: (entry_date - 7.days).strftime("%Y-%m-%d")).first)
         exactly_7_days_ago
-      else 
+      else
         count = entries.where("entry_date < ?", entry_date.last_year.strftime("%Y-%m-%d")).count
         # return old entry
         if count > 15
@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
       # just return a random entry for this user
       entries.order("RANDOM()").first
     end
-  end 
+  end
 
   ###########
   # HELPERS #
@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
     EntryMailer.delay.daily(id)
   end
 
-  # true if it's the day and hour they want where they live        
+  # true if it's the day and hour they want where they live
   def send_entry_email_now?
     day = Time.now.in_time_zone(time_zone).strftime('%A').downcase
     preference = email_times[day]
@@ -106,10 +106,10 @@ class User < ActiveRecord::Base
   ############
   # PAYMENTS #
   ############
-  
+
   def update_plan(new_plan=nil)
     current_plan = self.plan
-    
+
     if stripe_customer_id.nil?
       if !stripe_token.present?
         raise "Stripe token not present. Can't create account."
@@ -138,7 +138,7 @@ class User < ActiveRecord::Base
     end
 
     if new_plan
-      self.plan = new_plan 
+      self.plan = new_plan
 
       if new_plan != current_plan
         self.plan_started = Time.now
@@ -158,7 +158,7 @@ class User < ActiveRecord::Base
     self.stripe_token = nil
     false
   end
-  
+
   def cancel_plan
     unless stripe_customer_id.nil?
       customer = Stripe::Customer.retrieve(stripe_customer_id)
@@ -174,12 +174,12 @@ class User < ActiveRecord::Base
 
     self.plan_canceled = Time.now
     self.plan_status = 'canceled'
-    
-    true    
+
+    true
   rescue Stripe::StripeError => e
     logger.error "Stripe Error: " + e.message
     errors.add :base, "Unable to cancel your subscription. #{e.message}."
     false
-  end 
-  
+  end
+
 end

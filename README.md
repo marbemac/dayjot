@@ -33,8 +33,8 @@ To get it running on your own machine, here's what you need to know:
 
 #### Requirements
 
-1. Install [Node 0.10.x](http://nodejs.org/)
-2. `npm install -g ember-cli`
+1. Install [Node 0.10.x](http://nodejs.org/), I recomment installing via [n](https://github.com/tj/n)
+2. `npm install -g ember-cli@0.1.4`
 3. `npm install -g bower`
 4. Ruby 2.1.4, I recommend installing via [RVM](http://rvm.io)
 5. `gem install foreman`
@@ -52,7 +52,7 @@ After setup, you can run the application from the rails directory with:
 
     % foreman start -f Procfile.local
 
-You should be set to use the app at `http://localhost:3000`. 
+You should be set to use the app at `http://localhost:3000`.
 
 Relevant config variables can be found in the rails/config/application.yml file.
 

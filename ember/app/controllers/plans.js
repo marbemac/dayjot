@@ -30,7 +30,7 @@ export default Ember.Controller.extend({
 
   startPurchase: function(plan, name, description) {
     var _this = this;
-    
+
     Ember.run.next(function() {
       StripeCheckout.open({
         key:             _this.get('stripeKey'),
@@ -49,7 +49,7 @@ export default Ember.Controller.extend({
   sendPurchase: function(plan, token) {
     var _this = this,
         user = this.get('session.currentUser');
-        
+
     this.set('processing', true);
     Ember.$.ajax({
       url: ENV.APP.API_HOST + "/update_plan",
@@ -63,8 +63,8 @@ export default Ember.Controller.extend({
           _this.transitionToRoute('entries');
           Notify.success('Successfully subscribed!');
           setTimeout(function() {
-            _this.set('redirecting', false);          
-          }, 1000);          
+            _this.set('redirecting', false);
+          }, 1000);
         });
       },
       error: function(error) {
@@ -77,7 +77,7 @@ export default Ember.Controller.extend({
   updatePlan: function(plan) {
     var _this = this,
         user = this.get('session.currentUser');
-        
+
     this.set('processing', true);
     Ember.$.ajax({
       url: ENV.APP.API_HOST + "/update_plan",
@@ -91,8 +91,8 @@ export default Ember.Controller.extend({
           _this.transitionToRoute('entries');
           Notify.success('Subscription updated.');
           setTimeout(function() {
-            _this.set('redirecting', false);          
-          }, 1000);          
+            _this.set('redirecting', false);
+          }, 1000);
         });
       },
       error: function(error) {

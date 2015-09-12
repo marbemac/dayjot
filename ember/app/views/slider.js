@@ -2,18 +2,6 @@ import Ember from "ember";
 
 var plans = [
   {
-    value: "$1",
-    plan: "monthly_1",
-    text: "a box of Tic Tacs.",
-    index: 0
-  },
-  {
-    value: "$2",
-    plan: "monthly_2",
-    text: "an avacado.",
-    index: 1
-  },
-  {
     value: "$3",
     plan: "monthly_3",
     text: "a Tazo Chai Tea Latte.",
@@ -22,7 +10,7 @@ var plans = [
   {
     value: "$4",
     plan: "monthly_4",
-    text: "a Double-Double animal style.",
+    text: "a Double-Double, animal style.",
     index: 3
   },
   {
@@ -101,12 +89,12 @@ export default Ember.View.extend({
     this.$('.slider').slider({
       range: "min",
       step: 1,
-      min: 1, 
+      min: 1,
       max: 13,
       value: _this.get('currentValue'),
       slide: function( event, ui ) {
         _this.set('currentValue', ui.value);
       }
     });
-  } 
+  }
 });

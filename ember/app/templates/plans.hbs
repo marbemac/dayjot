@@ -1,7 +1,7 @@
 {{view "site-nav"}}
 
-<div class='d-panel d-plans'>  
-  
+<div class='d-panel d-plans'>
+
   <div class='d-panel_content'>
     <div class='d-panel_name'>
       <div class='d-inner'>Become a Member. What's it worth to you?</div>
@@ -11,11 +11,11 @@
       <h1 class='d-positive'>Success! Redirecting...</h1>
     {{else}}
       {{#if processing}}
-        <h1 class='d-positive'>Processing...</h1>      
+        <h1 class='d-positive'>Processing...</h1>
       {{else}}
         <div class='d-top'>
           <div class='d-plan-option'>{{planValue}} <span>per month</span></div>
-        
+
           <p class='d-plan-text'>
             The same price as
             <small>{{planText}}</small>
@@ -25,10 +25,10 @@
           {{#if session.currentUser}}
             {{#if hasPlan}}
               {{#if isPlanActive}}
-                <button class='btn btn-primary' {{action "updatePlan"}}>Update Subscription</button>          
+                <button class='btn btn-primary' {{action "updatePlan"}}>Update Subscription</button>
               {{else}}
-                <button class='btn btn-primary' {{action "updatePlan"}}>Renew Subscription</button>          
-              {{/if}}          
+                <button class='btn btn-primary' {{action "updatePlan"}}>Renew Subscription</button>
+              {{/if}}
             {{else}}
               <button class='btn btn-primary' {{action "startPlan"}}>Add Credit Card</button>
 
@@ -59,7 +59,7 @@
               {{/unless}}
             {{/if}}
             <p>Use DayJot free for a month, no credit card required. {{#link-to "entries"}}Click here{{/link-to}} to carry on.</p>
-            <p>If you're not happy or something's missing, let us know at <a href='mailto:hi@dayjot.com'>hi@dayjot.com</a></p> 
+            <p>If you're not happy or something's missing, let us know at <a href='mailto:hi@dayjot.com'>hi@dayjot.com</a></p>
           </li>
 
           <li>
