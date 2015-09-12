@@ -3,7 +3,7 @@
 
 ## What is it?
 
-[DayJot][dj] is a simple, private journaling app. It's built to provide many features that were included in the (now defunct) [OhLife][ol] journaling app. The [hosted version][dj] of [DayJot][dj] will be run forever. As long as there is a single user paying $1/month, it will remain online.
+[DayJot][dj] is a simple, private journaling app. It's built to provide many features that were included in the (now defunct) [OhLife][ol] journaling app. The [hosted version][dj] of [DayJot][dj] will be run forever. As long as there is a single user paying $3/month, it will remain online.
 
 ## What does it do?
 
@@ -32,6 +32,8 @@ To get it running on your own machine, here's what you need to know:
 * [Delayed Job](https://github.com/collectiveidea/delayed_job)
 
 #### Requirements
+
+Please note that you must be on Node 0.10.x to run DayJot.
 
 1. Install [Node 0.10.x](http://nodejs.org/), I recomment installing via [n](https://github.com/tj/n)
 2. `npm install -g ember-cli@0.1.4`

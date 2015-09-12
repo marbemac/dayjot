@@ -1,7 +1,7 @@
 {{view "site-nav"}}
 
-<div class='d-panel d-settings'>  
-  
+<div class='d-panel d-settings'>
+
   <div class='d-panel_content'>
     <div class='form-horizontal'>
       <div class='d-panel_name'>
@@ -19,7 +19,7 @@
             {{input value=session.currentUser.email readonly="true" disabled="true" class="form-control"}}
             <small>Email hi@dayjot.com to change your account email.</small>
           </div>
-        </div>        
+        </div>
       </div>
 
       <div class='d-section'>
@@ -55,7 +55,7 @@
           <label>
             {{input checked=session.currentUser.includeEmailMemory type="checkbox" class="form-control"}} Include a previous entry in my reminder emails
           </label>
-        </div>        
+        </div>
         <br />
 
         <button {{action "saveEmailSettings"}} {{bind-attr class=":btn :btn-primary saving:disabled"}} {{bind-attr disabled=saving}}>Save Email Settings</button>
@@ -66,7 +66,7 @@
           Export Entries
           <small class='d-subheader'>Click the button below, and we'll email you a text file with all your entries.</small>
         </h2>
-        
+
         <div>
           <button {{action "export"}} {{bind-attr class=":btn :btn-primary exporting:disabled"}} {{bind-attr disabled=exporting}}>Export</button>
         </div>
@@ -77,7 +77,7 @@
           Reset Entries
           <small class='d-subheader'>Click the button below to permanently remove all of your entries.</small>
         </h2>
-        
+
         <div>
           <button {{action "delete"}} {{bind-attr class=":btn :btn-primary deleting:disabled"}} {{bind-attr disabled=deleting}}>Delete All Entries</button>
         </div>
@@ -96,10 +96,11 @@
                 <small class='d-subheader'>Trial active until {{pretty-time trialEnd}}.</small>
               {{/if}}
             {{/if}}
-          {{/if}}          
+          {{/if}}
         </h2>
 
         {{#if plan}}
+          <p>If you'd like to change your payment method, please contact us at hi@dayjot.com</p>
           {{#if planWasCanceled}}
             <p>Your subscription has been been canceled. You will not be billed again.</p>
             <p>If you change your mind, you can re-subscribe below.</p>
@@ -109,7 +110,7 @@
             <div class='btn-group'>
               {{#link-to "plans" class="btn btn-info"}}Change Subscription{{/link-to}}
               <button {{action "cancel"}} {{bind-attr class=":btn :btn-danger canceling:disabled"}} {{bind-attr disabled=canceling}}>Cancel Subscription</button>
-            </div>            
+            </div>
           {{/if}}
         {{else}}
           {{#link-to "plans" class="btn btn-info"}}Become a Member{{/link-to}}
