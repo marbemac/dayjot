@@ -17,7 +17,7 @@ export default DS.Model.extend({
   planCanceled: DS.attr('date', {readOnly: true}),
   trialEnd: DS.attr('date', {readOnly: true}),
   entryMonths: DS.attr('object', {readOnly: true}),
-  
+
   timeZone: DS.attr('string'),
   emailTimes: DS.attr('object'),
   includeEmailMemory: DS.attr('boolean'),
@@ -25,7 +25,7 @@ export default DS.Model.extend({
   createdAt: DS.attr('date', {readOnly: true}),
 
   timeZoneDidChange: function() {
-    moment.tz.setDefault(this.get('timeZone'))
+    moment.tz.setDefault(this.get('timeZone'));
   }.observes('timeZone'),
 
   planActive: function() {
@@ -64,7 +64,7 @@ export default DS.Model.extend({
     return this.get('planStatus') === 'canceled' ? true : false;
   }.property('planStatus'),
 
-  // Refreshes the user session and updates the user 
+  // Refreshes the user session and updates the user
   // properties (called on page refresh in application route)
   refresh: function(){
     var adapter = this.get('store').adapterFor(this),
