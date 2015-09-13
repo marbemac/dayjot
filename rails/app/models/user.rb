@@ -96,7 +96,7 @@ class User < ActiveRecord::Base
   def send_entry_email_now?
     day = Time.now.in_time_zone(time_zone).strftime('%A').downcase
     preference = email_times[day]
-    true if preference && preference == Time.now.in_time_zone(time_zone).hour.to_s
+    true if preference && preference == Time.now.in_time_zone(time_zone).hour.to_s && !daily_email_sent_today?
   end
 
   def daily_email_sent_today?
