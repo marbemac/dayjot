@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   # ENTRIES
   get 'entries/new' => 'application#index', as: :entry_new
+  get 'entries/:id/edit' => 'application#index', as: :entry_edit
   resources :entries do
     post 'handle_email' => 'entries#handle_email', on: :collection
     post 'export' => 'entries#export', on: :collection
