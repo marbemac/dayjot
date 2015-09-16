@@ -17,13 +17,13 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
+app.import('bower_components/moment/min/moment.min.js');
+app.import('bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.min.js');
 app.import('vendor/js/bootstrap.js');
 app.import('vendor/js/underscore.js');
 app.import('vendor/js/pikaday.js');
 app.import('vendor/js/pikaday.jquery.js');
 app.import('vendor/js/jquery-ui.js');
 app.import('bower_components/jquery-autosize/jquery.autosize.js');
-app.import('bower_components/moment/min/moment.min.js');
-app.import('bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.min.js');
 
 module.exports = app.toTree();
