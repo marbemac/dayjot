@@ -86,7 +86,7 @@ export default Ember.View.extend({
         plan = this.get('startValue') ? _.findWhere(plans, {plan: this.get('startValue')}) : plans[0];
 
     if (!plan || typeof plan === 'undefined') {
-      plan = plans[0]
+      plan = plans[0];
     }
 
     _this.set('currentValue', plan.index + 1);
