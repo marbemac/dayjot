@@ -13,7 +13,7 @@
     "ember-qunit": "0.1.8",
     "ember-qunit-notifications": "0.0.4",
     "qunit": "~1.15.0",
-    "ember-simple-auth": "0.7.1",
+    "ember-simple-auth": "0.7.3",
     "jquery-autosize": "~1.18.12",
     "moment-timezone": "~0.4.0",
     "moment": "~2.10.6",

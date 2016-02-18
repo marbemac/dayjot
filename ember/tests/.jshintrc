@@ -1,5 +1,8 @@
 {
   "predef": [
+    "authenticateSession",
+    "invalidateSession",
+    "currentSession",
     "server",
     "document",
     "window",
