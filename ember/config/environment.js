@@ -22,7 +22,7 @@ module.exports = function(environment) {
       crossOriginWhitelist: ['http://localhost:3000','http://localhost:4202','https://api.dayjot.com'],
       authorizer: 'simple-auth-authorizer:devise',
       authenticationRoute: 'index'
-    }    
+    }
   };
 
   if (environment === 'development') {
@@ -33,7 +33,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     ENV.APP.API_HOST = "http://localhost:3000"
-    // ENV.APP.API_HOST = "http://localhost:4202/development-gdsc3"    
+    // ENV.APP.API_HOST = "http://localhost:4202/development-gdsc3"
 
     ENV.APP.STRIPE_KEY = "pk_test_2undx7H0CeDLSDUX01k5bXfn";
   }
@@ -42,19 +42,23 @@ module.exports = function(environment) {
     // Testem prefers this...
     ENV.baseURL = '/';
     ENV.locationType = 'auto';
+    ENV.APP.API_HOST = '';
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV['simple-auth'].store = 'simple-auth-session-store:ephemeral';
+
   }
 
   if (environment === 'production') {
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
-    
+
     ENV.APP.API_HOST = "https://dayjot.com"
     ENV.APP.STRIPE_KEY = "pk_live_0pfal3NW90qouuEPy6LDuuUm";
   }
