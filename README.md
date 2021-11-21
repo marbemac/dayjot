@@ -38,7 +38,7 @@ Please note that you must be on Node 0.10.x to run DayJot.
 1. Install [Node 0.10.x](http://nodejs.org/), I recomment installing via [n](https://github.com/tj/n)
 2. `npm install -g ember-cli@0.1.4`
 3. `npm install -g bower`
-4. Ruby 2.1.4, I recommend installing via [RVM](http://rvm.io)
+4. Ruby 2.4.10, I recommend installing via [RVM](http://rvm.io)
 5. `gem install foreman`
 5. [PostgreSQL](http://postgresapp.com)
 
