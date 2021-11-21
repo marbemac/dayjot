@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 ruby "2.1.4"
 
-gem 'rails', '4.1.7'
+# forked off of rails v4.1.7, with one change to fix a panic in postgres 12
+gem 'rails', git: 'https://github.com/marbemac/rails.git', branch: 'fix/postgres-12-panic'
 
 # DB
 gem 'pg'
