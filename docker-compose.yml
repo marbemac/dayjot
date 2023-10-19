@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  pg-ws-proxy:
+    image: ghcr.io/neondatabase/wsproxy
+    restart: always
+    platform: linux/amd64
+    ports:
+      - '5347:80'
+    environment:
+      APPEND_PORT: 'jot-db:5432'
+      ALLOW_ADDR_REGEX: .*
+      LOG_TRAFFIC: true
+    networks:
+      - internal
+    depends_on:
+      - jot-db
+
+  jot-db:
+    image: postgres:15-alpine
+    restart: always
+    # Uncomment and docker down/up to see query logs
+    # command: ['-c', 'log_statement=all']
+    ports:
+      - '5447:5432'
+    environment:
+      POSTGRES_USER: jot_user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: jot
+      POSTGRES_INITDB_ARGS: --encoding=UTF-8 --lc-collate=C --lc-ctype=C
+    volumes:
+      - jot-db:/var/lib/postgresql/data
+    networks:
+      - internal
+
+volumes:
+  jot-db:
+
+networks:
+  internal:
