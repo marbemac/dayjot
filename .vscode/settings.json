@@ -1,0 +1,19 @@
+{
+  "editor.formatOnSave": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.preferences.importModuleSpecifierEnding": "js",
+  "files.associations": {
+    "wrangler.json": "jsonc"
+  },
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.yml"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "tailwindCSS.validate": false,
+  "tailwindCSS.experimental.classRegex": [["tx\\(([^)]*)\\)", "'([^']*)'"]],
+  "tailwindCSS.classAttributes": ["tw", "tx", "twInactive", "twActive"],
+  "todo-tree.general.statusBar": "tags",
+  "todo-tree.general.tags": ["@TODO", "@BUG", "@FIXME"]
+}

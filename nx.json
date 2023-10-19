@@ -1,0 +1,26 @@
+{
+  "extends": "nx/presets/npm.json",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "parallel": 5,
+        "cacheableOperations": ["build", "lint", "test", "typecheck", "e2e", "package", "prepare"],
+        "canTrackAnalytics": false,
+        "runtimeCacheInputs": ["echo $CI", "node -v"],
+        "useDaemonProcess": false
+      }
+    }
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    }
+  },
+  "cli": {
+    "packageManager": "yarn"
+  }
+}
