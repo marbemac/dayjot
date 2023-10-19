@@ -1,3 +1,0 @@
-web:        rails s --port $PORT
-worker:     bundle exec rake jobs:work
-ember:      sh -c 'cd ../ember && exec ember s --environment development --port 4300 --live-reload-port 31550 --output-path ../rails/public'

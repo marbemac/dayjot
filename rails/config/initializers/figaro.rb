@@ -1,1 +1,0 @@
-# Figaro.require_keys("PG_PUBLIC_KEY", "PG_PRIVATE_KEY")

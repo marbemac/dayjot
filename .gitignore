@@ -1,9 +1,0 @@
-.DS_Store
-.git
-/rails/public/*
-/rails/.ruby-gemset
-/rails/config/application.yml
-/rails/dump.rdb
-rails/.rubocop.yml
-rails/dump.rdb
-rails/.foreman
