@@ -7,7 +7,7 @@ export default {
   presets: [preset()],
 
   content: [
-    './client/**/*.{js,ts,jsx,tsx,mdx}',
+    'src/client/**/*.{js,ts,jsx,tsx,mdx}',
 
     path.join(path.dirname(require.resolve('@supastack/ui-styles')), '**/*.ts'),
   ],
