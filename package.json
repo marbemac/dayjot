@@ -20,13 +20,13 @@
     "check-constraints": "yarn constraints",
     "doctor": "yarn dlx @yarnpkg/doctor",
     "--dev--": "",
-    "dev": "nx run-many --target dev --output-style stream",
+    "dev": "nx run-many --target dev --output-style stream  --exclude @supastack/root",
     "graph": "nx graph",
     "clean": "rm -r **/node_modules && rm -r **/dist && rm -r **/build",
-    "lint": "nx run-many --target lint",
-    "lint.fix": "yarn lint --fix && prettier --ignore-path .eslintignore --write \"**/*.{ts,tsx}\";",
-    "test": "nx run-many --target test",
-    "typecheck": "nx run-many --target typecheck"
+    "lint": "nx run-many --target lint --exclude @supastack/root",
+    "lint.fix": "yarn lint --fix && prettier --ignore-path .eslintignore shared --write \"**/*.{ts,tsx}\";",
+    "test": "nx run-many --target test --exclude @supastack/root",
+    "typecheck": "nx run-many --target typecheck --exclude @supastack/root"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20231016.0",

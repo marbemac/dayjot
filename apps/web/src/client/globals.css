@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply min-h-screen;
+}
+
+body {
+  @apply antialiased flex flex-col flex-1;
+}

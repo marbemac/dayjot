@@ -1,0 +1,16 @@
+{
+  "extends": "@supastack/tsconfig/tsconfig.base.json",
+  "include": ["**/*.ts", "**/*.tsx"],
+  "compilerOptions": {
+    "rootDir": ".",
+    "lib": ["ESNext", "DOM"],
+    "jsxImportSource": "react",
+    "jsx": "react-jsx",
+    "types": ["vite/client", "@cloudflare/workers-types"],
+    "paths": {
+      "~app": ["./src/app.ts"],
+      "~client/*": ["./src/client/*"],
+      "~server/*": ["./src/server/*"]
+    }
+  }
+}
