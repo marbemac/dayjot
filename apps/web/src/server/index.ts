@@ -1,10 +1,32 @@
 import { Hono } from 'hono';
 
-import { serverHandler } from '~app';
+import { serverHandler, TRPC_ROOT } from '~app';
+import { type ReqCtx, reqCtxMiddleware } from '~server/middleware/context.ts';
+import { trpcServer } from '~server/middleware/trpc.ts';
+import { appRouter } from '~server/trpc/index.ts';
+import { deleteCookie, setCookie } from '~server/utils/cookies.ts';
 
-type HonoEnv = {};
+type HonoEnv = { Variables: ReqCtx };
 
 const server = new Hono<HonoEnv>()
+  /**
+   * TRPC
+   */
+  .use(
+    `/${TRPC_ROOT}/*`,
+    reqCtxMiddleware,
+    trpcServer<HonoEnv>({
+      endpoint: `/${TRPC_ROOT}`,
+      router: appRouter,
+      createContext: ({ c, resHeaders }) => ({
+        ...c.var,
+        // trpc manages it's own headers, so use those in the cookie helpers
+        setCookie: (...args) => setCookie(resHeaders, ...args),
+        deleteCookie: (...args) => deleteCookie(resHeaders, ...args),
+      }),
+    }),
+  )
+
   /**
    * The frontend app
    */
@@ -12,11 +34,10 @@ const server = new Hono<HonoEnv>()
     try {
       const appStream = await serverHandler({
         req: c.req.raw,
-        // @TODO
-        // meta: {
-        //   // used by @ssrx/plugin-trpc-react
-        //   trpcCaller: appRouter.createCaller(c.var),
-        // },
+        meta: {
+          // used by @ssrx/plugin-trpc-react
+          trpcCaller: appRouter.createCaller(c.var),
+        },
       });
 
       return new Response(appStream);
