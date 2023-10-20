@@ -10,6 +10,7 @@ export default defineConfig({
     tsconfigPaths(),
     react(),
     ssrx({
+      runtime: 'cf-pages',
       serverFile: 'src/server/index.ts',
       clientEntry: 'src/client/entry.client.tsx',
       routesFile: 'src/client/routes.tsx',

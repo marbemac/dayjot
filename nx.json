@@ -18,6 +18,9 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"]
+    },
+    "preview": {
+      "dependsOn": ["build"]
     }
   },
   "cli": {

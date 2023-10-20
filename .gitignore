@@ -10,6 +10,7 @@ out-tsc
 .cache
 .wrangler
 storybook-static
+.nx
 
 # typescript
 *.tsbuildinfo
