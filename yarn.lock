@@ -1565,6 +1565,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@dayjot/db@workspace:*, @dayjot/db@workspace:libs/db":
+  version: 0.0.0-use.local
+  resolution: "@dayjot/db@workspace:libs/db"
+  dependencies:
+    "@supastack/db-model": "workspace:*"
+    "@supastack/db-pg-client": "workspace:*"
+    "@supastack/db-pg-migrations": "workspace:*"
+    "@supastack/eslint-config": "workspace:*"
+    "@supastack/tsconfig": "workspace:*"
+    dotenv-cli: "npm:^7.3.0"
+    drizzle-orm: "npm:^0.28.6"
+    drizzle-valibot: "npm:^0.1.1"
+    tsx: "npm:3.14.0"
+    typescript: "npm:5.2.2"
+  languageName: unknown
+  linkType: soft
+
 "@decs/typeschema@npm:0.12.1":
   version: 0.12.1
   resolution: "@decs/typeschema@npm:0.12.1"
@@ -4772,7 +4789,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@supastack/db-pg-migrations@workspace:shared/packages/db/pg-migrations":
+"@supastack/db-pg-migrations@workspace:*, @supastack/db-pg-migrations@workspace:shared/packages/db/pg-migrations":
   version: 0.0.0-use.local
   resolution: "@supastack/db-pg-migrations@workspace:shared/packages/db/pg-migrations"
   dependencies:
@@ -7734,6 +7751,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv-cli@npm:^7.3.0":
+  version: 7.3.0
+  resolution: "dotenv-cli@npm:7.3.0"
+  dependencies:
+    cross-spawn: "npm:^7.0.3"
+    dotenv: "npm:^16.3.0"
+    dotenv-expand: "npm:^10.0.0"
+    minimist: "npm:^1.2.6"
+  bin:
+    dotenv: cli.js
+  checksum: 9cf337c7addb720c70a1f209d8d8cd3e15cfb26c757914ba4b48603112f6ab9ce5e8cb5c65b89cc6b7d7ee52c05bb413351ebc3e55949251d4f5340fac9c4d76
+  languageName: node
+  linkType: hard
+
 "dotenv-expand@npm:^10.0.0, dotenv-expand@npm:~10.0.0":
   version: 10.0.0
   resolution: "dotenv-expand@npm:10.0.0"
@@ -7741,7 +7772,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.0.0, dotenv@npm:~16.3.1":
+"dotenv@npm:^16.0.0, dotenv@npm:^16.3.0, dotenv@npm:~16.3.1":
   version: 16.3.1
   resolution: "dotenv@npm:16.3.1"
   checksum: 10accb903da092a279d5a952c54290c0980c1c3ab0767b0dbc3013526593ebc98944e26352c9bef1d0fe93589a7c78e4810daae1bd53c7432c69997b17de0b3d
@@ -7786,7 +7817,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"drizzle-orm@npm:0.28.6":
+"drizzle-orm@npm:0.28.6, drizzle-orm@npm:^0.28.6":
   version: 0.28.6
   resolution: "drizzle-orm@npm:0.28.6"
   peerDependencies:
@@ -7849,6 +7880,15 @@ __metadata:
     sqlite3:
       optional: true
   checksum: eef48cde867706820f3580cc6cbc05cab7733a42f6650349f31899d765a0b662ac2ebdd60711d539ddcb340efbea6011e00a3c237613e110d749e7049af62dcd
+  languageName: node
+  linkType: hard
+
+"drizzle-valibot@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "drizzle-valibot@npm:0.1.1"
+  peerDependencies:
+    drizzle-orm: ">=0.23.13"
+  checksum: 8637a190a183c2ee56bc793adac71fde4cb126cd905d759c714b24b95306464c9f116bde12a36e62de7f1798f1da502b9d55398d789ff3f69e88063b7ec6a4f5
   languageName: node
   linkType: hard
 
@@ -15400,6 +15440,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:apps/web"
   dependencies:
+    "@dayjot/db": "workspace:*"
     "@decs/typeschema": "npm:0.12.1"
     "@fortawesome/free-solid-svg-icons": "npm:6.4.2"
     "@hono/valibot-validator": "npm:0.2.0"

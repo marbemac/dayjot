@@ -1,0 +1,34 @@
+{
+  "name": "@dayjot/db",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "migrate.dev": "dotenv -e .env.local -- yarn migrate.up",
+    "migrate.generate": "dotenv -e .env.local -- drizzle-kit generate:pg",
+    "migrate.up": "tsx scripts/migrate.ts",
+    "seed": "dotenv -e .env.local -- tsx scripts/seed/index.ts",
+    "reset.dev": "dotenv -e .env.local -- yarn reset",
+    "reset": "tsx src/do-reset.ts",
+    "lint": "eslint .",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@supastack/db-model": "workspace:*",
+    "@supastack/db-pg-client": "workspace:*",
+    "@supastack/db-pg-migrations": "workspace:*",
+    "drizzle-orm": "^0.28.6",
+    "drizzle-valibot": "^0.1.1"
+  },
+  "devDependencies": {
+    "@supastack/eslint-config": "workspace:*",
+    "@supastack/tsconfig": "workspace:*",
+    "dotenv-cli": "^7.3.0",
+    "tsx": "3.14.0",
+    "typescript": "5.2.2"
+  }
+}

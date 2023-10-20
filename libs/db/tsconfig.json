@@ -1,0 +1,7 @@
+{
+  "extends": "@supastack/tsconfig/tsconfig.base.json",
+  "include": ["**/*.ts"],
+  "compilerOptions": {
+    "rootDir": "."
+  }
+}
