@@ -9,6 +9,8 @@ import { QueryClientProvider } from '@tanstack/react-query';
 // import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 import { routes } from '~client/routes.tsx';
 
+import { supaThemePlugin } from './ssrx-theme.ts';
+
 // @TODO
 // export type RouterInputs = inferRouterInputs<AppRouter>;
 // export type RouterOutputs = inferRouterOutputs<AppRouter>;
@@ -16,6 +18,7 @@ import { routes } from '~client/routes.tsx';
 const { clientHandler, serverHandler, ctx } = createApp({
   plugins: [
     unheadPlugin(),
+    supaThemePlugin(),
     tanstackQueryPlugin({ QueryClientProvider }),
     // trpcPlugin<AppRouter>(),
     reactRouterPlugin({ routes }),
