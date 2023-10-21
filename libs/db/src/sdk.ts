@@ -2,6 +2,7 @@ import type { InitClientOpts } from '@supastack/db-pg-client';
 import { initClient } from '@supastack/db-pg-client';
 
 import type { DbSchema } from './db.ts';
+import { USERS_KEY, userQueries } from './schemas/users/index.ts';
 
 type InitDbSdkOpts = InitClientOpts;
 
@@ -12,6 +13,8 @@ export const initDbSdk = (opts: InitDbSdkOpts) => {
 
   return {
     client: db,
-    queries: {},
+    queries: {
+      [USERS_KEY]: userQueries({ db }),
+    },
   };
 };

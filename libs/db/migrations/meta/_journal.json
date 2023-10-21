@@ -8,6 +8,13 @@
       "when": 1697815298651,
       "tag": "0000_moaning_squadron_supreme",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1697922210814,
+      "tag": "0001_wealthy_harpoon",
+      "breakpoints": true
     }
   ]
 }
