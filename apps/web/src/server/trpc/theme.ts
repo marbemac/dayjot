@@ -1,6 +1,6 @@
 import { wrap } from '@decs/typeschema';
 import type { ThemeConfig } from '@supastack/ui-theme';
-import { generateTheme, generateThemesForCookie, themeConfigSchema } from '@supastack/ui-theme';
+import { generateThemesForCookie, themeConfigSchema } from '@supastack/ui-theme';
 
 import { setReqTheme } from '~server/utils/theme.ts';
 

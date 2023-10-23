@@ -1,36 +1,33 @@
-import { pg as postgresAdapter } from '@lucia-auth/adapter-postgresql';
+import { postgres as postgresAdapter } from '@lucia-auth/adapter-postgresql';
 import { lucia } from 'lucia';
 import { hono } from 'lucia/middleware';
-import postgres from 'pg';
+import type { Sql } from 'postgres';
 
-// @TODO Extend pool on initDbSdk from @dayjot/db
-const pool = new postgres.Pool({
-  connectionString: process.env['JOT_SQL_URL']!,
-});
+export const initAuth = ({ sql }: { sql: Sql }) => {
+  return lucia({
+    env: import.meta.env.DEV ? 'DEV' : 'PROD',
 
-export const auth = lucia({
-  env: import.meta.env.DEV ? 'DEV' : 'PROD',
+    middleware: hono(),
 
-  middleware: hono(),
+    adapter: postgresAdapter(sql, {
+      user: 'users',
+      key: 'user_keys',
+      session: 'user_sessions',
+    }),
 
-  adapter: postgresAdapter(pool, {
-    user: 'users',
-    key: 'user_keys',
-    session: 'user_sessions',
-  }),
+    getUserAttributes: data => {
+      return {
+        email: data.email,
+        emailVerified: data.emailVerified,
+        name: data.name,
+        image: data.image,
+      };
+    },
 
-  getUserAttributes: data => {
-    return {
-      email: data.email,
-      emailVerified: data.emailVerified,
-      name: data.name,
-      image: data.image,
-    };
-  },
+    experimental: {
+      // debugMode: true,
+    },
+  });
+};
 
-  experimental: {
-    // debugMode: true,
-  },
-});
-
-export type Auth = typeof auth;
+export type Auth = ReturnType<typeof initAuth>;

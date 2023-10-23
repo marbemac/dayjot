@@ -2585,15 +2585,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@neondatabase/serverless@npm:0.6.0":
-  version: 0.6.0
-  resolution: "@neondatabase/serverless@npm:0.6.0"
-  dependencies:
-    "@types/pg": "npm:8.6.6"
-  checksum: a2d90eb5d1f1a6f9a53143b19b5fc7c3ca3ef611f14c094d06b3040fb19f53aa9b7ab9e39208bb101ca1d6c1c3c88014f73c60685792dbb650359d5df19ae5db
-  languageName: node
-  linkType: hard
-
 "@next/env@npm:13.5.6":
   version: 13.5.6
   resolution: "@next/env@npm:13.5.6"
@@ -5007,12 +4998,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@supastack/db-pg-client@workspace:shared/packages/db/pg-client"
   dependencies:
-    "@neondatabase/serverless": "npm:0.6.0"
-    "@types/pg": "npm:^8.10.7"
     kysely: "npm:0.26.3"
-    kysely-neon: "npm:1.3.0"
-    pg: "npm:^8.11.3"
-    ws: "npm:^8.14.2"
+    kysely-postgres-js: "npm:1.1.1"
+    postgres: "npm:^3.4.1"
   languageName: unknown
   linkType: soft
 
@@ -5737,28 +5725,6 @@ __metadata:
   version: 2.4.3
   resolution: "@types/normalize-package-data@npm:2.4.3"
   checksum: a752d2646b339bb23a9c1a5943c45d8753b8d561842861c0bd5aa57a6806c07fd3b389cd2b00ef3c34e30edb585adad37e2a965ad578a48c53f5ff185df434a6
-  languageName: node
-  linkType: hard
-
-"@types/pg@npm:8.6.6":
-  version: 8.6.6
-  resolution: "@types/pg@npm:8.6.6"
-  dependencies:
-    "@types/node": "npm:*"
-    pg-protocol: "npm:*"
-    pg-types: "npm:^2.2.0"
-  checksum: 10962da43d9892c3233460716d4b45fc76f28241c849f1316b54b7705a90022075c6e951a52637c63b70d5e64ba4d85054250f1f0ca8cb2a1bae6b251fee2ab7
-  languageName: node
-  linkType: hard
-
-"@types/pg@npm:^8.10.7":
-  version: 8.10.7
-  resolution: "@types/pg@npm:8.10.7"
-  dependencies:
-    "@types/node": "npm:*"
-    pg-protocol: "npm:*"
-    pg-types: "npm:^4.0.1"
-  checksum: d00ff6b018b12fb51a83287b9507a1fc960a2139fc5c259a88bc48582f1034967eb03922e0ac69dbd07914af1e49607146bfcd13c50d1269c21bad3f70a2c056
   languageName: node
   linkType: hard
 
@@ -11048,17 +11014,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kysely-neon@npm:1.3.0":
-  version: 1.3.0
-  resolution: "kysely-neon@npm:1.3.0"
+"kysely-postgres-js@npm:1.1.1":
+  version: 1.1.1
+  resolution: "kysely-postgres-js@npm:1.1.1"
   peerDependencies:
-    "@neondatabase/serverless": ^0.4.3
-    kysely: 0.x.x
-    ws: ^8.13.0
-  peerDependenciesMeta:
-    ws:
-      optional: true
-  checksum: 6a961702e14261d7438f3b4d705386e5de646717a084ee0e199d850fa4658e75be67cd83c71b70c0c2508aa3027eedb7b7334cf929529df77ffc4ad99373a251
+    kysely: ">= 0.24.0 < 1"
+    postgres: ">= 3.0.0 < 4"
+  checksum: 688fab80cf377a550ddf2acfcc2e289a6f745255c35833e4410bd9741f5b9366470ca7538990d3aa60406bb3ef930da87d874f0cc949a63cf476c9b882f3f3a5
   languageName: node
   linkType: hard
 
@@ -12278,13 +12240,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"obuf@npm:~1.1.2":
-  version: 1.1.2
-  resolution: "obuf@npm:1.1.2"
-  checksum: 6b70a0520bda98a6f8fffefd74f0f9cfcec34d4dcf2b7bcdd11b3622db81067b971adecd3bf4be79a289bbb40cd0c08de23370bf6ba8510dbe0c91ca971443f5
-  languageName: node
-  linkType: hard
-
 "on-finished@npm:2.4.1":
   version: 2.4.1
   resolution: "on-finished@npm:2.4.1"
@@ -12610,13 +12565,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pg-numeric@npm:1.0.2":
-  version: 1.0.2
-  resolution: "pg-numeric@npm:1.0.2"
-  checksum: 172acaedda87adb40dae592d1d70e7ae07f7b25a8c24670d3b5ebf41e848fee9d0ec30c8a544e2fc4a806ed6d905f423d566b52cac1debf8f4b7633598154cb6
-  languageName: node
-  linkType: hard
-
 "pg-pool@npm:^3.6.1":
   version: 3.6.1
   resolution: "pg-pool@npm:3.6.1"
@@ -12626,14 +12574,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pg-protocol@npm:*, pg-protocol@npm:^1.6.0":
+"pg-protocol@npm:^1.6.0":
   version: 1.6.0
   resolution: "pg-protocol@npm:1.6.0"
   checksum: 0a1540287c0927a3cebffed2f3d5d1b37cafe02d5a61e631e4c92457720daa9c3794a9afa6d4262e198e9a6a2f54aca12bb82d6b8a9ba7352c16bcbe25852652
   languageName: node
   linkType: hard
 
-"pg-types@npm:^2.1.0, pg-types@npm:^2.2.0":
+"pg-types@npm:^2.1.0":
   version: 2.2.0
   resolution: "pg-types@npm:2.2.0"
   dependencies:
@@ -12646,22 +12594,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pg-types@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "pg-types@npm:4.0.1"
-  dependencies:
-    pg-int8: "npm:1.0.1"
-    pg-numeric: "npm:1.0.2"
-    postgres-array: "npm:~3.0.1"
-    postgres-bytea: "npm:~3.0.0"
-    postgres-date: "npm:~2.0.1"
-    postgres-interval: "npm:^3.0.0"
-    postgres-range: "npm:^1.1.1"
-  checksum: bdb595043f2350f755b4a4b20427582309ae8b5dc0778bbfef54121db0f27ee3034b62745e1f2ac462af49ebe85972647633cb518ab11fd8967e0f7b2acf722b
-  languageName: node
-  linkType: hard
-
-"pg@npm:^8.11.3, pg@npm:^8.8.0":
+"pg@npm:^8.8.0":
   version: 8.11.3
   resolution: "pg@npm:8.11.3"
   dependencies:
@@ -12875,13 +12808,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postgres-array@npm:~3.0.1":
-  version: 3.0.2
-  resolution: "postgres-array@npm:3.0.2"
-  checksum: 9c82fb45ac81851c74f163c0d6ffe05846491a631982b9fa44e357c3742dcd7258c3f7fc2f43526cb6d059c8808304eec63fbcd268930bb6091a1e56d055aa44
-  languageName: node
-  linkType: hard
-
 "postgres-bytea@npm:~1.0.0":
   version: 1.0.0
   resolution: "postgres-bytea@npm:1.0.0"
@@ -12889,26 +12815,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postgres-bytea@npm:~3.0.0":
-  version: 3.0.0
-  resolution: "postgres-bytea@npm:3.0.0"
-  dependencies:
-    obuf: "npm:~1.1.2"
-  checksum: 4b1a204a4ade8cce6d5631e1daba0dbaf1fade5bc2e5399c4e35106d44368eaf951ed78b45fe464d062bbfb7b1d9b32c2c8f23151e9803c06b27393988e7ac37
-  languageName: node
-  linkType: hard
-
 "postgres-date@npm:~1.0.4":
   version: 1.0.7
   resolution: "postgres-date@npm:1.0.7"
   checksum: ff805074d6327f9b233cf19982247006201178484f600afa6ed6f352ddc98bc43d01cecfbe5f62637726870b554617480b1a4ba13abab8237320206e9f00bb03
-  languageName: node
-  linkType: hard
-
-"postgres-date@npm:~2.0.1":
-  version: 2.0.1
-  resolution: "postgres-date@npm:2.0.1"
-  checksum: cc12d1286246a2e15878fc6921db93f79a1fca917dc3b497332c49e6c750cd40f1b919c42ff3af5087e01879b8a6d191c7785e171768929e27122782793638d2
   languageName: node
   linkType: hard
 
@@ -12921,17 +12831,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postgres-interval@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "postgres-interval@npm:3.0.0"
-  checksum: 20d5cfd31955e434d7e1e7294fbe442d345e4cec611be421c7867a4da983ae62aa3b300891375bcd8aaff11e7ecfa5c57779bbba7b30ece7f01d922964a7f1f0
-  languageName: node
-  linkType: hard
-
-"postgres-range@npm:^1.1.1":
-  version: 1.1.3
-  resolution: "postgres-range@npm:1.1.3"
-  checksum: 9fa0c1d5c5f861a0580b4892b39fbe09e12afb5fdf5cebc933cb3deed8c98c180ec964c597c8aeb823231275473b1b02c6d3714d43c55e3fdf7f0258d66b6af3
+"postgres@npm:3.4.1, postgres@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "postgres@npm:3.4.1"
+  checksum: d7f15c681cd65ba1a0a20c65cef355e0b634493b6be623b839a8eb899bc63402fc2f83386544e76f3e06395c8c839c898b6e49af43cc6cec679dc43ecfe30f86
   languageName: node
   linkType: hard
 
@@ -16048,6 +15951,7 @@ __metadata:
     hono: "npm:3.8.1"
     lucia: "npm:^2.7.1"
     postcss: "npm:8.4.31"
+    postgres: "npm:3.4.1"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
     react-error-boundary: "npm:4.0.11"
@@ -16357,7 +16261,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^8.11.0, ws@npm:^8.13.0, ws@npm:^8.14.2, ws@npm:^8.2.3":
+"ws@npm:^8.11.0, ws@npm:^8.13.0, ws@npm:^8.2.3":
   version: 8.14.2
   resolution: "ws@npm:8.14.2"
   peerDependencies:

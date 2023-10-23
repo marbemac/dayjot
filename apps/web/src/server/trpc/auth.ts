@@ -5,7 +5,6 @@ import type { CookieOptions } from 'hono/utils/cookie';
 import { LuciaError } from 'lucia';
 import { maxLength, minLength, object, string } from 'valibot';
 
-import { auth } from '~server/auth/index.ts';
 import { protectedProcedure, publicProcedure, router } from '~server/trpc/trpc.ts';
 
 const SignupSchema = object({
@@ -21,6 +20,7 @@ export const authRouter = router({
   }),
 
   signup: publicProcedure.input(wrap(SignupSchema)).mutation(async ({ input, ctx }) => {
+    const { auth } = ctx;
     const { email, password } = input;
 
     try {
@@ -68,6 +68,7 @@ export const authRouter = router({
   }),
 
   login: publicProcedure.input(wrap(LoginSchema)).mutation(async ({ input, ctx }) => {
+    const { auth } = ctx;
     const { email, password } = input;
 
     try {
@@ -106,6 +107,8 @@ export const authRouter = router({
   }),
 
   logout: protectedProcedure.mutation(async ({ ctx }) => {
+    const { auth } = ctx;
+
     // make sure to invalidate the current session!
     await auth.invalidateSession(ctx.sessionId);
 

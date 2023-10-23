@@ -19,6 +19,8 @@ export default defineConfig({
 
   build: {
     rollupOptions: {
+      external: ['cloudflare:sockets'],
+
       plugins: [
         analyze({
           summaryOnly: true,
