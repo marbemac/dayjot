@@ -19,6 +19,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@supastack/auth-model": "workspace:*",
     "@supastack/db-model": "workspace:*",
     "@supastack/db-pg-client": "workspace:*",
     "@supastack/db-pg-migrations": "workspace:*",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@supastack/eslint-config": "workspace:*",
     "@supastack/tsconfig": "workspace:*",
+    "@supastack/utils-types": "workspace:*",
     "dotenv-cli": "^7.3.0",
     "drizzle-kit": "^0.19.13",
     "tsx": "3.14.0",

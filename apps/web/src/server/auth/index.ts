@@ -3,7 +3,7 @@ import { lucia } from 'lucia';
 import { hono } from 'lucia/middleware';
 import postgres from 'pg';
 
-// TODO: Extend pool on initDbSdk from @dayjot/db
+// @TODO Extend pool on initDbSdk from @dayjot/db
 const pool = new postgres.Pool({
   connectionString: process.env['JOT_SQL_URL']!,
 });

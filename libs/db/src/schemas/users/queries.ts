@@ -1,11 +1,12 @@
 import type { BuildQueriesOpts } from '@supastack/db-model';
 import { baseUserQueries } from '@supastack/user-model';
-import { UsersDbSchema } from './schema.ts';
+
+import type { DbSchema } from '../../db.ts';
 
 export type UserQueries = ReturnType<typeof userQueries>;
 
-export const userQueries = <T extends UsersDbSchema>(opts: BuildQueriesOpts<T>) => {
+export const userQueries = <T extends DbSchema>({ db }: BuildQueriesOpts<T>) => {
   return {
-    ...baseUserQueries(opts),
+    ...baseUserQueries({ db }),
   };
 };
