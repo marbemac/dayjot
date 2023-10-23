@@ -1,7 +1,9 @@
+import { Box, Button, HStack } from '@supastack/ui-primitives';
 import { useCallback } from 'react';
 import { NavLink, Outlet, ScrollRestoration } from 'react-router-dom';
 
 import { ctx } from '~app';
+import { UserDropdownMenu } from '~client/components/UserDropdownMenu.tsx';
 
 export function Component() {
   // https://unhead.unjs.io/usage/guides/template-params#separator
@@ -31,13 +33,19 @@ export function Component() {
 
   return (
     <>
-      <div className="border-b flex">
-        <nav className="border-b flex items-center gap-6 py-4 px-6 flex-1">
+      <Box tw="flex border-b px-6 py-4">
+        <HStack as="nav" center="y" spacing={6}>
           <NavLink to="/" className={linkClass} end>
             Home
           </NavLink>
-        </nav>
-      </div>
+        </HStack>
+
+        <Box tw="flex-1" />
+
+        <HStack center="y" spacing={6}>
+          <UserDropdownMenu trigger={<Button>Tmp Options</Button>} />
+        </HStack>
+      </Box>
 
       <Outlet />
 

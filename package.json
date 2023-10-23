@@ -13,6 +13,10 @@
       "shared"
     ]
   },
+  "resolutions": {
+    "react": "18.3.0-canary-587ae49d7-20230720",
+    "react-dom": "18.3.0-canary-587ae49d7-20230720"
+  },
   "scripts": {
     "--deps--": "",
     "upgrade-deps": "yarn upgrade-interactive",

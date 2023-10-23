@@ -20,7 +20,6 @@ export default defineConfig({
   build: {
     rollupOptions: {
       plugins: [
-        // @ts-expect-error ignore
         analyze({
           summaryOnly: true,
           limit: 15,

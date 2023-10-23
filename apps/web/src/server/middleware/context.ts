@@ -1,4 +1,5 @@
 import { initDbSdk } from '@dayjot/db';
+import { env } from 'hono/adapter';
 import { createMiddleware } from 'hono/factory';
 
 import { auth } from '~server/auth/index.ts';
@@ -17,7 +18,7 @@ export const reqCtxMiddleware = createMiddleware<HonoEnv>(async (c, next) => {
    * Persistance
    */
 
-  c.set('db', initDbSdk({ uri: c.env.JOT_SQL_URL }));
+  c.set('db', initDbSdk({ uri: env<HonoEnv['Bindings']>(c as any).JOT_SQL_URL }));
 
   /**
    * Auth/session info

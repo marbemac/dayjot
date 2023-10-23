@@ -7,6 +7,7 @@ import { appRouter } from '~server/trpc/index.ts';
 import { deleteCookie, setCookie } from '~server/utils/cookies.ts';
 
 import type { HonoEnv } from './types.ts';
+import { getReqTheme } from './utils/theme.ts';
 
 const server = new Hono<HonoEnv>()
   /**
@@ -30,13 +31,18 @@ const server = new Hono<HonoEnv>()
   /**
    * The frontend app
    */
-  .get('*', async c => {
+  .get('*', reqCtxMiddleware, async c => {
     try {
+      const theme = getReqTheme({ getCookie: c.var.getCookie });
+
       const appStream = await serverHandler({
         req: c.req.raw,
         meta: {
-          // used by @ssrx/plugin-trpc-react
+          // used by the @ssrx/plugin-trpc-react plugin
           trpcCaller: appRouter.createCaller(c.var),
+
+          // used by the ssrx-theme plugin
+          theme,
         },
       });
 

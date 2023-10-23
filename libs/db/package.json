@@ -9,11 +9,11 @@
     "./ids": "./src/ids.ts"
   },
   "scripts": {
-    "migrate.dev": "dotenv -e .env.local -- yarn migrate.up",
-    "migrate.generate": "dotenv -e .env.local -- drizzle-kit generate:pg",
+    "migrate.dev": "dotenv -e .env.development -- yarn migrate.up",
+    "migrate.generate": "dotenv -e .env.development -- drizzle-kit generate:pg",
     "migrate.up": "tsx scripts/migrate.ts",
-    "seed": "dotenv -e .env.local -- tsx scripts/seed/index.ts",
-    "reset.dev": "dotenv -e .env.local -- yarn reset",
+    "seed": "dotenv -e .env.development -- tsx scripts/seed/index.ts",
+    "reset.dev": "dotenv -e .env.development -- yarn reset",
     "reset": "tsx src/do-reset.ts",
     "lint": "eslint .",
     "typecheck": "tsc"

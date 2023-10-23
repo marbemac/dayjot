@@ -11,7 +11,7 @@ import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 import { routes } from '~client/routes.tsx';
 import type { AppRouter } from '~server/trpc/index.ts';
 
-import { supaThemePlugin } from './ssrx-theme.ts';
+import { supaThemePlugin } from './ssrx-theme.tsx';
 
 export type RouterInputs = inferRouterInputs<AppRouter>;
 export type RouterOutputs = inferRouterOutputs<AppRouter>;
