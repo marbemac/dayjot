@@ -1,12 +1,12 @@
 import { Hono } from 'hono';
 
 import { serverHandler, TRPC_ROOT } from '~app';
-import { type ReqCtx, reqCtxMiddleware } from '~server/middleware/context.ts';
+import { reqCtxMiddleware } from '~server/middleware/context.ts';
 import { trpcServer } from '~server/middleware/trpc.ts';
 import { appRouter } from '~server/trpc/index.ts';
 import { deleteCookie, setCookie } from '~server/utils/cookies.ts';
 
-type HonoEnv = { Variables: ReqCtx };
+import type { HonoEnv } from './types.ts';
 
 const server = new Hono<HonoEnv>()
   /**
