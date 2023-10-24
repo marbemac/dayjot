@@ -11,6 +11,7 @@ out-tsc
 .wrangler
 storybook-static
 .nx
+stats.html
 
 # typescript
 *.tsbuildinfo
