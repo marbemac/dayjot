@@ -3,6 +3,7 @@
 import {
   DropdownMenuContent,
   DropdownMenuGroup,
+  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
@@ -16,6 +17,7 @@ import {
 import { useGlobalTheme } from '@supastack/ui-primitives/themed';
 import { PREBUILT_THEMES } from '@supastack/ui-theme';
 import { useCallback, useState } from 'react';
+import { useRevalidator } from 'react-router-dom';
 
 import { ctx } from '~app';
 
@@ -25,8 +27,22 @@ type UserDropdownMenuProps = {
 
 export const UserDropdownMenu = ({ trigger }: UserDropdownMenuProps) => {
   const currentTheme = useGlobalTheme();
-
   const [currentThemeId, setCurrentThemeId] = useState(currentTheme?.baseThemeId || 'system');
+
+  const revalidator = useRevalidator();
+  const logout = ctx.trpc.auth.logout.useMutation({
+    onSuccess: () => {
+      /**
+       * Special case.. when logging in/out we need to trigger
+       * any loader redirects, etc. Normally we don't need to use router revalidate, and can just leverage the
+       * tanstack query cache.
+       */
+      revalidator.revalidate();
+
+      // invalidate the entire query cache on login/logout
+      return ctx.trpc.$invalidate();
+    },
+  });
 
   return (
     <DropdownMenuRoot>
@@ -41,6 +57,10 @@ export const UserDropdownMenu = ({ trigger }: UserDropdownMenuProps) => {
               <ThemePickerMenu currentThemeId={currentThemeId} setCurrentThemeId={setCurrentThemeId} />
             </DropdownMenuSubContent>
           </DropdownMenuSub>
+
+          <DropdownMenuSeparator />
+
+          <DropdownMenuItem onClick={() => logout.mutate()}>Logout</DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenuRoot>

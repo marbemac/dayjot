@@ -49,7 +49,7 @@ const server = new Hono<HonoEnv>()
       return new Response(appStream);
     } catch (err: any) {
       /**
-       * Handle react-router redirects
+       * Handle redirects
        */
       if (err instanceof Response && err.status >= 300 && err.status <= 399) {
         return c.redirect(err.headers.get('Location') || '/', err.status);

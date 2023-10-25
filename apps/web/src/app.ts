@@ -22,7 +22,20 @@ const { clientHandler, serverHandler, ctx } = createApp({
   plugins: [
     unheadPlugin(),
     supaThemePlugin(),
-    tanstackQueryPlugin({ QueryClientProvider }),
+    tanstackQueryPlugin({
+      QueryClientProvider,
+      queryClientConfig: {
+        defaultOptions: {
+          queries: {
+            suspense: true,
+            retry: false,
+            staleTime: 1000 * 60,
+            refetchOnReconnect: true,
+            refetchOnWindowFocus: true,
+          },
+        },
+      },
+    }),
     trpcPlugin<AppRouter>({ httpBatchLinkOpts: { url: `/${TRPC_ROOT}` } }),
     reactRouterPlugin({ routes }),
   ],

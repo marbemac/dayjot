@@ -31,7 +31,7 @@ export function QueryBoundary<T>({ notFoundFallback, loadingFallback, query, chi
       // @TODO.. brittle. First condition is in SSR, second is on client
       const notFound = error.data?.code === 'NOT_FOUND' || error.message === 'Not found';
       if (notFound) {
-        return notFoundFallback ? notFoundFallback : <div>Not found</div>;
+        return notFoundFallback ? notFoundFallback : <DefaultNotFound />;
       }
 
       const badRequest = error.data?.code === 'BAD_REQUEST';
@@ -83,7 +83,7 @@ function Query<T = unknown>(props: QueryProps<T>) {
   if (query.isError) {
     elem = <Error error={query.error} refetch={query.refetch} />;
   } else if (!query.isLoading && !query.data) {
-    elem = props.notFoundFallback ?? <div>not found</div>;
+    elem = props.notFoundFallback ?? <DefaultNotFound />;
   }
 
   return elem ? elem : query.data ? props.children(query.data) : props.loadingFallback;
@@ -92,6 +92,10 @@ function Query<T = unknown>(props: QueryProps<T>) {
 type ErrorProps = {
   error: unknown | null;
   refetch: () => void;
+};
+
+const DefaultNotFound = () => {
+  return <div>not found</div>;
 };
 
 const Error = (props: ErrorProps) => {

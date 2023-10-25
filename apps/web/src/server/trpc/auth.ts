@@ -1,9 +1,12 @@
-import { UserId } from '@dayjot/db/ids';
+import type { DbSdk } from '@dayjot/db';
+import { type TUserId, UserId } from '@dayjot/db/ids';
 import { wrap } from '@decs/typeschema';
+import { generateAuthToken } from '@supastack/utils-ids';
 import { TRPCError } from '@trpc/server';
 import type { CookieOptions } from 'hono/utils/cookie';
 import { LuciaError } from 'lucia';
-import { maxLength, minLength, object, string } from 'valibot';
+import { isWithinExpiration } from 'lucia/utils';
+import { email, maxLength, minLength, object, string } from 'valibot';
 
 import { protectedProcedure, publicProcedure, router } from '~server/trpc/trpc.ts';
 
@@ -14,9 +17,101 @@ const SignupSchema = object({
 
 const LoginSchema = SignupSchema;
 
+const EmailSchema = object({
+  email: string('Email invalid', [email(), minLength(3), maxLength(100)]),
+});
+
+const TokenSchema = object({
+  token: string(),
+});
+
 export const authRouter = router({
   me: publicProcedure.query(async ({ ctx }) => {
     return ctx.user || null;
+  }),
+
+  listLoginOptions: publicProcedure.input(wrap(EmailSchema)).mutation(async ({ input, ctx }) => {
+    const { auth, db } = ctx;
+    const { email } = input;
+
+    const existingUser = await db.queries.users.byEmail({ email });
+
+    const hasAccount = !!existingUser?.emailVerified;
+    let passwordSignInEnabled = false;
+
+    if (hasAccount) {
+      try {
+        const key = await auth.getKey('email', email.toLowerCase());
+        passwordSignInEnabled = !!key.passwordDefined;
+      } catch {
+        // noop
+        console.warn('Failed to get key for email', existingUser.id);
+      }
+    }
+
+    return {
+      hasAccount,
+      passwordSignInEnabled,
+    };
+  }),
+
+  sendMagicLink: publicProcedure.input(wrap(EmailSchema)).mutation(async ({ input, ctx }) => {
+    const { auth, db } = ctx;
+    const { email } = input;
+
+    let userId;
+    const existingUser = await db.queries.users.byEmail({ email });
+    if (!existingUser) {
+      userId = UserId.generate();
+
+      await auth.createUser({
+        userId,
+        key: {
+          providerId: 'email',
+          providerUserId: email.toLowerCase(),
+          password: null,
+        },
+        attributes: {
+          email,
+          name: null,
+          image: null,
+        },
+      });
+    } else {
+      userId = existingUser.id;
+    }
+
+    const token = await generateMagicLinkToken({ userId, db: db.queries });
+
+    // @TODO send email
+    console.log(`!!! New magic link token for ${email}: ${token}`);
+
+    return {};
+  }),
+
+  /**
+   * Authenticates with a magic link token.
+   */
+  withMagicToken: publicProcedure.input(wrap(TokenSchema)).mutation(async ({ input, ctx }) => {
+    const { auth, db } = ctx;
+    const { token } = input;
+
+    const userId = await validateMagicLinkToken({ token, db: db.queries });
+    await auth.invalidateAllUserSessions(userId);
+    await db.queries.users.updateById({ id: userId }, { emailVerified: new Date() });
+
+    const session = await auth.createSession({
+      userId,
+      attributes: {},
+    });
+    const sessionCookie = auth.createSessionCookie(session);
+    const { sameSite, ...cookieAttrs } = sessionCookie.attributes;
+    ctx.setCookie(sessionCookie.name, sessionCookie.value, {
+      ...cookieAttrs,
+      sameSite: sameSiteLuciaToHono(sameSite),
+    });
+
+    return null;
   }),
 
   signup: publicProcedure.input(wrap(SignupSchema)).mutation(async ({ input, ctx }) => {
@@ -33,6 +128,8 @@ export const authRouter = router({
         },
         attributes: {
           email,
+          name: null,
+          image: null,
         },
       });
 
@@ -137,4 +234,62 @@ const sameSiteLuciaToHono = (sameSite: LuciaSameSite): CookieOptions['sameSite']
   if (ss === 'none') return 'None';
 
   throw new Error(`option sameSite of ${sameSite} is invalid`);
+};
+
+const EXPIRES_IN = 1000 * 60 * 60 * 2; // 2 hours
+
+const generateMagicLinkToken = async ({
+  userId,
+  db,
+}: {
+  userId: TUserId;
+  db: {
+    verificationTokens: Pick<DbSdk['queries']['verificationTokens'], 'listByUserId' | 'create'>;
+  };
+}) => {
+  const storedUserTokens = await db.verificationTokens.listByUserId({ userId, purpose: 'magic-link' });
+
+  if (storedUserTokens.length > 0) {
+    const reusableStoredToken = storedUserTokens.find(token => {
+      // check if expiration is within 1 hour
+      // and reuse the token if true
+      return isWithinExpiration(token.expires - EXPIRES_IN / 2);
+    });
+
+    if (reusableStoredToken) return reusableStoredToken.token;
+  }
+
+  const token = generateAuthToken();
+
+  await db.verificationTokens.create({
+    token,
+    expires: new Date().getTime() + EXPIRES_IN,
+    userId,
+    purpose: 'magic-link',
+  });
+
+  return token;
+};
+
+export const validateMagicLinkToken = async ({
+  token,
+  db,
+}: {
+  token: string;
+  db: {
+    verificationTokens: Pick<DbSdk['queries']['verificationTokens'], 'byToken' | 'deleteForUser'>;
+  };
+}) => {
+  const storedToken = await db.verificationTokens.byToken({ token, purpose: 'magic-link' });
+
+  if (!storedToken) throw new Error('Invalid token');
+
+  await db.verificationTokens.deleteForUser({ userId: storedToken.userId, purpose: 'magic-link' });
+
+  const tokenExpires = storedToken.expires;
+  if (!isWithinExpiration(tokenExpires)) {
+    throw new Error('Expired token');
+  }
+
+  return storedToken.userId;
 };

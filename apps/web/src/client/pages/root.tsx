@@ -1,9 +1,15 @@
-import { Box, Button, HStack } from '@supastack/ui-primitives';
-import { useCallback } from 'react';
-import { NavLink, Outlet, ScrollRestoration } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 
 import { ctx } from '~app';
-import { UserDropdownMenu } from '~client/components/UserDropdownMenu.tsx';
+import { SiteNav } from '~client/components/SiteNav.tsx';
+import { Providers } from '~client/providers.tsx';
+
+export async function loader() {
+  // always attempt to populate authenticated user in the query cache
+  await ctx.trpc.auth.me.prefetchQuery(undefined, { meta: { deferStream: true } });
+
+  return null;
+}
 
 export function Component() {
   // https://unhead.unjs.io/usage/guides/template-params#separator
@@ -26,30 +32,13 @@ export function Component() {
     ],
   });
 
-  const linkClass = useCallback(
-    ({ isActive }: any) => (isActive ? 'opacity-100 cursor-default' : 'hover:opacity-100 opacity-60'),
-    [],
-  );
-
   return (
-    <>
-      <Box tw="flex border-b px-6 py-4">
-        <HStack as="nav" center="y" spacing={6}>
-          <NavLink to="/" className={linkClass} end>
-            Home
-          </NavLink>
-        </HStack>
-
-        <Box tw="flex-1" />
-
-        <HStack center="y" spacing={6}>
-          <UserDropdownMenu trigger={<Button>Tmp Options</Button>} />
-        </HStack>
-      </Box>
+    <Providers>
+      <SiteNav />
 
       <Outlet />
 
       <ScrollRestoration />
-    </>
+    </Providers>
   );
 }

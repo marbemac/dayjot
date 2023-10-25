@@ -21,7 +21,7 @@ export const reqCtxMiddleware = createMiddleware<HonoEnv>(async (c, next) => {
 
   const SQL_URI = env<HonoEnv['Bindings']>(c as any).JOT_SQL_URL;
   const sql = postgres(SQL_URI);
-  const dbSdk = initDbSdk({ uri: SQL_URI, reuse: getRuntimeKey() !== 'workerd' });
+  const dbSdk = initDbSdk({ uri: SQL_URI });
   c.set('db', dbSdk);
 
   /**
@@ -36,7 +36,7 @@ export const reqCtxMiddleware = createMiddleware<HonoEnv>(async (c, next) => {
   c.set('sessionId', session?.sessionId);
   if (session?.user) {
     const { userId, ...rest } = session.user;
-    c.set('user', { id: userId, ...rest });
+    c.set('user', { ...rest });
   }
 
   await next();
@@ -48,5 +48,7 @@ export const reqCtxMiddleware = createMiddleware<HonoEnv>(async (c, next) => {
    */
   if (getRuntimeKey() === 'workerd') {
     c.executionCtx.waitUntil(Promise.all([sql.end(), dbSdk.client.destroy()]));
+  } else {
+    void Promise.all([sql.end(), dbSdk.client.destroy()]);
   }
 });

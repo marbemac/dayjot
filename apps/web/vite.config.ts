@@ -1,6 +1,5 @@
 import { ssrx } from '@ssrx/vite/plugin';
 import react from '@vitejs/plugin-react';
-// import analyze from 'rollup-plugin-analyzer';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, type PluginOption } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -18,13 +17,21 @@ export default defineConfig(({ ssrBuild, command }) => ({
   plugins: [
     tsconfigPaths(),
     react(),
+
     ssrx({
       runtime: 'cf-pages',
       serverFile: 'src/server/index.ts',
       clientEntry: 'src/client/entry.client.tsx',
       routesFile: 'src/client/routes.tsx',
     }),
-    !ssrBuild && command === 'build' && !!DO_ANAlYZE && (visualizer() as PluginOption),
+
+    !ssrBuild &&
+      command === 'build' &&
+      !!DO_ANAlYZE &&
+      (visualizer({
+        open: true,
+        gzipSize: true,
+      }) as PluginOption),
   ].filter(Boolean),
 
   build: {
@@ -34,13 +41,6 @@ export default defineConfig(({ ssrBuild, command }) => ({
       output: {
         manualChunks: !ssrBuild && command === 'build' ? manualChunks : undefined,
       },
-
-      plugins: [
-        // analyze({
-        //   summaryOnly: true,
-        //   limit: 15,
-        // }),
-      ],
     },
   },
 }));

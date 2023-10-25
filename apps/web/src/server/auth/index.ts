@@ -15,11 +15,14 @@ export const initAuth = ({ sql }: { sql: Sql }) => {
       session: 'user_sessions',
     }),
 
+    /**
+     * NOTE: the properties on `data` will exactly match the columns in the db (camel_case).
+     */
     getUserAttributes: data => {
       return {
-        email: data.email,
-        emailVerified: data.emailVerified,
+        id: data.id,
         name: data.name,
+        email: data.email,
         image: data.image,
       };
     },

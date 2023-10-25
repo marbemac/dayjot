@@ -6,9 +6,8 @@ declare namespace Lucia {
 
   type DatabaseUserAttributes = {
     email: string;
-    emailVerified?: string | null;
-    name?: string | null;
-    image?: string | null;
+    name: string | null;
+    image: string | null;
   };
 
   type DatabaseSessionAttributes = {};

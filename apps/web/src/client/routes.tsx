@@ -3,21 +3,26 @@ import { route } from 'react-router-typesafe-routes/dom';
 
 import { RouteErrorBoundary } from '~client/components/RouteErrorBoundary.tsx';
 import * as Home from '~client/pages/_index.tsx';
-import { Component as RootLayout } from '~client/pages/root.tsx';
+import * as Auth from '~client/pages/auth.tsx';
+import * as Root from '~client/pages/root.tsx';
 
 export const paths = {
-  Todo: route('todo'),
+  Auth: route('auth'),
 };
 
 export const routes: RouteObject[] = [
   {
     path: '/',
-    element: <RootLayout />,
     errorElement: <RouteErrorBoundary />,
+    ...Root,
     children: [
       {
         index: true,
         ...Home,
+      },
+      {
+        path: paths.Auth.path,
+        ...Auth,
       },
     ],
   },

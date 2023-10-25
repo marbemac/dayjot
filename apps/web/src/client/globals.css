@@ -7,5 +7,5 @@ html {
 }
 
 body {
-  @apply antialiased flex flex-col flex-1;
+  @apply min-h-screen antialiased flex flex-col flex-1 text-base;
 }
