@@ -5,6 +5,7 @@ import { ENTRIES_KEY, entryQueries } from './schemas/entries/index.ts';
 import { USER_KEYS_KEY, userKeyQueries } from './schemas/user-keys/index.ts';
 import { USER_SESSIONS_KEY, userSessionQueries } from './schemas/user-sessions/index.ts';
 import { userQueries, USERS_KEY } from './schemas/users/index.ts';
+import { VERIFICATION_TOKENS_KEY, verificationTokenQueries } from './schemas/verification-tokens/index.ts';
 
 type InitDbSdkOpts = InitClientOpts;
 
@@ -20,6 +21,7 @@ export const initDbSdk = (opts: InitDbSdkOpts) => {
       [USER_KEYS_KEY]: userKeyQueries({ db }),
       [USER_SESSIONS_KEY]: userSessionQueries({ db }),
       [USERS_KEY]: userQueries({ db }),
+      [VERIFICATION_TOKENS_KEY]: verificationTokenQueries({ db }),
     },
   };
 };

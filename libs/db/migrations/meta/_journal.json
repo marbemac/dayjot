@@ -8,6 +8,13 @@
       "when": 1698079733813,
       "tag": "0000_awesome_kulan_gath",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1698182081000,
+      "tag": "0001_dry_shocker",
+      "breakpoints": true
     }
   ]
 }
