@@ -8,7 +8,7 @@
     "build": "yarn run build.client && yarn run build.server",
     "build.client": "NODE_ENV=production vite build",
     "build.server": "NODE_ENV=production vite build --ssr",
-    "preview": "wrangler pages dev dist --port 3000 --compatibility-flags=nodejs_compat",
+    "preview": "wrangler pages dev dist --port 3000 --compatibility-flags=nodejs_compat --log-level warn",
     "lint": "eslint .",
     "typecheck": "tsc"
   },

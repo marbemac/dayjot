@@ -5156,6 +5156,8 @@ __metadata:
     "@supastack/utils-colors": "workspace:*"
     color2k: "npm:^2.0.2"
     deepmerge: "npm:^4.3.1"
+    mem: "npm:9.0.2"
+    quick-lru: "npm:7.0.0"
     valibot: "npm:^0.19.0"
   languageName: unknown
   linkType: soft
@@ -11323,6 +11325,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"map-age-cleaner@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "map-age-cleaner@npm:0.1.3"
+  dependencies:
+    p-defer: "npm:^1.0.0"
+  checksum: 164b063303c8f5ece26542dd6e94cbd4d4ea2259beb026685ed6a8b7bd61a7b825f963aaf9402514dedaf108e667b2d8d699479e747931baae35336ce109b54f
+  languageName: node
+  linkType: hard
+
 "map-or-similar@npm:^1.5.0":
   version: 1.5.0
   resolution: "map-or-similar@npm:1.5.0"
@@ -11359,6 +11370,16 @@ __metadata:
   version: 0.3.0
   resolution: "media-typer@npm:0.3.0"
   checksum: 21806e15268f71b2bbf35a57b5eb9a42e14be638b8b855e210fb90282744e622f9d232f34f1cf566dc487819ce66bbb8aa6568e3267f48b12e92e2ba679838ae
+  languageName: node
+  linkType: hard
+
+"mem@npm:9.0.2":
+  version: 9.0.2
+  resolution: "mem@npm:9.0.2"
+  dependencies:
+    map-age-cleaner: "npm:^0.1.3"
+    mimic-fn: "npm:^4.0.0"
+  checksum: d8b22de7751b49f589209b166783cef7e16df255ecc306aeb94c6597dee7a6940f1aebd017a25296d34a121c3348aef2a0b5c1bc96a2ddf314ddd282dc1ab4b4
   languageName: node
   linkType: hard
 
@@ -11481,6 +11502,13 @@ __metadata:
   version: 2.1.0
   resolution: "mimic-fn@npm:2.1.0"
   checksum: 416cdf3021e8d7fc741a12ec084f4c33af4ea3a4bb3d840fab0f3a786a2d9458aa1fd284fab707f3dc1e356cb6b7c9af84b17273a6433955e11494cae4ea856e
+  languageName: node
+  linkType: hard
+
+"mimic-fn@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "mimic-fn@npm:4.0.0"
+  checksum: 6854bdfe4abeb91b19fc0d1bbec01ad065fde2d2c03c81557eb7a1ed3354c1c956962e293bd97bc110b7b24fa30a3345d8756bbbed82e458cc68a45521eb7813
   languageName: node
   linkType: hard
 
@@ -12305,6 +12333,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"p-defer@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "p-defer@npm:1.0.0"
+  checksum: fba9cbf61fcd52e8ebf805548193151ddd33c63bebabb7af2381cc3064cf6b2e2f1e8e78577ef9ee9dc3331e04a4aa55ca9ae264fcc8b285222b4a47d6902cb1
+  languageName: node
+  linkType: hard
+
 "p-limit@npm:^2.0.0, p-limit@npm:^2.2.0":
   version: 2.3.0
   resolution: "p-limit@npm:2.3.0"
@@ -13065,6 +13100,13 @@ __metadata:
   version: 1.2.3
   resolution: "queue-microtask@npm:1.2.3"
   checksum: 84624bee6c25c9d9776242ce0dcc3e15f703d897f4b7d982f32ef4d88c51048507a0999d9ff038ec46f65901655460b69240e414da1cebc2d723987ec81cbae8
+  languageName: node
+  linkType: hard
+
+"quick-lru@npm:7.0.0":
+  version: 7.0.0
+  resolution: "quick-lru@npm:7.0.0"
+  checksum: 0f8fb89aca5326b775fb38f28bc73ecd5ee386545babff84b4ad033524af5ce6a88765308d744a91868fa4b6b46cea5d422b73e6cc2b89404b03168736456ae9
   languageName: node
   linkType: hard
 
