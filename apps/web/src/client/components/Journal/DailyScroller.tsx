@@ -1,10 +1,13 @@
-import { Box, Button, Heading, VStack } from '@supastack/ui-primitives';
 import { tx } from '@supastack/ui-styles';
 import { dayjs } from '@supastack/utils-dates';
 import { useCallback, useState } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 
-export const DailyScroller = () => {
+type DailyScrollProps = {
+  Entry: (props: { day: dayjs.ConfigType }) => React.ReactNode;
+};
+
+export const DailyScroller = ({ Entry }: DailyScrollProps) => {
   const INITIAL_FUTURE_COUNT = 5;
   const INITIAL_PAST_COUNT = 30;
   const INITIAL_INDEX = INITIAL_FUTURE_COUNT;
@@ -48,7 +51,7 @@ export const DailyScroller = () => {
       startReached={prependDays}
       endReached={appendDays}
       overscan={{ main: 500, reverse: 500 }}
-      itemContent={(index, day) => <DailyEntry day={day} />}
+      itemContent={(index, day) => <Entry day={day} />}
       className={tx('[&_[data-test-id="virtuoso-item-list"]]:divide-y')}
     />
   );
@@ -65,28 +68,3 @@ function generateDays(
 
   return generateDays({ count: count - 1, from: nextDay, dir }, days);
 }
-
-const DailyEntry = (props: { day: dayjs.ConfigType }) => {
-  const day = dayjs(props.day);
-  const formattedDate = day.calendar(null, {
-    sameDay: '[Today]', // The same day ( Today )
-    nextDay: '[Tomorrow]', // The next day ( Tomorrow )
-    nextWeek: '[Next] dddd', // The next week ( Next Sunday )
-    lastDay: '[Yesterday]', // The day before ( Yesterday )
-    lastWeek: 'ddd, MMM D', // Last week ( Wed, Jan 25 )
-    sameElse: 'ddd, MMM D', // Everything else ( Wed, Jan 25 )
-  });
-
-  return (
-    // -mt-px so that the top entry in the list doesn't show a border (doubling up with navbar bottom border)
-    <VStack tw="-mt-px px-10 py-8" spacing={5}>
-      <Heading size={4} as="h4">
-        {formattedDate}
-      </Heading>
-
-      <Box tw="min-h-[150px]">
-        <div>CONTENT</div>
-      </Box>
-    </VStack>
-  );
-};
