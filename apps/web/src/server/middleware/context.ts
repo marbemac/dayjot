@@ -21,7 +21,7 @@ export const reqCtxMiddleware = createMiddleware<HonoEnv>(async (c, next) => {
 
   const SQL_URI = env<HonoEnv['Bindings']>(c as any).JOT_SQL_URL;
   const sql = postgres(SQL_URI);
-  const dbSdk = initDbSdk({ uri: SQL_URI });
+  const dbSdk = initDbSdk({ sql });
   c.set('db', dbSdk);
 
   /**
@@ -47,8 +47,8 @@ export const reqCtxMiddleware = createMiddleware<HonoEnv>(async (c, next) => {
    * https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#contextwaituntil
    */
   if (getRuntimeKey() === 'workerd') {
-    c.executionCtx.waitUntil(Promise.all([sql.end(), dbSdk.client.destroy()]));
+    c.executionCtx.waitUntil(dbSdk.client.destroy());
   } else {
-    void Promise.all([sql.end(), dbSdk.client.destroy()]);
+    void dbSdk.client.destroy();
   }
 });

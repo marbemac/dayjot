@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import type { RouterOutputs } from '~app';
 import { ctx } from '~app';
+import { paths } from '~client/routes.tsx';
 
 const AuthContext = createContext<{
   user: RouterOutputs['auth']['me'] | null;
@@ -104,7 +105,8 @@ export const enforceSignedOut = async (props: { redirectTo?: string } = {}) => {
  * }
  */
 export const enforceAuthenticated = async (props: { redirectTo?: string } = {}) => {
-  const { redirectTo = '/' } = props;
+  // @TODO we could capture the current URL, and redirect back to it after auth
+  const { redirectTo = paths.Auth.buildPath({}) } = props;
 
   const user = await ctx.trpc.auth.me.fetchQuery(undefined, { meta: { deferStream: true } });
   if (!user) {
