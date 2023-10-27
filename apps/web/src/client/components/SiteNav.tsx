@@ -10,7 +10,7 @@ export const SiteNav = () => {
   const { user } = useUser();
 
   return (
-    <Box tw="flex border-b px-6 py-4">
+    <Box as="header" tw="sticky top-0 z-10 flex border-b bg-panel/75 px-6 py-4 backdrop-blur-lg">
       <HStack as="nav" center="y" spacing={6}>
         <NavLink
           to="/"

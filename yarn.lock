@@ -13415,6 +13415,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-virtuoso@npm:4.6.2":
+  version: 4.6.2
+  resolution: "react-virtuoso@npm:4.6.2"
+  peerDependencies:
+    react: ">=16 || >=17 || >= 18"
+    react-dom: ">=16 || >=17 || >= 18"
+  checksum: d5747215163134d68d425779eda1d5e5ae75a238f77882d730521a8d46c10f62025a189be76585bf84708a9fd6eaafe17061cf5d3d150e69d6fbdc037ea5975a
+  languageName: node
+  linkType: hard
+
 "react@npm:18.3.0-canary-587ae49d7-20230720":
   version: 18.3.0-canary-587ae49d7-20230720
   resolution: "react@npm:18.3.0-canary-587ae49d7-20230720"
@@ -15969,6 +15979,7 @@ __metadata:
     react-hook-form: "npm:7.47.0"
     react-router-dom: "npm:6.17.0"
     react-router-typesafe-routes: "npm:1.2.1"
+    react-virtuoso: "npm:4.6.2"
     remeda: "npm:1.28.0"
     rollup-plugin-visualizer: "npm:5.9.2"
     tailwindcss: "npm:3.3.5"
