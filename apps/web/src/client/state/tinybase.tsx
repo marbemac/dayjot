@@ -1,9 +1,15 @@
+// Importing from debug version temporarily due to this issue:
+// https://github.com/tinyplex/tinybase/issues/104
+import * as UiReact from 'tinybase/debug/ui-react/with-schemas';
 import { createIndexedDbPersister } from 'tinybase/persisters/persister-indexed-db';
-import * as UiReact from 'tinybase/ui-react/with-schemas';
 import { createStore as baseCreateStore } from 'tinybase/with-schemas';
 
 const tablesSchema = {
-  entries: { content: { type: 'string' } },
+  entries: {
+    dbId: { type: 'string', default: '@TODO' },
+    remoteHash: { type: 'string' },
+    localHash: { type: 'string' },
+  },
 } as const;
 
 const valuesSchema = {} as const;
@@ -22,17 +28,21 @@ const {
   useTable,
   ValueView,
   useSetCellCallback,
+  useAddRowCallback,
+  useStore,
   useCreatePersister,
 } = UiReactWithSchemas;
 
 export {
   Provider,
   TableView,
+  useAddRowCallback,
   useCell,
   useCreatePersister,
   useCreateStore,
   useRow,
   useSetCellCallback,
+  useStore,
   useTable,
   ValueView,
 };
@@ -49,10 +59,12 @@ const createStore = () => {
 };
 
 // tinybase store is only on the client, so can be a singleton
-const globalStore = createStore();
+const { store: tinyStore } = createStore();
 
-export function StoreProvider({ children }: { children: React.ReactNode }) {
-  const store = useCreateStore(() => globalStore.store);
+export { tinyStore };
+
+export function TinyProvider({ children }: { children: React.ReactNode }) {
+  const store = useCreateStore(() => tinyStore);
 
   useCreatePersister(
     store,

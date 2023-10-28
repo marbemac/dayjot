@@ -31,16 +31,15 @@ export const UserDropdownMenu = ({ trigger }: UserDropdownMenuProps) => {
 
   const revalidator = useRevalidator();
   const logout = ctx.trpc.auth.logout.useMutation({
-    onSuccess: () => {
+    onSuccess: async () => {
+      await ctx.trpc.$invalidate();
+
       /**
        * Special case.. when logging in/out we need to trigger
        * any loader redirects, etc. Normally we don't need to use router revalidate, and can just leverage the
        * tanstack query cache.
        */
       revalidator.revalidate();
-
-      // invalidate the entire query cache on login/logout
-      return ctx.trpc.$invalidate();
     },
   });
 

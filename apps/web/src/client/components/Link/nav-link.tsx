@@ -9,10 +9,14 @@ export type NavLinkProps = LinkProps & {
   exact?: boolean;
 };
 
-function NavLinkInner({ exact, to, ...rest }: NavLinkProps, ref: React.ForwardedRef<HTMLAnchorElement>) {
+export const useRouteIsActive = ({ to, exact }: Pick<NavLinkProps, 'to' | 'exact'>) => {
   const { pathname } = useLocation();
   const hrefString = typeof to === 'string' ? to : to.pathname || '';
-  const isActive = exact ? pathname === hrefString : pathname.startsWith(hrefString);
+  return exact ? pathname === hrefString : pathname.startsWith(hrefString);
+};
+
+function NavLinkInner({ exact, to, ...rest }: NavLinkProps, ref: React.ForwardedRef<HTMLAnchorElement>) {
+  const isActive = useRouteIsActive({ to, exact });
   const ariaCurrent = isActive ? 'page' : undefined;
 
   return (

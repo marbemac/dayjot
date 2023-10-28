@@ -65,4 +65,8 @@ function manualChunks(id: string) {
   if (id.match(/node_modules\/(@radix|tailwind)/)) {
     return 'vendor-ui';
   }
+
+  if (id.match(/node_modules\/(prosemirror|@tiptap|yjs|react-virtuoso|fnv-plus)/)) {
+    return 'vendor-editor';
+  }
 }

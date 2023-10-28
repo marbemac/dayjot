@@ -83,7 +83,7 @@ export const useUserOrRedirect = (props: { to?: string } = {}) => {
  * }
  */
 export const enforceSignedOut = async (props: { redirectTo?: string } = {}) => {
-  const { redirectTo = '/' } = props;
+  const { redirectTo = paths.A.Journal.buildPath({}) } = props;
 
   const user = await ctx.trpc.auth.me.fetchQuery(undefined, { meta: { deferStream: true } });
   if (user) {
