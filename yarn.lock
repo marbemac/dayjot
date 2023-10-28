@@ -4989,7 +4989,7 @@ __metadata:
   dependencies:
     kysely: "npm:0.26.3"
     kysely-postgres-js: "npm:2.0.0"
-    postgres: "npm:^3.4.1"
+    postgres: "npm:^3.4.2"
   languageName: unknown
   linkType: soft
 
@@ -5000,7 +5000,7 @@ __metadata:
     "@supastack/db-pg-client": "workspace:*"
     drizzle-kit: "npm:0.19.13"
     kysely: "npm:0.26.3"
-    postgres: "npm:~3.4.1"
+    postgres: "npm:~3.4.2"
   languageName: unknown
   linkType: soft
 
@@ -5051,7 +5051,7 @@ __metadata:
     "@types/node": "npm:^20.8.9"
     "@types/react": "npm:18.2.33"
     "@types/react-dom": "npm:18.2.14"
-    happy-dom: "npm:^12.10.2"
+    happy-dom: "npm:^12.10.3"
     jsdom: "npm:22.1.0"
     nx: "npm:17.0.2"
     nx-cloud: "npm:16.5.2"
@@ -5125,7 +5125,7 @@ __metadata:
     "@fortawesome/fontawesome-common-types": "npm:^6.4.2"
     "@supastack/ui-theme": "workspace:*"
     tailwind-merge: "npm:^1.14.0"
-    tailwind-variants: "npm:~0.1.17"
+    tailwind-variants: "npm:~0.1.18"
     tailwindcss: "npm:^3.3.5"
     tsup: "npm:^7.2.0"
   languageName: unknown
@@ -7658,7 +7658,7 @@ __metadata:
     "@types/node": "npm:^20.8.9"
     "@types/react": "npm:18.2.33"
     "@types/react-dom": "npm:18.2.14"
-    happy-dom: "npm:^12.10.2"
+    happy-dom: "npm:^12.10.3"
     jsdom: "npm:22.1.0"
     nx: "npm:17.0.2"
     nx-cloud: "npm:16.5.2"
@@ -9861,9 +9861,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happy-dom@npm:^12.10.2":
-  version: 12.10.2
-  resolution: "happy-dom@npm:12.10.2"
+"happy-dom@npm:^12.10.3":
+  version: 12.10.3
+  resolution: "happy-dom@npm:12.10.3"
   dependencies:
     css.escape: "npm:^1.5.1"
     entities: "npm:^4.5.0"
@@ -9871,7 +9871,7 @@ __metadata:
     webidl-conversions: "npm:^7.0.0"
     whatwg-encoding: "npm:^2.0.0"
     whatwg-mimetype: "npm:^3.0.0"
-  checksum: 1b0c371ff1d37deefe3739abeb625f113974d14b31a949cb12703a3129a9978b34703c86d41daaa96cd3c3a74b813c09f9bfcefc32f63d5fc640704c9da889ab
+  checksum: 139e808e1c4aac83db11c45c30bbea08ac63c294c9f61081356ca071b9be2019e7c42a08427fea1b875bd4eb53226ce8d87c6c56544042ef2e696e610318dc26
   languageName: node
   linkType: hard
 
@@ -12855,7 +12855,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postgres@npm:3.4.1, postgres@npm:^3.3.5, postgres@npm:^3.4.1, postgres@npm:~3.4.1":
+"postgres@npm:3.4.2, postgres@npm:^3.4.2, postgres@npm:~3.4.2":
+  version: 3.4.2
+  resolution: "postgres@npm:3.4.2"
+  checksum: 0de57179d7b45bd9bcad676aeed1b7889cbeb05ee9f2af16a723c008d559c6c83b4e47707dc09eaa22e3e003838f299b16196a3037b184d15eaaeb9d0aa4b0d6
+  languageName: node
+  linkType: hard
+
+"postgres@npm:^3.3.5":
   version: 3.4.1
   resolution: "postgres@npm:3.4.1"
   checksum: d7f15c681cd65ba1a0a20c65cef355e0b634493b6be623b839a8eb899bc63402fc2f83386544e76f3e06395c8c839c898b6e49af43cc6cec679dc43ecfe30f86
@@ -14744,14 +14751,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwind-variants@npm:~0.1.17":
-  version: 0.1.17
-  resolution: "tailwind-variants@npm:0.1.17"
+"tailwind-variants@npm:~0.1.18":
+  version: 0.1.18
+  resolution: "tailwind-variants@npm:0.1.18"
   dependencies:
     tailwind-merge: "npm:^1.14.0"
   peerDependencies:
     tailwindcss: "*"
-  checksum: 35a93aa242538582b7c2847bfa83c2fe8b75bc49cd8598f9fa655b966533a8dc63993590ebc06343dab5be07fc62c20f8d36d2c7949546ca6d662bc36dadc7f9
+  checksum: ef0f22a86b715da1ed69e6f0ac89d5a58f0e45b7989fdbd2e2615dd9ee570d13a12c304ab699ccf9dcbdf211516580c5a13fd5a1189bff1351aacee2e8cfaca4
   languageName: node
   linkType: hard
 
@@ -15831,7 +15838,47 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:5.0.0-beta.12, vite@npm:^3.0.0 || ^4.0.0 || ^5.0.0-0, vite@npm:^3.1.0 || ^4.0.0 || ^5.0.0-0":
+"vite@npm:5.0.0-beta.13":
+  version: 5.0.0-beta.13
+  resolution: "vite@npm:5.0.0-beta.13"
+  dependencies:
+    esbuild: "npm:^0.19.3"
+    fsevents: "npm:~2.3.3"
+    postcss: "npm:^8.4.31"
+    rollup: "npm:^4.1.4"
+  peerDependencies:
+    "@types/node": ^18.0.0 || >=20.0.0
+    less: "*"
+    lightningcss: ^1.21.0
+    sass: "*"
+    stylus: "*"
+    sugarss: "*"
+    terser: ^5.4.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  peerDependenciesMeta:
+    "@types/node":
+      optional: true
+    less:
+      optional: true
+    lightningcss:
+      optional: true
+    sass:
+      optional: true
+    stylus:
+      optional: true
+    sugarss:
+      optional: true
+    terser:
+      optional: true
+  bin:
+    vite: bin/vite.js
+  checksum: ba17955f5e587a421348cf766c50241406490ef1755b21f8caca10cb565b043ed52ed29a67fa70b88803d168ddb34641e81bd87420285ec4e00e3c4b8f58b140
+  languageName: node
+  linkType: hard
+
+"vite@npm:^3.0.0 || ^4.0.0 || ^5.0.0-0, vite@npm:^3.1.0 || ^4.0.0 || ^5.0.0-0":
   version: 5.0.0-beta.12
   resolution: "vite@npm:5.0.0-beta.12"
   dependencies:
@@ -16013,7 +16060,7 @@ __metadata:
     hono: "npm:3.9.0"
     lucia: "npm:^2.7.2"
     postcss: "npm:8.4.31"
-    postgres: "npm:3.4.1"
+    postgres: "npm:3.4.2"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
     react-error-boundary: "npm:4.0.11"
@@ -16027,7 +16074,7 @@ __metadata:
     tinybase: "npm:4.3.22"
     tsx: "npm:3.14.0"
     valibot: "npm:0.19.0"
-    vite: "npm:5.0.0-beta.12"
+    vite: "npm:5.0.0-beta.13"
     vite-tsconfig-paths: "npm:4.2.1"
     wrangler: "npm:3.15.0"
   languageName: unknown
