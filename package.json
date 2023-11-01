@@ -14,6 +14,7 @@
     ]
   },
   "resolutions": {
+    "@remix-run/dev": "file:.yalc/@remix-run/dev",
     "react": "18.3.0-canary-587ae49d7-20230720",
     "react-dom": "18.3.0-canary-587ae49d7-20230720"
   },

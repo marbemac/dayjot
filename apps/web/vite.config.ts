@@ -1,5 +1,4 @@
-import { ssrx } from '@ssrx/vite/plugin';
-import react from '@vitejs/plugin-react';
+import { unstable_vitePlugin as remix } from '@remix-run/dev';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, type PluginOption } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -14,16 +13,13 @@ const DO_ANAlYZE = process.env['ANALYZE'];
 
 // https://vitejs.dev/config/
 export default defineConfig(({ ssrBuild, command }) => ({
-  plugins: [
-    tsconfigPaths(),
-    react(),
+  ssr: {
+    noExternal: ['@ssrx/plugin-tanstack-query', '@ssrx/plugin-trpc-react', '@ssrx/remix'],
+  },
 
-    ssrx({
-      runtime: 'cf-pages',
-      serverFile: 'src/server/index.ts',
-      clientEntry: 'src/client/entry.client.tsx',
-      routesFile: 'src/client/routes.tsx',
-    }),
+  plugins: [
+    remix(),
+    tsconfigPaths(),
 
     !ssrBuild &&
       command === 'build' &&
@@ -38,9 +34,9 @@ export default defineConfig(({ ssrBuild, command }) => ({
     rollupOptions: {
       external: ['cloudflare:sockets'],
 
-      output: {
-        manualChunks: !ssrBuild && command === 'build' ? manualChunks : undefined,
-      },
+      // output: {
+      //   manualChunks: !ssrBuild && command === 'build' ? manualChunks : undefined,
+      // },
     },
   },
 }));

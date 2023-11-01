@@ -6,9 +6,5 @@ import type { Config } from 'tailwindcss';
 export default {
   presets: [preset()],
 
-  content: [
-    'src/client/**/*.{js,ts,jsx,tsx,mdx}',
-
-    path.join(path.dirname(require.resolve('@supastack/ui-styles')), '**/*.ts'),
-  ],
+  content: ['app/**/*.{ts,tsx}', path.join(path.dirname(require.resolve('@supastack/ui-styles')), '**/*.ts')],
 } satisfies Config;
