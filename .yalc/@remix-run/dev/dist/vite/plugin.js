@@ -62,6 +62,7 @@ let serverManifestId = vmod.id("server-manifest");
 let browserManifestId = vmod.id("browser-manifest");
 let remixReactProxyId = vmod.id("remix-react-proxy");
 let hmrRuntimeId = vmod.id("hmr-runtime");
+let injectHmrRuntimeId = vmod.id("inject-hmr-runtime");
 const normalizePath = p => {
   let unixPath = p.replace(/[\\/]+/g, "/").replace(/^([a-zA-Z]+:|\.\/)/, "");
   return vite.normalizePath(unixPath);
@@ -152,6 +153,25 @@ const getViteMajor = () => {
   let vitePkg = require("vite/package.json");
   return parseInt(vitePkg.version.split(".")[0]);
 };
+
+// export default class ViteReqCtx {
+//   static _bindings = new WeakMap<Request, ViteReqCtx>();
+
+//   public foo = 'bar';
+
+//   constructor () {}
+
+//   static bind (req: Request) : void {
+//     const ctx = new ViteReqCtx();
+//     Context._bindings.set(req, ctx);
+//   }
+
+//   static get (req: Request) : Context | null {
+//     return Context._bindings.get(req) || null;
+//   }
+// }
+let viteReqCtx = new WeakMap();
+const getViteReqCtx = req => viteReqCtx.get(req);
 const remixVitePlugin = (options = {}) => {
   let isViteGTEv5 = getViteMajor() >= 5;
   let viteCommand;
@@ -396,8 +416,6 @@ const remixVitePlugin = (options = {}) => {
       (_vite$httpServer = vite.httpServer) === null || _vite$httpServer === void 0 ? void 0 : _vite$httpServer.on("listening", () => {
         setTimeout(showUnstableWarning, 50);
       });
-      // Let user servers handle SSR requests in middleware mode
-      if (vite.config.server.middlewareMode) return;
       return () => {
         vite.middlewares.use(async (req, res, next) => {
           try {
@@ -412,9 +430,28 @@ const remixVitePlugin = (options = {}) => {
               url
             } = req;
             let [pluginConfig, build] = await Promise.all([resolvePluginConfig(), vite.ssrLoadModule(serverEntryId)]);
+            let criticalCss = await styles.getStylesForUrl(vite, pluginConfig, cssModulesManifest, build, url);
+            viteReqCtx.set(req, {
+              build,
+              criticalCss
+            });
+            next();
+          } catch (error) {
+            next(error);
+          }
+        });
+
+        // Let user servers handle SSR requests in middleware mode
+        if (vite.config.server.middlewareMode) return;
+        vite.middlewares.use(async (req, res, next) => {
+          let {
+            build,
+            criticalCss
+          } = viteReqCtx.get(req);
+          try {
             let handle = adapter.createRequestHandler(build, {
               mode: "development",
-              criticalCss: await styles.getStylesForUrl(vite, pluginConfig, cssModulesManifest, build, url)
+              criticalCss
             });
             await handle(req, res);
           } catch (error) {
@@ -521,8 +558,18 @@ const remixVitePlugin = (options = {}) => {
     load(id) {
       if (id === vmod.resolve(remixReactProxyId)) {
         // TODO: ensure react refresh is initialized before `<Scripts />`
-        return ['import { createElement } from "react";', 'export * from "@remix-run/react";', 'export const LiveReload = process.env.NODE_ENV !== "development" ? () => null : ', '() => createElement("script", {', ' type: "module",', " async: true,", " suppressHydrationWarning: true,", " dangerouslySetInnerHTML: { __html: `", `   import RefreshRuntime from "${vmod.url(hmrRuntimeId)}"`, "   RefreshRuntime.injectIntoGlobalHook(window)", "   window.$RefreshReg$ = () => {}", "   window.$RefreshSig$ = () => (type) => type", "   window.__vite_plugin_react_preamble_installed__ = true", " `}", "});"].join("\n");
+        return ['import { createElement } from "react";', 'export * from "@remix-run/react";', 'export const LiveReload = process.env.NODE_ENV !== "development" ? () => null : ', '() => createElement("script", {', ' type: "module",', " async: true,", ` src: "${vmod.url(injectHmrRuntimeId)}"`, "});"].join("\n");
       }
+    }
+  }, {
+    name: "remix-inject-hmr-runtime",
+    enforce: "pre",
+    resolveId(id) {
+      if (id === injectHmrRuntimeId) return vmod.resolve(injectHmrRuntimeId);
+    },
+    async load(id) {
+      if (id !== vmod.resolve(injectHmrRuntimeId)) return;
+      return [`import RefreshRuntime from "${hmrRuntimeId}"`, "RefreshRuntime.injectIntoGlobalHook(window)", "window.$RefreshReg$ = () => {}", "window.$RefreshSig$ = () => (type) => type", "window.__vite_plugin_react_preamble_installed__ = true"].join("\n");
     }
   }, {
     name: "remix-hmr-runtime",
@@ -665,4 +712,5 @@ async function getRouteMetadata(pluginConfig, viteChildCompiler, route) {
   return info;
 }
 
+exports.getViteReqCtx = getViteReqCtx;
 exports.remixVitePlugin = remixVitePlugin;

@@ -5,7 +5,7 @@ import type { Sql } from 'postgres';
 
 export const initAuth = ({ sql }: { sql: Sql }) => {
   return lucia({
-    env: !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 'DEV' : 'PROD',
+    env: import.meta.env.DEV ? 'DEV' : 'PROD',
 
     middleware: web(),
 
@@ -27,9 +27,9 @@ export const initAuth = ({ sql }: { sql: Sql }) => {
       };
     },
 
-    experimental: {
-      // debugMode: true,
-    },
+    // experimental: {
+    //   debugMode: true,
+    // },
   });
 };
 

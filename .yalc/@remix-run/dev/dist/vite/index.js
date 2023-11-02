@@ -13,6 +13,28 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var vmod = require('./vmod.js');
+require('node:crypto');
+require('node:path');
+require('node:fs/promises');
+require('@babel/core');
+require('vite');
+require('es-module-lexer');
+require('jsesc');
+require('lodash/pick');
+require('picocolors');
+require('node:child_process');
+require('node:url');
+require('fs-extra');
+require('@npmcli/package-json');
+require('node:fs');
+require('minimatch');
+require('../tux/logger.js');
+require('./node/adapter.js');
+require('@remix-run/router');
+require('@babel/parser');
+require('@babel/types');
+require('@babel/traverse');
+require('@babel/generator');
 
 // This file allows us to dynamically require the plugin so non-Vite consumers
 const unstable_vitePlugin = (...args) => {

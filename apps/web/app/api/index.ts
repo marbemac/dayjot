@@ -1,68 +1,84 @@
+import { getViteReqCtx, unstable_createViteServer, unstable_loadViteServerBuild } from '@remix-run/dev';
+import { createRequestHandler as createRemixRequestHandler } from '@remix-run/server-runtime';
+import { createAdaptorServer } from '@supastack/server-hono-node';
+import connect from 'connect';
 import { Hono } from 'hono';
 
 import { reqCtxMiddleware } from '~/api/middleware/context.ts';
 import { trpcServer } from '~/api/middleware/trpc.ts';
 import { appRouter } from '~/api/trpc/index.ts';
+import type { HonoEnv } from '~/api/types.ts';
 import { deleteCookie, setCookie } from '~/api/utils/cookies.ts';
 import { TRPC_ROOT } from '~/app.ts';
+import type { AppLoadContext } from '~/remix-types.js';
 
-import type { HonoEnv } from './types.ts';
-// import { getReqTheme } from './utils/theme.ts';
+const server = new Hono<HonoEnv>();
 
-const server = new Hono<HonoEnv>()
-  /**
-   * TRPC
-   */
-  .use(
-    `/${TRPC_ROOT}/*`,
-    reqCtxMiddleware,
-    trpcServer<HonoEnv>({
-      endpoint: `/${TRPC_ROOT}`,
-      router: appRouter,
-      createContext: ({ c, resHeaders }) => ({
-        ...c.var,
-        // trpc manages it's own headers, so use those in the cookie helpers
-        setCookie: (...args) => setCookie(resHeaders, ...args),
-        deleteCookie: (...args) => deleteCookie(resHeaders, ...args),
-      }),
+/**
+ * TRPC
+ */
+
+server.use(
+  `/${TRPC_ROOT}/*`,
+  reqCtxMiddleware,
+  trpcServer<HonoEnv>({
+    endpoint: `/${TRPC_ROOT}`,
+    router: appRouter,
+    createContext: ({ c, resHeaders }) => ({
+      ...c.var,
+      // trpc manages it's own headers, so use those in the cookie helpers
+      setCookie: (...args) => setCookie(resHeaders, ...args),
+      deleteCookie: (...args) => deleteCookie(resHeaders, ...args),
     }),
-  );
+  }),
+);
 
-// /**
-//  * The frontend app
-//  */
-// .get('*', reqCtxMiddleware, async c => {
-//   try {
-//     const theme = getReqTheme({ getCookie: c.var.getCookie });
+/**
+ * The frontend app
+ */
 
-//     const appStream = await serverHandler({
-//       req: c.req.raw,
-//       meta: {
-//         // used by the @ssrx/plugin-trpc-react plugin
-//         trpcCaller: appRouter.createCaller(c.var),
+const vite = import.meta.env.DEV ? await unstable_createViteServer() : undefined;
 
-//         // used by the ssrx-theme plugin
-//         theme,
-//       },
-//     });
+const handleFrontendRequest = createRemixRequestHandler(
+  vite
+    ? () => unstable_loadViteServerBuild(vite)
+    : // @ts-expect-error ignore, not always built
+      await import('./build/index.js'),
+);
 
-//     return new Response(appStream);
-//   } catch (err: any) {
-//     /**
-//      * Handle redirects
-//      */
-//     if (err instanceof Response && err.status >= 300 && err.status <= 399) {
-//       return c.redirect(err.headers.get('Location') || '/', err.status);
-//     }
+const reqToDevReq = new WeakMap<Request, any>();
 
-//     /**
-//      * In development, pass the error back to the vite dev server to display in the
-//      * error overlay
-//      */
-//     if (import.meta.env.DEV) return err;
+server.get('*', reqCtxMiddleware, async c => {
+  try {
+    const { criticalCss } = getViteReqCtx(reqToDevReq.get(c.req.raw));
+    const loadContext: AppLoadContext = c.var;
+    return handleFrontendRequest(c.req.raw, loadContext, { __criticalCss: criticalCss });
+  } catch (err: any) {
+    console.log('Rendering error', err);
 
-//     throw err;
-//   }
-// });
+    throw err;
+  }
+});
 
-export { server };
+/**
+ * Start the server
+ */
+
+// In development, we start up our own server, passing the Vite connect instance
+if (import.meta.env.DEV) {
+  const port = Number(process.env['PORT'] || 3000);
+  const devServer = createAdaptorServer({
+    connectApp: connect().use(vite.middlewares),
+    fetch: (req, originalReq) => {
+      reqToDevReq.set(req, originalReq);
+      return server.fetch(req, process.env);
+    },
+  });
+
+  devServer.listen(port, '0.0.0.0', () => {
+    console.log(`🚀 Server started on port ${port}`);
+  });
+}
+
+// For production, we export the Hono instance so that it can be used in a serverless env
+export default server;

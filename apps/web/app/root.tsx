@@ -5,13 +5,6 @@ import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@re
 import { SiteNav } from '~/components/SiteNav.tsx';
 import { Providers } from '~/providers.tsx';
 
-// export async function loader() {
-//   // always attempt to populate authenticated user in the query cache
-//   await ctx.trpc.auth.me.prefetchQuery(undefined, { meta: { deferStream: true } });
-
-//   return null;
-// }
-
 export default function App() {
   return (
     <html lang="en">

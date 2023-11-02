@@ -1,16 +1,11 @@
 import { Box } from '@supastack/ui-primitives';
 
-// import { ctx } from '~/app.ts';
-// import { enforceSignedOut } from '~/auth.tsx';
+import type { MetaFunction } from '~/remix-types.ts';
 
-// export async function loader() {
-//   await enforceSignedOut();
-
-//   return null;
-// }
+export const meta: MetaFunction = () => {
+  return [{ title: 'Home' }];
+};
 
 export default function Home() {
-  // ctx.useHead({ title: 'Home' });
-
   return <Box tw="p-20">Hello world!</Box>;
 }

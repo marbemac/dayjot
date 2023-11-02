@@ -1,9 +1,9 @@
 import type { DataFunctionArgs, EntryContext } from '@remix-run/server-runtime';
 
-import { createReqCtx } from '~/api/middleware/context.ts';
 import { appRouter } from '~/api/trpc/index.ts';
-
-import { serverHandler } from './app.ts';
+import { getReqTheme } from '~/api/utils/theme.ts';
+import { serverHandler } from '~/app.ts';
+import type { AppLoadContext } from '~/remix-types.ts';
 
 export function handleDataRequest(response: Response, { request, params, context }: DataFunctionArgs) {
   console.log('server entry handleDataRequest()');
@@ -17,7 +17,7 @@ export default async function handleRequest(
   remixContext: EntryContext,
   loadContext: AppLoadContext,
 ) {
-  const reqCtx = await createReqCtx(request, responseHeaders, loadContext.env ?? process.env);
+  const theme = getReqTheme({ getCookie: loadContext.getCookie });
 
   const stream = await serverHandler({
     req: request,
@@ -26,8 +26,11 @@ export default async function handleRequest(
       remixContext,
       loadContext,
 
+      // used by the ssrx-theme plugin
+      theme,
+
       // used by @ssrx/plugin-trpc-react
-      trpcCaller: appRouter.createCaller(reqCtx),
+      trpcCaller: appRouter.createCaller(loadContext),
     },
   });
 

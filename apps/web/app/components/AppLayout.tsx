@@ -3,7 +3,7 @@ import { StoreInspector } from 'tinybase/debug/ui-react-dom';
 
 import { TinyProvider } from '~/state/tinybase.tsx';
 
-export default function Component() {
+export default function AppLayout() {
   return (
     <TinyProvider>
       <Outlet />

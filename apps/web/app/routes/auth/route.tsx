@@ -1,16 +1,15 @@
-import type { LoaderFunctionArgs, ServerRuntimeMetaFunction } from '@remix-run/server-runtime';
 import { Box } from '@supastack/ui-primitives';
 
 import { enforceSignedOut } from '~/auth.tsx';
 import { EmailAuthForm } from '~/forms/EmailAuth.tsx';
+import type { LoaderFunctionArgs, MetaFunction } from '~/remix-types.ts';
 
-export const meta: ServerRuntimeMetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [{ title: 'Authenticate' }];
 };
 
-export async function loader({ context, request }: LoaderFunctionArgs) {
-  // await enforceSignedOut();
-  console.log('AUTH ROUTE LOADER', context);
+export async function loader({ context }: LoaderFunctionArgs) {
+  await enforceSignedOut(context);
 
   return null;
 }

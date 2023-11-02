@@ -15,6 +15,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var index = require('./cli/index.js');
 var dependencies = require('./dependencies.js');
 var index$1 = require('./vite/index.js');
+var plugin = require('./vite/plugin.js');
 
 
 
@@ -23,3 +24,4 @@ exports.getDependenciesToBundle = dependencies.getDependenciesToBundle;
 exports.unstable_createViteServer = index$1.unstable_createViteServer;
 exports.unstable_loadViteServerBuild = index$1.unstable_loadViteServerBuild;
 exports.unstable_vitePlugin = index$1.unstable_vitePlugin;
+exports.getViteReqCtx = plugin.getViteReqCtx;

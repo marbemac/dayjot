@@ -14,7 +14,3 @@ interface EnvVariables {
 namespace NodeJS {
   interface ProcessEnv extends EnvVariables {}
 }
-
-interface AppLoadContext {
-  env: EnvVariables;
-}

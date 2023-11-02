@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect } from 'react';
 import { $path } from 'remix-routes';
 
 import { ctx, type RouterOutputs } from '~/app.ts';
+import type { AppLoadContext } from '~/remix-types.ts';
 
 const AuthContext = createContext<{
   user: RouterOutputs['auth']['me'] | null;
@@ -81,11 +82,13 @@ export const useUserOrRedirect = (props: { to?: string } = {}) => {
  *   return null;
  * }
  */
-export const enforceSignedOut = async (props: { redirectTo?: string } = {}) => {
+export const enforceSignedOut = async (
+  { isAuthed }: Pick<AppLoadContext, 'isAuthed'>,
+  props: { redirectTo?: string } = {},
+) => {
   const { redirectTo = $path('/a/journal') } = props;
 
-  const user = await ctx.trpc.auth.me.fetchQuery(undefined, { meta: { deferStream: true } });
-  if (user) {
+  if (isAuthed) {
     throw new Response('', {
       status: 302,
       headers: { Location: redirectTo },
@@ -103,12 +106,14 @@ export const enforceSignedOut = async (props: { redirectTo?: string } = {}) => {
  *   return null;
  * }
  */
-export const enforceAuthenticated = async (props: { redirectTo?: string } = {}) => {
+export const enforceAuthenticated = async (
+  { isAuthed }: Pick<AppLoadContext, 'isAuthed'>,
+  props: { redirectTo?: string } = {},
+) => {
   // @TODO we could capture the current URL, and redirect back to it after auth
   const { redirectTo = $path('/auth') } = props;
 
-  const user = await ctx.trpc.auth.me.fetchQuery(undefined, { meta: { deferStream: true } });
-  if (!user) {
+  if (!isAuthed) {
     throw new Response('', {
       status: 302,
       headers: { Location: redirectTo },
