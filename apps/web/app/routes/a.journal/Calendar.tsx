@@ -1,7 +1,7 @@
 import { Box, VStack } from '@supastack/ui-primitives';
 
-import type { ResultRowProps } from '~/state/tinybase.tsx';
-import { ResultCellView, ResultTableView, tinyQueries } from '~/state/tinybase.tsx';
+import type { ResultRowProps } from '~/state/tinybase.client.tsx';
+import { ResultCellView, ResultTableView, tinyQueries } from '~/state/tinybase.client.tsx';
 
 export const Calendar = () => {
   return (

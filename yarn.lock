@@ -1624,11 +1624,13 @@ __metadata:
     "@supastack/eslint-config": "workspace:*"
     "@supastack/tsconfig": "workspace:*"
     "@supastack/user-model": "workspace:*"
+    "@supastack/utils-dates": "workspace:*"
     "@supastack/utils-types": "workspace:*"
     dotenv-cli: "npm:^7.3.0"
     drizzle-kit: "npm:^0.19.13"
     drizzle-orm: "npm:^0.28.6"
     drizzle-valibot: "npm:^0.1.1"
+    kysely: "npm:0.26.3"
     tsx: "npm:3.14.0"
     typescript: "npm:5.2.2"
   languageName: unknown

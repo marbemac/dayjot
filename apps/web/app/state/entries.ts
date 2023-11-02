@@ -1,11 +1,11 @@
-import { hashJson } from '@supastack/utils-ids';
+import { hash } from '@supastack/utils-ids';
 import Placeholder from '@tiptap/extension-placeholder';
 import type { EditorEvents, FocusPosition } from '@tiptap/react';
 import { Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import debounce from 'lodash.debounce';
 
-import { tinyStore } from './tinybase.tsx';
+import { tinyStore } from './tinybase.client.tsx';
 
 const EntryDocs = new Map<string, EntryDoc>();
 export const useEntryDoc = (day: string): EntryDoc => {
@@ -26,10 +26,14 @@ export class EntryDoc {
   get editor() {
     return getEditor(this.day, {
       onUpdate: ({ editor }) => {
-        const content = editor.getJSON();
-        const dataHash = hashJson(editor.getJSON());
+        const content = JSON.stringify(editor.getJSON());
+        const dataHash = hash(content);
         this.#hasContent = !!editor.isEmpty;
-        tinyStore.setPartialRow('entries', this.day, { localHash: dataHash, content: JSON.stringify(content) });
+        tinyStore.setPartialRow('entries', this.day, {
+          localHash: dataHash,
+          content,
+          localUpdatedAt: new Date().toISOString(),
+        });
       },
     });
   }

@@ -1,6 +1,6 @@
 import { type DrizzleToKysely, idCol, timestampCol } from '@supastack/db-model';
 import type { TUserId } from '@supastack/user-model/ids';
-import { index, pgTable, text } from 'drizzle-orm/pg-core';
+import { pgTable, text, unique } from 'drizzle-orm/pg-core';
 import { createInsertSchema, createSelectSchema } from 'drizzle-valibot';
 
 import type { TEntryId } from '../../ids.ts';
@@ -14,7 +14,21 @@ export const entries = pgTable(
 
   {
     id: idCol<TEntryId>()('id').primaryKey(),
-    body: text('body').notNull(),
+
+    /**
+     * The day of the entry in YYYY-MM-DD format.
+     */
+    day: text('day').notNull(),
+
+    /**
+     * The stringified JSON AST of the entry.
+     */
+    content: text('content').notNull(),
+
+    /**
+     * hash(content)
+     */
+    contentHash: text('content_hash').notNull(),
 
     createdAt: timestampCol('created_at').defaultNow().notNull(),
     updatedAt: timestampCol('updated_at'),
@@ -26,7 +40,7 @@ export const entries = pgTable(
 
   table => {
     return {
-      userIdIdx: index('entries_user_id_idx').on(table.userId),
+      userIdDayIdx: unique('entries_user_id_day_idx').on(table.userId, table.day),
     };
   },
 );

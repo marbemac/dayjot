@@ -4,7 +4,7 @@ import { memo, useCallback } from 'react';
 
 import { useFocusOnEditor } from '~/state/editor.ts';
 import { useEntryDoc } from '~/state/entries.ts';
-import { useCell, useSetCellCallback } from '~/state/tinybase.tsx';
+import { useCell, useSetCellCallback } from '~/state/tinybase.client.tsx';
 
 import { Tiptap } from './Editor/index.ts';
 

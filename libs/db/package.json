@@ -24,8 +24,10 @@
     "@supastack/db-pg-client": "workspace:*",
     "@supastack/db-pg-migrations": "workspace:*",
     "@supastack/user-model": "workspace:*",
+    "@supastack/utils-dates": "workspace:*",
     "drizzle-orm": "^0.28.6",
-    "drizzle-valibot": "^0.1.1"
+    "drizzle-valibot": "^0.1.1",
+    "kysely": "0.26.3"
   },
   "devDependencies": {
     "@supastack/eslint-config": "workspace:*",

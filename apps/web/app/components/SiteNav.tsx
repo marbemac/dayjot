@@ -1,9 +1,12 @@
 import { Box, Button, HStack } from '@supastack/ui-primitives';
+import { useCallback } from 'react';
 import { $path } from 'remix-routes';
 
+import { ctx } from '~/app.ts';
 import { useUser } from '~/auth.tsx';
 import { Link, NavLink, useRouteIsActive } from '~/components/Link/index.ts';
 import { UserDropdownMenu } from '~/components/UserDropdownMenu.tsx';
+import { tinyQueries, tinyStore } from '~/state/tinybase.client.tsx';
 
 export const SiteNav = () => {
   const { user } = useUser();
@@ -26,7 +29,9 @@ export const SiteNav = () => {
         </HStack>
       ) : null}
 
-      <Box tw="flex-1" />
+      <HStack tw="flex-1 justify-end">
+        <SyncButton />
+      </HStack>
     </Box>
   );
 };
@@ -37,6 +42,34 @@ const SiteNavLink = ({ to, children }: { to: string; children: React.ReactNode }
   return (
     <Button as={NavLink} to={$path('/a/journal')} variant={isActive ? 'solid' : 'ghost'}>
       {children}
+    </Button>
+  );
+};
+
+const SyncButton = () => {
+  const { mutateAsync, isPending } = ctx.trpc.sync.fromLocal.useMutation();
+
+  const doSync = useCallback(async () => {
+    try {
+      const dirtyEntries = Object.values(tinyQueries.getResultTable('dirtyEntries'));
+      console.debug('Syncing dirty entries...', dirtyEntries);
+
+      const res = await mutateAsync({ entries: dirtyEntries as any });
+
+      tinyStore.transaction(() => {
+        for (const entry of res.updated) {
+          console.debug(`  Synced ${entry.day} [${entry.contentHash}]`);
+          tinyStore.setPartialRow('entries', entry.day, { remoteHash: entry.contentHash });
+        }
+      });
+    } catch (e) {
+      console.error('Error syncing entries from local', e);
+    }
+  }, [mutateAsync]);
+
+  return (
+    <Button onClick={doSync} isLoading={isPending} loadingText="Syncing...">
+      Sync
     </Button>
   );
 };
