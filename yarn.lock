@@ -5921,17 +5921,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-collaboration@npm:2.1.12":
-  version: 2.1.12
-  resolution: "@tiptap/extension-collaboration@npm:2.1.12"
-  peerDependencies:
-    "@tiptap/core": ^2.0.0
-    "@tiptap/pm": ^2.0.0
-    y-prosemirror: 1.0.20
-  checksum: d62a509c726935d756bc90eacbfca2ba0077c875c6c40d4f826a09b2382d8dee84957311565dca7002d03e4be8e8d644b137569d9b5211ad1f8f03d9287e3fc3
-  languageName: node
-  linkType: hard
-
 "@tiptap/extension-document@npm:^2.1.12":
   version: 2.1.12
   resolution: "@tiptap/extension-document@npm:2.1.12"
@@ -12061,13 +12050,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isomorphic.js@npm:^0.2.4":
-  version: 0.2.5
-  resolution: "isomorphic.js@npm:0.2.5"
-  checksum: b6b1a40f9b9b1e3055934897ec7814af5995bf9b234f0cc6bb5aba89e6d59fdeb3391df46f6649b609d79334942acf78bb46c4d118dc9cbaf68a447c8a433907
-  languageName: node
-  linkType: hard
-
 "istanbul-lib-coverage@npm:^3.2.0":
   version: 3.2.0
   resolution: "istanbul-lib-coverage@npm:3.2.0"
@@ -12554,18 +12536,6 @@ __metadata:
     prelude-ls: "npm:^1.2.1"
     type-check: "npm:~0.4.0"
   checksum: b281df6770286ddce58d431441772b75ec04f03264af49532c330fdbe070795196538459754cb9e564e7759dbd79c2f88fab01bb3295b2a70249d1a777016cb4
-  languageName: node
-  linkType: hard
-
-"lib0@npm:^0.2.42, lib0@npm:^0.2.74, lib0@npm:^0.2.85":
-  version: 0.2.87
-  resolution: "lib0@npm:0.2.87"
-  dependencies:
-    isomorphic.js: "npm:^0.2.4"
-  bin:
-    0gentesthtml: bin/gentesthtml.js
-    0serve: bin/0serve.js
-  checksum: a3e84ebd51fa936cd623ae9c2c351c2a1559c896c036c86923537a9b0543a577580fe9c92c4f04dd81e77fa30f68805ac95fa02ad4f3f45243140d38547aa2ed
   languageName: node
   linkType: hard
 
@@ -19047,7 +19017,6 @@ __metadata:
     "@supastack/utils-types": "workspace:*"
     "@tanstack/react-query": "npm:5.4.3"
     "@tanstack/react-query-devtools": "npm:5.4.3"
-    "@tiptap/extension-collaboration": "npm:2.1.12"
     "@tiptap/extension-placeholder": "npm:2.1.12"
     "@tiptap/pm": "npm:2.1.12"
     "@tiptap/react": "npm:2.1.12"
@@ -19084,10 +19053,6 @@ __metadata:
     vite-node: "npm:~0.34.1"
     vite-tsconfig-paths: "npm:4.2.1"
     wrangler: "npm:3.15.0"
-    y-indexeddb: "npm:9.0.11"
-    y-prosemirror: "npm:1.2.1"
-    y-protocols: "npm:1.0.6"
-    yjs: "npm:13.6.8"
   languageName: unknown
   linkType: soft
 
@@ -19462,43 +19427,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"y-indexeddb@npm:9.0.11":
-  version: 9.0.11
-  resolution: "y-indexeddb@npm:9.0.11"
-  dependencies:
-    lib0: "npm:^0.2.74"
-  peerDependencies:
-    yjs: ^13.0.0
-  checksum: 1fdabbfea86046cdd512a088487b7aef23f7e14cac2f7dbb83f734c54e77d39577f3b14b7090afb9305d3715de466174d712ae16534c90f02ba7e9a04a93e4ec
-  languageName: node
-  linkType: hard
-
-"y-prosemirror@npm:1.2.1":
-  version: 1.2.1
-  resolution: "y-prosemirror@npm:1.2.1"
-  dependencies:
-    lib0: "npm:^0.2.42"
-  peerDependencies:
-    prosemirror-model: ^1.7.1
-    prosemirror-state: ^1.2.3
-    prosemirror-view: ^1.9.10
-    y-protocols: ^1.0.1
-    yjs: ^13.5.38
-  checksum: c1e308331aceb734c95a8a0e572c6f032b69022818d8e7abd6f785fd532d9f1ef0f9d4df4ba56f9de3a9041bf4e1e1ee43dc2817f5f16be3fb29d7ea087480d1
-  languageName: node
-  linkType: hard
-
-"y-protocols@npm:1.0.6":
-  version: 1.0.6
-  resolution: "y-protocols@npm:1.0.6"
-  dependencies:
-    lib0: "npm:^0.2.85"
-  peerDependencies:
-    yjs: ^13.0.0
-  checksum: c9805ab6b61eac8bd1cd74a69a727c7915e99493679174ce85799223698952f8d3918f10bc32256131a5a36ebb5004a27b141dee793b7e5c20cbcd3037c2d116
-  languageName: node
-  linkType: hard
-
 "y18n@npm:^5.0.5":
   version: 5.0.8
   resolution: "y18n@npm:5.0.8"
@@ -19563,15 +19491,6 @@ __metadata:
     buffer-crc32: "npm:~0.2.3"
     fd-slicer: "npm:~1.1.0"
   checksum: 760a176211c7380f1c62160406dc2b9e1273515c06adef9b52139bf8258b993fbd01dec121b7464204abc8b4735e2a82f746a28c486bf4847b61e39034bed512
-  languageName: node
-  linkType: hard
-
-"yjs@npm:13.6.8":
-  version: 13.6.8
-  resolution: "yjs@npm:13.6.8"
-  dependencies:
-    lib0: "npm:^0.2.74"
-  checksum: f6336fbfad7a9e338b7eb3cc7b3a04541e33fd3eb73a8eae5f7817eb9b1c803d2cee77486ed988fb0b07cc797643cf502e9c2414dbe106796ce549e60b943892
   languageName: node
   linkType: hard
 

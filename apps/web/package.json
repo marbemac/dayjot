@@ -31,7 +31,6 @@
     "@supastack/utils-types": "workspace:*",
     "@tanstack/react-query": "5.4.3",
     "@tanstack/react-query-devtools": "5.4.3",
-    "@tiptap/extension-collaboration": "2.1.12",
     "@tiptap/extension-placeholder": "2.1.12",
     "@tiptap/pm": "2.1.12",
     "@tiptap/react": "2.1.12",
@@ -52,11 +51,7 @@
     "remix-routes": "1.5.0",
     "tailwindcss": "3.3.5",
     "tinybase": "4.4.0-beta.1",
-    "valibot": "0.20.0",
-    "y-indexeddb": "9.0.11",
-    "y-prosemirror": "1.2.1",
-    "y-protocols": "1.0.6",
-    "yjs": "13.6.8"
+    "valibot": "0.20.0"
   },
   "devDependencies": {
     "@remix-run/dev": "2.2.0",

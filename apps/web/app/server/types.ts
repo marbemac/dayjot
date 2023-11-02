@@ -3,7 +3,7 @@ import type { Simplify } from '@supastack/utils-types';
 import type { CookieOptions } from 'hono/utils/cookie';
 import type { Session } from 'lucia';
 
-import type { Auth } from '~/api/auth/index.ts';
+import type { Auth } from '~/server/auth/index.ts';
 
 /**
  * The properties available on `c.var` in hono, or `ctx` in trpc.

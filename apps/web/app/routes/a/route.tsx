@@ -13,7 +13,5 @@ export async function loader({ context }: LoaderFunctionArgs) {
 }
 
 export default function AuthedLayout() {
-  return (
-    <ClientOnly component={() => import('~/components/AppLayout.tsx')} fallback={<Box tw="p-8">Initializing...</Box>} />
-  );
+  return <ClientOnly component={() => import('./Layout.tsx')} fallback={<Box tw="p-8">Initializing...</Box>} />;
 }

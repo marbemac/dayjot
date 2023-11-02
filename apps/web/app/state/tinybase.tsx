@@ -2,13 +2,14 @@
 // https://github.com/tinyplex/tinybase/issues/104
 import * as UiReact from 'tinybase/debug/ui-react/with-schemas';
 import { createIndexedDbPersister } from 'tinybase/persisters/persister-indexed-db';
-import { createStore as baseCreateStore } from 'tinybase/with-schemas';
+import { createQueries, createStore } from 'tinybase/with-schemas';
 
 const tablesSchema = {
   entries: {
-    dbId: { type: 'string', default: '@TODO' },
+    day: { type: 'string' },
     remoteHash: { type: 'string' },
     localHash: { type: 'string' },
+    content: { type: 'string' },
   },
 } as const;
 
@@ -30,16 +31,24 @@ const {
   useSetCellCallback,
   useAddRowCallback,
   useStore,
+  useQueries,
+  ResultRowView,
+  ResultCellView,
+  ResultTableView,
   useCreatePersister,
 } = UiReactWithSchemas;
 
 export {
   Provider,
+  ResultCellView,
+  ResultRowView,
+  ResultTableView,
   TableView,
   useAddRowCallback,
   useCell,
   useCreatePersister,
   useCreateStore,
+  useQueries,
   useRow,
   useSetCellCallback,
   useStore,
@@ -51,17 +60,25 @@ export {
  * Ditto above, but for types
  */
 export type RowProps = typeof UiReactWithSchemas.RowProps;
+export type ResultRowProps = typeof UiReactWithSchemas.ResultRowProps;
 
-const createStore = () => {
-  const store = baseCreateStore().setSchema(tablesSchema, valuesSchema);
+const initTiny = () => {
+  const store = createStore().setSchema(tablesSchema, valuesSchema);
 
-  return { store };
+  const queries = createQueries(store);
+
+  queries.setQueryDefinition('dirtyEntries', 'entries', ({ select, where }) => {
+    select('day');
+    where(getCell => getCell('localHash') !== getCell('remoteHash'));
+  });
+
+  return { store, queries };
 };
 
-// tinybase store is only on the client, so can be a singleton
-const { store: tinyStore } = createStore();
+// tinybase is only on the client, so can be a singleton
+const { store: tinyStore, queries: tinyQueries } = initTiny();
 
-export { tinyStore };
+export { tinyQueries, tinyStore };
 
 export function TinyProvider({ children }: { children: React.ReactNode }) {
   const store = useCreateStore(() => tinyStore);
@@ -76,5 +93,9 @@ export function TinyProvider({ children }: { children: React.ReactNode }) {
     },
   );
 
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <Provider store={store} queries={tinyQueries}>
+      {children}
+    </Provider>
+  );
 }

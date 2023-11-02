@@ -2,10 +2,11 @@ import { Box, Heading, VStack } from '@supastack/ui-primitives';
 import { dayjs } from '@supastack/utils-dates';
 import { memo, useCallback } from 'react';
 
-import { Tiptap } from '~/components/Editor/index.ts';
 import { useFocusOnEditor } from '~/state/editor.ts';
 import { useEntryDoc } from '~/state/entries.ts';
 import { useCell, useSetCellCallback } from '~/state/tinybase.tsx';
+
+import { Tiptap } from './Editor/index.ts';
 
 export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
   const day = dayjs(props.day);
@@ -23,13 +24,13 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
    * Can switch to simpler hasEntry check if the following issue is implemented
    * https://github.com/tinyplex/tinybase/issues/102
    */
-  const dbId = useCell('entries', dayId, 'dbId');
-  const hasEntry = !!dbId;
+  const entry = useCell('entries', dayId, 'day');
+  const hasEntry = !!entry;
 
   const entryDoc = useEntryDoc(dayId);
 
   const focusOnEditor = useFocusOnEditor();
-  const addEntry = useSetCellCallback('entries', dayId, 'dbId', () => '@TODO', []);
+  const addEntry = useSetCellCallback('entries', dayId, 'day', () => dayId, [dayId]);
   const handleStartEditor = useCallback(() => {
     focusOnEditor(dayId);
     addEntry();
