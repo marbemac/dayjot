@@ -3,9 +3,9 @@ import { env, getRuntimeKey } from 'hono/adapter';
 import { createMiddleware } from 'hono/factory';
 import postgres from 'postgres';
 
-import { initAuth } from '~/api/auth/index.ts';
-import type { HonoEnv, ReqCtx } from '~/api/types.ts';
-import { deleteCookie, getCookie, setCookie } from '~/api/utils/cookies.ts';
+import { initAuth } from '~/server/auth/index.ts';
+import type { HonoEnv, ReqCtx } from '~/server/types.ts';
+import { deleteCookie, getCookie, setCookie } from '~/server/utils/cookies.ts';
 
 /**
  * Export a plain version of this fn, so that we can use it in other contexts such as

@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "dotenv -e .env.development -- concurrently \"remix-routes -w\" \"vite-node app/api/index.ts -w\"",
+    "dev": "dotenv -e .env.development -- concurrently \"remix-routes -w\" \"vite-node app/server/index.ts -w\"",
     "build": "remix-routes && vite build && vite build --ssr",
     "preview": "wrangler pages dev dist --port 3000 --compatibility-flags=nodejs_compat --compatibility-date=2023-10-27 --log-level warn",
     "lint": "eslint .",

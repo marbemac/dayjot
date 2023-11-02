@@ -8,7 +8,7 @@ import { LuciaError } from 'lucia';
 import { isWithinExpiration } from 'lucia/utils';
 import { email, maxLength, minLength, object, string } from 'valibot';
 
-import { protectedProcedure, publicProcedure, router } from '~/api/trpc/trpc.ts';
+import { protectedProcedure, publicProcedure, router } from '~/server/trpc/trpc.ts';
 
 const SignupSchema = object({
   email: string([minLength(4), maxLength(31)]),

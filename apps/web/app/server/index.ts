@@ -4,13 +4,13 @@ import { createAdaptorServer } from '@supastack/server-hono-node';
 import connect from 'connect';
 import { Hono } from 'hono';
 
-import { reqCtxMiddleware } from '~/api/middleware/context.ts';
-import { trpcServer } from '~/api/middleware/trpc.ts';
-import { appRouter } from '~/api/trpc/index.ts';
-import type { HonoEnv } from '~/api/types.ts';
-import { deleteCookie, setCookie } from '~/api/utils/cookies.ts';
 import { TRPC_ROOT } from '~/app.ts';
 import type { AppLoadContext } from '~/remix-types.js';
+import { reqCtxMiddleware } from '~/server/middleware/context.ts';
+import { trpcServer } from '~/server/middleware/trpc.ts';
+import { appRouter } from '~/server/trpc/index.ts';
+import type { HonoEnv } from '~/server/types.ts';
+import { deleteCookie, setCookie } from '~/server/utils/cookies.ts';
 
 const server = new Hono<HonoEnv>();
 

@@ -4,7 +4,7 @@ import { createApp } from '@ssrx/remix';
 import { QueryClientProvider } from '@tanstack/react-query';
 import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 
-import type { AppRouter } from '~/api/trpc/index.ts';
+import type { AppRouter } from '~/server/trpc/index.ts';
 
 import { supaThemePlugin } from './ssrx-theme.tsx';
 

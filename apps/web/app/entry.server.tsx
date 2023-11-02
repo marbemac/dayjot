@@ -1,9 +1,9 @@
 import type { DataFunctionArgs, EntryContext } from '@remix-run/server-runtime';
 
-import { appRouter } from '~/api/trpc/index.ts';
-import { getReqTheme } from '~/api/utils/theme.ts';
 import { serverHandler } from '~/app.ts';
 import type { AppLoadContext } from '~/remix-types.ts';
+import { appRouter } from '~/server/trpc/index.ts';
+import { getReqTheme } from '~/server/utils/theme.ts';
 
 export function handleDataRequest(response: Response, { request, params, context }: DataFunctionArgs) {
   console.log('server entry handleDataRequest()');
