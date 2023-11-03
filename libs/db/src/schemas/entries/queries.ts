@@ -5,9 +5,10 @@ import type { SetOptional } from '@supastack/utils-types';
 import type { Kysely } from 'kysely';
 
 import type { DbSchema } from '../../db.ts';
-import { EntryId, type TEntryId } from '../../ids.ts';
+import type { TUserId } from '../../ids.ts';
+import { EntryId } from '../../ids.ts';
 import type { InsertQueryOpts } from '../../types.ts';
-import type { Entry } from './schema.ts';
+import type { EntryColNames } from './schema.ts';
 import { ENTRIES_KEY, type NewEntry } from './schema.ts';
 
 export type EntryQueries = ReturnType<typeof entryQueries>;
@@ -17,13 +18,16 @@ export const entryQueries = <T extends DbSchema>(opts: BuildQueriesOpts<T>) => {
 
   return {
     bulkUpsert: bulkUpsertEntries({ db }),
+    listSinceCheckpoint: listSinceCheckpoint({ db }),
   };
 };
+
+const summarySelect = ['id', 'day', 'contentHash', 'createdAt', 'updatedAt'] satisfies EntryColNames[];
+const detailedSelect = [...summarySelect, 'content'] satisfies EntryColNames[];
 
 // Allow passing in any format for day and updated at - queries will make sure they are formatted correctly
 type UpdateableEntry = Omit<NewEntry, 'day' | 'updatedAt' | 'contentHash'> & {
   day: dayjs.ConfigType;
-  updatedAt: dayjs.ConfigType;
 };
 
 const formatEntryDay = (day: dayjs.ConfigType) => dayjs(day).format('YYYY-MM-DD');
@@ -35,26 +39,41 @@ const bulkUpsertEntries = ({ db }: InsertQueryOpts) => {
     return db
       .insertInto(ENTRIES_KEY)
       .values(
-        values.map(({ day, updatedAt, ...v }) => ({
+        values.map(({ day, ...v }) => ({
           id: EntryId.generate(),
           ...v,
           contentHash: hash(v.content),
           day: formatEntryDay(day),
-          updatedAt: dayjs(updatedAt).toDate(),
+          updatedAt: dayjs.utc().toDate(),
         })),
       )
       .onConflict(oc =>
-        oc
-          .columns(['userId', 'day'])
-          .doUpdateSet({
-            content: eb => eb.ref('excluded.content'),
-            contentHash: eb => eb.ref('excluded.contentHash'),
-            updatedAt: eb => eb.ref('excluded.updatedAt'),
-          })
-          // extra protection, don't update the db if the local entry is older than the db entry
-          .whereRef('excluded.updatedAt', '>', 'entries.updatedAt'),
+        oc.columns(['userId', 'day']).doUpdateSet({
+          content: eb => eb.ref('excluded.content'),
+          contentHash: eb => eb.ref('excluded.contentHash'),
+        }),
       )
       .returning(['id', 'day', 'contentHash', 'updatedAt'])
       .execute();
+  };
+};
+
+const listSinceCheckpoint = ({ db }: InsertQueryOpts) => {
+  return async ({
+    updatedSince,
+    limit,
+    userId,
+  }: {
+    userId: TUserId;
+    limit: number;
+    updatedSince?: dayjs.ConfigType;
+  }) => {
+    let q = db.selectFrom(ENTRIES_KEY).select(detailedSelect).where('userId', '=', userId);
+
+    if (updatedSince) {
+      q = q.where('updatedAt', '>', dayjs(updatedSince).toDate());
+    }
+
+    return q.orderBy(['updatedAt asc', 'day asc']).limit(limit).execute();
   };
 };

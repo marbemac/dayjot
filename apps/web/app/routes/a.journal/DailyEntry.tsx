@@ -1,12 +1,15 @@
 import { Box, Heading, VStack } from '@supastack/ui-primitives';
 import { dayjs } from '@supastack/utils-dates';
 import { memo, useCallback } from 'react';
+import type { RxCollection } from 'rxdb';
+import { useRxCollection, useRxData } from 'rxdb-hooks';
 
-import { useFocusOnEditor } from '~/state/editor.ts';
-import { useEntryDoc } from '~/state/entries.ts';
-import { useCell, useSetCellCallback } from '~/state/tinybase.client.tsx';
+import { TableName } from '~/local-db/index.client.ts';
+import type { Entry, EntryDoc } from '~/local-db/schemas.client.ts';
 
 import { Tiptap } from './Editor/index.ts';
+import { useFocusOnEditor } from './Editor/state.ts';
+import { useEntryEditor } from './use-entry-editor.ts';
 
 export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
   const day = dayjs(props.day);
@@ -20,21 +23,21 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
     sameElse: 'ddd, MMM D', // Everything else ( Wed, Jan 25 )
   });
 
-  /**
-   * Can switch to simpler hasEntry check if the following issue is implemented
-   * https://github.com/tinyplex/tinybase/issues/102
-   */
-  const entry = useCell('entries', dayId, 'day');
-  const hasEntry = !!entry;
+  const entries = useRxCollection<Entry>(TableName.Entries)!;
+  const q = useCallback((c: RxCollection<Entry>) => c.findOne(dayId), [dayId]);
 
-  const entryDoc = useEntryDoc(dayId);
+  const { result } = useRxData<Entry>(TableName.Entries, q);
+  const entry = result[0] as EntryDoc | undefined;
 
   const focusOnEditor = useFocusOnEditor();
-  const addEntry = useSetCellCallback('entries', dayId, 'day', () => dayId, [dayId]);
-  const handleStartEditor = useCallback(() => {
+  const handleStartEditor = useCallback(async () => {
+    await entries.upsert({
+      day: dayId,
+      content: '',
+    });
+
     focusOnEditor(dayId);
-    addEntry();
-  }, [addEntry, dayId, focusOnEditor]);
+  }, [dayId, entries, focusOnEditor]);
 
   return (
     // -mt-px so that the top entry in the list doesn't show a border (doubling up with navbar bottom border)
@@ -43,8 +46,8 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
         {formattedDate}
       </Heading>
 
-      {hasEntry ? (
-        <Tiptap entryDoc={entryDoc} />
+      {entry ? (
+        <EntryEditor entry={entry} />
       ) : (
         <Box
           tw="h-5 w-full cursor-text bg-transparent text-soft"
@@ -60,3 +63,9 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
 });
 
 DailyEntry.displayName = 'DailyEntry';
+
+const EntryEditor = ({ entry }: { entry: EntryDoc }) => {
+  const entryEditor = useEntryEditor(entry);
+
+  return <Tiptap entryEditor={entryEditor} />;
+};

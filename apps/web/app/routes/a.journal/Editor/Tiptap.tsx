@@ -3,30 +3,21 @@ import './styles.css';
 import { EditorContent } from '@tiptap/react';
 import { useEffect } from 'react';
 
-import { useIsEditorFocused } from '~/state/editor.ts';
-import type { EntryDoc } from '~/state/entries.ts';
+import type { EntryEditor } from '../use-entry-editor.ts';
+import { useIsEditorFocused } from './state.ts';
 
-export const Tiptap = ({ entryDoc }: { entryDoc: EntryDoc }) => {
-  const isFocused = useIsEditorFocused(entryDoc.day);
-
-  useEffect(() => {
-    console.debug('Editor.mount', entryDoc.day);
-    return () => {
-      console.debug('Editor.unmount', entryDoc.day);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+export const Tiptap = ({ entryEditor }: { entryEditor: EntryEditor }) => {
+  const isFocused = useIsEditorFocused(entryEditor.entry.day);
 
   useEffect(() => {
     if (isFocused) {
-      console.debug(`Editor.focus`, entryDoc.day);
-      entryDoc.focus();
+      entryEditor.focus();
     }
-  }, [entryDoc, isFocused]);
+  }, [entryEditor, isFocused]);
 
   return (
     <>
-      <EditorContent editor={entryDoc.editor} />
+      <EditorContent editor={entryEditor.editor} />
       {/* {editor && <FloatingMenu editor={editor}>This is the floating menu</FloatingMenu>} */}
       {/* {editor && <BubbleMenu editor={editor}>This is the bubble menu</BubbleMenu>} */}
     </>

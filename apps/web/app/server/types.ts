@@ -1,4 +1,5 @@
 import type { DbSdk } from '@dayjot/db';
+import type { TUserId } from '@dayjot/db/ids';
 import type { Simplify } from '@supastack/utils-types';
 import type { CookieOptions } from 'hono/utils/cookie';
 import type { Session } from 'lucia';
@@ -18,7 +19,7 @@ export type ReqCtx = {
   auth: Auth;
   isAuthed: boolean;
   sessionId?: Session['sessionId'];
-  user?: Omit<Session['user'], 'userId'> & { id: Session['userId'] };
+  user?: Omit<Session['user'], 'userId'> & { id: TUserId };
 };
 
 export type HonoEnv = { Variables: ReqCtx; Bindings: Simplify<EnvVariables> };
