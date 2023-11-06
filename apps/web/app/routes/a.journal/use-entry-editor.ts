@@ -71,7 +71,6 @@ const getEditor = (
   let editor = Editors.get(docId);
   if (!editor) {
     const extensions = [
-      // The Collaboration extension comes with its own history handling
       StarterKit.configure(),
 
       Placeholder.configure({

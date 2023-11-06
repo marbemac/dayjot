@@ -11,6 +11,9 @@ if (import.meta.env.DEV) {
 
 addRxPlugin(RxDBLeaderElectionPlugin);
 
+// @TODO https://rxdb.info/cleanup.html
+// import { RxDBCleanupPlugin } from 'rxdb/plugins/cleanup';
+
 export type LocalDbCollections = {
   entries: EntryCollection;
 };

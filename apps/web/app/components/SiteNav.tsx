@@ -9,7 +9,7 @@ export const SiteNav = () => {
   const { user } = useUser();
 
   return (
-    <Box as="header" tw="sticky top-0 z-10 flex border-b bg-panel/75 px-6 py-4 backdrop-blur-lg">
+    <Box as="header" tw="sticky top-0 z-auto flex border-b bg-panel/75 px-6 py-4 backdrop-blur-lg">
       <HStack center="y" spacing={6} tw="flex-1">
         {user ? (
           <UserDropdownMenu trigger={<Button variant="soft">Menu</Button>} />
@@ -26,7 +26,7 @@ export const SiteNav = () => {
         </HStack>
       ) : null}
 
-      {/* <HStack tw="flex-1 justify-end"></HStack> */}
+      <Box tw="flex flex-1 justify-end" />
     </Box>
   );
 };
