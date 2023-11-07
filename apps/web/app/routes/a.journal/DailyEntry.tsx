@@ -7,8 +7,7 @@ import { useRxCollection, useRxData } from 'rxdb-hooks';
 import { TableName } from '~/local-db/index.client.ts';
 import type { Entry, EntryDoc } from '~/local-db/schemas.client.ts';
 
-import { Tiptap } from './Editor/index.ts';
-import { useFocusOnEditor } from './Editor/state.ts';
+import { editors, RichTextEditor } from './Editor/index.ts';
 import { useEntryEditor } from './use-entry-editor.ts';
 
 export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
@@ -29,15 +28,14 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
   const { result } = useRxData<Entry>(TableName.Entries, q);
   const entry = result[0] as EntryDoc | undefined;
 
-  const focusOnEditor = useFocusOnEditor();
   const handleStartEditor = useCallback(async () => {
     await entries.upsert({
       day: dayId,
       content: '',
     });
 
-    focusOnEditor(dayId);
-  }, [dayId, entries, focusOnEditor]);
+    editors.set.focusOnEditor(dayId);
+  }, [dayId, entries]);
 
   return (
     // -mt-px so that the top entry in the list doesn't show a border (doubling up with navbar bottom border)
@@ -64,8 +62,14 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
 
 DailyEntry.displayName = 'DailyEntry';
 
-const EntryEditor = ({ entry }: { entry: EntryDoc }) => {
-  const entryEditor = useEntryEditor(entry);
+// const EntryEditor = ({ entry }: { entry: EntryDoc }) => {
+//   const entryDoc = useEntryEditor2(entry);
 
-  return <Tiptap entryEditor={entryEditor} />;
+//   return <Editor id={entry.day} editor={entryDoc.editor} />;
+// };
+
+const EntryEditor = ({ entry }: { entry: EntryDoc }) => {
+  useEntryEditor(entry);
+
+  return <RichTextEditor id={entry.day} />;
 };

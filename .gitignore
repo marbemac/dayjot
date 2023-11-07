@@ -48,6 +48,7 @@ node_modules
 /coverage
 yarn-error.log
 .no-checkin
+.ignore
 
 # System Files
 .DS_Store

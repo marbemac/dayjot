@@ -1,10 +1,9 @@
-import Placeholder from '@tiptap/extension-placeholder';
-import type { EditorEvents, FocusPosition } from '@tiptap/react';
-import { Editor } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
+import type { EditorEvents } from '@tiptap/react';
 import debounce from 'lodash.debounce';
 
 import type { EntryDoc } from '~/local-db/schemas.client.ts';
+
+import { editors } from './Editor/state.ts';
 
 const EntryEditors = new Map<string, EntryEditor>();
 export const useEntryEditor = (entry: EntryDoc): EntryEditor => {
@@ -22,12 +21,17 @@ export class EntryEditor {
   #disposables: (() => void)[] = [];
 
   constructor(public readonly entry: EntryDoc) {
+    const editor = this.editor;
+
+    const onUpdate = debounce(this.onEditorUpdate, 1000);
+    editor.on('update', onUpdate);
+
     const watchContent = entry.get$('content').subscribe(newContent => {
       const isExternalChange = newContent !== this.#lastContent;
       if (isExternalChange && this.#lastContent) {
         console.debug('EntryEditor.handleExternalChange', entry.day);
         try {
-          this.editor.commands.setContent(JSON.parse(newContent));
+          editor.commands.setContent(JSON.parse(newContent));
         } catch {
           // noop
         }
@@ -35,68 +39,21 @@ export class EntryEditor {
     });
 
     // if we ever actually want to cleanup EntryEditor, make sure to call all disposables
+    this.#disposables.push(() => editor.off('update', onUpdate));
     this.#disposables.push(watchContent.unsubscribe);
   }
 
+  private onEditorUpdate = ({ editor }: EditorEvents['update']) => {
+    this.#lastContent = JSON.stringify(editor.getJSON());
+    void this.entry.updateContent(this.#lastContent);
+  };
+
   get editor() {
-    return getEditor(this.entry.day, this.entry.content, {
-      onInit: () => {
+    return editors.set.findOrCreate(this.entry.day, {
+      initialContent: this.entry.content,
+      onCreate: () => {
         this.#lastContent = this.entry.content;
       },
-      onUpdate: ({ editor }) => {
-        this.#lastContent = JSON.stringify(editor.getJSON());
-
-        void this.entry.updateContent(this.#lastContent);
-      },
     });
-  }
-
-  public focus(position?: FocusPosition) {
-    this.editor.commands.focus(position);
   }
 }
-
-const Editors = new Map<string, Editor>();
-const getEditor = (
-  docId: string,
-  initialContent: string,
-  {
-    onInit,
-    onUpdate,
-  }: {
-    onInit?: () => void;
-    onUpdate?: (props: EditorEvents['update']) => void;
-  } = {},
-) => {
-  let editor = Editors.get(docId);
-  if (!editor) {
-    const extensions = [
-      StarterKit.configure(),
-
-      Placeholder.configure({
-        placeholder: 'Write here...',
-      }),
-    ];
-
-    let jsonContent;
-    try {
-      if (initialContent) {
-        jsonContent = JSON.parse(initialContent);
-      }
-    } catch {
-      console.warn('Error parsing initial content for docId', docId);
-    }
-
-    editor = new Editor({
-      extensions,
-      onUpdate: onUpdate ? debounce(onUpdate, 1000) : undefined,
-      content: jsonContent,
-    });
-
-    Editors.set(docId, editor);
-
-    if (onInit) onInit();
-  }
-
-  return editor;
-};

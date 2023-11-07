@@ -3,21 +3,29 @@ import './styles.css';
 import { EditorContent } from '@tiptap/react';
 import { useEffect } from 'react';
 
-import type { EntryEditor } from '../use-entry-editor.ts';
-import { useIsEditorFocused } from './state.ts';
+import type { EditorId } from './state.ts';
+import { editors } from './state.ts';
+import { useTipTapEditor } from './useEditor.ts';
 
-export const Tiptap = ({ entryEditor }: { entryEditor: EntryEditor }) => {
-  const isFocused = useIsEditorFocused(entryEditor.entry.day);
+export type RichTextEditorProps = {
+  id: EditorId;
+};
+
+export const RichTextEditor = ({ id }: RichTextEditorProps) => {
+  const editor = editors.set.findOrCreate(id);
+  const shouldFocus = editors.use.shouldFocus(id);
+
+  useTipTapEditor({}, [], editor);
 
   useEffect(() => {
-    if (isFocused) {
-      entryEditor.focus();
+    if (shouldFocus) {
+      editor.commands.focus();
     }
-  }, [entryEditor, isFocused]);
+  }, [editor, shouldFocus]);
 
   return (
     <>
-      <EditorContent editor={entryEditor.editor} />
+      <EditorContent editor={editor} />
       {/* {editor && <FloatingMenu editor={editor}>This is the floating menu</FloatingMenu>} */}
       {/* {editor && <BubbleMenu editor={editor}>This is the bubble menu</BubbleMenu>} */}
     </>

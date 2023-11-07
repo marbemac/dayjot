@@ -31,14 +31,15 @@
     "@supastack/utils-types": "workspace:*",
     "@tanstack/react-query": "5.4.3",
     "@tanstack/react-query-devtools": "5.4.3",
+    "@tiptap/core": "2.1.12",
     "@tiptap/extension-placeholder": "2.1.12",
     "@tiptap/pm": "2.1.12",
     "@tiptap/react": "2.1.12",
     "@tiptap/starter-kit": "2.1.12",
     "@trpc/client": "10.43.0",
     "@trpc/server": "10.43.0",
+    "@udecode/zustood": "2.0.0",
     "hono": "3.9.1",
-    "jotai": "2.5.0",
     "lodash.debounce": "4.0.8",
     "lucia": "^2.7.2",
     "postgres": "3.4.2",
@@ -52,8 +53,8 @@
     "rxdb": "14.17.1",
     "rxdb-hooks": "5.0.2",
     "rxjs": "7.8.1",
-    "tailwindcss": "3.3.5",
-    "valibot": "0.20.0"
+    "valibot": "0.20.0",
+    "zustand": "4.4.6"
   },
   "devDependencies": {
     "@remix-run/dev": "2.2.0",
