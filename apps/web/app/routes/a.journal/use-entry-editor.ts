@@ -1,9 +1,8 @@
 import type { EditorEvents } from '@tiptap/react';
 import debounce from 'lodash.debounce';
 
+import { editors } from '~/components/Editor/state.ts';
 import type { EntryDoc } from '~/local-db/schemas.client.ts';
-
-import { editors } from './Editor/state.ts';
 
 const EntryEditors = new Map<string, EntryEditor>();
 export const useEntryEditor = (entry: EntryDoc): EntryEditor => {

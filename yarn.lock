@@ -14050,7 +14050,7 @@ __metadata:
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
     tailwindcss: "npm:3.3.5"
-    vite: "npm:5.0.0-beta.16"
+    vite: "npm:5.0.0-beta.17"
   languageName: unknown
   linkType: soft
 
@@ -17214,7 +17214,7 @@ __metadata:
     prosemirror-view: "npm:^1.32.3"
     solid-js: "npm:~1.8.5"
     tailwindcss: "npm:3.3.5"
-    vite: "npm:5.0.0-beta.16"
+    vite: "npm:5.0.0-beta.17"
     vite-plugin-solid: "npm:2.7.2"
   languageName: unknown
   linkType: soft
@@ -20746,9 +20746,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:5.0.0-beta.16":
-  version: 5.0.0-beta.16
-  resolution: "vite@npm:5.0.0-beta.16"
+"vite@npm:5.0.0-beta.17":
+  version: 5.0.0-beta.17
+  resolution: "vite@npm:5.0.0-beta.17"
   dependencies:
     esbuild: "npm:^0.19.3"
     fsevents: "npm:~2.3.3"
@@ -20782,7 +20782,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: db1433480cf199966cb0fdb2aa50596b0ec1d1590553b7c5e65f2ba7cd4bd682afbc73597ba6c686b3fed2a29c47138829afc368ddf591fac3b97d0991133854
+  checksum: 7ab5d60d1895fd65f8f9f4e18c69114f41cdb6f6b35c8daed85e89284b1a9092a52fd735a748a61f602eb4d1a2c3106e897620fd168aa5ee8496dbd7e5c6a106
   languageName: node
   linkType: hard
 
@@ -21065,7 +21065,7 @@ __metadata:
     tailwindcss: "npm:3.3.5"
     typescript-remix-routes-plugin: "npm:1.0.1"
     valibot: "npm:0.20.0"
-    vite: "npm:5.0.0-beta.16"
+    vite: "npm:5.0.0-beta.17"
     vite-node: "npm:~0.34.1"
     vite-tsconfig-paths: "npm:4.2.1"
     wrangler: "npm:3.15.0"

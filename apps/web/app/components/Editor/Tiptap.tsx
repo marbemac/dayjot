@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import type { EditorId } from './state.ts';
 import { editors } from './state.ts';
-import { useTipTapEditor } from './useEditor.ts';
+import { useTipTapEditor } from './use-editor.ts';
 
 export type RichTextEditorProps = {
   id: EditorId;

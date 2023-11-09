@@ -4,10 +4,10 @@ import { memo, useCallback } from 'react';
 import type { RxCollection } from 'rxdb';
 import { useRxCollection, useRxData } from 'rxdb-hooks';
 
+import { editors, RichTextEditor } from '~/components/Editor/index.ts';
 import { TableName } from '~/local-db/index.client.ts';
 import type { Entry, EntryDoc } from '~/local-db/schemas.client.ts';
 
-import { editors, RichTextEditor } from './Editor/index.ts';
 import { useEntryEditor } from './use-entry-editor.ts';
 
 export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
