@@ -5,6 +5,7 @@ import { Plugin, PluginKey } from '@tiptap/pm/state';
 
 import { elementFromString } from '../../utils/dom.ts';
 import isMarkdown from '../../utils/is-markdown.ts';
+import { normalizeExternalHtml } from '../../utils/normalize-external-html.ts';
 import type { MarkdownStorage } from './extension.ts';
 import { MARKDOWN_KEY } from './extension.ts';
 
@@ -140,10 +141,13 @@ export const MarkdownClipboard = Extension.create<MarkdownClipboardOpts>({
 
               console.debug('Editor.paste markdown', parsed);
 
-              const slice = DOMParser.fromSchema(this.editor.schema).parseSlice(elementFromString(parsed), {
-                preserveWhitespace: true,
-                context: view.state.selection.$from,
-              });
+              const slice = DOMParser.fromSchema(this.editor.schema).parseSlice(
+                elementFromString(normalizeExternalHtml(parsed)),
+                {
+                  preserveWhitespace: true,
+                  context: view.state.selection.$from,
+                },
+              );
 
               const tr = view.state.tr;
               let currentPos = view.state.selection.from;
