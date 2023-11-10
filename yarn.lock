@@ -1644,6 +1644,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@dayjot/db@workspace:libs/db"
   dependencies:
+    "@dayjot/editor": "workspace:*"
     "@supastack/auth-model": "workspace:*"
     "@supastack/db-model": "workspace:*"
     "@supastack/db-pg-client": "workspace:*"
@@ -1673,7 +1674,9 @@ __metadata:
     "@supastack/ui-styles": "workspace:*"
     "@tiptap/core": "npm:2.1.12"
     "@tiptap/extension-code-block-lowlight": "npm:2.1.12"
+    "@tiptap/extension-highlight": "npm:2.1.12"
     "@tiptap/extension-image": "npm:2.1.12"
+    "@tiptap/extension-link": "npm:2.1.12"
     "@tiptap/extension-placeholder": "npm:2.1.12"
     "@tiptap/extension-table": "npm:2.1.12"
     "@tiptap/extension-table-cell": "npm:2.1.12"
@@ -1682,6 +1685,7 @@ __metadata:
     "@tiptap/extension-task-item": "npm:2.1.12"
     "@tiptap/extension-task-list": "npm:2.1.12"
     "@tiptap/extension-typography": "npm:2.1.12"
+    "@tiptap/html": "npm:2.1.12"
     "@tiptap/pm": "npm:2.1.12"
     "@tiptap/react": "npm:2.1.12"
     "@tiptap/starter-kit": "npm:2.1.12"
@@ -1689,6 +1693,7 @@ __metadata:
     "@udecode/zustood": "npm:2.0.0"
     lowlight: "npm:3.1.0"
     markdown-it: "npm:13.0.2"
+    markdown-it-mark: "npm:3.0.1"
     typescript: "npm:5.2.2"
   peerDependencies:
     react: ">=18"
@@ -6972,6 +6977,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tiptap/extension-highlight@npm:2.1.12":
+  version: 2.1.12
+  resolution: "@tiptap/extension-highlight@npm:2.1.12"
+  peerDependencies:
+    "@tiptap/core": ^2.0.0
+  checksum: 48dfeb10df69c0ab1030e5bf4479f51a4a1fd17270cb730fc647c152f9e0ef5507e935ec41ceac1f39c7139d9c7a9c3241a588ab1fb322646cbb90070c88dc48
+  languageName: node
+  linkType: hard
+
 "@tiptap/extension-history@npm:^2.1.12":
   version: 2.1.12
   resolution: "@tiptap/extension-history@npm:2.1.12"
@@ -7007,6 +7021,18 @@ __metadata:
   peerDependencies:
     "@tiptap/core": ^2.0.0
   checksum: 74a8bba393e1e702f456fdb3803b2a794e7792c1366d1adfa32f5f975c08ae81acc28910d2240826384782ba549fff078c68f78c65a782af65f298aefbb93ca0
+  languageName: node
+  linkType: hard
+
+"@tiptap/extension-link@npm:2.1.12":
+  version: 2.1.12
+  resolution: "@tiptap/extension-link@npm:2.1.12"
+  dependencies:
+    linkifyjs: "npm:^4.1.0"
+  peerDependencies:
+    "@tiptap/core": ^2.0.0
+    "@tiptap/pm": ^2.0.0
+  checksum: f3b5750242c9181dd8bd6aa57a971467de257eba44b2e3c2c2707b70d1ff9dbfe6e56e40e43ff9d1b550fe5ebf4b0aeb160f273a1d158edaea70e386119b1860
   languageName: node
   linkType: hard
 
@@ -7127,6 +7153,18 @@ __metadata:
   peerDependencies:
     "@tiptap/core": ^2.0.0
   checksum: b1693161ff4e70eb2e64f90e56e2240cb737feebaacd71759b0150dcc771395f795d1a4f0d6c774b3b93c726219e700fa7930502ba8ef117cbfc3c203ebba589
+  languageName: node
+  linkType: hard
+
+"@tiptap/html@npm:2.1.12":
+  version: 2.1.12
+  resolution: "@tiptap/html@npm:2.1.12"
+  dependencies:
+    zeed-dom: "npm:^0.9.19"
+  peerDependencies:
+    "@tiptap/core": ^2.0.0
+    "@tiptap/pm": ^2.0.0
+  checksum: a664890a673141250713a7d6e539c9e621e15c991098faeab3e303a087c68de8e24bd3cc7f61dd2f616b00aa0e6871b77b64dca71121baaac1c837982724a3db
   languageName: node
   linkType: hard
 
@@ -14442,6 +14480,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"linkifyjs@npm:^4.1.0":
+  version: 4.1.2
+  resolution: "linkifyjs@npm:4.1.2"
+  checksum: f24126bc4f437326c30efe048bb0465736d8f07920bbe456510ac710bd784b2c9035be63dd48cb24686d50475cb3ffeb98f6f1c5824ee6b58ae363cef7c2c147
+  languageName: node
+  linkType: hard
+
 "load-tsconfig@npm:^0.2.3":
   version: 0.2.5
   resolution: "load-tsconfig@npm:0.2.5"
@@ -14788,6 +14833,13 @@ __metadata:
   version: 1.1.1
   resolution: "markdown-extensions@npm:1.1.1"
   checksum: 9fbfc5c44f0a16929d8d70fb1d4641b9e65dd6358063f8a1ccdb13c7989188b25c1972032deb91a9bbe4365b75de7f4bc782d87d15c2f1399cdce0f6f61c0fab
+  languageName: node
+  linkType: hard
+
+"markdown-it-mark@npm:3.0.1":
+  version: 3.0.1
+  resolution: "markdown-it-mark@npm:3.0.1"
+  checksum: aacf9962ebe2a3b1497b7821273080176a205475014ed90d7380b2bc77a00414f9db802a659333b9fe954bb992c4c5e655460007fbbd54230f11e5150be8b035
   languageName: node
   linkType: hard
 
@@ -22026,6 +22078,15 @@ __metadata:
   bin:
     z-schema: bin/z-schema
   checksum: 6351c0486ad8db147e6e56781e5c69d0b1f19c5f4f653dd8860eac9c84f95aa8f1cd8d7afcd06b429618c55e984903fac20a2cd12dfdddb9f80c95494cfec1bc
+  languageName: node
+  linkType: hard
+
+"zeed-dom@npm:^0.9.19":
+  version: 0.9.26
+  resolution: "zeed-dom@npm:0.9.26"
+  dependencies:
+    css-what: "npm:^6.1.0"
+  checksum: 63946bc0fcea5532ba00d1657f8e7431abcd7c9fc6f27e2b51d7af817288b2fe357575ce476c3a0c31171e825023c504eaa61e038591bb794fc1ec9263a96d46
   languageName: node
   linkType: hard
 
