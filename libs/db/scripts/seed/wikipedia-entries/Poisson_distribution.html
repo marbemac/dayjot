@@ -1,0 +1,7669 @@
+<h1>Poisson distribution</h1>
+
+<div>Discrete probability distribution</div>
+
+
+
+<p>In probability theory and statistics, the <b>Poisson distribution</b> is a discrete probability distribution that expresses the probability of a given number of events occurring in a fixed interval of time or space if these events occur with a known constant mean rate and independently of the time since the last event. It is named after French mathematician Siméon Denis Poisson (/ˈpwɑːsɒn/; French pronunciation:[pwasɔ̃]). The Poisson distribution can also be used for the number of events in other specified interval types such as distance, area, or volume.
+It plays an important role for discrete-stable distributions.</p>
+
+<p>For instance, a call center receives an average of 180calls per hour, 24hours a day.  The calls are independent; receiving one does not change the probability of when the next one will arrive. The number of calls received during any minute has a Poisson probability distribution with mean 3. The most likely number of calls received are 2 and 3, but 1 and 4 are also likely. There is a small probability of it being as low as zero and a very small probability it could be 10 or even higher.</p>
+
+<p>Another example is the number of decay events that occur from a radioactive source during a defined observation period.</p>
+
+
+
+<h2>History</h2>
+<p>The distribution was first introduced by Siméon Denis Poisson (1781–1840) and published together with his probability theory in his work <i>Recherches sur la probabilité des jugements en matière criminelle et en matière civile</i> (1837). The work theorized about the number of wrongful convictions in a given country by focusing on certain random variables N that count, among other things, the number of discrete occurrences (sometimes called "events" or "arrivals") that take place during a time-interval of given length. The result had already been given in 1711 by Abraham de Moivre in <i>De Mensura Sortis seu; de Probabilitate Eventuum in Ludis a Casu Fortuito Pendentibus</i> . This makes it an example of Stigler's law and it has prompted some authors to argue that the Poisson distribution should bear the name of de Moivre.</p>
+
+<p>In 1860, Simon Newcomb fitted the Poisson distribution to the number of stars found in a unit of space.
+A further practical application of this distribution was made by Ladislaus Bortkiewicz in 1898 when he was given the task of investigating the number of soldiers in the Prussian army killed accidentally by horse kicks; this experiment introduced the Poisson distribution to the field of reliability engineering.</p>
+
+
+
+<h2>Definitions</h2>
+
+<h3>Probability mass function</h3>
+
+<p>A discrete random variable X is said to have a Poisson distribution, with parameter 
+  
+    
+      
+        λ
+        &gt;
+        0
+        ,
+      
+    
+    {\displaystyle \lambda &gt;0,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6f8621a2fb5c17fbf295fa1bac9b41c1aba3c4f0" alt="{\displaystyle \lambda &gt;0,}" /> if it has a probability mass function given by:</p>
+
+  
+    
+      
+        f
+        (
+        k
+        ;
+        λ
+        )
+        =
+        Pr
+        (
+        X
+        
+          =
+        
+        k
+        )
+        =
+        
+          
+            
+              
+                λ
+                
+                  k
+                
+              
+              
+                e
+                
+                  −
+                  λ
+                
+              
+            
+            
+              k
+              !
+            
+          
+        
+        ,
+      
+    
+    {\displaystyle f(k;\lambda )=\Pr(X{=}k)={\frac {\lambda ^{k}e^{-\lambda }}{k!}},}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7a0693ecaa606e3878dfa9a85552d357c690ffb9" alt="{\displaystyle f(k;\lambda )=\Pr(X{=}k)={\frac {\lambda ^{k}e^{-\lambda }}{k!}},}" />
+<p>where</p>
+<ul><li>k is the number of occurrences (
+  
+    
+      
+        k
+        =
+        0
+        ,
+        1
+        ,
+        2
+        ,
+        …
+      
+    
+    {\displaystyle k=0,1,2,\ldots }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b6d4b81efe1ce928c56c7b143cb2591f2100246c" alt="{\displaystyle k=0,1,2,\ldots }" />)</li>
+<li>e is Euler's number (
+  
+    
+      
+        e
+        =
+        2.71828
+        …
+      
+    
+    {\displaystyle e=2.71828\ldots }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d66c92b4dba5b8d590a9e2b01c854ca16f06927a" alt="e=2.71828\ldots " />)</li>
+<li>! is the factorial function.</li></ul>
+
+<p>The positive real number λ is equal to the expected value of X and also to its variance.</p>
+
+  
+    
+      
+        λ
+        =
+        E
+        ⁡
+        (
+        X
+        )
+        =
+        Var
+        ⁡
+        (
+        X
+        )
+        .
+      
+    
+    {\displaystyle \lambda =\operatorname {E} (X)=\operatorname {Var} (X).}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/2debd3f9adf97c8af4919aa69ed4a7121b47a737" alt="{\displaystyle \lambda =\operatorname {E} (X)=\operatorname {Var} (X).}" />
+
+<p>The Poisson distribution can be applied to systems with a large number of possible events, each of which is rare. The number of such events that occur during a fixed time interval is, under the right circumstances, a random number with a Poisson distribution.</p>
+
+<p>The equation can be adapted if, instead of the average number of events 
+  
+    
+      
+        λ
+        ,
+      
+    
+    {\displaystyle \lambda ,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/00aebb041f4a569408e310294efcc29e0eded7dc" alt="{\displaystyle \lambda ,}" /> we are given the average rate 
+  
+    
+      
+        r
+      
+    
+    {\displaystyle r}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0d1ecb613aa2984f0576f70f86650b7c2a132538" alt="r" /> at which events occur. Then 
+  
+    
+      
+        λ
+        =
+        r
+        t
+        ,
+      
+    
+    {\displaystyle \lambda =rt,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/55b61e1785da67e0020862cf83133fbb3f6a7d52" alt="{\displaystyle \lambda =rt,}" /> and:</p>
+
+
+  
+    
+      
+        P
+        (
+        k
+        
+           events in interval 
+        
+        t
+        )
+        =
+        
+          
+            
+              (
+              r
+              t
+              
+                )
+                
+                  k
+                
+              
+              
+                e
+                
+                  −
+                  r
+                  t
+                
+              
+            
+            
+              k
+              !
+            
+          
+        
+        .
+      
+    
+    {\displaystyle P(k{\text{ events in interval }}t)={\frac {(rt)^{k}e^{-rt}}{k!}}.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d52913ad3c9d45138ab03c8df7fe9f82728b1f98" alt="{\displaystyle P(k{\text{ events in interval }}t)={\frac {(rt)^{k}e^{-rt}}{k!}}.}" />
+
+<h3>Example</h3>
+<img alt="Chewing gum on a sidewalk in Reykjavík." src="//upload.wikimedia.org/wikipedia/commons/thumb/0/09/Chewing_gum_on_a_sidewalk_in_Reykjav%C3%ADk.JPG/220px-Chewing_gum_on_a_sidewalk_in_Reykjav%C3%ADk.JPG" height="293" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/0/09/Chewing_gum_on_a_sidewalk_in_Reykjav%C3%ADk.JPG/330px-Chewing_gum_on_a_sidewalk_in_Reykjav%C3%ADk.JPG 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/0/09/Chewing_gum_on_a_sidewalk_in_Reykjav%C3%ADk.JPG/440px-Chewing_gum_on_a_sidewalk_in_Reykjav%C3%ADk.JPG 2x" />Chewing gum on a sidewalk. The number of chewing gums on a single tile is approximately Poisson distributed.
+
+<p>The Poisson distribution may be useful to model events such as:</p>
+<ul><li>the number of meteorites greater than 1-meter diameter that strike Earth in a year;</li>
+<li>the number of laser photons hitting a detector in a particular time interval;</li>
+<li>the number of students achieving a low and high mark in an exam; and</li>
+<li>locations of defects and dislocations in materials.</li></ul>
+
+<p>Examples of the occurrence of random points in space are: the locations of asteroid impacts with earth (2-dimensional), the locations of imperfections in a material (3-dimensional), and the locations of trees in a forest (2-dimensional).</p>
+
+<h3>Assumptions and validity</h3>
+<p>The Poisson distribution is an appropriate model if the following assumptions are true:</p>
+<ul><li>k is the number of times an event occurs in an interval and k can take values 0, 1, 2,....</li>
+<li>The occurrence of one event does not affect the probability that a second event will occur. That is, events occur independently.</li>
+<li>The average rate at which events occur is independent of any occurrences. For simplicity, this is usually assumed to be constant, but may in practice vary with time.</li>
+<li>Two events cannot occur at exactly the same instant; instead, at each very small sub-interval, either exactly one event occurs, or no event occurs.</li></ul>
+
+<p>If these conditions are true, then k is a Poisson random variable, and the distribution of k is a Poisson distribution.</p>
+
+<p>The Poisson distribution is also the limit of a binomial distribution, for which the probability of success for each trial equals λ divided by the number of trials, as the number of trials approaches infinity (see Related distributions).</p>
+
+<h4>Examples of probability for Poisson distributions</h4>
+
+<div>
+<table> 
+
+<tbody>
+<tr><td>
+<p>On a particular river, overflow floods occur once every 100years on average. Calculate the probability of k = 0, 1, 2, 3, 4, 5, or 6 overflow floods in a 100year interval, assuming the Poisson model is appropriate.</p>
+
+<p>Because the average event rate is one overflow flood per 100years, λ = 1</p>
+
+
+  
+    
+      
+        P
+        (
+        k
+        
+           overflow floods in 100 years
+        
+        )
+        =
+        
+          
+            
+              
+                λ
+                
+                  k
+                
+              
+              
+                e
+                
+                  −
+                  λ
+                
+              
+            
+            
+              k
+              !
+            
+          
+        
+        =
+        
+          
+            
+              
+                1
+                
+                  k
+                
+              
+              
+                e
+                
+                  −
+                  1
+                
+              
+            
+            
+              k
+              !
+            
+          
+        
+      
+    
+    {\displaystyle P(k{\text{ overflow floods in 100 years}})={\frac {\lambda ^{k}e^{-\lambda }}{k!}}={\frac {1^{k}e^{-1}}{k!}}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c3aa61d2a6d2e549fba969b4cfb923e5f612356a" alt="{\displaystyle P(k{\text{ overflow floods in 100 years}})={\frac {\lambda ^{k}e^{-\lambda }}{k!}}={\frac {1^{k}e^{-1}}{k!}}}" />
+
+  
+    
+      
+        P
+        (
+        k
+        =
+        0
+        
+           overflow floods in 100 years
+        
+        )
+        =
+        
+          
+            
+              
+                1
+                
+                  0
+                
+              
+              
+                e
+                
+                  −
+                  1
+                
+              
+            
+            
+              0
+              !
+            
+          
+        
+        =
+        
+          
+            
+              e
+              
+                −
+                1
+              
+            
+            1
+          
+        
+        ≈
+        0.368
+      
+    
+    {\displaystyle P(k=0{\text{ overflow floods in 100 years}})={\frac {1^{0}e^{-1}}{0!}}={\frac {e^{-1}}{1}}\approx 0.368}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/539604237097b4b7eaf1304d9eb28c2e8b241051" alt="{\displaystyle P(k=0{\text{ overflow floods in 100 years}})={\frac {1^{0}e^{-1}}{0!}}={\frac {e^{-1}}{1}}\approx 0.368}" />
+
+  
+    
+      
+        P
+        (
+        k
+        =
+        1
+        
+           overflow flood in 100 years
+        
+        )
+        =
+        
+          
+            
+              
+                1
+                
+                  1
+                
+              
+              
+                e
+                
+                  −
+                  1
+                
+              
+            
+            
+              1
+              !
+            
+          
+        
+        =
+        
+          
+            
+              e
+              
+                −
+                1
+              
+            
+            1
+          
+        
+        ≈
+        0.368
+      
+    
+    {\displaystyle P(k=1{\text{ overflow flood in 100 years}})={\frac {1^{1}e^{-1}}{1!}}={\frac {e^{-1}}{1}}\approx 0.368}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/56ecb437f5dc2d6fdd04104dd682909feab34802" alt="{\displaystyle P(k=1{\text{ overflow flood in 100 years}})={\frac {1^{1}e^{-1}}{1!}}={\frac {e^{-1}}{1}}\approx 0.368}" />
+
+  
+    
+      
+        P
+        (
+        k
+        =
+        2
+        
+           overflow floods in 100 years
+        
+        )
+        =
+        
+          
+            
+              
+                1
+                
+                  2
+                
+              
+              
+                e
+                
+                  −
+                  1
+                
+              
+            
+            
+              2
+              !
+            
+          
+        
+        =
+        
+          
+            
+              e
+              
+                −
+                1
+              
+            
+            2
+          
+        
+        ≈
+        0.184
+      
+    
+    {\displaystyle P(k=2{\text{ overflow floods in 100 years}})={\frac {1^{2}e^{-1}}{2!}}={\frac {e^{-1}}{2}}\approx 0.184}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d018cf11ae3ada2c025c25c784b893ad4b057bdf" alt="{\displaystyle P(k=2{\text{ overflow floods in 100 years}})={\frac {1^{2}e^{-1}}{2!}}={\frac {e^{-1}}{2}}\approx 0.184}" /></td>
+
+
+<td>
+<table>
+<tbody><tr>
+<th>k</th><th>P(k overflow floods in 100years)</th></tr>
+<tr>
+<td>0</td><td>0.368</td></tr>
+<tr>
+<td>1</td><td>0.368</td></tr>
+<tr>
+<td>2</td><td>0.184</td></tr>
+<tr>
+<td>3</td><td>0.061</td></tr>
+<tr>
+<td>4</td><td>0.015</td></tr>
+<tr>
+<td>5</td><td>0.003</td></tr>
+<tr>
+<td>6</td><td>0.0005</td></tr>
+</tbody></table>
+<p>The probability for 0 to 6 overflow floods in a 100year period.
+</p></td></tr>
+</tbody></table></div>
+
+<div>
+<table> 
+
+<tbody>
+<tr><td>
+<p>It has been reported that the average number of goals in a World Cup soccer match is approximately 2.5 and the Poisson model is appropriate.
+Because the average event rate is 2.5goals per match, λ = 2.5.</p>
+
+
+  
+    
+      
+        P
+        (
+        k
+        
+           goals in a match
+        
+        )
+        =
+        
+          
+            
+              
+                2.5
+                
+                  k
+                
+              
+              
+                e
+                
+                  −
+                  2.5
+                
+              
+            
+            
+              k
+              !
+            
+          
+        
+      
+    
+    {\displaystyle P(k{\text{ goals in a match}})={\frac {2.5^{k}e^{-2.5}}{k!}}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/284f2ea7482e5f7296cbe1d57a0fdfe67666dca6" alt="{\displaystyle P(k{\text{ goals in a match}})={\frac {2.5^{k}e^{-2.5}}{k!}}}" />
+
+  
+    
+      
+        P
+        (
+        k
+        =
+        0
+        
+           goals in a match
+        
+        )
+        =
+        
+          
+            
+              
+                2.5
+                
+                  0
+                
+              
+              
+                e
+                
+                  −
+                  2.5
+                
+              
+            
+            
+              0
+              !
+            
+          
+        
+        =
+        
+          
+            
+              e
+              
+                −
+                2.5
+              
+            
+            1
+          
+        
+        ≈
+        0.082
+      
+    
+    {\displaystyle P(k=0{\text{ goals in a match}})={\frac {2.5^{0}e^{-2.5}}{0!}}={\frac {e^{-2.5}}{1}}\approx 0.082}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/83b9f5b04a762af5cf6db5639f7c6203526379d4" alt="{\displaystyle P(k=0{\text{ goals in a match}})={\frac {2.5^{0}e^{-2.5}}{0!}}={\frac {e^{-2.5}}{1}}\approx 0.082}" />
+
+  
+    
+      
+        P
+        (
+        k
+        =
+        1
+        
+           goal in a match
+        
+        )
+        =
+        
+          
+            
+              
+                2.5
+                
+                  1
+                
+              
+              
+                e
+                
+                  −
+                  2.5
+                
+              
+            
+            
+              1
+              !
+            
+          
+        
+        =
+        
+          
+            
+              2.5
+              
+                e
+                
+                  −
+                  2.5
+                
+              
+            
+            1
+          
+        
+        ≈
+        0.205
+      
+    
+    {\displaystyle P(k=1{\text{ goal in a match}})={\frac {2.5^{1}e^{-2.5}}{1!}}={\frac {2.5e^{-2.5}}{1}}\approx 0.205}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5f8d3b627a69fcb05a0e3202cd4cd03e22cb4dde" alt="{\displaystyle P(k=1{\text{ goal in a match}})={\frac {2.5^{1}e^{-2.5}}{1!}}={\frac {2.5e^{-2.5}}{1}}\approx 0.205}" />
+
+  
+    
+      
+        P
+        (
+        k
+        =
+        2
+        
+           goals in a match
+        
+        )
+        =
+        
+          
+            
+              
+                2.5
+                
+                  2
+                
+              
+              
+                e
+                
+                  −
+                  2.5
+                
+              
+            
+            
+              2
+              !
+            
+          
+        
+        =
+        
+          
+            
+              6.25
+              
+                e
+                
+                  −
+                  2.5
+                
+              
+            
+            2
+          
+        
+        ≈
+        0.257
+      
+    
+    {\displaystyle P(k=2{\text{ goals in a match}})={\frac {2.5^{2}e^{-2.5}}{2!}}={\frac {6.25e^{-2.5}}{2}}\approx 0.257}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/66ffb7f0c13f51b960d1580e5cac1d4365ef4166" alt="{\displaystyle P(k=2{\text{ goals in a match}})={\frac {2.5^{2}e^{-2.5}}{2!}}={\frac {6.25e^{-2.5}}{2}}\approx 0.257}" /></td>
+
+
+<td>
+<table>
+<tbody><tr>
+<th>k</th><th>P(k goals in a World Cup soccer match)</th></tr>
+<tr>
+<td>0</td><td>0.082</td></tr>
+<tr>
+<td>1</td><td>0.205</td></tr>
+<tr>
+<td>2</td><td>0.257</td></tr>
+<tr>
+<td>3</td><td>0.213</td></tr>
+<tr>
+<td>4</td><td>0.133</td></tr>
+<tr>
+<td>5</td><td>0.067</td></tr>
+<tr>
+<td>6</td><td>0.028</td></tr>
+<tr>
+<td>7</td><td>0.010</td></tr>
+</tbody></table>
+<p>The probability for 0 to 7 goals in a match.
+</p></td></tr>
+</tbody></table></div>
+
+<h4>Once in an interval events: The special case of λ = 1 and k = 0</h4>
+
+<p>Suppose that astronomers estimate that large meteorites (above a certain size) hit the earth on average once every 100years ( λ = 1  event per 100years), and that the number of meteorite hits follows a Poisson distribution. What is the probability of  k = 0  meteorite hits in the next 100years?</p>
+
+
+  
+    
+      
+        P
+        (
+        k
+        =
+        
+          0 meteorites hit in next 100 years
+        
+        )
+        =
+        
+          
+            
+              
+                1
+                
+                  0
+                
+              
+              
+                e
+                
+                  −
+                  1
+                
+              
+            
+            
+              0
+              !
+            
+          
+        
+        =
+        
+          
+            1
+            e
+          
+        
+        ≈
+        0.37.
+      
+    
+    {\displaystyle P(k={\text{0 meteorites hit in next 100 years}})={\frac {1^{0}e^{-1}}{0!}}={\frac {1}{e}}\approx 0.37.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8ab82295afc6daa62eb2556d4931889793826c11" alt="{\displaystyle P(k={\text{0 meteorites hit in next 100 years}})={\frac {1^{0}e^{-1}}{0!}}={\frac {1}{e}}\approx 0.37.}" />
+
+<p>Under these assumptions, the probability that no large meteorites hit the earth in the next 100years is roughly 0.37. The remaining 1 − 0.37 = 0.63 is the probability of 1, 2, 3, or more large meteorite hits in the next 100years.
+In an example above, an overflow flood occurred once every 100years (λ = 1). The probability of no overflow floods in 100years was roughly 0.37, by the same calculation.</p>
+
+<p>In general, if an event occurs on average once per interval (λ=1), and the events follow a Poisson distribution, then P(0 events in next interval) = 0.37. In addition, P(exactly one event in next interval) = 0.37, as shown in the table for overflow floods.</p>
+
+<h3>Examples that violate the Poisson assumptions</h3>
+
+<p>The number of students who arrive at the student union per minute will likely not follow a Poisson distribution, because the rate is not constant (low rate during class time, high rate between class times) and the arrivals of individual students are not independent (students tend to come in groups). The non-constant arrival rate may be modeled as a mixed Poisson distribution, and the arrival of groups rather than individual students as a compound Poisson process.</p>
+
+<p>The number of magnitude5 earthquakes per year in a country may not follow a Poisson distribution, if one large earthquake increases the probability of aftershocks of similar magnitude.</p>
+
+<p>Examples in which at least one event is guaranteed are not Poisson distributed; but may be modeled using a zero-truncated Poisson distribution.</p>
+
+<p>Count distributions in which the number of intervals with zero events is higher than predicted by a Poisson model may be modeled using a zero-inflated model.</p>
+
+
+
+<h2>Properties</h2>
+
+<h3>Descriptive statistics</h3>
+<ul><li>The expected value and variance of a Poisson-distributed random variable are both equal to λ.</li>
+<li>The coefficient of variation is 
+  
+    
+      
+        
+          λ
+          
+            −
+            1
+            
+              /
+            
+            2
+          
+        
+        ,
+      
+    
+    {\textstyle \lambda ^{-1/2},}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/1d86abd02434f5828f44e3363096013ead691cf3" alt="{\textstyle \lambda ^{-1/2},}" /> while the index of dispersion is 1.</li>
+<li>The mean absolute deviation about the mean is <div><div>
+  
+    
+      
+        E
+        ⁡
+        [
+         
+        
+          |
+        
+        X
+        −
+        λ
+        
+          |
+        
+         
+        ]
+        =
+        
+          
+            
+              2
+              
+                λ
+                
+                  ⌊
+                  λ
+                  ⌋
+                  +
+                  1
+                
+              
+              
+                e
+                
+                  −
+                  λ
+                
+              
+            
+            
+              ⌊
+              λ
+              ⌋
+              !
+            
+          
+        
+        .
+      
+    
+    {\displaystyle \operatorname {E} [\ |X-\lambda |\ ]={\frac {2\lambda ^{\lfloor \lambda \rfloor +1}e^{-\lambda }}{\lfloor \lambda \rfloor!}}.}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f38314ac3cdef3237f4321117fbf030a1115f6b9" alt="{\displaystyle \operatorname {E} [\ |X-\lambda |\ ]={\frac {2\lambda ^{\lfloor \lambda \rfloor +1}e^{-\lambda }}{\lfloor \lambda \rfloor !}}.}" /></div></li>
+<li>The mode of a Poisson-distributed random variable with non-integer λ is equal to 
+  
+    
+      
+        ⌊
+        λ
+        ⌋
+        ,
+      
+    
+    {\displaystyle \lfloor \lambda \rfloor ,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8c849ab92d3ad00c65efed52698719af80cb4d8f" alt="{\displaystyle \lfloor \lambda \rfloor ,}" /> which is the largest integer less than or equal toλ. This is also written as floor(λ). When λ is a positive integer, the modes are λ and λ−1.</li>
+<li>All of the cumulants of the Poisson distribution are equal to the expected valueλ. The nth factorial moment of the Poisson distribution is λ.</li>
+<li>The expected value of a Poisson process is sometimes decomposed into the product of <i>intensity</i> and <i>exposure</i> (or more generally expressed as the integral of an "intensity function" over time or space, sometimes described as "exposure").</li></ul>
+
+<h3>Median</h3>
+
+<p>Bounds for the median (
+  
+    
+      
+        ν
+      
+    
+    {\displaystyle \nu }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c15bbbb971240cf328aba572178f091684585468" alt="\nu " />) of the distribution are known and are sharp:</p>
+<div><div>
+  
+    
+      
+        λ
+        −
+        ln
+        ⁡
+        2
+        ≤
+        ν
+        &lt;
+        λ
+        +
+        
+          
+            1
+            3
+          
+        
+        .
+      
+    
+    {\displaystyle \lambda -\ln 2\leq \nu &lt;\lambda +{\frac {1}{3}}.}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a9ea94f8222d30fd83d8811640620cda70d67532" alt="{\displaystyle \lambda -\ln 2\leq \nu &lt;\lambda +{\frac {1}{3}}.}" /></div>
+
+<h3>Higher moments</h3><p>
+The higher non-centered moments, mk of the Poisson distribution, are Touchard polynomials in λ: </p><div><div>
+  
+    
+      
+        
+          m
+          
+            k
+          
+        
+        =
+        
+          ∑
+          
+            i
+            =
+            0
+          
+          
+            k
+          
+        
+        
+          λ
+          
+            i
+          
+        
+        
+          
+            {
+            
+              
+                
+                  k
+                
+              
+              
+                
+                  i
+                
+              
+            
+            }
+          
+        
+        ,
+      
+    
+    {\displaystyle m_{k}=\sum _{i=0}^{k}\lambda ^{i}{\begin{Bmatrix}k\\i\end{Bmatrix}},}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/407a05be1700329aa6b29dc7add0bdbd6e0cdeae" alt="{\displaystyle m_{k}=\sum _{i=0}^{k}\lambda ^{i}{\begin{Bmatrix}k\\i\end{Bmatrix}},}" /></div><p> where the {braces} denote Stirling numbers of the second kind. The coefficients of the polynomials have a combinatorial meaning. In fact, when the expected value of the Poisson distribution is 1, then Dobinski's formula says that the n‑th moment equals the number of partitions of a set of size n.</p>
+
+<p>A simple bound is</p>
+<div><div>
+  
+    
+      
+        
+          m
+          
+            k
+          
+        
+        =
+        E
+        [
+        
+          X
+          
+            k
+          
+        
+        ]
+        ≤
+        
+          
+            (
+            
+              
+                k
+                
+                  log
+                  ⁡
+                  (
+                  k
+                  
+                    /
+                  
+                  λ
+                  +
+                  1
+                  )
+                
+              
+            
+            )
+          
+          
+            k
+          
+        
+        ≤
+        
+          λ
+          
+            k
+          
+        
+        exp
+        ⁡
+        
+          (
+          
+            
+              
+                k
+                
+                  2
+                
+              
+              
+                2
+                λ
+              
+            
+          
+          )
+        
+        .
+      
+    
+    {\displaystyle m_{k}=E[X^{k}]\leq \left({\frac {k}{\log(k/\lambda +1)}}\right)^{k}\leq \lambda ^{k}\exp \left({\frac {k^{2}}{2\lambda }}\right).}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/18d2997208e48609996f73dc03db70e997b01b29" alt="{\displaystyle m_{k}=E[X^{k}]\leq \left({\frac {k}{\log(k/\lambda +1)}}\right)^{k}\leq \lambda ^{k}\exp \left({\frac {k^{2}}{2\lambda }}\right).}" /></div>
+
+<h3>Sums of Poisson-distributed random variables</h3>
+<p>If 
+  
+    
+      
+        
+          X
+          
+            i
+          
+        
+        ∼
+        Pois
+        ⁡
+        (
+        
+          λ
+          
+            i
+          
+        
+        )
+      
+    
+    {\displaystyle X_{i}\sim \operatorname {Pois} (\lambda _{i})}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/57094fb3ef6d2a578bb7d80a681849e56cffae13" alt="{\displaystyle X_{i}\sim \operatorname {Pois} (\lambda _{i})}" /> for 
+  
+    
+      
+        i
+        =
+        1
+        ,
+        …
+        ,
+        n
+      
+    
+    {\displaystyle i=1,\dotsc ,n}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e7f2132430a61b900cf2c4380774394ca9f09c8c" alt="{\displaystyle i=1,\dotsc ,n}" /> are independent, then 
+  
+    
+      
+        
+          ∑
+          
+            i
+            =
+            1
+          
+          
+            n
+          
+        
+        
+          X
+          
+            i
+          
+        
+        ∼
+        Pois
+        ⁡
+        
+          (
+          
+            
+              ∑
+              
+                i
+                =
+                1
+              
+              
+                n
+              
+            
+            
+              λ
+              
+                i
+              
+            
+          
+          )
+        
+        .
+      
+    
+    {\textstyle \sum _{i=1}^{n}X_{i}\sim \operatorname {Pois} \left(\sum _{i=1}^{n}\lambda _{i}\right).}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/dc45fecdb579f6f3fc2668ca72f6e5bd13f3ac02" alt="{\textstyle \sum _{i=1}^{n}X_{i}\sim \operatorname {Pois} \left(\sum _{i=1}^{n}\lambda _{i}\right).}" /> A converse is Raikov's theorem, which says that if the sum of two independent random variables is Poisson-distributed, then so are each of those two independent random variables.</p>
+
+<h3>Maximum Entropy</h3>
+<p>It is a maximum-entropy distribution among the set of generalized binomial distributions 
+  
+    
+      
+        
+          B
+          
+            n
+          
+        
+        (
+        λ
+        )
+      
+    
+    {\displaystyle B_{n}(\lambda )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/700c8c6b217dd619c9d04d59d6dd891f0195a619" alt="{\displaystyle B_{n}(\lambda )}" /> with mean 
+  
+    
+      
+        λ
+      
+    
+    {\displaystyle \lambda }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b43d0ea3c9c025af1be9128e62a18fa74bedda2a" alt="\lambda " /> and 
+  
+    
+      
+        n
+        →
+        ∞
+      
+    
+    {\displaystyle n\rightarrow \infty }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9702f04f2d0e5b887b99faeeffb0c4cfd8263eee" alt="n\rightarrow \infty " />, where a generalized binomial distribution is defined as a distribution of the sum of N independent but not identically distributed Bernoulli variables.</p>
+
+<h3>Other properties</h3>
+<ul><li>The Poisson distributions are infinitely divisible probability distributions.</li>
+<li>The directed Kullback–Leibler divergence of 
+  
+    
+      
+        P
+        =
+        Pois
+        ⁡
+        (
+        λ
+        )
+      
+    
+    {\displaystyle P=\operatorname {Pois} (\lambda )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/475e008e214bee8d96d3f528d07bf3dffae9bd29" alt="{\displaystyle P=\operatorname {Pois} (\lambda )}" /> from 
+  
+    
+      
+        
+          P
+          
+            0
+          
+        
+        =
+        Pois
+        ⁡
+        (
+        
+          λ
+          
+            0
+          
+        
+        )
+      
+    
+    {\displaystyle P_{0}=\operatorname {Pois} (\lambda _{0})}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/36995280929cd439a91c5c05ac56230c1ded708b" alt="{\displaystyle P_{0}=\operatorname {Pois} (\lambda _{0})}" /> is given by <div><div>
+  
+    
+      
+        
+          D
+          
+            KL
+          
+        
+        ⁡
+        (
+        P
+        ∥
+        
+          P
+          
+            0
+          
+        
+        )
+        =
+        
+          λ
+          
+            0
+          
+        
+        −
+        λ
+        +
+        λ
+        log
+        ⁡
+        
+          
+            λ
+            
+              λ
+              
+                0
+              
+            
+          
+        
+        .
+      
+    
+    {\displaystyle \operatorname {D} _{\text{KL}}(P\parallel P_{0})=\lambda _{0}-\lambda +\lambda \log {\frac {\lambda }{\lambda _{0}}}.}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d28957e0866ada1c7781ed5f9af0b120d5e1fada" alt="{\displaystyle \operatorname {D} _{\text{KL}}(P\parallel P_{0})=\lambda _{0}-\lambda +\lambda \log {\frac {\lambda }{\lambda _{0}}}.}" /></div></li>
+<li>If 
+  
+    
+      
+        λ
+        ≥
+        1
+      
+    
+    {\displaystyle \lambda \geq 1}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3a37870accb1d7cb8912fd80b53a7e4c9bc61e4d" alt="{\displaystyle \lambda \geq 1}" /> is an integer, then 
+  
+    
+      
+        Y
+        ∼
+        Pois
+        ⁡
+        (
+        λ
+        )
+      
+    
+    {\displaystyle Y\sim \operatorname {Pois} (\lambda )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/65a75008c5e80fc6c742fc674dbcbcf9548917b3" alt="{\displaystyle Y\sim \operatorname {Pois} (\lambda )}" /> satisfies 
+  
+    
+      
+        Pr
+        (
+        Y
+        ≥
+        E
+        [
+        Y
+        ]
+        )
+        ≥
+        
+          
+            1
+            2
+          
+        
+      
+    
+    {\displaystyle \Pr(Y\geq E[Y])\geq {\frac {1}{2}}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c5b13690a640b1826b92b683358e58098f957138" alt="{\displaystyle \Pr(Y\geq E[Y])\geq {\frac {1}{2}}}" /> and 
+  
+    
+      
+        Pr
+        (
+        Y
+        ≤
+        E
+        [
+        Y
+        ]
+        )
+        ≥
+        
+          
+            1
+            2
+          
+        
+        .
+      
+    
+    {\displaystyle \Pr(Y\leq E[Y])\geq {\frac {1}{2}}.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/14e3c38659a011ac0e4b6dd42cc920e61e92b936" alt="{\displaystyle \Pr(Y\leq E[Y])\geq {\frac {1}{2}}.}" /></li>
+<li>Bounds for the tail probabilities of a Poisson random variable 
+  
+    
+      
+        X
+        ∼
+        Pois
+        ⁡
+        (
+        λ
+        )
+      
+    
+    {\displaystyle X\sim \operatorname {Pois} (\lambda )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/83722493a50f90c09c96abb65364b7605ab55469" alt="X\sim \operatorname {Pois} (\lambda )" /> can be derived using a Chernoff bound argument. <div><div>
+  
+    
+      
+        P
+        (
+        X
+        ≥
+        x
+        )
+        ≤
+        
+          
+            
+              (
+              e
+              λ
+              
+                )
+                
+                  x
+                
+              
+              
+                e
+                
+                  −
+                  λ
+                
+              
+            
+            
+              x
+              
+                x
+              
+            
+          
+        
+        ,
+        
+           for 
+        
+        x
+        &gt;
+        λ
+        ,
+      
+    
+    {\displaystyle P(X\geq x)\leq {\frac {(e\lambda )^{x}e^{-\lambda }}{x^{x}}},{\text{ for }}x&gt;\lambda ,}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d9dbce798aa0c81ae4d37d2b507555564b39c74f" alt="{\displaystyle P(X\geq x)\leq {\frac {(e\lambda )^{x}e^{-\lambda }}{x^{x}}},{\text{ for }}x&gt;\lambda ,}" /></div> <div><div>
+  
+    
+      
+        P
+        (
+        X
+        ≤
+        x
+        )
+        ≤
+        
+          
+            
+              (
+              e
+              λ
+              
+                )
+                
+                  x
+                
+              
+              
+                e
+                
+                  −
+                  λ
+                
+              
+            
+            
+              x
+              
+                x
+              
+            
+          
+        
+        ,
+        
+           for 
+        
+        x
+        &lt;
+        λ
+        .
+      
+    
+    {\displaystyle P(X\leq x)\leq {\frac {(e\lambda )^{x}e^{-\lambda }}{x^{x}}},{\text{ for }}x&lt;\lambda .}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5abdcf3977c0fc3686907d0fbefa0ad20d5a4061" alt="{\displaystyle P(X\leq x)\leq {\frac {(e\lambda )^{x}e^{-\lambda }}{x^{x}}},{\text{ for }}x&lt;\lambda .}" /></div></li>
+<li>The upper tail probability can be tightened (by a factor of at least two) as follows: </li></ul>
+<div><div>
+  
+    
+      
+        P
+        (
+        X
+        ≥
+        x
+        )
+        ≤
+        
+          
+            
+              e
+              
+                −
+                
+                  D
+                  
+                    KL
+                  
+                
+                ⁡
+                (
+                Q
+                ∥
+                P
+                )
+              
+            
+            
+              max
+              
+                (
+                2
+                ,
+                
+                  
+                    4
+                    π
+                    
+                      D
+                      
+                        KL
+                      
+                    
+                    ⁡
+                    (
+                    Q
+                    ∥
+                    P
+                    )
+                  
+                
+              
+              )
+            
+          
+        
+        ,
+        
+           for 
+        
+        x
+        &gt;
+        λ
+        ,
+      
+    
+    {\displaystyle P(X\geq x)\leq {\frac {e^{-\operatorname {D} _{\text{KL}}(Q\parallel P)}}{\max {(2,{\sqrt {4\pi \operatorname {D} _{\text{KL}}(Q\parallel P)}}})}},{\text{ for }}x&gt;\lambda ,}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5288c3fe36c7e33ba8b384b16b93d549ef72a745" alt="{\displaystyle P(X\geq x)\leq {\frac {e^{-\operatorname {D} _{\text{KL}}(Q\parallel P)}}{\max {(2,{\sqrt {4\pi \operatorname {D} _{\text{KL}}(Q\parallel P)}}})}},{\text{ for }}x&gt;\lambda ,}" /></div><p> where 
+  
+    
+      
+        
+          D
+          
+            KL
+          
+        
+        ⁡
+        (
+        Q
+        ∥
+        P
+        )
+      
+    
+    {\displaystyle \operatorname {D} _{\text{KL}}(Q\parallel P)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/963891e9c244ce24baa845ef4239bfc21f0c910f" alt="{\displaystyle \operatorname {D} _{\text{KL}}(Q\parallel P)}" /> is the Kullback–Leibler divergence of 
+  
+    
+      
+        Q
+        =
+        Pois
+        ⁡
+        (
+        x
+        )
+      
+    
+    {\displaystyle Q=\operatorname {Pois} (x)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7e075409d68cf73d611c649825f8ca7c4be6f85d" alt="{\displaystyle Q=\operatorname {Pois} (x)}" /> from 
+  
+    
+      
+        P
+        =
+        Pois
+        ⁡
+        (
+        λ
+        )
+      
+    
+    {\displaystyle P=\operatorname {Pois} (\lambda )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/475e008e214bee8d96d3f528d07bf3dffae9bd29" alt="{\displaystyle P=\operatorname {Pois} (\lambda )}" />.</p>
+<ul><li>Inequalities that relate the distribution function of a Poisson random variable 
+  
+    
+      
+        X
+        ∼
+        Pois
+        ⁡
+        (
+        λ
+        )
+      
+    
+    {\displaystyle X\sim \operatorname {Pois} (\lambda )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/83722493a50f90c09c96abb65364b7605ab55469" alt="X\sim \operatorname {Pois} (\lambda )" /> to the Standard normal distribution function 
+  
+    
+      
+        Φ
+        (
+        x
+        )
+      
+    
+    {\displaystyle \Phi (x)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/79e4f01c93494fbb5dcd75761f4468121b00b294" alt="\Phi (x)" /> are as follows: <div><div>
+  
+    
+      
+        Φ
+        
+          (
+          
+            sign
+            ⁡
+            (
+            k
+            −
+            λ
+            )
+            
+              
+                2
+                
+                  D
+                  
+                    KL
+                  
+                
+                ⁡
+                (
+                
+                  Q
+                  
+                    −
+                  
+                
+                ∥
+                P
+                )
+              
+            
+          
+          )
+        
+        &lt;
+        P
+        (
+        X
+        ≤
+        k
+        )
+        &lt;
+        Φ
+        
+          (
+          
+            sign
+            ⁡
+            (
+            k
+            +
+            1
+            −
+            λ
+            )
+            
+              
+                2
+                
+                  D
+                  
+                    KL
+                  
+                
+                ⁡
+                (
+                
+                  Q
+                  
+                    +
+                  
+                
+                ∥
+                P
+                )
+              
+            
+          
+          )
+        
+        ,
+        
+           for 
+        
+        k
+        &gt;
+        0
+        ,
+      
+    
+    {\displaystyle \Phi \left(\operatorname {sign} (k-\lambda ){\sqrt {2\operatorname {D} _{\text{KL}}(Q_{-}\parallel P)}}\right)&lt;P(X\leq k)&lt;\Phi \left(\operatorname {sign} (k+1-\lambda ){\sqrt {2\operatorname {D} _{\text{KL}}(Q_{+}\parallel P)}}\right),{\text{ for }}k&gt;0,}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4d508dff09baa73d69dcc23890be3009d2ce0201" alt="{\displaystyle \Phi \left(\operatorname {sign} (k-\lambda ){\sqrt {2\operatorname {D} _{\text{KL}}(Q_{-}\parallel P)}}\right)&lt;P(X\leq k)&lt;\Phi \left(\operatorname {sign} (k+1-\lambda ){\sqrt {2\operatorname {D} _{\text{KL}}(Q_{+}\parallel P)}}\right),{\text{ for }}k&gt;0,}" /></div> where 
+  
+    
+      
+        
+          D
+          
+            KL
+          
+        
+        ⁡
+        (
+        
+          Q
+          
+            −
+          
+        
+        ∥
+        P
+        )
+      
+    
+    {\displaystyle \operatorname {D} _{\text{KL}}(Q_{-}\parallel P)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/03fb2deee9168d32f4fcf89ead75b9c7cf0dfe24" alt="{\displaystyle \operatorname {D} _{\text{KL}}(Q_{-}\parallel P)}" /> is the Kullback–Leibler divergence of 
+  
+    
+      
+        
+          Q
+          
+            −
+          
+        
+        =
+        Pois
+        ⁡
+        (
+        k
+        )
+      
+    
+    {\displaystyle Q_{-}=\operatorname {Pois} (k)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3936299a039702e3f36292e7bbe7b4df1d934f69" alt="{\displaystyle Q_{-}=\operatorname {Pois} (k)}" /> from 
+  
+    
+      
+        P
+        =
+        Pois
+        ⁡
+        (
+        λ
+        )
+      
+    
+    {\displaystyle P=\operatorname {Pois} (\lambda )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/475e008e214bee8d96d3f528d07bf3dffae9bd29" alt="{\displaystyle P=\operatorname {Pois} (\lambda )}" /> and 
+  
+    
+      
+        
+          D
+          
+            KL
+          
+        
+        ⁡
+        (
+        
+          Q
+          
+            +
+          
+        
+        ∥
+        P
+        )
+      
+    
+    {\displaystyle \operatorname {D} _{\text{KL}}(Q_{+}\parallel P)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5ee367cb9e271a607be983341a7e4784ea593adf" alt="{\displaystyle \operatorname {D} _{\text{KL}}(Q_{+}\parallel P)}" /> is the Kullback–Leibler divergence of 
+  
+    
+      
+        
+          Q
+          
+            +
+          
+        
+        =
+        Pois
+        ⁡
+        (
+        k
+        +
+        1
+        )
+      
+    
+    {\displaystyle Q_{+}=\operatorname {Pois} (k+1)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7b01f8a926dc19d8c84fec740eb863736a9ec517" alt="{\displaystyle Q_{+}=\operatorname {Pois} (k+1)}" /> from 
+  
+    
+      
+        P
+      
+    
+    {\displaystyle P}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b4dc73bf40314945ff376bd363916a738548d40a" alt="P" />.</li></ul>
+
+<h3>Poisson races</h3>
+
+<p>Let 
+  
+    
+      
+        X
+        ∼
+        Pois
+        ⁡
+        (
+        λ
+        )
+      
+    
+    {\displaystyle X\sim \operatorname {Pois} (\lambda )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/83722493a50f90c09c96abb65364b7605ab55469" alt="{\displaystyle X\sim \operatorname {Pois} (\lambda )}" /> and 
+  
+    
+      
+        Y
+        ∼
+        Pois
+        ⁡
+        (
+        μ
+        )
+      
+    
+    {\displaystyle Y\sim \operatorname {Pois} (\mu )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/43c17e18a900ce05dae1e372f8ee84cca95658e7" alt="{\displaystyle Y\sim \operatorname {Pois} (\mu )}" /> be independent random variables, with 
+  
+    
+      
+        λ
+        &lt;
+        μ
+        ,
+      
+    
+    {\displaystyle \lambda &lt;\mu ,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f0c39745dc3c331494d2e3cf15cd5bc9f335e03a" alt="{\displaystyle \lambda &lt;\mu ,}" /> then we have that</p>
+<div><div>
+  
+    
+      
+        
+          
+            
+              e
+              
+                −
+                (
+                
+                  
+                    μ
+                  
+                
+                −
+                
+                  
+                    λ
+                  
+                
+                
+                  )
+                  
+                    2
+                  
+                
+              
+            
+            
+              (
+              λ
+              +
+              μ
+              
+                )
+                
+                  2
+                
+              
+            
+          
+        
+        −
+        
+          
+            
+              e
+              
+                −
+                (
+                λ
+                +
+                μ
+                )
+              
+            
+            
+              2
+              
+                
+                  λ
+                  μ
+                
+              
+            
+          
+        
+        −
+        
+          
+            
+              e
+              
+                −
+                (
+                λ
+                +
+                μ
+                )
+              
+            
+            
+              4
+              λ
+              μ
+            
+          
+        
+        ≤
+        P
+        (
+        X
+        −
+        Y
+        ≥
+        0
+        )
+        ≤
+        
+          e
+          
+            −
+            (
+            
+              
+                μ
+              
+            
+            −
+            
+              
+                λ
+              
+            
+            
+              )
+              
+                2
+              
+            
+          
+        
+      
+    
+    {\displaystyle {\frac {e^{-({\sqrt {\mu }}-{\sqrt {\lambda }})^{2}}}{(\lambda +\mu )^{2}}}-{\frac {e^{-(\lambda +\mu )}}{2{\sqrt {\lambda \mu }}}}-{\frac {e^{-(\lambda +\mu )}}{4\lambda \mu }}\leq P(X-Y\geq 0)\leq e^{-({\sqrt {\mu }}-{\sqrt {\lambda }})^{2}}}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/511aa4ec49b20e83b83bcc2a24bef763dabe1d90" alt="{\displaystyle {\frac {e^{-({\sqrt {\mu }}-{\sqrt {\lambda }})^{2}}}{(\lambda +\mu )^{2}}}-{\frac {e^{-(\lambda +\mu )}}{2{\sqrt {\lambda \mu }}}}-{\frac {e^{-(\lambda +\mu )}}{4\lambda \mu }}\leq P(X-Y\geq 0)\leq e^{-({\sqrt {\mu }}-{\sqrt {\lambda }})^{2}}}" /></div>
+
+<p>The upper bound is proved using a standard Chernoff bound.</p>
+
+<p>The lower bound can be proved by noting that 
+  
+    
+      
+        P
+        (
+        X
+        −
+        Y
+        ≥
+        0
+        ∣
+        X
+        +
+        Y
+        =
+        i
+        )
+      
+    
+    {\displaystyle P(X-Y\geq 0\mid X+Y=i)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/61d8a24c0406c0b31012b78f0522864108c355b6" alt="{\displaystyle P(X-Y\geq 0\mid X+Y=i)}" /> is the probability that 
+  
+    
+      
+        Z
+        ≥
+        
+          
+            i
+            2
+          
+        
+        ,
+      
+    
+    {\textstyle Z\geq {\frac {i}{2}},}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/514fc71347875ec4954d207a57d64ed7f3731687" alt="{\textstyle Z\geq {\frac {i}{2}},}" /> where 
+  
+    
+      
+        Z
+        ∼
+        Bin
+        ⁡
+        
+          (
+          
+            i
+            ,
+            
+              
+                λ
+                
+                  λ
+                  +
+                  μ
+                
+              
+            
+          
+          )
+        
+        ,
+      
+    
+    {\textstyle Z\sim \operatorname {Bin} \left(i,{\frac {\lambda }{\lambda +\mu }}\right),}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/89453934127eadfc8418406e3724e9264c5e60c7" alt="{\textstyle Z\sim \operatorname {Bin} \left(i,{\frac {\lambda }{\lambda +\mu }}\right),}" /> which is bounded below by 
+  
+    
+      
+        
+          
+            1
+            
+              (
+              i
+              +
+              1
+              
+                )
+                
+                  2
+                
+              
+            
+          
+        
+        
+          e
+          
+            −
+            i
+            D
+            
+              (
+              
+                0.5
+                ‖
+                
+                  
+                    λ
+                    
+                      λ
+                      +
+                      μ
+                    
+                  
+                
+              
+              )
+            
+          
+        
+        ,
+      
+    
+    {\textstyle {\frac {1}{(i+1)^{2}}}e^{-iD\left(0.5\|{\frac {\lambda }{\lambda +\mu }}\right)},}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/2b50e47160cf654b9dea04b316a10efd0cc3e206" alt="{\textstyle {\frac {1}{(i+1)^{2}}}e^{-iD\left(0.5\|{\frac {\lambda }{\lambda +\mu }}\right)},}" /> where 
+  
+    
+      
+        D
+      
+    
+    {\displaystyle D}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f34a0c600395e5d4345287e21fb26efd386990e6" alt="D" /> is relative entropy (See the entry on bounds on tails of binomial distributions for details). Further noting that 
+  
+    
+      
+        X
+        +
+        Y
+        ∼
+        Pois
+        ⁡
+        (
+        λ
+        +
+        μ
+        )
+        ,
+      
+    
+    {\displaystyle X+Y\sim \operatorname {Pois} (\lambda +\mu ),}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/60ef4f27c243ff74934b3a02bb29348c83941c4c" alt="{\displaystyle X+Y\sim \operatorname {Pois} (\lambda +\mu ),}" /> and computing a lower bound on the unconditional probability gives the result. More details can be found in the appendix of Kamath <i>et al.</i>.</p>
+
+
+
+<h2>Related distributions</h2>
+<h3>As a Binomial distribution with infinitesimal time-steps</h3><p>
+The Poisson distribution can be derived as a limiting case to the binomial distribution as the number of trials goes to infinity and the expected number of successes remains fixed — see law of rare events below. Therefore, it can be used as an approximation of the binomial distribution if n is sufficiently large and <i>p</i> is sufficiently small. The Poisson distribution is a good approximation of the binomial distribution if n is at least 20 and <i>p</i> is smaller than or equal to 0.05, and an excellent approximation if n≥100 and n p≤10.</p> <div><div>
+  
+    
+      
+        
+          F
+          
+            
+              B
+              i
+              n
+              o
+              m
+              i
+              a
+              l
+            
+          
+        
+        (
+        k
+        ;
+        n
+        ,
+        p
+        )
+        ≈
+        
+          F
+          
+            
+              P
+              o
+              i
+              s
+              s
+              o
+              n
+            
+          
+        
+        (
+        k
+        ;
+        λ
+        =
+        n
+        p
+        )
+      
+    
+    {\displaystyle F_{\mathrm {Binomial} }(k;n,p)\approx F_{\mathrm {Poisson} }(k;\lambda =np)}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5f191c1e527ee9e2eac830772de5d1d0d51376ce" alt="{\displaystyle F_{\mathrm {Binomial} }(k;n,p)\approx F_{\mathrm {Poisson} }(k;\lambda =np)}" /></div>
+
+<h3>General</h3>
+<ul><li>If 
+  
+    
+      
+        
+          X
+          
+            1
+          
+        
+        ∼
+        
+          P
+          o
+          i
+          s
+        
+        (
+        
+          λ
+          
+            1
+          
+        
+        )
+        
+      
+    
+    {\displaystyle X_{1}\sim \mathrm {Pois} (\lambda _{1})\,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b15d0eb82dbe950fd9a69fd735a9eb5854bb1516" alt="X_{1}\sim \mathrm {Pois} (\lambda _{1})\," /> and 
+  
+    
+      
+        
+          X
+          
+            2
+          
+        
+        ∼
+        
+          P
+          o
+          i
+          s
+        
+        (
+        
+          λ
+          
+            2
+          
+        
+        )
+        
+      
+    
+    {\displaystyle X_{2}\sim \mathrm {Pois} (\lambda _{2})\,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/92230875c7140dbb0b8c9c4949fc710c330bdda8" alt="X_{2}\sim \mathrm {Pois} (\lambda _{2})\," /> are independent, then the difference 
+  
+    
+      
+        Y
+        =
+        
+          X
+          
+            1
+          
+        
+        −
+        
+          X
+          
+            2
+          
+        
+      
+    
+    {\displaystyle Y=X_{1}-X_{2}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6627abb84b192e001722eb79e17a0489e26adbcf" alt="Y=X_{1}-X_{2}" /> follows a Skellam distribution.</li>
+<li>If 
+  
+    
+      
+        
+          X
+          
+            1
+          
+        
+        ∼
+        
+          P
+          o
+          i
+          s
+        
+        (
+        
+          λ
+          
+            1
+          
+        
+        )
+        
+      
+    
+    {\displaystyle X_{1}\sim \mathrm {Pois} (\lambda _{1})\,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b15d0eb82dbe950fd9a69fd735a9eb5854bb1516" alt="X_{1}\sim \mathrm {Pois} (\lambda _{1})\," /> and 
+  
+    
+      
+        
+          X
+          
+            2
+          
+        
+        ∼
+        
+          P
+          o
+          i
+          s
+        
+        (
+        
+          λ
+          
+            2
+          
+        
+        )
+        
+      
+    
+    {\displaystyle X_{2}\sim \mathrm {Pois} (\lambda _{2})\,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/92230875c7140dbb0b8c9c4949fc710c330bdda8" alt="X_{2}\sim \mathrm {Pois} (\lambda _{2})\," /> are independent, then the distribution of 
+  
+    
+      
+        
+          X
+          
+            1
+          
+        
+      
+    
+    {\displaystyle X_{1}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f70b2694445a5901b24338a2e7a7e58f02a72a32" alt="X_{1}" /> conditional on 
+  
+    
+      
+        
+          X
+          
+            1
+          
+        
+        +
+        
+          X
+          
+            2
+          
+        
+      
+    
+    {\displaystyle X_{1}+X_{2}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f96d604ba472d9c8d3964bfb198de16b68e5f8a3" alt="X_{1}+X_{2}" /> is a binomial distribution.  Specifically, if 
+  
+    
+      
+        
+          X
+          
+            1
+          
+        
+        +
+        
+          X
+          
+            2
+          
+        
+        =
+        k
+        ,
+      
+    
+    {\displaystyle X_{1}+X_{2}=k,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5518d7a389f305366c8d983ca3f0ad18ba925a3f" alt="{\displaystyle X_{1}+X_{2}=k,}" /> then 
+  
+    
+      
+        
+          X
+          
+            1
+          
+        
+        
+          |
+        
+        
+          X
+          
+            1
+          
+        
+        +
+        
+          X
+          
+            2
+          
+        
+        =
+        k
+        ∼
+        
+          B
+          i
+          n
+          o
+          m
+        
+        (
+        k
+        ,
+        
+          λ
+          
+            1
+          
+        
+        
+          /
+        
+        (
+        
+          λ
+          
+            1
+          
+        
+        +
+        
+          λ
+          
+            2
+          
+        
+        )
+        )
+        .
+      
+    
+    {\displaystyle X_{1}|X_{1}+X_{2}=k\sim \mathrm {Binom} (k,\lambda _{1}/(\lambda _{1}+\lambda _{2})).}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/596d3a787cb1f14db2692e0d74292a73fb6bad54" alt="{\displaystyle X_{1}|X_{1}+X_{2}=k\sim \mathrm {Binom} (k,\lambda _{1}/(\lambda _{1}+\lambda _{2})).}" />  More generally, if <i>X</i>1, <i>X</i>2, ..., <i>X</i>n are independent Poisson random variables with parameters λ1, λ2, ..., λn then
+given 
+  
+    
+      
+        
+          ∑
+          
+            j
+            =
+            1
+          
+          
+            n
+          
+        
+        
+          X
+          
+            j
+          
+        
+        =
+        k
+        ,
+      
+    
+    {\displaystyle \sum _{j=1}^{n}X_{j}=k,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/bc0ed7c42d244e0ad66477b8276e926216da4819" alt="\sum _{j=1}^{n}X_{j}=k," /> it follows that 
+  
+    
+      
+        
+          X
+          
+            i
+          
+        
+        
+          
+            |
+          
+        
+        
+          ∑
+          
+            j
+            =
+            1
+          
+          
+            n
+          
+        
+        
+          X
+          
+            j
+          
+        
+        =
+        k
+        ∼
+        
+          B
+          i
+          n
+          o
+          m
+        
+        
+          (
+          
+            k
+            ,
+            
+              
+                
+                  λ
+                  
+                    i
+                  
+                
+                
+                  
+                    ∑
+                    
+                      j
+                      =
+                      1
+                    
+                    
+                      n
+                    
+                  
+                  
+                    λ
+                    
+                      j
+                    
+                  
+                
+              
+            
+          
+          )
+        
+        .
+      
+    
+    {\displaystyle X_{i}{\Big |}\sum _{j=1}^{n}X_{j}=k\sim \mathrm {Binom} \left(k,{\frac {\lambda _{i}}{\sum _{j=1}^{n}\lambda _{j}}}\right).}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/861dd5b85ea53c65668200ee34c63949f3a811f9" alt="{\displaystyle X_{i}{\Big |}\sum _{j=1}^{n}X_{j}=k\sim \mathrm {Binom} \left(k,{\frac {\lambda _{i}}{\sum _{j=1}^{n}\lambda _{j}}}\right).}" /> In fact, 
+  
+    
+      
+        {
+        
+          X
+          
+            i
+          
+        
+        }
+        ∼
+        
+          M
+          u
+          l
+          t
+          i
+          n
+          o
+          m
+        
+        
+          (
+          
+            k
+            ,
+            
+              {
+              
+                
+                  
+                    λ
+                    
+                      i
+                    
+                  
+                  
+                    
+                      ∑
+                      
+                        j
+                        =
+                        1
+                      
+                      
+                        n
+                      
+                    
+                    
+                      λ
+                      
+                        j
+                      
+                    
+                  
+                
+              
+              }
+            
+          
+          )
+        
+        .
+      
+    
+    {\displaystyle \{X_{i}\}\sim \mathrm {Multinom} \left(k,\left\{{\frac {\lambda _{i}}{\sum _{j=1}^{n}\lambda _{j}}}\right\}\right).}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/255ff85774dccd7aa239bacebe1b3c25fe46f3ae" alt="{\displaystyle \{X_{i}\}\sim \mathrm {Multinom} \left(k,\left\{{\frac {\lambda _{i}}{\sum _{j=1}^{n}\lambda _{j}}}\right\}\right).}" /></li>
+<li>If 
+  
+    
+      
+        X
+        ∼
+        
+          P
+          o
+          i
+          s
+        
+        (
+        λ
+        )
+        
+      
+    
+    {\displaystyle X\sim \mathrm {Pois} (\lambda )\,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0823122073f11c547d1e8fcbd3d76415110ba320" alt="X\sim \mathrm {Pois} (\lambda )\," /> and the distribution of 
+  
+    
+      
+        Y
+      
+    
+    {\displaystyle Y}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/961d67d6b454b4df2301ac571808a3538b3a6d3f" alt="Y" /> conditional on <i>X</i>=k is a binomial distribution, 
+  
+    
+      
+        Y
+        ∣
+        (
+        X
+        =
+        k
+        )
+        ∼
+        
+          B
+          i
+          n
+          o
+          m
+        
+        (
+        k
+        ,
+        p
+        )
+        ,
+      
+    
+    {\displaystyle Y\mid (X=k)\sim \mathrm {Binom} (k,p),}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4ef553b99963ef62014dee3714a938fa13037e30" alt="{\displaystyle Y\mid (X=k)\sim \mathrm {Binom} (k,p),}" /> then the distribution of Y follows a Poisson distribution 
+  
+    
+      
+        Y
+        ∼
+        
+          P
+          o
+          i
+          s
+        
+        (
+        λ
+        ⋅
+        p
+        )
+        .
+      
+    
+    {\displaystyle Y\sim \mathrm {Pois} (\lambda \cdot p).}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0c4cdebce8ebc73815fd41d64470af1da7c28358" alt="{\displaystyle Y\sim \mathrm {Pois} (\lambda \cdot p).}" /> In fact, if, conditional on 
+  
+    
+      
+        {
+        X
+        =
+        k
+        }
+        ,
+      
+    
+    {\displaystyle \{X=k\},}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/17be57fc8b36992200d2ccf2550315e033d18bb9" alt="{\displaystyle \{X=k\},}" /> 
+  
+    
+      
+        {
+        
+          Y
+          
+            i
+          
+        
+        }
+      
+    
+    {\displaystyle \{Y_{i}\}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f6e92004a07c56dd2b161c0647531c2893103b34" alt="\{Y_{i}\}" /> follows a multinomial distribution, 
+  
+    
+      
+        {
+        
+          Y
+          
+            i
+          
+        
+        }
+        ∣
+        (
+        X
+        =
+        k
+        )
+        ∼
+        
+          M
+          u
+          l
+          t
+          i
+          n
+          o
+          m
+        
+        
+          (
+          
+            k
+            ,
+            
+              p
+              
+                i
+              
+            
+          
+          )
+        
+        ,
+      
+    
+    {\displaystyle \{Y_{i}\}\mid (X=k)\sim \mathrm {Multinom} \left(k,p_{i}\right),}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3dc9796a889849a05d0ae236237823ccee6c4eff" alt="{\displaystyle \{Y_{i}\}\mid (X=k)\sim \mathrm {Multinom} \left(k,p_{i}\right),}" /> then each 
+  
+    
+      
+        
+          Y
+          
+            i
+          
+        
+      
+    
+    {\displaystyle Y_{i}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d57be496fff95ee2a97ee43c7f7fe244b4dbf8ae" alt="Y_{i}" /> follows an independent Poisson distribution 
+  
+    
+      
+        
+          Y
+          
+            i
+          
+        
+        ∼
+        
+          P
+          o
+          i
+          s
+        
+        (
+        λ
+        ⋅
+        
+          p
+          
+            i
+          
+        
+        )
+        ,
+        ρ
+        (
+        
+          Y
+          
+            i
+          
+        
+        ,
+        
+          Y
+          
+            j
+          
+        
+        )
+        =
+        0.
+      
+    
+    {\displaystyle Y_{i}\sim \mathrm {Pois} (\lambda \cdot p_{i}),\rho (Y_{i},Y_{j})=0.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/dfe251c0f62960e8d27c54fd1154174fdf8b34b2" alt="{\displaystyle Y_{i}\sim \mathrm {Pois} (\lambda \cdot p_{i}),\rho (Y_{i},Y_{j})=0.}" /></li>
+<li>The Poisson distribution is a special case of the discrete compound Poisson distribution (or stuttering Poisson distribution) with only a parameter. The discrete compound Poisson distribution can be deduced from the limiting distribution of univariate multinomial distribution. It is also a special case of a compound Poisson distribution.</li>
+<li>For sufficiently large values of λ, (say λ&gt;1000), the normal distribution with mean λ and variance λ (standard deviation 
+  
+    
+      
+        
+          
+            λ
+          
+        
+      
+    
+    {\displaystyle {\sqrt {\lambda }}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d95574539cdee5bead1cb65a182d4effd2800937" alt="{\sqrt {\lambda }}" />) is an excellent approximation to the Poisson distribution. If λ is greater than about 10, then the normal distribution is a good approximation if an appropriate continuity correction is performed, i.e., if P(<i>X</i> ≤ <i>x</i>), where <i>x</i> is a non-negative integer, is replaced by P(<i>X</i> ≤ <i>x</i> + 0.5). <div><div>
+  
+    
+      
+        
+          F
+          
+            
+              P
+              o
+              i
+              s
+              s
+              o
+              n
+            
+          
+        
+        (
+        x
+        ;
+        λ
+        )
+        ≈
+        
+          F
+          
+            
+              n
+              o
+              r
+              m
+              a
+              l
+            
+          
+        
+        (
+        x
+        ;
+        μ
+        =
+        λ
+        ,
+        
+          σ
+          
+            2
+          
+        
+        =
+        λ
+        )
+      
+    
+    {\displaystyle F_{\mathrm {Poisson} }(x;\lambda )\approx F_{\mathrm {normal} }(x;\mu =\lambda ,\sigma ^{2}=\lambda )}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/2081e807e7da69a44d326395c39a1668a3f7fda3" alt="{\displaystyle F_{\mathrm {Poisson} }(x;\lambda )\approx F_{\mathrm {normal} }(x;\mu =\lambda ,\sigma ^{2}=\lambda )}" /></div></li>
+<li>Variance-stabilizing transformation: If 
+  
+    
+      
+        X
+        ∼
+        
+          P
+          o
+          i
+          s
+        
+        (
+        λ
+        )
+        ,
+      
+    
+    {\displaystyle X\sim \mathrm {Pois} (\lambda ),}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5b515db49fba626cb9a58a3903002bcca7ed9f35" alt="{\displaystyle X\sim \mathrm {Pois} (\lambda ),}" /> then <div><div>
+  
+    
+      
+        Y
+        =
+        2
+        
+          
+            X
+          
+        
+        ≈
+        
+          
+            N
+          
+        
+        (
+        2
+        
+          
+            λ
+          
+        
+        ;
+        1
+        )
+        ,
+      
+    
+    {\displaystyle Y=2{\sqrt {X}}\approx {\mathcal {N}}(2{\sqrt {\lambda }};1),}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7c733320f48ae2c177634a84d833578d27bfc4f8" alt="{\displaystyle Y=2{\sqrt {X}}\approx {\mathcal {N}}(2{\sqrt {\lambda }};1),}" /></div> and <div><div>
+  
+    
+      
+        Y
+        =
+        
+          
+            X
+          
+        
+        ≈
+        
+          
+            N
+          
+        
+        (
+        
+          
+            λ
+          
+        
+        ;
+        1
+        
+          /
+        
+        4
+        )
+        .
+      
+    
+    {\displaystyle Y={\sqrt {X}}\approx {\mathcal {N}}({\sqrt {\lambda }};1/4).}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3dd4704720188a745950690ed57b972446012d35" alt="{\displaystyle Y={\sqrt {X}}\approx {\mathcal {N}}({\sqrt {\lambda }};1/4).}" /></div> Under this transformation, the convergence to normality (as 
+  
+    
+      
+        λ
+      
+    
+    {\displaystyle \lambda }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b43d0ea3c9c025af1be9128e62a18fa74bedda2a" alt="\lambda " /> increases) is far faster than the untransformed variable. Other, slightly more complicated, variance stabilizing transformations are available, one of which is Anscombe transform. See Data transformation (statistics) for more general uses of transformations.</li>
+<li>If for every <i>t</i>&gt;0 the number of arrivals in the time interval [0, <i>t</i>] follows the Poisson distribution with mean <i>λt</i>, then the sequence of inter-arrival times are independent and identically distributed exponential random variables having mean1/λ.</li>
+<li>The cumulative distribution functions of the Poisson and chi-squared distributions are related in the following ways: <div><div>
+  
+    
+      
+        
+          F
+          
+            Poisson
+          
+        
+        (
+        k
+        ;
+        λ
+        )
+        =
+        1
+        −
+        
+          F
+          
+            
+              χ
+              
+                2
+              
+            
+          
+        
+        (
+        2
+        λ
+        ;
+        2
+        (
+        k
+        +
+        1
+        )
+        )
+        
+        
+        
+           integer 
+        
+        k
+        ,
+      
+    
+    {\displaystyle F_{\text{Poisson}}(k;\lambda )=1-F_{\chi ^{2}}(2\lambda ;2(k+1))\quad \quad {\text{ integer }}k,}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e7df4d319ceaf2cac7a2ef625ae5ffd2c5fa9cdc" alt="{\displaystyle F_{\text{Poisson}}(k;\lambda )=1-F_{\chi ^{2}}(2\lambda ;2(k+1))\quad \quad {\text{ integer }}k,}" /></div> and <div><div>
+  
+    
+      
+        P
+        (
+        X
+        =
+        k
+        )
+        =
+        
+          F
+          
+            
+              χ
+              
+                2
+              
+            
+          
+        
+        (
+        2
+        λ
+        ;
+        2
+        (
+        k
+        +
+        1
+        )
+        )
+        −
+        
+          F
+          
+            
+              χ
+              
+                2
+              
+            
+          
+        
+        (
+        2
+        λ
+        ;
+        2
+        k
+        )
+        .
+      
+    
+    {\displaystyle P(X=k)=F_{\chi ^{2}}(2\lambda ;2(k+1))-F_{\chi ^{2}}(2\lambda ;2k).}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5afa8a79672290e8714ff5292485ab07267bc94e" alt="{\displaystyle P(X=k)=F_{\chi ^{2}}(2\lambda ;2(k+1))-F_{\chi ^{2}}(2\lambda ;2k).}" /></div></li></ul>
+
+<h3>Poisson approximation</h3>
+
+<p>Assume 
+  
+    
+      
+        
+          X
+          
+            1
+          
+        
+        ∼
+        Pois
+        ⁡
+        (
+        
+          λ
+          
+            1
+          
+        
+        )
+        ,
+        
+          X
+          
+            2
+          
+        
+        ∼
+        Pois
+        ⁡
+        (
+        
+          λ
+          
+            2
+          
+        
+        )
+        ,
+        …
+        ,
+        
+          X
+          
+            n
+          
+        
+        ∼
+        Pois
+        ⁡
+        (
+        
+          λ
+          
+            n
+          
+        
+        )
+      
+    
+    {\displaystyle X_{1}\sim \operatorname {Pois} (\lambda _{1}),X_{2}\sim \operatorname {Pois} (\lambda _{2}),\dots ,X_{n}\sim \operatorname {Pois} (\lambda _{n})}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9fc5feeea5be9edb9e578edc20b16e8ec84b8721" alt="{\displaystyle X_{1}\sim \operatorname {Pois} (\lambda _{1}),X_{2}\sim \operatorname {Pois} (\lambda _{2}),\dots ,X_{n}\sim \operatorname {Pois} (\lambda _{n})}" /> where 
+  
+    
+      
+        
+          λ
+          
+            1
+          
+        
+        +
+        
+          λ
+          
+            2
+          
+        
+        +
+        ⋯
+        +
+        
+          λ
+          
+            n
+          
+        
+        =
+        1
+        ,
+      
+    
+    {\displaystyle \lambda _{1}+\lambda _{2}+\dots +\lambda _{n}=1,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b44d5d58dee88c3f8ad224d8d0e04a880b4f8b66" alt="{\displaystyle \lambda _{1}+\lambda _{2}+\dots +\lambda _{n}=1,}" /> then 
+  
+    
+      
+        (
+        
+          X
+          
+            1
+          
+        
+        ,
+        
+          X
+          
+            2
+          
+        
+        ,
+        …
+        ,
+        
+          X
+          
+            n
+          
+        
+        )
+      
+    
+    {\displaystyle (X_{1},X_{2},\dots ,X_{n})}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/ab6e1cb7ae1719556a29f9dc023666490c5a29cf" alt="{\displaystyle (X_{1},X_{2},\dots ,X_{n})}" /> is multinomially distributed
+
+  
+    
+      
+        (
+        
+          X
+          
+            1
+          
+        
+        ,
+        
+          X
+          
+            2
+          
+        
+        ,
+        …
+        ,
+        
+          X
+          
+            n
+          
+        
+        )
+        ∼
+        Mult
+        ⁡
+        (
+        N
+        ,
+        
+          λ
+          
+            1
+          
+        
+        ,
+        
+          λ
+          
+            2
+          
+        
+        ,
+        …
+        ,
+        
+          λ
+          
+            n
+          
+        
+        )
+      
+    
+    {\displaystyle (X_{1},X_{2},\dots ,X_{n})\sim \operatorname {Mult} (N,\lambda _{1},\lambda _{2},\dots ,\lambda _{n})}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/46baab90dfd7fd4c25a179f4f4e453b4a5e0d1b7" alt="{\displaystyle (X_{1},X_{2},\dots ,X_{n})\sim \operatorname {Mult} (N,\lambda _{1},\lambda _{2},\dots ,\lambda _{n})}" /> conditioned on 
+  
+    
+      
+        N
+        =
+        
+          X
+          
+            1
+          
+        
+        +
+        
+          X
+          
+            2
+          
+        
+        +
+        …
+        
+          X
+          
+            n
+          
+        
+        .
+      
+    
+    {\displaystyle N=X_{1}+X_{2}+\dots X_{n}.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/85f48f264ff52d5db4884b2b4e8e34814920cf37" alt="{\displaystyle N=X_{1}+X_{2}+\dots X_{n}.}" /></p>
+
+<p>This means, among other things, that for any nonnegative function 
+  
+    
+      
+        f
+        (
+        
+          x
+          
+            1
+          
+        
+        ,
+        
+          x
+          
+            2
+          
+        
+        ,
+        …
+        ,
+        
+          x
+          
+            n
+          
+        
+        )
+        ,
+      
+    
+    {\displaystyle f(x_{1},x_{2},\dots ,x_{n}),}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/da01e9b5b86096828bfbaa50301c203194310223" alt="f(x_1, x_2, \dots, x_n)," />
+if 
+  
+    
+      
+        (
+        
+          Y
+          
+            1
+          
+        
+        ,
+        
+          Y
+          
+            2
+          
+        
+        ,
+        …
+        ,
+        
+          Y
+          
+            n
+          
+        
+        )
+        ∼
+        Mult
+        ⁡
+        (
+        m
+        ,
+        
+          p
+        
+        )
+      
+    
+    {\displaystyle (Y_{1},Y_{2},\dots ,Y_{n})\sim \operatorname {Mult} (m,\mathbf {p} )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/bd3b622ac92d19286cb8d573e25a819d50e1d1c2" alt="{\displaystyle (Y_{1},Y_{2},\dots ,Y_{n})\sim \operatorname {Mult} (m,\mathbf {p} )}" /> is multinomially distributed, then</p>
+<div><div>
+  
+    
+      
+        E
+        ⁡
+        [
+        f
+        (
+        
+          Y
+          
+            1
+          
+        
+        ,
+        
+          Y
+          
+            2
+          
+        
+        ,
+        …
+        ,
+        
+          Y
+          
+            n
+          
+        
+        )
+        ]
+        ≤
+        e
+        
+          
+            m
+          
+        
+        E
+        ⁡
+        [
+        f
+        (
+        
+          X
+          
+            1
+          
+        
+        ,
+        
+          X
+          
+            2
+          
+        
+        ,
+        …
+        ,
+        
+          X
+          
+            n
+          
+        
+        )
+        ]
+      
+    
+    {\displaystyle \operatorname {E} [f(Y_{1},Y_{2},\dots ,Y_{n})]\leq e{\sqrt {m}}\operatorname {E} [f(X_{1},X_{2},\dots ,X_{n})]}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/2d196f4817af3673334cad96f9aa090d2ae3cb7e" alt="{\displaystyle \operatorname {E} [f(Y_{1},Y_{2},\dots ,Y_{n})]\leq e{\sqrt {m}}\operatorname {E} [f(X_{1},X_{2},\dots ,X_{n})]}" /></div>
+<p>where 
+  
+    
+      
+        (
+        
+          X
+          
+            1
+          
+        
+        ,
+        
+          X
+          
+            2
+          
+        
+        ,
+        …
+        ,
+        
+          X
+          
+            n
+          
+        
+        )
+        ∼
+        Pois
+        ⁡
+        (
+        
+          p
+        
+        )
+        .
+      
+    
+    {\displaystyle (X_{1},X_{2},\dots ,X_{n})\sim \operatorname {Pois} (\mathbf {p} ).}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0672e887adf63853e4828e901e15aaf2c7dd9882" alt="{\displaystyle (X_{1},X_{2},\dots ,X_{n})\sim \operatorname {Pois} (\mathbf {p} ).}" /></p>
+
+<p>The factor of 
+  
+    
+      
+        e
+        
+          
+            m
+          
+        
+      
+    
+    {\displaystyle e{\sqrt {m}}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c7e2f9d15ce82286860f087bfff8be600abdd707" alt="{\displaystyle e{\sqrt {m}}}" /> can be replaced by 2 if 
+  
+    
+      
+        f
+      
+    
+    {\displaystyle f}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/132e57acb643253e7810ee9702d9581f159a1c61" alt="f" /> is further assumed to be monotonically increasing or decreasing.</p>
+
+<h3>Bivariate Poisson distribution</h3>
+<p>This distribution has been extended to the bivariate case. The generating function for this distribution is</p>
+<div><div>
+  
+    
+      
+        g
+        (
+        u
+        ,
+        v
+        )
+        =
+        exp
+        ⁡
+        [
+        (
+        
+          θ
+          
+            1
+          
+        
+        −
+        
+          θ
+          
+            12
+          
+        
+        )
+        (
+        u
+        −
+        1
+        )
+        +
+        (
+        
+          θ
+          
+            2
+          
+        
+        −
+        
+          θ
+          
+            12
+          
+        
+        )
+        (
+        v
+        −
+        1
+        )
+        +
+        
+          θ
+          
+            12
+          
+        
+        (
+        u
+        v
+        −
+        1
+        )
+        ]
+      
+    
+    {\displaystyle g(u,v)=\exp[(\theta _{1}-\theta _{12})(u-1)+(\theta _{2}-\theta _{12})(v-1)+\theta _{12}(uv-1)]}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/0d994b2c4f3b36c80cfd0b97ed72fe289c0855d4" alt="{\displaystyle g(u,v)=\exp[(\theta _{1}-\theta _{12})(u-1)+(\theta _{2}-\theta _{12})(v-1)+\theta _{12}(uv-1)]}" /></div><p>
+
+with </p><div><div>
+  
+    
+      
+        
+          θ
+          
+            1
+          
+        
+        ,
+        
+          θ
+          
+            2
+          
+        
+        &gt;
+        
+          θ
+          
+            12
+          
+        
+        &gt;
+        0
+      
+    
+    {\displaystyle \theta _{1},\theta _{2}&gt;\theta _{12}&gt;0}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/59173fc2edd20c7435e8352e8a027320c586d1f6" alt="{\displaystyle \theta _{1},\theta _{2}&gt;\theta _{12}&gt;0}" /></div>
+
+<p>The marginal distributions are Poisson(<i>θ</i>1) and Poisson(<i>θ</i>2) and the correlation coefficient is limited to the range</p>
+<div><div>
+  
+    
+      
+        0
+        ≤
+        ρ
+        ≤
+        min
+        
+          {
+          
+            
+              
+                
+                  
+                    θ
+                    
+                      1
+                    
+                  
+                  
+                    θ
+                    
+                      2
+                    
+                  
+                
+              
+            
+            ,
+            
+              
+                
+                  
+                    θ
+                    
+                      2
+                    
+                  
+                  
+                    θ
+                    
+                      1
+                    
+                  
+                
+              
+            
+          
+          }
+        
+      
+    
+    {\displaystyle 0\leq \rho \leq \min \left\{{\sqrt {\frac {\theta _{1}}{\theta _{2}}}},{\sqrt {\frac {\theta _{2}}{\theta _{1}}}}\right\}}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/25a96cf8c37ebcf307871a8c94ef332df613bbb4" alt="{\displaystyle 0\leq \rho \leq \min \left\{{\sqrt {\frac {\theta _{1}}{\theta _{2}}}},{\sqrt {\frac {\theta _{2}}{\theta _{1}}}}\right\}}" /></div>
+
+<p>A simple way to generate a bivariate Poisson distribution 
+  
+    
+      
+        
+          X
+          
+            1
+          
+        
+        ,
+        
+          X
+          
+            2
+          
+        
+      
+    
+    {\displaystyle X_{1},X_{2}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6d6099d6fb3c34ad5e22fad9c79c40c4ebfee1ba" alt="X_{1},X_{2}" /> is to take three independent Poisson distributions 
+  
+    
+      
+        
+          Y
+          
+            1
+          
+        
+        ,
+        
+          Y
+          
+            2
+          
+        
+        ,
+        
+          Y
+          
+            3
+          
+        
+      
+    
+    {\displaystyle Y_{1},Y_{2},Y_{3}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/db225a2d7020b587c310f70d465d81a5ff666ce5" alt="Y_{1},Y_{2},Y_{3}" /> with means 
+  
+    
+      
+        
+          λ
+          
+            1
+          
+        
+        ,
+        
+          λ
+          
+            2
+          
+        
+        ,
+        
+          λ
+          
+            3
+          
+        
+      
+    
+    {\displaystyle \lambda _{1},\lambda _{2},\lambda _{3}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f2b8c04bd1b2d2ea63bf44bf3ef1712baa2e7248" alt="\lambda _{1},\lambda _{2},\lambda _{3}" /> and then set 
+  
+    
+      
+        
+          X
+          
+            1
+          
+        
+        =
+        
+          Y
+          
+            1
+          
+        
+        +
+        
+          Y
+          
+            3
+          
+        
+        ,
+        
+          X
+          
+            2
+          
+        
+        =
+        
+          Y
+          
+            2
+          
+        
+        +
+        
+          Y
+          
+            3
+          
+        
+        .
+      
+    
+    {\displaystyle X_{1}=Y_{1}+Y_{3},X_{2}=Y_{2}+Y_{3}.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/2edfaef32686a54ff3d93cc8ddf1cbd1cebde812" alt="{\displaystyle X_{1}=Y_{1}+Y_{3},X_{2}=Y_{2}+Y_{3}.}" /> The probability function of the bivariate Poisson distribution is</p>
+<div><div>
+  
+    
+      
+        Pr
+        (
+        
+          X
+          
+            1
+          
+        
+        =
+        
+          k
+          
+            1
+          
+        
+        ,
+        
+          X
+          
+            2
+          
+        
+        =
+        
+          k
+          
+            2
+          
+        
+        )
+        =
+        exp
+        ⁡
+        
+          (
+          
+            −
+            
+              λ
+              
+                1
+              
+            
+            −
+            
+              λ
+              
+                2
+              
+            
+            −
+            
+              λ
+              
+                3
+              
+            
+          
+          )
+        
+        
+          
+            
+              λ
+              
+                1
+              
+              
+                
+                  k
+                  
+                    1
+                  
+                
+              
+            
+            
+              
+                k
+                
+                  1
+                
+              
+              !
+            
+          
+        
+        
+          
+            
+              λ
+              
+                2
+              
+              
+                
+                  k
+                  
+                    2
+                  
+                
+              
+            
+            
+              
+                k
+                
+                  2
+                
+              
+              !
+            
+          
+        
+        
+          ∑
+          
+            k
+            =
+            0
+          
+          
+            min
+            (
+            
+              k
+              
+                1
+              
+            
+            ,
+            
+              k
+              
+                2
+              
+            
+            )
+          
+        
+        
+          
+            
+              (
+            
+            
+              
+                k
+                
+                  1
+                
+              
+              k
+            
+            
+              )
+            
+          
+        
+        
+          
+            
+              (
+            
+            
+              
+                k
+                
+                  2
+                
+              
+              k
+            
+            
+              )
+            
+          
+        
+        k
+        !
+        
+          
+            (
+            
+              
+                
+                  λ
+                  
+                    3
+                  
+                
+                
+                  
+                    λ
+                    
+                      1
+                    
+                  
+                  
+                    λ
+                    
+                      2
+                    
+                  
+                
+              
+            
+            )
+          
+          
+            k
+          
+        
+      
+    
+    {\displaystyle \Pr(X_{1}=k_{1},X_{2}=k_{2})=\exp \left(-\lambda _{1}-\lambda _{2}-\lambda _{3}\right){\frac {\lambda _{1}^{k_{1}}}{k_{1}!}}{\frac {\lambda _{2}^{k_{2}}}{k_{2}!}}\sum _{k=0}^{\min(k_{1},k_{2})}{\binom {k_{1}}{k}}{\binom {k_{2}}{k}}k!\left({\frac {\lambda _{3}}{\lambda _{1}\lambda _{2}}}\right)^{k}}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e3b00b19d41813c00b3f18480f2b375e0c3b96b4" alt="{\displaystyle \Pr(X_{1}=k_{1},X_{2}=k_{2})=\exp \left(-\lambda _{1}-\lambda _{2}-\lambda _{3}\right){\frac {\lambda _{1}^{k_{1}}}{k_{1}!}}{\frac {\lambda _{2}^{k_{2}}}{k_{2}!}}\sum _{k=0}^{\min(k_{1},k_{2})}{\binom {k_{1}}{k}}{\binom {k_{2}}{k}}k!\left({\frac {\lambda _{3}}{\lambda _{1}\lambda _{2}}}\right)^{k}}" /></div>
+
+<h3>Free Poisson distribution</h3>
+<p>The free Poisson distribution with jump size 
+  
+    
+      
+        α
+      
+    
+    {\displaystyle \alpha }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b79333175c8b3f0840bfb4ec41b8072c83ea88d3" alt="\alpha " /> and rate 
+  
+    
+      
+        λ
+      
+    
+    {\displaystyle \lambda }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b43d0ea3c9c025af1be9128e62a18fa74bedda2a" alt="\lambda " /> arises in free probability theory as the limit of repeated free convolution</p>
+<div><div>
+  
+    
+      
+        
+          
+            (
+            
+              
+                (
+                
+                  1
+                  −
+                  
+                    
+                      λ
+                      N
+                    
+                  
+                
+                )
+              
+              
+                δ
+                
+                  0
+                
+              
+              +
+              
+                
+                  λ
+                  N
+                
+              
+              
+                δ
+                
+                  α
+                
+              
+            
+            )
+          
+          
+            ⊞
+            N
+          
+        
+      
+    
+    {\displaystyle \left(\left(1-{\frac {\lambda }{N}}\right)\delta _{0}+{\frac {\lambda }{N}}\delta _{\alpha }\right)^{\boxplus N}}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/347f43443ec8f033d16f84eebd4b79fdfa12a591" alt="{\displaystyle \left(\left(1-{\frac {\lambda }{N}}\right)\delta _{0}+{\frac {\lambda }{N}}\delta _{\alpha }\right)^{\boxplus N}}" /></div>
+<p>as <i>N</i> → ∞.</p>
+
+<p>In other words, let 
+  
+    
+      
+        
+          X
+          
+            N
+          
+        
+      
+    
+    {\displaystyle X_{N}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/90b8110b9148fb2ec3c86f96e3b72bf2b095ce81" alt="X_{N}" /> be random variables so that 
+  
+    
+      
+        
+          X
+          
+            N
+          
+        
+      
+    
+    {\displaystyle X_{N}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/90b8110b9148fb2ec3c86f96e3b72bf2b095ce81" alt="X_{N}" /> has value 
+  
+    
+      
+        α
+      
+    
+    {\displaystyle \alpha }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b79333175c8b3f0840bfb4ec41b8072c83ea88d3" alt="\alpha " /> with probability 
+  
+    
+      
+        
+          
+            λ
+            N
+          
+        
+      
+    
+    {\textstyle {\frac {\lambda }{N}}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/bb8c6dd7c0dd3faa1d620596f105d0f77b84dda6" alt="{\textstyle {\frac {\lambda }{N}}}" /> and value 0 with the remaining probability. Assume also that the family 
+  
+    
+      
+        
+          X
+          
+            1
+          
+        
+        ,
+        
+          X
+          
+            2
+          
+        
+        ,
+        …
+      
+    
+    {\displaystyle X_{1},X_{2},\ldots }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/869cccabc3ea7b90d40e40158d740fc88e07889a" alt="X_{1},X_{2},\ldots " /> are freely independent. Then the limit as 
+  
+    
+      
+        N
+        →
+        ∞
+      
+    
+    {\displaystyle N\to \infty }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e23159ea0d291e21c5709a6dd7486bed7f18febe" alt="N\to \infty " /> of the law of 
+  
+    
+      
+        
+          X
+          
+            1
+          
+        
+        +
+        ⋯
+        +
+        
+          X
+          
+            N
+          
+        
+      
+    
+    {\displaystyle X_{1}+\cdots +X_{N}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9197405e63e2962856f275d4e008a079cc153507" alt="{\displaystyle X_{1}+\cdots +X_{N}}" /> is given by the Free Poisson law with parameters 
+  
+    
+      
+        λ
+        ,
+        α
+        .
+      
+    
+    {\displaystyle \lambda ,\alpha .}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/566a4f5b368707891c0532108f72d7a2b077e8d3" alt="{\displaystyle \lambda ,\alpha .}" /></p>
+
+<p>This definition is analogous to one of the ways in which the classical Poisson distribution is obtained from a (classical) Poisson process.</p>
+
+<p>The measure associated to the free Poisson law is given by</p>
+<div><div>
+  
+    
+      
+        μ
+        =
+        
+          
+            {
+            
+              
+                
+                  (
+                  1
+                  −
+                  λ
+                  )
+                  
+                    δ
+                    
+                      0
+                    
+                  
+                  +
+                  ν
+                  ,
+                
+                
+                  
+                    if 
+                  
+                  0
+                  ≤
+                  λ
+                  ≤
+                  1
+                
+              
+              
+                
+                  ν
+                  ,
+                
+                
+                  
+                    if 
+                  
+                  λ
+                  &gt;
+                  1
+                  ,
+                
+              
+            
+            
+          
+        
+      
+    
+    {\displaystyle \mu ={\begin{cases}(1-\lambda )\delta _{0}+\nu ,&amp;{\text{if }}0\leq \lambda \leq 1\\\nu ,&amp;{\text{if }}\lambda &gt;1,\end{cases}}}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e6ede5882d0f32fa5d0ddb7080d12312a755132d" alt="{\displaystyle \mu ={\begin{cases}(1-\lambda )\delta _{0}+\nu ,&amp;{\text{if }}0\leq \lambda \leq 1\\\nu ,&amp;{\text{if }}\lambda &gt;1,\end{cases}}}" /></div><p>
+where </p><div><div>
+  
+    
+      
+        ν
+        =
+        
+          
+            1
+            
+              2
+              π
+              α
+              t
+            
+          
+        
+        
+          
+            4
+            λ
+            
+              α
+              
+                2
+              
+            
+            −
+            (
+            t
+            −
+            α
+            (
+            1
+            +
+            λ
+            )
+            
+              )
+              
+                2
+              
+            
+          
+        
+        
+        d
+        t
+      
+    
+    {\displaystyle \nu ={\frac {1}{2\pi \alpha t}}{\sqrt {4\lambda \alpha ^{2}-(t-\alpha (1+\lambda ))^{2}}}\,dt}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6efca6804113d51fd4d767acd0e9b69f4af5955c" alt="{\displaystyle \nu ={\frac {1}{2\pi \alpha t}}{\sqrt {4\lambda \alpha ^{2}-(t-\alpha (1+\lambda ))^{2}}}\,dt}" /></div><p> and has support 
+  
+    
+      
+        [
+        α
+        (
+        1
+        −
+        
+          
+            λ
+          
+        
+        
+          )
+          
+            2
+          
+        
+        ,
+        α
+        (
+        1
+        +
+        
+          
+            λ
+          
+        
+        
+          )
+          
+            2
+          
+        
+        ]
+        .
+      
+    
+    {\displaystyle [\alpha (1-{\sqrt {\lambda }})^{2},\alpha (1+{\sqrt {\lambda }})^{2}].}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e632a5959c5dd7a328d80a02e2d9134178a173e1" alt="{\displaystyle [\alpha (1-{\sqrt {\lambda }})^{2},\alpha (1+{\sqrt {\lambda }})^{2}].}" /></p>
+
+<p>This law also arises in random matrix theory as the Marchenko–Pastur law. Its free cumulants are equal to 
+  
+    
+      
+        
+          κ
+          
+            n
+          
+        
+        =
+        λ
+        
+          α
+          
+            n
+          
+        
+        .
+      
+    
+    {\displaystyle \kappa _{n}=\lambda \alpha ^{n}.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7b422dcc3a689aa0100f254a5cafda73542e2709" alt="{\displaystyle \kappa _{n}=\lambda \alpha ^{n}.}" /></p>
+
+<h4>Some transforms of this law</h4>
+<p>We give values of some important transforms of the free Poisson law; the computation can be found in e.g. in the book <i>Lectures on the Combinatorics of Free Probability</i> by A. Nica and R. Speicher</p>
+
+<p>The R-transform of the free Poisson law is given by</p>
+<div><div>
+  
+    
+      
+        R
+        (
+        z
+        )
+        =
+        
+          
+            
+              λ
+              α
+            
+            
+              1
+              −
+              α
+              z
+            
+          
+        
+        .
+      
+    
+    {\displaystyle R(z)={\frac {\lambda \alpha }{1-\alpha z}}.}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a2538f0ee816527e86beff9fa47634e9db8e68e0" alt="{\displaystyle R(z)={\frac {\lambda \alpha }{1-\alpha z}}.}" /></div>
+
+<p>The Cauchy transform (which is the negative of the Stieltjes transformation) is given by</p>
+<div><div>
+  
+    
+      
+        G
+        (
+        z
+        )
+        =
+        
+          
+            
+              z
+              +
+              α
+              −
+              λ
+              α
+              −
+              
+                
+                  (
+                  z
+                  −
+                  α
+                  (
+                  1
+                  +
+                  λ
+                  )
+                  
+                    )
+                    
+                      2
+                    
+                  
+                  −
+                  4
+                  λ
+                  
+                    α
+                    
+                      2
+                    
+                  
+                
+              
+            
+            
+              2
+              α
+              z
+            
+          
+        
+      
+    
+    {\displaystyle G(z)={\frac {z+\alpha -\lambda \alpha -{\sqrt {(z-\alpha (1+\lambda ))^{2}-4\lambda \alpha ^{2}}}}{2\alpha z}}}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/eddab052ca3fa8b01262cb9072033c37e8217873" alt="{\displaystyle G(z)={\frac {z+\alpha -\lambda \alpha -{\sqrt {(z-\alpha (1+\lambda ))^{2}-4\lambda \alpha ^{2}}}}{2\alpha z}}}" /></div>
+
+<p>The S-transform is given by</p>
+<div><div>
+  
+    
+      
+        S
+        (
+        z
+        )
+        =
+        
+          
+            1
+            
+              z
+              +
+              λ
+            
+          
+        
+      
+    
+    {\displaystyle S(z)={\frac {1}{z+\lambda }}}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a31ba028fa580921b77ba78f25fda1fd553564b5" alt="{\displaystyle S(z)={\frac {1}{z+\lambda }}}" /></div>
+<p>in the case that 
+  
+    
+      
+        α
+        =
+        1.
+      
+    
+    {\displaystyle \alpha =1.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/add6db39940aae24215bb0437f5bb12d63fcbfec" alt="{\displaystyle \alpha =1.}" /></p>
+
+<h3>Weibull and Stable count</h3>
+
+<p>Poisson's probability mass function 
+  
+    
+      
+        f
+        (
+        k
+        ;
+        λ
+        )
+      
+    
+    {\displaystyle f(k;\lambda )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/814f588da9821bfdc85e401bdd842df42e71599b" alt="{\displaystyle f(k;\lambda )}" /> can be expressed in a form similar to the product distribution of a Weibull distribution and a variant form of the stable count distribution. 
+The variable 
+  
+    
+      
+        (
+        k
+        +
+        1
+        )
+      
+    
+    {\displaystyle (k+1)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3f9f13644a6be482d7ddb19a6e0c706564773085" alt="{\displaystyle (k+1)}" /> can be regarded as inverse of Lévy's stability parameter in the stable count distribution:</p>
+<div><div>
+  
+    
+      
+        f
+        (
+        k
+        ;
+        λ
+        )
+        =
+        
+          
+            ∫
+            
+              0
+            
+            
+              ∞
+            
+          
+          
+            
+              1
+              u
+            
+          
+          
+          
+            W
+            
+              k
+              +
+              1
+            
+          
+          (
+          
+            
+              λ
+              u
+            
+          
+          )
+          
+            [
+            
+              
+                (
+                
+                  k
+                  +
+                  1
+                
+                )
+              
+              
+                u
+                
+                  k
+                
+              
+              
+              
+                
+                  
+                    N
+                  
+                
+                
+                  
+                    1
+                    
+                      k
+                      +
+                      1
+                    
+                  
+                
+              
+              
+                (
+                
+                  u
+                  
+                    k
+                    +
+                    1
+                  
+                
+                )
+              
+            
+            ]
+          
+          
+          d
+          u
+          ,
+        
+      
+    
+    {\displaystyle f(k;\lambda )=\displaystyle \int _{0}^{\infty }{\frac {1}{u}}\,W_{k+1}({\frac {\lambda }{u}})\left[\left(k+1\right)u^{k}\,{\mathfrak {N}}_{\frac {1}{k+1}}\left(u^{k+1}\right)\right]\,du,}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a4ff582454e495f55331a2e139a452be39d0981a" alt="{\displaystyle f(k;\lambda )=\displaystyle \int _{0}^{\infty }{\frac {1}{u}}\,W_{k+1}({\frac {\lambda }{u}})\left[\left(k+1\right)u^{k}\,{\mathfrak {N}}_{\frac {1}{k+1}}\left(u^{k+1}\right)\right]\,du,}" /></div>
+<p>where 
+  
+    
+      
+        
+          
+            
+              N
+            
+          
+          
+            α
+          
+        
+        (
+        ν
+        )
+      
+    
+    {\displaystyle {\mathfrak {N}}_{\alpha }(\nu )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/16503339cce78afe1b7b86dcf6d064fb7f34b979" alt="{\displaystyle {\mathfrak {N}}_{\alpha }(\nu )}" /> is a standard stable count distribution of shape 
+  
+    
+      
+        α
+        =
+        1
+        
+          /
+        
+        
+          (
+          
+            k
+            +
+            1
+          
+          )
+        
+        ,
+      
+    
+    {\displaystyle \alpha =1/\left(k+1\right),}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8e3d23b54d7c72d513d22f32a6fe1ec1034194f9" alt="{\displaystyle \alpha =1/\left(k+1\right),}" /> and 
+  
+    
+      
+        
+          W
+          
+            k
+            +
+            1
+          
+        
+        (
+        x
+        )
+      
+    
+    {\displaystyle W_{k+1}(x)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c02ff89392318889f448267367c534b517bba472" alt="{\displaystyle W_{k+1}(x)}" /> is a standard Weibull distribution of shape 
+  
+    
+      
+        k
+        +
+        1.
+      
+    
+    {\displaystyle k+1.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/bd5b9a64aeb4f9176797360fce8f523764ac79e3" alt="{\displaystyle k+1.}" /></p>
+
+
+
+<h2>Statistical inference</h2>
+<div>See also: Poisson regression</div>
+
+<h3>Parameter estimation</h3>
+<p>Given a sample of n measured values 
+  
+    
+      
+        
+          k
+          
+            i
+          
+        
+        ∈
+        {
+        0
+        ,
+        1
+        ,
+        …
+        }
+        ,
+      
+    
+    {\displaystyle k_{i}\in \{0,1,\dots \},}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d99452d212e85d679221bbd9768c0ac42ea84366" alt="{\displaystyle k_{i}\in \{0,1,\dots \},}" /> for  <i>i</i> = 1, ..., <i>n</i>, we wish to estimate the value of the parameter λ of the Poisson population from which the sample was drawn. The maximum likelihood estimate is </p>
+
+
+  
+    
+      
+        
+          
+            
+              
+                λ
+                ^
+              
+            
+          
+          
+            
+              M
+              L
+              E
+            
+          
+        
+        =
+        
+          
+            1
+            n
+          
+        
+        
+          ∑
+          
+            i
+            =
+            1
+          
+          
+            n
+          
+        
+        
+          k
+          
+            i
+          
+        
+         
+        .
+      
+    
+    {\displaystyle {\widehat {\lambda }}_{\mathrm {MLE} }={\frac {1}{n}}\sum _{i=1}^{n}k_{i}\ .}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7c2d34749b1c93976303296e6b87b64740d69f4d" alt="{\displaystyle {\widehat {\lambda }}_{\mathrm {MLE} }={\frac {1}{n}}\sum _{i=1}^{n}k_{i}\ .}" />
+
+<p>Since each observation has expectation λ so does the sample mean. Therefore, the maximum likelihood estimate is an unbiased estimator of λ. It is also an efficient estimator since its variance achieves the Cramér–Rao lower bound (CRLB). Hence it is minimum-variance unbiased. Also it can be proven that the sum (and hence the sample mean as it is a one-to-one function of the sum) is a complete and sufficient statistic for λ.</p>
+
+<p>To prove sufficiency we may use the factorization theorem. Consider partitioning the probability mass function of the joint Poisson distribution for the sample into two parts: one that depends solely on the sample 
+  
+    
+      
+        
+          x
+        
+      
+    
+    {\displaystyle \mathbf {x} }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/32adf004df5eb0a8c7fd8c0b6b7405183c5a5ef2" alt="\mathbf {x} " />, called 
+  
+    
+      
+        h
+        (
+        
+          x
+        
+        )
+      
+    
+    {\displaystyle h(\mathbf {x} )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d8ade5d2635b53f734929e6ad7f25bfcf1437c0c" alt="h(\mathbf {x} )" />, and one that depends on the parameter 
+  
+    
+      
+        λ
+      
+    
+    {\displaystyle \lambda }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b43d0ea3c9c025af1be9128e62a18fa74bedda2a" alt="\lambda " /> and the sample 
+  
+    
+      
+        
+          x
+        
+      
+    
+    {\displaystyle \mathbf {x} }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/32adf004df5eb0a8c7fd8c0b6b7405183c5a5ef2" alt="\mathbf {x} " /> only through the function 
+  
+    
+      
+        T
+        (
+        
+          x
+        
+        )
+        .
+      
+    
+    {\displaystyle T(\mathbf {x} ).}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9eca30ed81563926023bc46e53f5a624207ba0e3" alt="{\displaystyle T(\mathbf {x} ).}" /> Then 
+  
+    
+      
+        T
+        (
+        
+          x
+        
+        )
+      
+    
+    {\displaystyle T(\mathbf {x} )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/90a3259cedd58b92e1140db52ab63ae096baa16d" alt="T(\mathbf {x} )" /> is a sufficient statistic for 
+  
+    
+      
+        λ
+        .
+      
+    
+    {\displaystyle \lambda .}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4bb9c58e3f6b2de892e10ef516f96f07da0423e0" alt="\lambda ." /></p>
+
+
+  
+    
+      
+        P
+        (
+        
+          x
+        
+        )
+        =
+        
+          ∏
+          
+            i
+            =
+            1
+          
+          
+            n
+          
+        
+        
+          
+            
+              
+                λ
+                
+                  
+                    x
+                    
+                      i
+                    
+                  
+                
+              
+              
+                e
+                
+                  −
+                  λ
+                
+              
+            
+            
+              
+                x
+                
+                  i
+                
+              
+              !
+            
+          
+        
+        =
+        
+          
+            1
+            
+              
+                ∏
+                
+                  i
+                  =
+                  1
+                
+                
+                  n
+                
+              
+              
+                x
+                
+                  i
+                
+              
+              !
+            
+          
+        
+        ×
+        
+          λ
+          
+            
+              ∑
+              
+                i
+                =
+                1
+              
+              
+                n
+              
+            
+            
+              x
+              
+                i
+              
+            
+          
+        
+        
+          e
+          
+            −
+            n
+            λ
+          
+        
+      
+    
+    {\displaystyle P(\mathbf {x} )=\prod _{i=1}^{n}{\frac {\lambda ^{x_{i}}e^{-\lambda }}{x_{i}!}}={\frac {1}{\prod _{i=1}^{n}x_{i}!}}\times \lambda ^{\sum _{i=1}^{n}x_{i}}e^{-n\lambda }}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/935b182bf975ed1c368e4fc741d515f297ce66ee" alt="{\displaystyle P(\mathbf {x} )=\prod _{i=1}^{n}{\frac {\lambda ^{x_{i}}e^{-\lambda }}{x_{i}!}}={\frac {1}{\prod _{i=1}^{n}x_{i}!}}\times \lambda ^{\sum _{i=1}^{n}x_{i}}e^{-n\lambda }}" />
+
+<p>The first term 
+  
+    
+      
+        h
+        (
+        
+          x
+        
+        )
+      
+    
+    {\displaystyle h(\mathbf {x} )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d8ade5d2635b53f734929e6ad7f25bfcf1437c0c" alt="h(\mathbf {x} )" /> depends only on 
+  
+    
+      
+        
+          x
+        
+      
+    
+    {\displaystyle \mathbf {x} }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/32adf004df5eb0a8c7fd8c0b6b7405183c5a5ef2" alt="\mathbf {x} " />. The second term 
+  
+    
+      
+        g
+        (
+        T
+        (
+        
+          x
+        
+        )
+        
+          |
+        
+        λ
+        )
+      
+    
+    {\displaystyle g(T(\mathbf {x} )|\lambda )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7e569d1063c1dc4b137dfe9d9f6e6c14a3de12e0" alt="g(T(\mathbf {x} )|\lambda )" /> depends on the sample only through 
+  
+    
+      
+        T
+        (
+        
+          x
+        
+        )
+        =
+        
+          ∑
+          
+            i
+            =
+            1
+          
+          
+            n
+          
+        
+        
+          x
+          
+            i
+          
+        
+        .
+      
+    
+    {\textstyle T(\mathbf {x} )=\sum _{i=1}^{n}x_{i}.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/dbbbe249485e9a50ad73da79e651548b90b05f87" alt="{\textstyle T(\mathbf {x} )=\sum _{i=1}^{n}x_{i}.}" /> Thus, 
+  
+    
+      
+        T
+        (
+        
+          x
+        
+        )
+      
+    
+    {\displaystyle T(\mathbf {x} )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/90a3259cedd58b92e1140db52ab63ae096baa16d" alt="T(\mathbf {x} )" /> is sufficient.</p>
+
+<p>To find the parameter λ that maximizes the probability function for the Poisson population, we can use the logarithm of the likelihood function:</p>
+
+
+  
+    
+      
+        
+          
+            
+              
+                ℓ
+                (
+                λ
+                )
+              
+              
+                
+                =
+                ln
+                ⁡
+                
+                  ∏
+                  
+                    i
+                    =
+                    1
+                  
+                  
+                    n
+                  
+                
+                f
+                (
+                
+                  k
+                  
+                    i
+                  
+                
+                ∣
+                λ
+                )
+              
+            
+            
+              
+              
+                
+                =
+                
+                  ∑
+                  
+                    i
+                    =
+                    1
+                  
+                  
+                    n
+                  
+                
+                ln
+                
+                
+                  (
+                  
+                    
+                      
+                        
+                          e
+                          
+                            −
+                            λ
+                          
+                        
+                        
+                          λ
+                          
+                            
+                              k
+                              
+                                i
+                              
+                            
+                          
+                        
+                      
+                      
+                        
+                          k
+                          
+                            i
+                          
+                        
+                        !
+                      
+                    
+                  
+                  )
+                
+              
+            
+            
+              
+              
+                
+                =
+                −
+                n
+                λ
+                +
+                
+                  (
+                  
+                    
+                      ∑
+                      
+                        i
+                        =
+                        1
+                      
+                      
+                        n
+                      
+                    
+                    
+                      k
+                      
+                        i
+                      
+                    
+                  
+                  )
+                
+                ln
+                ⁡
+                (
+                λ
+                )
+                −
+                
+                  ∑
+                  
+                    i
+                    =
+                    1
+                  
+                  
+                    n
+                  
+                
+                ln
+                ⁡
+                (
+                
+                  k
+                  
+                    i
+                  
+                
+                !
+                )
+                .
+              
+            
+          
+        
+      
+    
+    {\displaystyle {\begin{aligned}\ell (\lambda )&amp;=\ln \prod _{i=1}^{n}f(k_{i}\mid \lambda )\\&amp;=\sum _{i=1}^{n}\ln \!\left({\frac {e^{-\lambda }\lambda ^{k_{i}}}{k_{i}!}}\right)\\&amp;=-n\lambda +\left(\sum _{i=1}^{n}k_{i}\right)\ln(\lambda )-\sum _{i=1}^{n}\ln(k_{i}!).\end{aligned}}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/ff7dd9f64c691cf995378c5076ef2ee1fc40d824" alt="{\displaystyle {\begin{aligned}\ell (\lambda )&amp;=\ln \prod _{i=1}^{n}f(k_{i}\mid \lambda )\\&amp;=\sum _{i=1}^{n}\ln \!\left({\frac {e^{-\lambda }\lambda ^{k_{i}}}{k_{i}!}}\right)\\&amp;=-n\lambda +\left(\sum _{i=1}^{n}k_{i}\right)\ln(\lambda )-\sum _{i=1}^{n}\ln(k_{i}!).\end{aligned}}}" />
+
+<p>We take the derivative of 
+  
+    
+      
+        ℓ
+      
+    
+    {\displaystyle \ell }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f066e981e530bacc07efc6a10fa82deee985929e" alt="\ell " /> with respect to λ and compare it to zero:</p>
+
+
+  
+    
+      
+        
+          
+            
+              d
+            
+            
+              
+                d
+              
+              λ
+            
+          
+        
+        ℓ
+        (
+        λ
+        )
+        =
+        0
+        
+        ⟺
+        
+        −
+        n
+        +
+        
+          (
+          
+            
+              ∑
+              
+                i
+                =
+                1
+              
+              
+                n
+              
+            
+            
+              k
+              
+                i
+              
+            
+          
+          )
+        
+        
+          
+            1
+            λ
+          
+        
+        =
+        0.
+        
+      
+    
+    {\displaystyle {\frac {\mathrm {d} }{\mathrm {d} \lambda }}\ell (\lambda )=0\iff -n+\left(\sum _{i=1}^{n}k_{i}\right){\frac {1}{\lambda }}=0.\!}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6330dd6ba39f01a7d9496099abadca2afaa244ba" alt="{\displaystyle {\frac {\mathrm {d} }{\mathrm {d} \lambda }}\ell (\lambda )=0\iff -n+\left(\sum _{i=1}^{n}k_{i}\right){\frac {1}{\lambda }}=0.\!}" />
+
+<p>Solving for λ gives a stationary point.</p>
+
+
+  
+    
+      
+        λ
+        =
+        
+          
+            
+              
+                ∑
+                
+                  i
+                  =
+                  1
+                
+                
+                  n
+                
+              
+              
+                k
+                
+                  i
+                
+              
+            
+            n
+          
+        
+      
+    
+    {\displaystyle \lambda ={\frac {\sum _{i=1}^{n}k_{i}}{n}}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/1112ab9fcb4209853c6d052470a90f943a9966e1" alt="\lambda ={\frac {\sum _{i=1}^{n}k_{i}}{n}}" />
+
+<p>So λ is the average of the k<i>i</i> values. Obtaining the sign of the second derivative of <i>L</i> at the stationary point will determine what kind of extreme value λ is.</p>
+
+
+  
+    
+      
+        
+          
+            
+              
+                ∂
+                
+                  2
+                
+              
+              ℓ
+            
+            
+              ∂
+              
+                λ
+                
+                  2
+                
+              
+            
+          
+        
+        =
+        −
+        
+          λ
+          
+            −
+            2
+          
+        
+        
+          ∑
+          
+            i
+            =
+            1
+          
+          
+            n
+          
+        
+        
+          k
+          
+            i
+          
+        
+      
+    
+    {\displaystyle {\frac {\partial ^{2}\ell }{\partial \lambda ^{2}}}=-\lambda ^{-2}\sum _{i=1}^{n}k_{i}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/654ea47fda7c1ad93809d44e976db5c35194d54e" alt="{\displaystyle {\frac {\partial ^{2}\ell }{\partial \lambda ^{2}}}=-\lambda ^{-2}\sum _{i=1}^{n}k_{i}}" />
+
+<p>Evaluating the second derivative <i>at the stationary point</i> gives:</p>
+
+
+  
+    
+      
+        
+          
+            
+              
+                ∂
+                
+                  2
+                
+              
+              ℓ
+            
+            
+              ∂
+              
+                λ
+                
+                  2
+                
+              
+            
+          
+        
+        =
+        −
+        
+          
+            
+              n
+              
+                2
+              
+            
+            
+              
+                ∑
+                
+                  i
+                  =
+                  1
+                
+                
+                  n
+                
+              
+              
+                k
+                
+                  i
+                
+              
+            
+          
+        
+      
+    
+    {\displaystyle {\frac {\partial ^{2}\ell }{\partial \lambda ^{2}}}=-{\frac {n^{2}}{\sum _{i=1}^{n}k_{i}}}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3b8b29d81a13cf3d78f6a1bc3cc471b8901b014e" alt="{\displaystyle {\frac {\partial ^{2}\ell }{\partial \lambda ^{2}}}=-{\frac {n^{2}}{\sum _{i=1}^{n}k_{i}}}}" />
+
+<p>which is the negative of n times the reciprocal of the average of the ki. This expression is negative when the average is positive. If this is satisfied, then the stationary point maximizes the probability function.</p>
+
+<p>For completeness, a family of distributions is said to be complete if and only if 
+  
+    
+      
+        E
+        (
+        g
+        (
+        T
+        )
+        )
+        =
+        0
+      
+    
+    {\displaystyle E(g(T))=0}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/91c6007bca4ce4b24cf02815548f1e055ad72f7b" alt="E(g(T))=0" /> implies that 
+  
+    
+      
+        
+          P
+          
+            λ
+          
+        
+        (
+        g
+        (
+        T
+        )
+        =
+        0
+        )
+        =
+        1
+      
+    
+    {\displaystyle P_{\lambda }(g(T)=0)=1}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/10615fff67b9f789f12132b9a9f484a150f0347d" alt="P_{\lambda }(g(T)=0)=1" /> for all 
+  
+    
+      
+        λ
+        .
+      
+    
+    {\displaystyle \lambda .}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4bb9c58e3f6b2de892e10ef516f96f07da0423e0" alt="\lambda ." /> If the individual 
+  
+    
+      
+        
+          X
+          
+            i
+          
+        
+      
+    
+    {\displaystyle X_{i}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/af4a0955af42beb5f85aa05fb8c07abedc13990d" alt="X_{i}" /> are iid 
+  
+    
+      
+        
+          P
+          o
+        
+        (
+        λ
+        )
+        ,
+      
+    
+    {\displaystyle \mathrm {Po} (\lambda ),}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d5a250ddea76d3c64a0b6620d448d7a2defc7606" alt="{\displaystyle \mathrm {Po} (\lambda ),}" /> then 
+  
+    
+      
+        T
+        (
+        
+          x
+        
+        )
+        =
+        
+          ∑
+          
+            i
+            =
+            1
+          
+          
+            n
+          
+        
+        
+          X
+          
+            i
+          
+        
+        ∼
+        
+          P
+          o
+        
+        (
+        n
+        λ
+        )
+        .
+      
+    
+    {\textstyle T(\mathbf {x} )=\sum _{i=1}^{n}X_{i}\sim \mathrm {Po} (n\lambda ).}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d0340a1347b82398d5a884332b50cc040aead69e" alt="{\textstyle T(\mathbf {x} )=\sum _{i=1}^{n}X_{i}\sim \mathrm {Po} (n\lambda ).}" /> Knowing the distribution we want to investigate, it is easy to see that the statistic is complete.</p>
+
+
+  
+    
+      
+        E
+        (
+        g
+        (
+        T
+        )
+        )
+        =
+        
+          ∑
+          
+            t
+            =
+            0
+          
+          
+            ∞
+          
+        
+        g
+        (
+        t
+        )
+        
+          
+            
+              (
+              n
+              λ
+              
+                )
+                
+                  t
+                
+              
+              
+                e
+                
+                  −
+                  n
+                  λ
+                
+              
+            
+            
+              t
+              !
+            
+          
+        
+        =
+        0
+      
+    
+    {\displaystyle E(g(T))=\sum _{t=0}^{\infty }g(t){\frac {(n\lambda )^{t}e^{-n\lambda }}{t!}}=0}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4684b4947377fcbaeda1a4e5d70d3c67ea456ffd" alt="{\displaystyle E(g(T))=\sum _{t=0}^{\infty }g(t){\frac {(n\lambda )^{t}e^{-n\lambda }}{t!}}=0}" />
+
+<p>For this equality to hold, 
+  
+    
+      
+        g
+        (
+        t
+        )
+      
+    
+    {\displaystyle g(t)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b84f700860ee7af27797d11ddfad3d185eb7af0e" alt="g(t)" /> must be 0. This follows from the fact that none of the other terms will be 0 for all 
+  
+    
+      
+        t
+      
+    
+    {\displaystyle t}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/65658b7b223af9e1acc877d848888ecdb4466560" alt="t" /> in the sum and for all possible values of 
+  
+    
+      
+        λ
+        .
+      
+    
+    {\displaystyle \lambda .}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4bb9c58e3f6b2de892e10ef516f96f07da0423e0" alt="\lambda ." /> Hence, 
+  
+    
+      
+        E
+        (
+        g
+        (
+        T
+        )
+        )
+        =
+        0
+      
+    
+    {\displaystyle E(g(T))=0}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/91c6007bca4ce4b24cf02815548f1e055ad72f7b" alt="E(g(T))=0" /> for all 
+  
+    
+      
+        λ
+      
+    
+    {\displaystyle \lambda }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b43d0ea3c9c025af1be9128e62a18fa74bedda2a" alt="\lambda " /> implies that 
+  
+    
+      
+        
+          P
+          
+            λ
+          
+        
+        (
+        g
+        (
+        T
+        )
+        =
+        0
+        )
+        =
+        1
+        ,
+      
+    
+    {\displaystyle P_{\lambda }(g(T)=0)=1,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e2735b990a3da082f7e8fe46a09bfc9386bac4a2" alt="{\displaystyle P_{\lambda }(g(T)=0)=1,}" /> and the statistic has been shown to be complete.</p>
+
+<h3>Confidence interval</h3>
+<p>The confidence interval for the mean of a Poisson distribution can be expressed using the relationship between the cumulative distribution functions of the Poisson and chi-squared distributions. The chi-squared distribution is itself closely related to the gamma distribution, and this leads to an alternative expression. Given an observation k from a Poisson distribution with mean <i>μ</i>, a confidence interval for <i>μ</i> with confidence level 1 – <i>α</i> is</p>
+
+
+  
+    
+      
+        
+          
+            
+              1
+              2
+            
+          
+        
+        
+          χ
+          
+            2
+          
+        
+        (
+        α
+        
+          /
+        
+        2
+        ;
+        2
+        k
+        )
+        ≤
+        μ
+        ≤
+        
+          
+            
+              1
+              2
+            
+          
+        
+        
+          χ
+          
+            2
+          
+        
+        (
+        1
+        −
+        α
+        
+          /
+        
+        2
+        ;
+        2
+        k
+        +
+        2
+        )
+        ,
+      
+    
+    {\displaystyle {\tfrac {1}{2}}\chi ^{2}(\alpha /2;2k)\leq \mu \leq {\tfrac {1}{2}}\chi ^{2}(1-\alpha /2;2k+2),}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/476c9f37c5d5609256cc62365f918d8ff05f0af0" alt="{\displaystyle {\tfrac {1}{2}}\chi ^{2}(\alpha /2;2k)\leq \mu \leq {\tfrac {1}{2}}\chi ^{2}(1-\alpha /2;2k+2),}" />
+
+<p>or equivalently,</p>
+
+
+  
+    
+      
+        
+          F
+          
+            −
+            1
+          
+        
+        (
+        α
+        
+          /
+        
+        2
+        ;
+        k
+        ,
+        1
+        )
+        ≤
+        μ
+        ≤
+        
+          F
+          
+            −
+            1
+          
+        
+        (
+        1
+        −
+        α
+        
+          /
+        
+        2
+        ;
+        k
+        +
+        1
+        ,
+        1
+        )
+        ,
+      
+    
+    {\displaystyle F^{-1}(\alpha /2;k,1)\leq \mu \leq F^{-1}(1-\alpha /2;k+1,1),}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/24d082f70606fe3e7eb468e0747fc4f68e3d4645" alt="F^{-1}(\alpha /2;k,1)\leq \mu \leq F^{-1}(1-\alpha /2;k+1,1)," />
+
+<p>where 
+  
+    
+      
+        
+          χ
+          
+            2
+          
+        
+        (
+        p
+        ;
+        n
+        )
+      
+    
+    {\displaystyle \chi ^{2}(p;n)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4acf3cab1e0b39e1ab70dae512aba74f84bf9793" alt="\chi ^{2}(p;n)" /> is the quantile function (corresponding to a lower tail area <i>p</i>) of the chi-squared distribution with n degrees of freedom and 
+  
+    
+      
+        
+          F
+          
+            −
+            1
+          
+        
+        (
+        p
+        ;
+        n
+        ,
+        1
+        )
+      
+    
+    {\displaystyle F^{-1}(p;n,1)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/1decb5d0b1ee42a9fb4f495e03a8df1bfe2fc659" alt="F^{-1}(p;n,1)" /> is the quantile function of a gamma distribution with shape parameter n and scale parameter 1. This interval is 'exact' in the sense that its coverage probability is never less than the nominal 1 – <i>α</i>.</p>
+
+<p>When quantiles of the gamma distribution are not available, an accurate approximation to this exact interval has been proposed (based on the Wilson–Hilferty transformation):</p>
+
+  
+    
+      
+        k
+        
+          
+            (
+            
+              1
+              −
+              
+                
+                  1
+                  
+                    9
+                    k
+                  
+                
+              
+              −
+              
+                
+                  
+                    z
+                    
+                      α
+                      
+                        /
+                      
+                      2
+                    
+                  
+                  
+                    3
+                    
+                      
+                        k
+                      
+                    
+                  
+                
+              
+            
+            )
+          
+          
+            3
+          
+        
+        ≤
+        μ
+        ≤
+        (
+        k
+        +
+        1
+        )
+        
+          
+            (
+            
+              1
+              −
+              
+                
+                  1
+                  
+                    9
+                    (
+                    k
+                    +
+                    1
+                    )
+                  
+                
+              
+              +
+              
+                
+                  
+                    z
+                    
+                      α
+                      
+                        /
+                      
+                      2
+                    
+                  
+                  
+                    3
+                    
+                      
+                        k
+                        +
+                        1
+                      
+                    
+                  
+                
+              
+            
+            )
+          
+          
+            3
+          
+        
+        ,
+      
+    
+    {\displaystyle k\left(1-{\frac {1}{9k}}-{\frac {z_{\alpha /2}}{3{\sqrt {k}}}}\right)^{3}\leq \mu \leq (k+1)\left(1-{\frac {1}{9(k+1)}}+{\frac {z_{\alpha /2}}{3{\sqrt {k+1}}}}\right)^{3},}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/43e11987e9faefbe440c6466ae8bb785b24284d7" alt="k\left(1-{\frac {1}{9k}}-{\frac {z_{\alpha /2}}{3{\sqrt {k}}}}\right)^{3}\leq \mu \leq (k+1)\left(1-{\frac {1}{9(k+1)}}+{\frac {z_{\alpha /2}}{3{\sqrt {k+1}}}}\right)^{3}," />
+<p>where 
+  
+    
+      
+        
+          z
+          
+            α
+            
+              /
+            
+            2
+          
+        
+      
+    
+    {\displaystyle z_{\alpha /2}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8d12f94696aa58f31c6fd0149affc0ccd8271442" alt="z_{\alpha /2}" /> denotes the standard normal deviate with upper tail area α / 2.</p>
+
+<p>For application of these formulae in the same context as above (given a sample of n measured values k<i>i</i> each drawn from a Poisson distribution with mean λ), one would set</p>
+
+
+  
+    
+      
+        k
+        =
+        
+          ∑
+          
+            i
+            =
+            1
+          
+          
+            n
+          
+        
+        
+          k
+          
+            i
+          
+        
+        ,
+      
+    
+    {\displaystyle k=\sum _{i=1}^{n}k_{i},}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9280aa512dedfbdc5c9e230b3f391a2cb8a13641" alt="{\displaystyle k=\sum _{i=1}^{n}k_{i},}" />
+<p>calculate an interval for  μ = n λ , and then derive the interval for λ.</p>
+
+<h3>Bayesian inference</h3>
+<p>In Bayesian inference, the conjugate prior for the rate parameter λ of the Poisson distribution is the gamma distribution. Let</p>
+
+
+  
+    
+      
+        λ
+        ∼
+        
+          G
+          a
+          m
+          m
+          a
+        
+        (
+        α
+        ,
+        β
+        )
+      
+    
+    {\displaystyle \lambda \sim \mathrm {Gamma} (\alpha ,\beta )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b6269ce405144ac3c4624d83be0468bfce0a5b8a" alt="{\displaystyle \lambda \sim \mathrm {Gamma} (\alpha ,\beta )}" />
+
+<p>denote that λ is distributed according to the gamma density <i>g</i> parameterized in terms of a shape parameter <i>α</i> and an inverse scale parameter <i>β</i>:</p>
+
+
+  
+    
+      
+        g
+        (
+        λ
+        ∣
+        α
+        ,
+        β
+        )
+        =
+        
+          
+            
+              β
+              
+                α
+              
+            
+            
+              Γ
+              (
+              α
+              )
+            
+          
+        
+        
+        
+          λ
+          
+            α
+            −
+            1
+          
+        
+        
+        
+          e
+          
+            −
+            β
+            
+            λ
+          
+        
+        
+        
+           for 
+        
+        λ
+        &gt;
+        0
+        
+        
+        .
+      
+    
+    {\displaystyle g(\lambda \mid \alpha ,\beta )={\frac {\beta ^{\alpha }}{\Gamma (\alpha )}}\;\lambda ^{\alpha -1}\;e^{-\beta \,\lambda }\qquad {\text{ for }}\lambda &gt;0\,\!.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/122e1dcf0a3b4dd6b4789bac2c3c53b3e7cf651f" alt="g(\lambda \mid \alpha ,\beta )={\frac {\beta ^{\alpha }}{\Gamma (\alpha )}}\;\lambda ^{\alpha -1}\;e^{-\beta \,\lambda }\qquad {\text{ for }}\lambda &gt;0\,\!." />
+
+<p>Then, given the same sample of n measured values k<i>i</i> as before, and a prior of Gamma(<i>α</i>, <i>β</i>), the posterior distribution is</p>
+
+
+  
+    
+      
+        λ
+        ∼
+        
+          G
+          a
+          m
+          m
+          a
+        
+        
+          (
+          
+            α
+            +
+            
+              ∑
+              
+                i
+                =
+                1
+              
+              
+                n
+              
+            
+            
+              k
+              
+                i
+              
+            
+            ,
+            β
+            +
+            n
+          
+          )
+        
+        .
+      
+    
+    {\displaystyle \lambda \sim \mathrm {Gamma} \left(\alpha +\sum _{i=1}^{n}k_{i},\beta +n\right).}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f8559dea969ec3ef330ffbcf7b6a5122b402500a" alt="{\displaystyle \lambda \sim \mathrm {Gamma} \left(\alpha +\sum _{i=1}^{n}k_{i},\beta +n\right).}" />
+
+<p>Note that the posterior mean is linear and is given by </p>
+
+  
+    
+      
+        E
+        [
+        λ
+        
+          |
+        
+        
+          k
+          
+            1
+          
+        
+        ,
+        …
+        ,
+        
+          k
+          
+            n
+          
+        
+        ]
+        =
+        
+          
+            
+              α
+              +
+              
+                ∑
+                
+                  i
+                  =
+                  1
+                
+                
+                  n
+                
+              
+              
+                k
+                
+                  i
+                
+              
+            
+            
+              β
+              +
+              n
+            
+          
+        
+        .
+      
+    
+    {\displaystyle E[\lambda |k_{1},\ldots ,k_{n}]={\frac {\alpha +\sum _{i=1}^{n}k_{i}}{\beta +n}}.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5a8b62b44b0eb0ffc413114a81ccc79c8f1e200b" alt="{\displaystyle E[\lambda |k_{1},\ldots ,k_{n}]={\frac {\alpha +\sum _{i=1}^{n}k_{i}}{\beta +n}}.}" />
+<p>It can be shown that gamma distribution is the only prior that induces linearity of the conditional mean. Moreover, a converse result exists which states that if the conditional mean is close to a linear function in the 
+  
+    
+      
+        
+          L
+          
+            2
+          
+        
+      
+    
+    {\displaystyle L_{2}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c6a952cfe42c86b7741f55a817da0e251793a358" alt="L_{2}" /> distance than the prior distribution of λ must be close to gamma distribution in Levy distance.</p>
+
+<p>The posterior mean E[λ] approaches the maximum likelihood estimate 
+  
+    
+      
+        
+          
+            
+              
+                λ
+                ^
+              
+            
+          
+          
+            
+              M
+              L
+              E
+            
+          
+        
+      
+    
+    {\displaystyle {\widehat {\lambda }}_{\mathrm {MLE} }}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f567cbf61632b01e5a165312085022841b84ceab" alt="{\widehat {\lambda }}_{\mathrm {MLE} }" /> in the limit as 
+  
+    
+      
+        α
+        →
+        0
+        ,
+        β
+        →
+        0
+        ,
+      
+    
+    {\displaystyle \alpha \to 0,\beta \to 0,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/ad2a49af16aacf6c1547a3cf5d152b4bace20eed" alt="{\displaystyle \alpha \to 0,\beta \to 0,}" /> which follows immediately from the general expression of the mean of the gamma distribution.</p>
+
+<p>The posterior predictive distribution for a single additional observation is a negative binomial distribution, sometimes called a gamma–Poisson distribution.</p>
+
+<h3>Simultaneous estimation of multiple Poisson means</h3>
+<p>Suppose 
+  
+    
+      
+        
+          X
+          
+            1
+          
+        
+        ,
+        
+          X
+          
+            2
+          
+        
+        ,
+        …
+        ,
+        
+          X
+          
+            p
+          
+        
+      
+    
+    {\displaystyle X_{1},X_{2},\dots ,X_{p}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/ada35ba220996e5473a2cdba9cf268c39622a52a" alt="X_{1},X_{2},\dots ,X_{p}" /> is a set of independent random variables from a set of 
+  
+    
+      
+        p
+      
+    
+    {\displaystyle p}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/81eac1e205430d1f40810df36a0edffdc367af36" alt="p" /> Poisson distributions, each with a parameter 
+  
+    
+      
+        
+          λ
+          
+            i
+          
+        
+        ,
+      
+    
+    {\displaystyle \lambda _{i},}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a04732c5e1c10d90f7b95c9f06e461f2f5d797f9" alt="\lambda_i," /> 
+  
+    
+      
+        i
+        =
+        1
+        ,
+        …
+        ,
+        p
+        ,
+      
+    
+    {\displaystyle i=1,\dots ,p,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d3b674d21e32f8698da555e2c3df44e423e71e97" alt="{\displaystyle i=1,\dots ,p,}" /> and we would like to estimate these parameters. Then, Clevenson and Zidek show that under the normalized squared error loss 
+  
+    
+      
+        L
+        (
+        λ
+        ,
+        
+          
+            
+              λ
+              ^
+            
+          
+        
+        )
+        =
+        
+          ∑
+          
+            i
+            =
+            1
+          
+          
+            p
+          
+        
+        
+          λ
+          
+            i
+          
+          
+            −
+            1
+          
+        
+        (
+        
+          
+            
+              
+                λ
+                ^
+              
+            
+          
+          
+            i
+          
+        
+        −
+        
+          λ
+          
+            i
+          
+        
+        
+          )
+          
+            2
+          
+        
+        ,
+      
+    
+    {\textstyle L(\lambda ,{\hat {\lambda }})=\sum _{i=1}^{p}\lambda _{i}^{-1}({\hat {\lambda }}_{i}-\lambda _{i})^{2},}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/6ac90ce6d5cc2924dc5ce689f4a435c4d31275ac" alt="{\textstyle L(\lambda ,{\hat {\lambda }})=\sum _{i=1}^{p}\lambda _{i}^{-1}({\hat {\lambda }}_{i}-\lambda _{i})^{2},}" /> when 
+  
+    
+      
+        p
+        &gt;
+        1
+        ,
+      
+    
+    {\displaystyle p&gt;1,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4b18ad57c656bab68c7bd45e2bf4596d09de7c0a" alt="{\displaystyle p&gt;1,}" /> then, similar as in Stein's example for the Normal means, the MLE estimator 
+  
+    
+      
+        
+          
+            
+              
+                λ
+                ^
+              
+            
+          
+          
+            i
+          
+        
+        =
+        
+          X
+          
+            i
+          
+        
+      
+    
+    {\displaystyle {\hat {\lambda }}_{i}=X_{i}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9002c76d7a2565ccbb29f606e857a7ef4739616e" alt="{\hat {\lambda }}_{i}=X_{i}" /> is inadmissible. </p>
+
+<p>In this case, a family of minimax estimators is given for any 
+  
+    
+      
+        0
+        &lt;
+        c
+        ≤
+        2
+        (
+        p
+        −
+        1
+        )
+      
+    
+    {\displaystyle 0&lt;c\leq 2(p-1)}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/708c4212d5b7e46eacc6dfcc02598f33417c9367" alt="0&lt;c\leq 2(p-1)" /> and 
+  
+    
+      
+        b
+        ≥
+        (
+        p
+        −
+        2
+        +
+        
+          p
+          
+            −
+            1
+          
+        
+        )
+      
+    
+    {\displaystyle b\geq (p-2+p^{-1})}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/539b782a1c3d2eee117b40d94d8f861d564cf7de" alt="b\geq (p-2+p^{-1})" /> as</p>
+
+  
+    
+      
+        
+          
+            
+              
+                λ
+                ^
+              
+            
+          
+          
+            i
+          
+        
+        =
+        
+          (
+          
+            1
+            −
+            
+              
+                c
+                
+                  b
+                  +
+                  
+                    ∑
+                    
+                      i
+                      =
+                      1
+                    
+                    
+                      p
+                    
+                  
+                  
+                    X
+                    
+                      i
+                    
+                  
+                
+              
+            
+          
+          )
+        
+        
+          X
+          
+            i
+          
+        
+        ,
+        
+        i
+        =
+        1
+        ,
+        …
+        ,
+        p
+        .
+      
+    
+    {\displaystyle {\hat {\lambda }}_{i}=\left(1-{\frac {c}{b+\sum _{i=1}^{p}X_{i}}}\right)X_{i},\qquad i=1,\dots ,p.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/2819abefca0978a228d37a2a0ede6457eaf51ffb" alt="{\hat {\lambda }}_{i}=\left(1-{\frac {c}{b+\sum _{i=1}^{p}X_{i}}}\right)X_{i},\qquad i=1,\dots ,p." />
+
+
+
+<h2>Occurrence and applications</h2>
+<table><tbody><tr><td></td><td><div>This article <b>needs additional citations for verification</b>. Please help improve this article by adding citations to reliable sources. Unsourced material may be challenged and removed.<br /><i>Find sources:</i>"Poisson distribution"–news <b>·</b> newspapers <b>·</b> books <b>·</b> scholar <b>·</b> JSTOR  <i>(December 2019)</i><i> (Learn how and when to remove this template message)</i></div></td></tr></tbody></table>
+
+<p>Applications of the Poisson distribution can be found in many fields including:</p>
+<ul><li>Count data in general</li>
+<li>Telecommunication example: telephone calls arriving in a system.</li>
+<li>Astronomy example: photons arriving at a telescope.</li>
+<li>Chemistry example: the molar mass distribution of a living polymerization.</li>
+<li>Biology example: the number of mutations on a strand of DNA per unit length.</li>
+<li>Management example: customers arriving at a counter or call centre.</li>
+<li>Finance and insurance example: number of losses or claims occurring in a given period of time.</li>
+<li>Earthquake seismology example: an asymptotic Poisson model of seismic risk for large earthquakes.</li>
+<li>Radioactivity example: number of decays in a given time interval in a radioactive sample.</li>
+<li>Optics example: the number of photons emitted in a single laser pulse. This is a major vulnerability to most Quantum key distribution protocols known as Photon Number Splitting (PNS).</li></ul>
+
+<p>The Poisson distribution arises in connection with Poisson processes. It applies to various phenomena of discrete properties (that is, those that may happen 0, 1, 2, 3, … times during a given period of time or in a given area) whenever the probability of the phenomenon happening is constant in time or space. Examples of events that may be modelled as a Poisson distribution include:</p>
+
+<ul><li>The number of soldiers killed by horse-kicks each year in each corps in the Prussian cavalry. This example was used in a book by Ladislaus Bortkiewicz (1868–1931).</li>
+<li>The number of yeast cells used when brewing Guinness beer. This example was used by William Sealy Gosset (1876–1937).</li>
+<li>The number of phone calls arriving at a call centre within a minute. This example was described by A.K. Erlang (1878–1929).</li>
+<li>Internet traffic.</li>
+<li>The number of goals in sports involving two competing teams.</li>
+<li>The number of deaths per year in a given age group.</li>
+<li>The number of jumps in a stock price in a given time interval.</li>
+<li>Under an assumption of homogeneity, the number of times a web server is accessed per minute.</li>
+<li>The number of mutations in a given stretch of DNA after a certain amount of radiation.</li>
+<li>The proportion of cells that will be infected at a given multiplicity of infection.</li>
+<li>The number of bacteria in a certain amount of liquid.</li>
+<li>The arrival of photons on a pixel circuit at a given illumination and over a given time period.</li>
+<li>The targeting of V-1 flying bombs on London during World War II investigated by R. D. Clarke in 1946.</li></ul>
+<p>Gallagher showed in 1976 that the counts of prime numbers in short intervals obey a Poisson distribution provided a certain version of the unproved prime r-tuple conjecture of Hardy-Littlewood is true.</p>
+
+
+
+<h3>Law of rare events</h3>
+<div>Main article: Poisson limit theorem</div>
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Binomial_versus_poisson.svg/330px-Binomial_versus_poisson.svg.png" height="330" width="330" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Binomial_versus_poisson.svg/495px-Binomial_versus_poisson.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Binomial_versus_poisson.svg/660px-Binomial_versus_poisson.svg.png 2x" />Comparison of the Poisson distribution (black lines) and the binomial distribution with  n = 10  (red circles),  n = 20  (blue circles),  n = 1000  (green circles). All distributions have a mean of5. The horizontal axis shows the number of eventsk. As n gets larger, the Poisson distribution becomes an increasingly better approximation for the binomial distribution with the same mean.
+
+<p>The rate of an event is related to the probability of an event occurring in some small subinterval (of time, space or otherwise). In the case of the Poisson distribution, one assumes that there exists a small enough subinterval for which the probability of an event occurring twice is "negligible". With this assumption one can derive the Poisson distribution from the Binomial one, given only the information of expected number of total events in the whole interval.</p>
+
+<p>Let the total number of events in the whole interval be denoted by 
+  
+    
+      
+        λ
+        .
+      
+    
+    {\displaystyle \lambda .}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4bb9c58e3f6b2de892e10ef516f96f07da0423e0" alt="\lambda ." /> Divide the whole interval into 
+  
+    
+      
+        n
+      
+    
+    {\displaystyle n}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a601995d55609f2d9f5e233e36fbe9ea26011b3b" alt="n" /> subintervals 
+  
+    
+      
+        
+          I
+          
+            1
+          
+        
+        ,
+        …
+        ,
+        
+          I
+          
+            n
+          
+        
+      
+    
+    {\displaystyle I_{1},\dots ,I_{n}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/900ddceee4944ca19a2d730f7dc5b38ca0ff3b66" alt="I_{1},\dots ,I_{n}" /> of equal size, such that 
+  
+    
+      
+        n
+        &gt;
+        λ
+      
+    
+    {\displaystyle n&gt;\lambda }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/68b423624ae8ae4ef73b6146e2b2ad520253a079" alt="{\displaystyle n&gt;\lambda }" /> (since we are interested in only very small portions of the interval this assumption is meaningful). This means that the expected number of events in each of the n subintervals is equal to 
+  
+    
+      
+        λ
+        
+          /
+        
+        n
+        .
+      
+    
+    {\displaystyle \lambda /n.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/05745c37bfaf2b7dbe0e4e2b917a3de82da969a7" alt="{\displaystyle \lambda /n.}" /></p>
+
+<p>Now we assume that the occurrence of an event in the whole interval can be seen as a sequence of n Bernoulli trials, where the 
+  
+    
+      
+        i
+      
+    
+    {\displaystyle i}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/add78d8608ad86e54951b8c8bd6c8d8416533d20" alt="i" />-th Bernoulli trial corresponds to looking whether an event happens at the subinterval 
+  
+    
+      
+        
+          I
+          
+            i
+          
+        
+      
+    
+    {\displaystyle I_{i}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/d896cad5ad71ce7719175ca29d4d109333d4c320" alt="I_{i}" /> with probability 
+  
+    
+      
+        λ
+        
+          /
+        
+        n
+        .
+      
+    
+    {\displaystyle \lambda /n.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/05745c37bfaf2b7dbe0e4e2b917a3de82da969a7" alt="{\displaystyle \lambda /n.}" /> The expected number of total events in 
+  
+    
+      
+        n
+      
+    
+    {\displaystyle n}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a601995d55609f2d9f5e233e36fbe9ea26011b3b" alt="n" /> such trials would be 
+  
+    
+      
+        λ
+        ,
+      
+    
+    {\displaystyle \lambda ,}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/00aebb041f4a569408e310294efcc29e0eded7dc" alt="{\displaystyle \lambda ,}" /> the expected number of total events in the whole interval. Hence for each subdivision of the interval we have approximated the occurrence of the event as a Bernoulli process of the form 
+  
+    
+      
+        
+          
+            B
+          
+        
+        (
+        n
+        ,
+        λ
+        
+          /
+        
+        n
+        )
+        .
+      
+    
+    {\displaystyle {\textrm {B}}(n,\lambda /n).}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/071c92f12249a65f6db4ee6171b7594d67618f67" alt="{\displaystyle {\textrm {B}}(n,\lambda /n).}" /> As we have noted before we want to consider only very small subintervals. Therefore, we take the limit as 
+  
+    
+      
+        n
+      
+    
+    {\displaystyle n}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a601995d55609f2d9f5e233e36fbe9ea26011b3b" alt="n" /> goes to infinity.</p>
+
+<p>In this case the binomial distribution converges to what is known as the Poisson distribution by the Poisson limit theorem.</p>
+
+<p>In several of the above examples — such as, the number of mutations in a given sequence of DNA—the events being counted are actually the outcomes of discrete trials, and would more precisely be modelled using the binomial distribution, that is</p>
+<div><div>
+  
+    
+      
+        X
+        ∼
+        
+          
+            B
+          
+        
+        (
+        n
+        ,
+        p
+        )
+        .
+      
+    
+    {\displaystyle X\sim {\textrm {B}}(n,p).}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/268f66779d5b1b445f9be227b268f01cc8810376" alt="{\displaystyle X\sim {\textrm {B}}(n,p).}" /></div><p>
+
+In such cases n is very large and p is very small (and so the expectation n p is of intermediate magnitude). Then the distribution may be approximated by the less cumbersome Poisson distribution </p><div><div>
+  
+    
+      
+        X
+        ∼
+        
+          
+            Pois
+          
+        
+        (
+        n
+        p
+        )
+        .
+      
+    
+    {\displaystyle X\sim {\textrm {Pois}}(np).}
+  
+</div><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/e0ade4f98ec7a470e3712bf22be9029eafea52a5" alt="{\displaystyle X\sim {\textrm {Pois}}(np).}" /></div>
+
+<p>This approximation is sometimes known as the <i>law of rare events</i>, since each of the n individual Bernoulli events rarely occurs.</p>
+
+<p>The name "law of rare events" may be misleading because the total count of success events in a Poisson process need not be rare if the parameter n p is not small. For example, the number of telephone calls to a busy switchboard in one hour follows a Poisson distribution with the events appearing frequent to the operator, but they are rare from the point of view of the average member of the population who is very unlikely to make a call to that switchboard in that hour.</p>
+
+<p>The variance of the binomial distribution is 1 − <i>p</i> times that of the Poisson distribution, so almost equal when <i>p</i> is very small.</p>
+
+<p>The word <i>law</i> is sometimes used as a synonym of probability distribution, and <i>convergence in law</i> means <i>convergence in distribution</i>. Accordingly, the Poisson distribution is sometimes called the "law of small numbers" because it is the probability distribution of the number of occurrences of an event that happens rarely but has very many opportunities to happen. <i>The Law of Small Numbers</i> is a book by Ladislaus Bortkiewicz about the Poisson distribution, published in 1898.</p>
+
+<h3>Poisson point process</h3>
+
+<div>Main article: Poisson point process</div>
+
+<p>The Poisson distribution arises as the number of points of a Poisson point process located in some finite region. More specifically, if <i>D</i> is some region space, for example Euclidean space <b>R</b>, for which |<i>D</i>|, the area, volume or, more generally, the Lebesgue measure of the region is finite, and if  <i>N</i>(<i>D</i>)  denotes the number of points in <i>D</i>, then</p>
+
+
+  
+    
+      
+        P
+        (
+        N
+        (
+        D
+        )
+        =
+        k
+        )
+        =
+        
+          
+            
+              (
+              λ
+              
+                |
+              
+              D
+              
+                |
+              
+              
+                )
+                
+                  k
+                
+              
+              
+                e
+                
+                  −
+                  λ
+                  
+                    |
+                  
+                  D
+                  
+                    |
+                  
+                
+              
+            
+            
+              k
+              !
+            
+          
+        
+        .
+      
+    
+    {\displaystyle P(N(D)=k)={\frac {(\lambda |D|)^{k}e^{-\lambda |D|}}{k!}}.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/fa1f8614f8f1be080a93b37789b1c1cf7b3d55c3" alt="P(N(D)=k)={\frac {(\lambda |D|)^{k}e^{-\lambda |D|}}{k!}}." />
+
+<h3>Poisson regression and negative binomial regression</h3>
+
+<p>Poisson regression and negative binomial regression are useful for analyses where the dependent (response) variable is the count  (0, 1, 2, ... )  of the number of events or occurrences in an interval.</p>
+
+<h3>Other applications in science</h3>
+
+<p>In a Poisson process, the number of observed occurrences fluctuates about its mean λ with a standard deviation 
+  
+    
+      
+        
+          σ
+          
+            k
+          
+        
+        =
+        
+          
+            λ
+          
+        
+        .
+      
+    
+    {\displaystyle \sigma _{k}={\sqrt {\lambda }}.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/912807fd1b959cacf647a52a0438b99e8dbcb2be" alt="{\displaystyle \sigma _{k}={\sqrt {\lambda }}.}" /> These fluctuations are denoted as <i>Poisson noise</i> or (particularly in electronics) as <i>shot noise</i>.</p>
+
+<p>The correlation of the mean and standard deviation in counting independent discrete occurrences is useful scientifically. By monitoring how the fluctuations vary with the mean signal, one can estimate the contribution of a single occurrence, <i>even if that contribution is too small to be detected directly</i>. For example, the charge <i>e</i> on an electron can be estimated by correlating the magnitude of an electric current with its shot noise. If <i>N</i> electrons pass a point in a given time <i>t</i> on the average, the mean current is 
+  
+    
+      
+        I
+        =
+        e
+        N
+        
+          /
+        
+        t
+      
+    
+    {\displaystyle I=eN/t}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/aecab312802db893e6116bf164aeaee799ca0a2f" alt="I=eN/t" />; since the current fluctuations should be of the order 
+  
+    
+      
+        
+          σ
+          
+            I
+          
+        
+        =
+        e
+        
+          
+            N
+          
+        
+        
+          /
+        
+        t
+      
+    
+    {\displaystyle \sigma _{I}=e{\sqrt {N}}/t}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c13f1b2bab7890e46bbe7c0d7f33335a13bf2e8a" alt="{\displaystyle \sigma _{I}=e{\sqrt {N}}/t}" /> (i.e., the standard deviation of the Poisson process), the charge 
+  
+    
+      
+        e
+      
+    
+    {\displaystyle e}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/cd253103f0876afc68ebead27a5aa9867d927467" alt="e" /> can be estimated from the ratio 
+  
+    
+      
+        t
+        
+          σ
+          
+            I
+          
+          
+            2
+          
+        
+        
+          /
+        
+        I
+        .
+      
+    
+    {\displaystyle t\sigma _{I}^{2}/I.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/335820841eea0aec675990249b61cc6f2502e064" alt="{\displaystyle t\sigma _{I}^{2}/I.}" /></p>
+
+<p>An everyday example is the graininess that appears as photographs are enlarged; the graininess is due to Poisson fluctuations in the number of reduced silver grains, not to the individual grains themselves. By correlating the graininess with the degree of enlargement, one can estimate the contribution of an individual grain (which is otherwise too small to be seen unaided). Many other molecular applications of Poisson noise have been developed, e.g., estimating the number density of receptor molecules in a cell membrane.</p>
+
+  
+    
+      
+        Pr
+        (
+        
+          N
+          
+            t
+          
+        
+        =
+        k
+        )
+        =
+        f
+        (
+        k
+        ;
+        λ
+        t
+        )
+        =
+        
+          
+            
+              (
+              λ
+              t
+              
+                )
+                
+                  k
+                
+              
+              
+                e
+                
+                  −
+                  λ
+                  t
+                
+              
+            
+            
+              k
+              !
+            
+          
+        
+        .
+      
+    
+    {\displaystyle \Pr(N_{t}=k)=f(k;\lambda t)={\frac {(\lambda t)^{k}e^{-\lambda t}}{k!}}.}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/02199300bc380fe24df3e160cc60158bddf8daee" alt="{\displaystyle \Pr(N_{t}=k)=f(k;\lambda t)={\frac {(\lambda t)^{k}e^{-\lambda t}}{k!}}.}" />
+
+<p>In causal set theory the discrete elements of spacetime follow a Poisson distribution in the volume.</p>
+
+
+
+<h2>Computational methods</h2>
+
+<p>The Poisson distribution poses two different tasks for dedicated software libraries: <i>evaluating</i> the distribution 
+  
+    
+      
+        P
+        (
+        k
+        ;
+        λ
+        )
+      
+    
+    {\displaystyle P(k;\lambda )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/df5cf99bf30825eb98616f88bdc970f476290a77" alt="{\displaystyle P(k;\lambda )}" />, and <i>drawing random numbers</i> according to that distribution.</p>
+
+<h3>Evaluating the Poisson distribution</h3>
+<p>Computing 
+  
+    
+      
+        P
+        (
+        k
+        ;
+        λ
+        )
+      
+    
+    {\displaystyle P(k;\lambda )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/df5cf99bf30825eb98616f88bdc970f476290a77" alt="{\displaystyle P(k;\lambda )}" /> for given 
+  
+    
+      
+        k
+      
+    
+    {\displaystyle k}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c3c9a2c7b599b37105512c5d570edc034056dd40" alt="k" /> and 
+  
+    
+      
+        λ
+      
+    
+    {\displaystyle \lambda }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b43d0ea3c9c025af1be9128e62a18fa74bedda2a" alt="\lambda " /> is a trivial task that can be accomplished by using the standard definition of 
+  
+    
+      
+        P
+        (
+        k
+        ;
+        λ
+        )
+      
+    
+    {\displaystyle P(k;\lambda )}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/df5cf99bf30825eb98616f88bdc970f476290a77" alt="{\displaystyle P(k;\lambda )}" /> in terms of exponential, power, and factorial functions. However, the conventional definition of the Poisson distribution contains two terms that can easily overflow on computers: λ and <i>k</i>!. The fraction of λ to k! can also produce a rounding error that is very large compared to <i>e</i>, and therefore give an erroneous result. For numerical stability the Poisson probability mass function should therefore be evaluated as</p>
+
+  
+    
+      
+        
+        f
+        (
+        k
+        ;
+        λ
+        )
+        =
+        exp
+        ⁡
+        
+          [
+          
+            k
+            ln
+            ⁡
+            λ
+            −
+            λ
+            −
+            ln
+            ⁡
+            Γ
+            (
+            k
+            +
+            1
+            )
+          
+          ]
+        
+        ,
+      
+    
+    {\displaystyle \!f(k;\lambda )=\exp \left[k\ln \lambda -\lambda -\ln \Gamma (k+1)\right],}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/83a8a374612dfba5c3e699450970a5b2330925c3" alt="{\displaystyle \!f(k;\lambda )=\exp \left[k\ln \lambda -\lambda -\ln \Gamma (k+1)\right],}" />
+<p>which is mathematically equivalent but numerically stable. The natural logarithm of the Gamma function can be obtained using the <code>lgamma</code> function in the C standard library (C99 version) or R, the <code>gammaln</code> function in MATLAB or SciPy, or the <code>log_gamma</code> function in Fortran 2008 and later.</p>
+
+<p>Some computing languages provide built-in functions to evaluate the Poisson distribution, namely</p>
+<ul><li>R: function <code>dpois(x, lambda)</code>;</li>
+<li>Excel: function <code>POISSON( x, mean, cumulative)</code>, with a flag to specify the cumulative distribution;</li>
+<li>Mathematica: univariate Poisson distribution as <code>PoissonDistribution[
+  
+    
+      
+        λ
+      
+    
+    {\displaystyle \lambda }
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b43d0ea3c9c025af1be9128e62a18fa74bedda2a" alt="\lambda " />]</code>, bivariate Poisson distribution as <code>MultivariatePoissonDistribution[
+  
+    
+      
+        
+          θ
+          
+            12
+          
+        
+        ,
+      
+    
+    {\displaystyle \theta _{12},}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/f26a79fe87c901c3bb88846895b3599960cbb777" alt="{\displaystyle \theta _{12},}" />{ 
+  
+    
+      
+        
+          θ
+          
+            1
+          
+        
+        −
+        
+          θ
+          
+            12
+          
+        
+        ,
+      
+    
+    {\displaystyle \theta _{1}-\theta _{12},}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/ff99713bc6dc41d48bd97c5df8289b6395eef474" alt="{\displaystyle \theta _{1}-\theta _{12},}" /> 
+  
+    
+      
+        
+          θ
+          
+            2
+          
+        
+        −
+        
+          θ
+          
+            12
+          
+        
+      
+    
+    {\displaystyle \theta _{2}-\theta _{12}}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/c483cd5cb89c4f51726b45ce6f01b5f3eb256df9" alt="{\displaystyle \theta _{2}-\theta _{12}}" />}]</code>,.</li></ul>
+
+<h3>Random variate generation</h3>
+<div>Further information: Non-uniform random variate generation</div>
+
+<p>The less trivial task is to draw integer random variate from the Poisson distribution with given 
+  
+    
+      
+        λ
+        .
+      
+    
+    {\displaystyle \lambda .}
+  
+<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4bb9c58e3f6b2de892e10ef516f96f07da0423e0" alt="\lambda ." /></p>
+
+<p>Solutions are provided by:</p>
+<ul><li>R: function <code>rpois(n, lambda)</code>;</li>
+<li>GNU Scientific Library (GSL): function gsl_ran_poisson</li></ul>
+
+<p>A simple algorithm to generate random Poisson-distributed numbers (pseudo-random number sampling) has been given by Knuth:</p>
+
+<pre><b>algorithm</b> <i>poisson random number (Knuth)</i>:
+    <b>init</b>:
+        <b>Let</b> L ← <i>e</i>, k ← 0 and p ← 1.
+    <b>do</b>:
+        k ← k + 1.
+        Generate uniform random number u in [0,1] and <b>let</b> p ← p × u.
+    <b>while</b> p &gt; L.
+    <b>return</b> k − 1.</pre>
+
+<p>The complexity is linear in the returned value k, which is λ on average.  There are many other algorithms to improve this. Some are given in Ahrens &amp; Dieter, see §References below.</p>
+
+<p>For large values of λ, the value of L = <i>e</i> may be so small that it is hard to represent.  This can be solved by a change to the algorithm which uses an additional parameter STEP such that <i>e</i> does not underflow: </p>
+
+<pre><b>algorithm</b> <i>poisson random number (Junhao, based on Knuth)</i>:
+    <b>init</b>:
+        <b>Let</b> λLeft ← λ, k ← 0 and p ← 1.
+    <b>do</b>:
+        k ← k + 1.
+        Generate uniform random number u in (0,1) and <b>let</b> p ← p × u.
+        <b>while</b> p &lt; 1 and λLeft &gt; 0:
+            <b>if</b> λLeft &gt; STEP:
+                p ← p × <i>e</i>
+                λLeft ← λLeft − STEP
+            <b>else</b>:
+                p ← p × <i>e</i>
+                λLeft ← 0
+    <b>while</b> p &gt; 1.
+    <b>return</b> k − 1.</pre>
+
+<p>The choice of STEP depends on the threshold of overflow. For double precision floating point format the threshold is near <i>e</i>, so 500 should be a safe <i>STEP</i>.</p>
+
+<p>Other solutions for large values of λ include rejection sampling and using Gaussian approximation.</p>
+
+<p>Inverse transform sampling is simple and efficient for small values of λ, and requires only one uniform random number <i>u</i> per sample. Cumulative probabilities are examined in turn until one exceeds <i>u</i>.</p>
+
+<pre><b>algorithm</b> <i>Poisson generator based upon the inversion by sequential search</i>:
+    <b>init</b>:
+        <b>Let</b> x ← 0, p ← <i>e</i>, s ← p.
+        Generate uniform random number u in [0,1].
+    <b>while</b> u &gt; s <b>do</b>:
+        x ← x + 1.
+        p ← p × λ / x.
+        s ← s + p.
+    <b>return</b> x.</pre>
+

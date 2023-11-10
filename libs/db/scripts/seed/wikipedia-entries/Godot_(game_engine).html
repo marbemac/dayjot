@@ -1,0 +1,259 @@
+<h1>Godot (game engine)</h1>
+
+<div>Cross-platform, open-source game engine</div>
+
+
+<p><b>Godot</b> (/ˈɡɒdoʊ/) is a cross-platform, free and open-source game engine released under the permissive MIT license. It was initially developed by Argentine software developers Juan Linietsky and Ariel Manzur for several companies in Latin America prior to its public release in 2014. The development environment runs on many platforms, and can export to several more. It is designed to create both 2D and 3D games targeting PC, mobile, and web platforms and can also be used to develop non-game software, including editors.</p>
+
+
+
+<h2>Features</h2>
+<p>Godot allows video game developers to create 3D and 2D games using multiple programming languages, such as C++, C# and GDScript. It makes use of a hierarchy of nodes to facilitate the development experience. Classes can be derived from a node type to create more specialized node types that inherit behavior. Nodes are organized inside of "scenes", which are reusable, instanceable, inheritable, and nestable groups of nodes. All game resources, including scripts and graphical assets, are saved as part of the computer's file system (rather than in a database). This storage solution is intended to facilitate collaboration between game development teams using software version control systems.</p>
+
+<h3>Supported platforms</h3>
+<p>The engine supports deployment to multiple platforms and allows specification of texture compression and resolution settings for each platform. The website provides binaries only for the editor platforms, and exporting projects to other platforms is done within the Godot editor.</p>
+
+<p>The Godot editor, used for creating Godot games, supports the following platforms:</p>
+<ul><li>Desktop platforms Linux, macOS, Windows distributed on the website, on Steam, on Epic, and on Itch.</li>
+<li>Web platform HTML5, WebAssembly with the web editor.</li>
+<li>Android phones and tablets (available as of Godot 3.5).</li>
+<li>BSD is also supported, but must be compiled manually.</li></ul>
+
+<p>The engine supports exporting projects to many more platforms, including all of the editor platforms. Currently supported platforms as of Godot 4.0 are:</p>
+<ul><li>Desktop platforms Linux, macOS, Windows, BSD (must be compiled manually)</li>
+<li>Mobile platforms Android, iOS</li>
+<li>Web platform HTML5, WebAssembly.</li>
+<li>Virtual/extended reality platforms HTC Vive, Valve Index, Oculus Rift, Oculus Go, Oculus Quest, all Microsoft MR headsets, Apple's ARKit and many more.</li></ul>
+
+<p>The Godot engine can be run on consoles, although popular consoles are not officially supported since they do not allow their platform-specific code to be published under an open-source license.  Games can be ported to consoles through third-party companies. Godot 4 support for consoles by third party teams is currently being worked on. W4 Games, a commercial company co-founded by some members of Godot's leadership, has announced plans to offer services porting Godot 4.0 games to Microsoft, Nintendo, and Sony platforms.</p>
+
+<p>For CPU architectures, Godot officially supports x86 on all desktop platforms (both 32-bit and 64-bit where available) and has official ARM support on macOS, mobile platforms, and standalone Oculus platforms (both 32-bit and 64-bit where available). The web platform uses 32-bit WebAssembly. Support for ARM, RISC-V, and PowerPC Linux is unofficial and experimental.</p>
+
+<h3>Scripting</h3>
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/0/08/Gdscript3.4.png/306px-Gdscript3.4.png" height="160" width="306" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/0/08/Gdscript3.4.png/459px-Gdscript3.4.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/0/08/Gdscript3.4.png/612px-Gdscript3.4.png 2x" />Screenshot of editing a GDScript file using the built-in script editor of Godot 3.4
+<p>Godot supports a variety of programming languages for making games, including the integrated language GDScript, C++ and C#. Additionally, the engine includes GDNative, a facility for creating bindings with other languages. Officially-supported GDNative languages include C and C++. Community-supported languages include Rust, Nim, Haskell, Clojure, Swift, and D. Visual coding was also supported, via the built-in language VisualScript, designed to be a visual equivalent to GDScript. Visual Scripting was removed from the core engine in Godot 4.0. Godot games running in the browser can interface with the browser's JavaScript code.</p>
+
+<p>The Godot editor includes a text editor with auto indentation, syntax highlighting and code completion and folding. It also features a debugger with the ability to set breakpoints and program stepping.</p>
+
+<h4>GDScript</h4>
+
+
+<p>Godot has its own built-in scripting language, GDScript, a high-level, dynamically typed programming language which is syntactically similar to Python. Unlike Python, GDScript is optimized for Godot's scene-based architecture and can specify strict typing of variables. Godot's developers have stated that many alternative third-party scripting languages such as Lua, Python, and Squirrel were tested before deciding that using a custom language allowed for superior optimization and editor integration. In version 4.0, a new feature called Typed array was implemented on GDScript. This allows users to easily change a regular array to typed and vice-versa without changing much code.</p>
+
+<p>A simple "Hello world" program can be written like so:</p>
+<div><pre>func_ready():
+print("Hello World")
+</pre></div>
+
+<p>More complex programs, such as this one generating a Fibonacci sequence, are also possible:</p>
+<div><pre>func_ready():
+varnterms=5
+print("Fibonacci sequence:")
+foriinrange(nterms):
+print(fibonacci(i))
+
+funcfibonacci(n):
+ifn&lt;=1:
+returnn
+else:
+returnfibonacci(n-1)+fibonacci(n-2)
+</pre></div>
+
+<h3>Rendering</h3>
+<p>Godot's graphics engine uses OpenGL ES 3.0 for all supported platforms; otherwise, OpenGL ES 2.0 is used. Vulkan is supported starting in version 4.0 and also includes the possibility of support for Metal using MoltenVK. The engine supports normal mapping, specularity, dynamic shadows using shadow maps, baked and dynamic global illumination, and full-screen post-processing effects like bloom, depth of field, high-dynamic-range rendering, and gamma correction. A simplified shader language, similar to GLSL, is also incorporated. Shaders can be used for materials and post-processing. Alternatively, they can be created by manipulating nodes in a visual editor.</p>
+
+<p>Godot also includes a separate 2D graphics engine that can operate independently of the 3D engine, but both can also work at the same time on the same display, so as to make complex mixes between 2D and 3D. The 2D engine supports features such as lights, shadows, shaders, tile sets, parallax scrolling, polygons, animations, physics, and particles. It is also possible to mix 2D and 3D using a 'viewport node'.</p>
+
+<h3>Other features</h3>
+<p>Godot contains an animation system with a GUI for skeletal animation, blending, animation trees, morphing, and real-time cutscenes. Almost any variable defined or created on a game entity can be animated. Godot has its own in-house physics engine, and as of Godot 4.x allows third parties to integrate their own physics via GDExtension. In Godot 3.x, the Bullet physics engine is included and used by default. The ThorVG library allows creating GUIs with vector resources.</p>
+
+
+
+<h2>History</h2>
+<h3>Closed source era (2001–2014)</h3>
+<p>Juan 'reduz' Linietsky and Ariel 'punto' Manzur co-founded Codenix in 1999, a game development consulting company. As early as 2001, they began work on an engine then code-named "Larvotor" which was licensed to third-party companies in Argentina. Over the course of the following ten years, the engine was renamed to "Legacy", "NG3D", "Larvita" and finally to "Godot". The name "Godot" was chosen due to its relation to Samuel Beckett's play <i>Waiting for Godot</i>, as it represents the never-ending wish of adding new features in the engine, which would get it closer to an exhaustive product, but never will. Linietsky and Manzur joined OKAM and the company worked with a number of studios in the closed-source era including Square Enix. Linietsky indicated that their work was hampered by political and economic instability in Argentina at the time however.</p>
+
+<h3>Free and open source era (2014–present)</h3>
+<p>By 2014 Linietsky was planning on moving away from Argentina, and he released the source code for Godot to the public on GitHub under the MIT License. Godot joined the Software Freedom Conservancy (SFC) on 4 November 2015. On 22 June 2016, Godot received a $20,000 Mozilla Open Source Support (MOSS) "Mission Partners" award to be used to add WebSockets, WebAssembly and WebGL 2.0 support.</p>
+
+<p>The 3.0 update for Godot involved addressing a long list of desired features which required a major refactor of the engine that had been impossible while under commercial constraints in the closed-source era. With Miguel de Icaza's support, Godot received a $24,000 donation from Microsoft in 2017 to implement C# as a scripting language in Godot. A Patreon was launched, which enabled Linietsky and Verschelde to work on the project full time. The 3.0 version launched in 2018. The 3.1 update added a OpenGL ES 2.0 renderer aimed at mobile hardware, as mobile support for ES 3.0 by manufacturers was then limited.</p>
+
+<p>In 2019 two teams were formed, with Linietsky's team focusing on the Vulkan branch (later released as 4.0) and Verschelde's team covering further updates to the 3.x branch. Linietsky indicated that part of the issue was that the 3.x branch was built with older architectural principles in mind, such as single-core processors. Thus, the intention was to redevelop the core architecture for 4.0 and account for modern principles. In 2020, Godot received a $250,000 Epic Games award to improve graphics rendering and the engine's built-in game development language, GDScript, which was used to pay Linietsky and George Marques for two years while freeing donation money for other purposes. Godot also received grants from Meta Platforms' Reality Labs in 2020 and 2021. The 4.0 branch released in alpha form in early 2022, and was polished over the course of the year.
+That August, Linietsky and several other members of the Godot team established W4 Games to offer commercial services based on the engine, including console ports that cannot be included in its open-source codebase. In November, Godot announced plans to transition from the SFC to its own newly-formed Godot Foundation.</p>
+
+<p>The full release of the 4.0 update with Vulkan support occurred in 2023, as well as the arrival of the Godot engine on the Epic Games Store. The version on Epic is identical to others in terms of both content and licensing, with the storefront simply used as a means of distribution and for updating. In September, Unity Technologies announced major changes to licensing for the Unity engine including the addition of "runtime fees" that would charge users on installation of Unity games. As a result, Re-Logic donated $100,000 to Godot, and further announced that it would be donating $1,000 a month going forward, in the interest of supporting an open-source alternative to Unity.</p>
+
+
+
+<h2>Version history</h2>
+
+<p>Godot reached version 1.0 on 15 December 2014, marking the first stable release and the addition of lightmapping, navmesh support, and more shaders. Version 1.1 was released on 21 May 2015, adding improved auto-completion in the code editor, a visual shader editor, a new API to the operating system for managing screens and windows, improved 2D physics and a rewritten 2D engine, better Blender Collada support, and a new dark theme.</p>
+
+<p>Godot 2.0 was released on 23 February 2016, adding better scene instancing and inheritance, a new file system browser, multiple scene editing, and an enhanced debugger. This was followed by version 2.1 in August 2016, which introduced an asset database, profiler, and plugin API.</p>
+
+Godot 3
+<p>Version 3.0 was released on 29 January 2018, adding a new PBR renderer implemented in OpenGL ES 3.0, virtual reality compatibility, and C# support (via Mono) thanks to a $24,000 donation from Microsoft. Version 3.0 also added the Bullet physics engine in addition to the engine's built-in 3D physics back end and was the first version of Godot to be included in Debian.</p>
+
+<p>Godot 3.1 was released on 13 March 2019, with the most notable features being the addition of statically typed §GDScript, a script class system for GDScript, and an OpenGL ES 2.0 renderer. Godot 3.2 was released on 29 January 2020, with the most notable features being massive documentation improvements, greatly improved C# support, and support for glTF 2.0 files.</p>
+
+<p>The lead developer, Juan Linietsky, spent most of his time working on a separate Vulkan branch that would later be merged into master for 4.0, so work on 3.2 was mostly done by other contributors. Work on 3.2 continued as a long-term support release for a year, including Godot 3.2.2 on 26 June 2020, a large patch release that added features such as OpenGL ES 2.0 batching, and C# support for iOS. On 17 March 2021, the versioning strategy was changed to better reflect semantic versioning, with a 3.3 stable branch and a 3.x branch for backporting features to a future 3.4 release.</p>
+
+<p>Godot 3.3 was released on 21 April 2021, with features such as ARM support on macOS, Android App Bundles support, MP3 support, Autodesk FBX support, WebXR support, and a web editor.</p>
+
+<p>Godot 3.4 was released on 6 November 2021 after six months of development, implementing missing features or bug fixes that are critical for publishing 2D and 3D games with Godot 3 and making existing features more optimized and reliable.</p>
+
+Godot 4
+<p>Godot 4 was released on 1 March 2023. It is a major update that overhauls the rendering system, adds support for Vulkan graphics API, improves GDScript performance and usability, enhances physics and animation systems, and introduces many other features and bug fixes. The development of Godot 4 started in 2019 with a rewrite of the renderer to use Vulkan by Linietsky. In 2020, several contributors joined the development team and worked on various aspects of Godot 4, such as GDScript improvements, physics engine overhaul, animation system rewrite, editor usability enhancements and more.</p>
+
+<p>The first alpha version of Godot 4 was released for testing by early adopters in January 2022. It included new features such as SDF-based global illumination, GPU-based particles, dynamic soft shadows. In September 2022, Godot 4 reached beta stage with improved stability and performance. It also added support for WebXR, C# support for Android and iOS, new audio features. On 1 March 2023, Godot 4 was officially released as a stable version after several beta builds and bug fixes. It enhanced graphics quality, rendering optimization techniques, and added accessibility features. This was followed by Godot 4.1 later in 2023, which added experimental scene multithreading, editor enhancements, and C# improvements.</p>
+
+<h3>Release history</h3>
+<div><b>Legend:</b><br />Old version<br />Older version, still maintained<br /><b>Current stable version</b><br />Latest preview version<br />Future release</div>
+<table>
+<caption>Godot Engine release history</caption>
+<tbody><tr><th>Version</th>
+<th>Release date</th>
+<th>Notes</th>
+<th>Latest patch release</th></tr>
+<tr>
+<td>Old version, no longer maintained: 1.0</td>
+<td>December 2014</td>
+<td>First stable release</td>
+<td>1.0</td></tr>
+<tr>
+<td>Old version, no longer maintained: 1.1</td>
+<td>May 2015</td>
+<td>Added improved auto-completion in the code editor, a visual shader editor, a rewritten 2D engine, and new 2D navigation polygon support.</td>
+<td>1.1</td></tr>
+<tr>
+<td>Old version, no longer maintained: 2.0</td>
+<td>February 2016</td>
+<td>Updated UI and added an enhanced debugger.</td>
+<td>2.0.4.1</td></tr>
+<tr>
+<td>Old version, no longer maintained: 2.1</td>
+<td>July 2016</td>
+<td>Introduced an asset database, profiler, and plugin API.</td>
+<td>2.1.6</td></tr>
+<tr>
+<td>Old version, no longer maintained: 3.0</td>
+<td>January 2018</td>
+<td>Added a new PBR renderer and Mono (C#) support. Added Bullet as the default physics engine.</td>
+<td>3.0.6</td></tr>
+<tr>
+<td>Old version, no longer maintained: 3.1</td>
+<td>March 2019</td>
+<td>Added statically typed GDScript, a script class system for GDScript, and an OpenGL ES 2.0 renderer.</td>
+<td>3.1.2</td></tr>
+<tr>
+<td>Old version, no longer maintained: 3.2</td>
+<td>January 2020</td>
+<td>Added support for glTF 2.0 files, OpenGL ES 2.0 batching, C# support for iOS, and massive documentation improvements.</td>
+<td>3.2.3</td></tr>
+<tr>
+<td>Old version, no longer maintained: 3.3</td>
+<td>April 2021</td>
+<td>Added ARM support on macOS, Android AAB support, MP3 support, FBX support, WebXR support, and a web editor.</td>
+<td>3.3.4</td></tr>
+<tr>
+<td>Old version, no longer maintained: 3.4</td>
+<td>November 2021</td>
+<td>Added a new theme editor, ACES Fitted tonemapper, PWA support, physical input support, and glTF 2.0 export support.</td>
+<td>3.4.5</td></tr>
+<tr>
+<td>Current stable version: <b>3.5</b></td>
+<td>August 2022</td>
+<td>Added editor support on Android, asynchronous shader compilation, physics interpolation, material overlay, and improved the navigation system.</td>
+<td>3.5.3</td></tr>
+<tr>
+<td>Future release: 3.6</td>
+<td>Q3 2023</td>
+<td>The next minor release for Godot 3.x. Feature set still a work in progress. Adds transparent object sorting in 3D. Will be released after 4.0 with LTS.</td>
+<td>3.6 beta 3</td></tr>
+<tr>
+<td>Older version, yet still maintained: 4.0</td>
+<td>March 2023</td>
+<td>Adds support for the Vulkan graphics API. Switches from Mono to .NET 6 CoreCLR. Introduces SDF-based global illumination, along with several editor changes and performance optimizations.</td>
+<td>4.0.3</td></tr>
+<tr>
+<td>Current stable version: <b>4.1</b></td>
+<td>July 2023</td>
+<td>Added experimental scene multithreading, editor enhancements, and C# improvements.</td>
+<td>4.1.2</td></tr>
+<tr>
+<td>Future release: 4.2</td>
+<td>November 2023 (expected)</td>
+<td>—</td>
+<td>4.2 beta 2</td></tr>
+<tr></tr>
+</tbody></table>
+
+
+
+<h2>Usage</h2>
+<p>Many games by OKAM Studio have been made using Godot, including <i>Dog Mendonça &amp; Pizza Boy</i>, which uses the Escoria adventure game extension. Additionally, it has been used in West Virginia's high school curriculum, due to its ease of use for non-programmers and what is described as a "wealth of learning materials that already exist for the software".</p>
+
+<p>Godot is used by <i>The Mirror</i>, a game development platform.</p>
+
+<h3>Notable video games made with Godot</h3>
+
+<table>
+<tbody><tr><th>Year of release</th>
+<th>Title</th>
+<th>Developer</th>
+<th>Notes</th></tr>
+<tr>
+<td>2015/2016</td>
+<td><i>Deponia</i></td>
+<td>Daedalic Entertainment</td>
+<td>iOS and PlayStation 4 ports</td></tr>
+<tr>
+<td>2016</td>
+<td><i>The Interactive Adventures of Dog Mendonça &amp; Pizzaboy</i></td>
+<td>OKAM Studio</td>
+<td></td></tr>
+<tr>
+<td>2018</td>
+<td><i>Hardcoded</i></td>
+<td>Ghosthug Games</td>
+<td></td></tr>
+<tr>
+<td>2019</td>
+<td><i>Commander Keen in Keen Dreams</i></td>
+<td>Id Software/Lone Wolf Technologies</td>
+<td>Nintendo Switch port only</td></tr>
+<tr>
+<td>2021</td>
+<td><i>Cruelty Squad</i></td>
+<td>Consumer Softproducts</td>
+<td></td></tr>
+<tr>
+<td><i>Sonic Colors: Ultimate</i></td>
+<td>Sonic Team/Blind Squirrel Games</td>
+<td></td></tr>
+<tr>
+<td>2021–2022</td>
+<td><i>Carol Reed Mysteries</i> series</td>
+<td></td>
+<td></td></tr>
+<tr>
+<td>2022</td>
+<td><i>Dome Keeper</i></td>
+<td>Bippinbits</td>
+<td></td></tr>
+<tr>
+<td><i>The Case of the Golden Idol</i></td>
+<td>Color Gray Games</td>
+<td></td></tr>
+<tr>
+<td>2023</td>
+<td><i>Cassette Beasts</i></td>
+<td>Bytten Studio</td>
+<td></td></tr>
+<tr>
+<td><i>Luck Be a Landlord</i></td>
+<td>TrampolineTales</td>
+<td></td></tr>
+<tr></tr>
+</tbody></table>
+

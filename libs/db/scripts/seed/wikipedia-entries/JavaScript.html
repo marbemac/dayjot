@@ -1,0 +1,870 @@
+<h1>JavaScript</h1>
+
+<div>High-level programming language</div>
+<div>Not to be confused with Java (programming language), Javanese script, or ECMAScript.</div>
+<div>".js" redirects here. For the Microsoft dialect used in Internet Explorer, see JScript.</div>
+<div>For the uses of JavaScript on Wikipedia, see Wikipedia:WikiProject JavaScript.</div>
+
+
+
+
+<p><b>JavaScript</b> (/ˈdʒɑːvəskrɪpt/), often abbreviated as <b>JS</b>, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. As of 2023, 98.7% of websites use JavaScript on the client side for webpage behavior, often incorporating third-party libraries. All major web browsers have a dedicated JavaScript engine to execute the code on users' devices.</p>
+
+<p>JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript standard. It has dynamic typing, prototype-based object-orientation, and first-class functions. It is multi-paradigm, supporting event-driven, functional, and imperative programming styles. It has application programming interfaces (APIs) for working with text, dates, regular expressions, standard data structures, and the Document Object Model (DOM).</p>
+
+<p>The ECMAScript standard does not include any input/output (I/O), such as networking, storage, or graphics facilities. In practice, the web browser or other runtime system provides JavaScript APIs for I/O.</p>
+
+<p>JavaScript engines were originally used only in web browsers, but are now core components of some servers and a variety of applications. The most popular runtime system for this usage is Node.js.</p>
+
+<p>Although Java and JavaScript are similar in name, syntax, and respective standard libraries, the two languages are distinct and differ greatly in design.</p>
+
+
+
+<h2>History</h2>
+<h3>Creation at Netscape</h3>
+<p>The first popular web browser with a graphical user interface, Mosaic, was released in 1993. Accessible to non-technical people, it played a prominent role in the rapid growth of the nascent World Wide Web. The lead developers of Mosaic then founded the Netscape corporation, which released a more polished browser, Netscape Navigator, in 1994. This quickly became the most-used.</p>
+
+<p>During these formative years of the Web, web pages could only be static, lacking the capability for dynamic behavior after the page was loaded in the browser. There was a desire in the flourishing web development scene to remove this limitation, so in 1995, Netscape decided to add a scripting language to Navigator. They pursued two routes to achieve this: collaborating with Sun Microsystems to embed the Java programming language, while also hiring Brendan Eich to embed the Scheme language.</p>
+
+<p>Netscape management soon decided that the best option was for Eich to devise a new language, with syntax similar to Java and less like Scheme or other extant scripting languages. Although the new language and its interpreter implementation were called LiveScript when first shipped as part of a Navigator beta in September 1995, the name was changed to JavaScript for the official release in December.</p>
+
+<p>The choice of the JavaScript name has caused confusion, implying that it is directly related to Java. At the time, the dot-com boom had begun and Java was the hot new language, so Eich considered the JavaScript name a marketing ploy by Netscape.</p>
+
+<h3>Adoption by Microsoft</h3>
+<p>Microsoft debuted Internet Explorer in 1995, leading to a browser war with Netscape. On the JavaScript front, Microsoft reverse-engineered the Navigator interpreter to create its own, called JScript.</p>
+
+<p>JScript was first released in 1996, alongside initial support for CSS and extensions to HTML. Each of these implementations was noticeably different from their counterparts in Navigator. These differences made it difficult for developers to make their websites work well in both browsers, leading to widespread use of "best viewed in Netscape" and "best viewed in Internet Explorer" logos for several years.</p>
+
+<h3>The rise of JScript</h3>
+<p>In November 1996, Netscape submitted JavaScript to Ecma International, as the starting point for a standard specification that all browser vendors could conform to. This led to the official release of the first ECMAScript language specification in June 1997.</p>
+
+<p>The standards process continued for a few years, with the release of ECMAScript 2 in June 1998 and ECMAScript 3 in December 1999. Work on ECMAScript 4 began in 2000.</p>
+
+<p>Meanwhile, Microsoft gained an increasingly dominant position in the browser market. By the early 2000s, Internet Explorer's market share reached 95%. This meant that JScript became the de facto standard for client-side scripting on the Web.</p>
+
+<p>Microsoft initially participated in the standards process and implemented some proposals in its JScript language, but eventually it stopped collaborating on Ecma work. Thus ECMAScript 4 was mothballed.</p>
+
+<h3>Growth and standardization</h3>
+<p>During the period of Internet Explorer dominance in the early 2000s, client-side scripting was stagnant. This started to change in 2004, when the successor of Netscape, Mozilla, released the Firefox browser. Firefox was well received by many, taking significant market share from Internet Explorer.</p>
+
+<p>In 2005, Mozilla joined ECMA International, and work started on the ECMAScript for XML (E4X) standard. This led to Mozilla working jointly with Macromedia (later acquired by Adobe Systems), who were implementing E4X in their ActionScript 3 language, which was based on an ECMAScript 4 draft. The goal became standardizing ActionScript 3 as the new ECMAScript 4. To this end, Adobe Systems released the Tamarin implementation as an open source project. However, Tamarin and ActionScript 3 were too different from established client-side scripting, and without cooperation from Microsoft, ECMAScript 4 never reached fruition.</p>
+
+<p>Meanwhile, very important developments were occurring in open-source communities not affiliated with ECMA work. In 2005, Jesse James Garrett released a white paper in which he coined the term Ajax and described a set of technologies, of which JavaScript was the backbone, to create web applications where data can be loaded in the background, avoiding the need for full page reloads. This sparked a renaissance period of JavaScript, spearheaded by open-source libraries and the communities that formed around them. Many new libraries were created, including jQuery, Prototype, Dojo Toolkit, and MooTools.</p>
+
+<p>Google debuted its Chrome browser in 2008, with the V8 JavaScript engine that was faster than its competition. The key innovation was just-in-time compilation (JIT), so other browser vendors needed to overhaul their engines for JIT.</p>
+
+<p>In July 2008, these disparate parties came together for a conference in Oslo. This led to the eventual agreement in early 2009 to combine all relevant work and drive the language forward. The result was the ECMAScript 5 standard, released in December 2009.</p>
+
+<h3>Reaching maturity</h3>
+<p>Ambitious work on the language continued for several years, culminating in an extensive collection of additions and refinements being formalized with the publication of ECMAScript 6 in 2015.</p>
+
+<p>The creation of Node.js in 2009 by Ryan Dahl sparked a significant increase in the usage of JavaScript outside of web browsers. Node combines the V8 engine, an event loop, and I/O APIs, thereby providing a stand-alone JavaScript runtime system. As of 2018, Node had been used by millions of developers, and npm had the most modules of any package manager in the world.</p>
+
+<p>The ECMAScript draft specification is currently maintained openly on GitHub, and editions are produced via regular annual snapshots. Potential revisions to the language are vetted through a comprehensive proposal process. Now, instead of edition numbers, developers check the status of upcoming features individually.</p>
+
+<p>The current JavaScript ecosystem has many libraries and frameworks, established programming practices, and substantial usage of JavaScript outside of web browsers. Plus, with the rise of single-page applications and other JavaScript-heavy websites, several transpilers have been created to aid the development process.</p>
+
+
+
+<h2>Trademark</h2>
+<p>"JavaScript" is a trademark of Oracle Corporation in the United States. The trademark was originally issued to Sun Microsystems on 6 May 1997, and was transferred to Oracle when they acquired Sun in 2009.</p>
+
+
+
+<h2>Website client-side usage</h2>
+<p>JavaScript is the dominant client-side scripting language of the Web, with 98% of all websites (mid–2022) using it for this purpose. Scripts are embedded in or included from HTML documents and interact with the DOM. All major web browsers have a built-in JavaScript engine that executes the code on the user's device.</p>
+
+<h3>Examples of scripted behavior</h3>
+<ul><li>Loading new web page content without reloading the page, via Ajax or a WebSocket. For example, users of social media can send and receive messages without leaving the current page.</li>
+<li>Web page animations, such as fading objects in and out, resizing, and moving them.</li>
+<li>Playing browser games.</li>
+<li>Controlling the playback of streaming media.</li>
+<li>Generating pop-up ads or alert boxes.</li>
+<li>Validating input values of a web form before the data is sent to a web server.</li>
+<li>Logging data about the user's behavior then sending it to a server. The website owner can use this data for analytics, ad tracking, and personalization.</li>
+<li>Redirecting a user to another page.</li>
+<li>Storing and retrieving data on the user's device, via the storage or IndexedDB standards.</li></ul>
+
+<h3>Web libraries and frameworks</h3>
+<p>Over 80% of websites use a third-party JavaScript library or web framework for their client-side scripting.</p>
+
+<h4>jQuery</h4>
+<div>Main article: jQuery</div>
+
+<p>jQuery is by far the most popular client-side library, used by over 75% of websites.</p>
+
+<h4>React</h4>
+<div><div>These paragraphs are an excerpt from React (software).[edit]</div><div>
+<p>React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user interfaces based on components. It is maintained by Meta (formerly Facebook) and a community of individual developers and companies.</p>
+
+React can be used to develop single-page, mobile, or server-rendered applications with frameworks like Next.js. Because React is only concerned with the user interface and rendering components to the DOM, React applications often rely on libraries for routing and other client-side functionality.
+</div></div>
+
+<h4>Angular</h4>
+<div><div>These paragraphs are an excerpt from Angular (web framework).[edit]</div><div>
+Angular (also referred to as "Angular 2+") is a TypeScript-based, free and open-source single-page web application framework led by the Angular Team at Google and by a community of individuals and corporations. Angular is a complete rewrite from the same team that built AngularJS.
+</div></div>
+
+<h4>Vanilla JS</h4>
+<p>In contrast, the term "Vanilla JS" has been coined for websites not using any libraries or frameworks, instead relying entirely on standard JavaScript functionality.</p>
+
+
+
+<h2>Other usage</h2>
+<p>The use of JavaScript has expanded beyond its web browser roots. JavaScript engines are now embedded in a variety of other software systems, both for server-side website deployments and non-browser applications.</p>
+
+<p>Initial attempts at promoting server-side JavaScript usage were Netscape Enterprise Server and Microsoft's Internet Information Services, but they were small niches. Server-side usage eventually started to grow in the late 2000s, with the creation of Node.js and other approaches.</p>
+
+<p>Electron, Cordova, React Native, and other application frameworks have been used to create many applications with behavior implemented in JavaScript. Other non-browser applications include Adobe Acrobat support for scripting PDF documents and GNOME Shell extensions written in JavaScript.</p>
+
+<p>JavaScript has recently begun to appear in some embedded systems, usually by leveraging Node.js.</p>
+
+
+
+<h2>Execution system</h2>
+
+<h3>Just-in-time compilation</h3>
+<h4>JavaScript engine</h4>
+<div><div>This section is an excerpt from JavaScript engine.[edit]</div><div>
+<p>A JavaScript engine is a software component that executes JavaScript code. The first JavaScript engines were mere interpreters, but all relevant modern engines use just-in-time compilation for improved performance.</p>
+
+<p>JavaScript engines are typically developed by web browser vendors, and every major browser has one. In a browser, the JavaScript engine runs in concert with the rendering engine via the Document Object Model.</p>
+
+<p>The use of JavaScript engines is not limited to browsers. For example, the V8 engine is a core component of the Node.js and Deno runtime systems.</p>
+
+Since ECMAScript is the standardized specification of JavaScript, ECMAScript engine is another name for these engines. With the advent of WebAssembly, some engines can also execute this code in the same sandbox as regular JavaScript code.
+</div></div>
+
+<h3>Run-time environment</h3>
+<p>JavaScript typically relies on a run-time environment (e.g., a web browser) to provide objects and methods by which scripts can interact with the environment (e.g., a web page DOM). These environments are single-threaded. JavaScript also relies on the run-time environment to provide the ability to include/import scripts (e.g., HTML <code>&lt;script&gt;</code> elements). This is not a language feature per se, but it is common in most JavaScript implementations. JavaScript processes messages from a queue one at a time. JavaScript calls a function associated with each new message, creating a call stack frame with the function's arguments and local variables. The call stack shrinks and grows based on the function's needs. When the call stack is empty upon function completion, JavaScript proceeds to the next message in the queue. This is called the event loop, described as "run to completion" because each message is fully processed before the next message is considered. However, the language's concurrency model describes the event loop as non-blocking: program input/output is performed using events and callback functions. This means, for instance, that JavaScript can process a mouse click while waiting for a database query to return information.</p>
+
+<h4>Examples</h4>
+<h5>Node.js</h5>
+<div><div>These paragraphs are an excerpt from Node.js.[edit]</div><div>
+Node.js is a cross-platform, open-source server environment that can run on Windows, Linux, Unix, macOS, and more. Node.js is a back-end JavaScript runtime environment, runs on the V8 JavaScript engine, and executes JavaScript code outside a web browser.
+</div></div>
+
+<h5>Deno</h5>
+<div><div>These paragraphs are an excerpt from Deno (software).[edit]</div><div>
+Deno /diːnoʊ/ is a runtime for JavaScript, TypeScript, and WebAssembly that is based on the V8 JavaScript engine and the Rust programming language. Deno was co-created by Ryan Dahl, who also created Node.js.
+</div></div>
+
+
+
+<h2>Features</h2>
+<p>The following features are common to all conforming ECMAScript implementations unless explicitly specified otherwise.</p>
+
+<h3>Imperative and structured</h3>
+<div>Main article: Structured programming</div>
+
+<p>JavaScript supports much of the structured programming syntax from C (e.g., <code>if</code> statements, <code>while</code> loops, <code>switch</code> statements, <code>do while</code> loops, etc.). One partial exception is scoping: originally JavaScript only had function scoping with <code>var</code>; block scoping was added in ECMAScript 2015 with the keywords <code>let</code> and <code>const</code>. Like C, JavaScript makes a distinction between expressions and statements. One syntactic difference from C is automatic semicolon insertion, which allow semicolons (which terminate statements) to be omitted.</p>
+
+<h3>Weakly typed</h3>
+<div>Main article: Weakly typed</div>
+
+<p>JavaScript is weakly typed, which means certain types are implicitly cast depending on the operation used.</p>
+
+<ul><li>The binary <code>+</code> operator casts both operands to a string unless both operands are numbers. This is because the addition operator doubles as a concatenation operator</li>
+<li>The binary <code>-</code> operator always casts both operands to a number</li>
+<li>Both unary operators (<code>+</code>, <code>-</code>) always cast the operand to a number</li></ul>
+
+<p>Values are cast to strings like the following:</p>
+
+<ul><li>Strings are left as-is</li>
+<li>Numbers are converted to their string representation</li>
+<li>Arrays have their elements cast to strings after which they are joined by commas (<code>,</code>)</li>
+<li>Other objects are converted to the string <code>[object Object]</code> where <code>Object</code> is the name of the constructor of the object</li></ul>
+
+<p>Values are cast to numbers by casting to strings and then casting the strings to numbers. These processes can be modified by defining <code>toString</code> and <code>valueOf</code> functions on the prototype for string and number casting respectively.</p>
+
+<p>JavaScript has received criticism for the way it implements these conversions as the complexity of the rules can be mistaken for inconsistency. For example, when adding a number to a string, the number will be cast to a string before performing concatenation, but when subtracting a number from a string, the string is cast to a number before performing subtraction.</p>
+
+<table>
+<caption>JavaScript type conversions</caption>
+<tbody><tr><th>left operand</th>
+<th>operator</th>
+<th>right operand</th>
+<th>result</th></tr>
+<tr>
+<td><code>[]</code> (empty array)</td>
+<td><code>+</code></td>
+<td><code>[]</code> (empty array)</td>
+<td><code>""</code> (empty string)</td></tr>
+<tr>
+<td><code>[]</code> (empty array)</td>
+<td><code>+</code></td>
+<td><code>{}</code> (empty object)</td>
+<td><code>"[object Object]"</code> (string)</td></tr>
+<tr>
+<td><code>false</code> (boolean)</td>
+<td><code>+</code></td>
+<td><code>[]</code> (empty array)</td>
+<td><code>"false"</code> (string)</td></tr>
+<tr>
+<td><code>"123"</code>(string)</td>
+<td><code>+</code></td>
+<td><code>1</code> (number)</td>
+<td><code>"1231"</code> (string)</td></tr>
+<tr>
+<td><code>"123"</code> (string)</td>
+<td><code>-</code></td>
+<td><code>1</code> (number)</td>
+<td><code>122</code> (number)</td></tr>
+<tr>
+<td><code>"123"</code> (string)</td>
+<td><code>-</code></td>
+<td><code>"abc"</code> (string)</td>
+<td><code>NaN</code> (number)</td></tr>
+</tbody></table>
+
+<p>Often also mentioned is <code>{} + []</code> resulting in <code>0</code> (number). This is misleading: the <code>{}</code> is interpreted as an empty code block instead of an empty object, and the empty array is cast to a number by the remaining unary <code>+</code> operator. If you wrap the expression in parentheses <code>({} + [])</code> the curly brackets are interpreted as an empty object and the result of the expression is <code>"[object Object]"</code> as expected.</p>
+
+<h3>Dynamic</h3>
+<div>Main article: Dynamic Programming</div>
+
+<h4>Typing</h4>
+<div>Main article: Dynamic typing</div>
+
+<p>JavaScript is dynamically typed like most other scripting languages. A type is associated with a value rather than an expression. For example, a variable initially bound to a number may be reassigned to a string. JavaScript supports various ways to test the type of objects, including duck typing.</p>
+
+<h4>Run-time evaluation</h4>
+<div>Main article: eval</div>
+<p>JavaScript includes an <code>eval</code> function that can execute statements provided as strings at run-time.</p>
+
+<h3>Object-orientation (prototype-based)</h3>
+<p>Prototypal inheritance in JavaScript is described by Douglas Crockford as:</p>
+<blockquote><p>You make prototype objects, and then ... make new instances. Objects are mutable in JavaScript, so we can augment the new instances, giving them new fields and methods. These can then act as prototypes for even newer objects. We don't need classes to make lots of similar objects... Objects inherit from objects. What could be more object oriented than that?</p>
+</blockquote>
+
+<p>In JavaScript, an object is an associative array, augmented with a prototype (see below); each key provides the name for an object property, and there are two syntactical ways to specify such a name: dot notation (<code>obj.x=10</code>) and bracket notation (<code>obj['x']=10</code>). A property may be added, rebound, or deleted at run-time. Most properties of an object (and any property that belongs to an object's prototype inheritance chain) can be enumerated using a <code>for...in</code> loop.</p>
+
+<h4>Prototypes</h4>
+<div>Main article: Prototype-based programming</div>
+
+<p>JavaScript uses prototypes where many other object-oriented languages use classes for inheritance. It is possible to simulate many class-based features with prototypes in JavaScript.</p>
+
+<h4>Functions as object constructors</h4> 
+
+<p>Functions double as object constructors, along with their typical role. Prefixing a function call with <i>new</i> will create an instance of a prototype, inheriting properties and methods from the constructor (including properties from the <code>Object</code> prototype). ECMAScript 5 offers the <code>Object.create</code> method, allowing explicit creation of an instance without automatically inheriting from the <code>Object</code> prototype (older environments can assign the prototype to <code>null</code>). The constructor's <code>prototype</code> property determines the object used for the new object's internal prototype. New methods can be added by modifying the prototype of the function used as a constructor. JavaScript's built-in constructors, such as <code>Array</code> or <code>Object</code>, also have prototypes that can be modified. While it is possible to modify the <code>Object</code> prototype, it is generally considered bad practice because most objects in JavaScript will inherit methods and properties from the <code>Object</code> prototype, and they may not expect the prototype to be modified.</p>
+
+<h4>Functions as methods</h4>
+<div>Main article: Method (computer science)</div>
+
+
+<p>Unlike many object-oriented languages, there is no distinction between a function definition and a method definition. Rather, the distinction occurs during function calling. When a function is called as a method of an object, the function's local <i>this</i> keyword is bound to that object for that invocation.</p>
+
+<h3>Functional</h3>
+<div>Main article: Functional programming</div>
+
+<p>JavaScript functions are first-class; a function is considered to be an object. As such, a function may have properties and methods, such as <code>.call()</code> and <code>.bind()</code>.</p> 
+
+<h4>Lexical closure</h4>
+<div>Main article: Closure (computer programming)</div>
+
+<p>A <i>nested</i> function is a function defined within another function. It is created each time the outer function is invoked. </p>
+
+<p>In addition, each nested function forms a lexical closure: the lexical scope of the outer function (including any constant, local variable, or argument value) becomes part of the internal state of each inner function object, even after execution of the outer function concludes.</p> 
+
+<h4>Anonymous function</h4>
+<div>Main article: Anonymous function</div>
+
+<p>JavaScript also supports anonymous functions.</p>
+
+<h3>Delegative</h3>
+<div>Main article: Delegation (object-oriented programming)</div>
+<p>JavaScript supports implicit and explicit delegation.</p>
+
+<h4>Functions as roles (Traits and Mixins)</h4>
+<div>Main articles: Role-oriented programming, Traits (computer science), and Mixin</div>
+
+<p>JavaScript natively supports various function-based implementations of Role patterns like Traits and Mixins. Such a function defines additional behavior by at least one method bound to the <code>this</code> keyword within its <code>function</code> body. A Role then has to be delegated explicitly via <code>call</code> or <code>apply</code> to objects that need to feature additional behavior that is not shared via the prototype chain.</p>
+
+<h4>Object composition and inheritance</h4>
+<p>Whereas explicit function-based delegation does cover composition in JavaScript, implicit delegation already happens every time the prototype chain is walked in order to, e.g., find a method that might be related to but is not directly owned by an object. Once the method is found it gets called within this object's context. Thus inheritance in JavaScript is covered by a delegation automatism that is bound to the prototype property of constructor functions.</p>
+
+<h3>Miscellaneous</h3>
+<h4>Zero-based numbering</h4>
+<p>JavaScript is a zero-index language.</p>
+
+<h4>Variadic functions</h4>
+<div>Main article: Variadic function</div>
+
+
+<p>An indefinite number of parameters can be passed to a function. The function can access them through formal parameters and also through the local <code>arguments</code> object. Variadic functions can also be created by using the <code>bind</code> method.</p>
+
+<h4>Array and object literals</h4>
+<div>Main articles: Associative arrays and Object literal</div>
+
+<p>Like many scripting languages, arrays and objects (associative arrays in other languages) can each be created with a succinct shortcut syntax. In fact, these literals form the basis of the JSON data format.</p>
+
+<h4>Regular expressions</h4>
+<div>Main article: Regular expression</div>
+
+<p>JavaScript also supports regular expressions in a manner similar to Perl, which provide a concise and powerful syntax for text manipulation that is more sophisticated than the built-in string functions.</p>
+
+<h4>Promises and Async/await</h4>
+<p>JavaScript supports promises and Async/await for handling asynchronous operations.</p> 
+
+<h5>Promises</h5>
+<div>Main article: Futures and promises</div>
+
+<p>A built-in Promise object provides functionality for handling promises and associating handlers with an asynchronous action's eventual result. Recently, combinator methods were introduced in the JavaScript specification, which allows developers to combine multiple JavaScript promises and do operations based on different scenarios. The methods introduced are: Promise.race, Promise.all, Promise.allSettled and Promise.any. </p>
+
+<h5>Async/await</h5>
+<div>Main article: Async/await</div>
+
+<p>Async/await allows an asynchronous, non-blocking function to be structured in a way similar to an ordinary synchronous function. Asynchronous, non-blocking code can be written, with minimal overhead, structured similar to traditional synchronous, blocking code.</p>
+
+<h3>Vendor-specific extensions</h3>
+<p>Historically, some JavaScript engines supported these non-standard features:</p>
+<ul><li>conditional <code>catch</code> clauses (like Java)</li>
+<li>array comprehensions and generator expressions (like Python)</li>
+<li>concise function expressions (<code>function(args) expr</code>; this experimental syntax predated arrow functions)</li>
+<li>ECMAScript for XML (E4X), an extension that adds native XML support to ECMAScript (unsupported in Firefox since version 21)</li></ul>
+
+
+
+<h2>Syntax</h2>
+<div>Main article: JavaScript syntax</div>
+
+<h3>Simple examples</h3>
+<p>Variables in JavaScript can be defined using either the <code>var</code>, <code>let</code> or <code>const</code> keywords.  Variables defined without keywords will be defined at the global scope.</p>
+
+<div><pre>// Declares a function-scoped variable named `x`, and implicitly assigns the
+// special value `undefined` to it. Variables without value are automatically
+// set to undefined.
+// var is generally considered bad practice and let and const are usually preferred.
+varx;
+
+// Variables can be manually set to `undefined` like so
+letx2=undefined;
+
+// Declares a block-scoped variable named `y`, and implicitly sets it to
+// `undefined`. The `let` keyword was introduced in ECMAScript 2015.
+lety;
+
+// Declares a block-scoped, un-reassignable variable named `z`, and sets it to
+// a string literal. The `const` keyword was also introduced in ECMAScript 2015,
+// and must be explicitly assigned to.
+
+// The keyword `const` means constant, hence the variable cannot be reassigned
+// as the value is `constant`.
+constz="this value cannot be reassigned!";
+
+// Declares a global-scoped variable and assigns 3.  This is generally considered
+// bad practice, and will not work if strict mode is on.
+t=3;
+
+// Declares a variable named `myNumber`, and assigns a number literal (the value
+// `2`) to it.
+letmyNumber=2;
+
+// Reassigns `myNumber`, setting it to a string literal (the value `"foo"`).
+// JavaScript is a dynamically-typed language, so this is legal.
+myNumber="foo";
+</pre></div>
+
+<p>Note the comments in the example above, all of which were preceded with two forward slashes.</p>
+
+<p>There is no built-in Input/output functionality in JavaScript, instead it is provided by the run-time environment. The ECMAScript specification in edition 5.1 mentions that "there are no provisions in this specification for input of external data or output of computed results".
+However, most runtime environments have a <code>console</code> object that can be used to print output. Here is a minimalist Hello World program in JavaScript in a runtime environment with a console object:</p>
+
+<div><pre>console.log("Hello, World!");
+</pre></div>
+<p>In HTML documents, a program like this is required for an output:</p>
+<div><pre>// Text nodes can be made using the "write" method.
+// This is frowned upon, as it can overwrite the document if the document is fully loaded.
+document.write('foo');
+
+// Elements can be made too. First, they have to be created in the DOM.
+constmyElem=document.createElement('span');
+
+// Attributes like classes and the id can be set as well
+myElem.classList.add('foo');
+myElem.id='bar';
+
+// After setting this, the tag will look like this: `&lt;span class="foo" id="bar" data-attr="baz"&gt;&lt;/span&gt;`
+myElem.setAttribute('data-attr','baz');// Which could also be written as `myElem.dataset.attr = 'baz'`
+
+// Finally append it as a child element to the &lt;body&gt; in the HTML
+document.body.appendChild(myElem);
+
+// Elements can be imperatively grabbed with querySelector for one element, or querySelectorAll for multiple elements that can be looped with forEach
+document.querySelector('.class');// Selects the first element with the "class" class
+document.querySelector('#id');// Selects the first element with an `id` of "id"
+document.querySelector('[data-other]');// Selects the first element with the "data-other" attribute
+document.querySelectorAll('.multiple');// Returns an Array-like NodeList of all elements with the "multiple" class
+</pre></div><p>A simple recursive function to calculate the factorial of a natural number:</p>
+
+<div><pre>functionfactorial(n){
+// Checking the argument for legitimacy. Factorial is defined for positive integers.
+if(isNaN(n)){
+console.error("Non-numerical argument not allowed.");
+returnNaN;// The special value: Not a Number
+}
+if(n===0)
+return1;// 0! = 1
+if(n&lt;0)
+returnundefined;// Factorial of negative numbers is not defined.
+if(n%1){
+console.warn(`${n} will be rounded to the closest integer. For non-integers consider using gamma function instead.`);
+n=Math.round(n);
+}
+// The above checks need not be repeated in the recursion, hence defining the actual recursive part separately below.
+
+// The following line is a function expression to recursively compute the factorial. It uses the arrow syntax introduced in ES6.
+constrecursivelyCompute=a=&gt;a&gt;1?a*recursivelyCompute(a-1):1;// Note the use of the ternary operator `?`.
+returnrecursivelyCompute(n);
+}
+
+factorial(3);// Returns 6
+</pre></div>
+
+<p>An anonymous function (or lambda):</p>
+
+<div><pre>constcounter=function(){
+letcount=0;
+returnfunction(){
+return++count;
+}
+};
+
+constx=counter();
+x();// Returns 1
+x();// Returns 2
+x();// Returns 3
+</pre></div>
+
+<p>This example shows that, in JavaScript, function closures capture their non-local variables by reference.</p>
+
+<p>Arrow functions were first introduced in 6th Edition - ECMAScript 2015. They shorten the syntax for writing functions in JavaScript. Arrow functions are anonymous, so a variable is needed to refer to them in order to invoke them after their creation, unless surrounded by parenthesis and executed immediately.</p>
+
+<p>Example of arrow function:</p>
+
+<div><pre>// Arrow functions let us omit the `function` keyword.
+// Here `long_example` points to an anonymous function value.
+constlong_example=(input1,input2)=&gt;{
+console.log("Hello, World!");
+constoutput=input1+input2;
+
+returnoutput;
+};
+
+// If there are no braces, the arrow function simply returns the expression
+// So here it's (input1 + input2)
+constshort_example=(input1,input2)=&gt;input1+input2;
+
+long_example(2,3);// Prints "Hello, World!" and returns 5
+short_example(2,5);// Returns 7
+
+// If an arrow function has only one parameter, the parentheses can be removed.
+constno_parentheses=input=&gt;input+2;
+
+no_parentheses(3);// Returns 5
+
+// An arrow function, like other function definitions, can be executed in the same statement as they are created.
+// This is useful when writing libraries to avoid filling the global scope, and for closures.
+letthree=((a,b)=&gt;a+b)(1,2);
+
+constgenerate_multiplier_function=a=&gt;(b=&gt;isNaN(b)||!b?a:a*=b);
+constfive_multiples=generate_multiplier_function(5);// The supplied argument "seeds" the expression and is retained by a.
+five_multiples(1);// Returns 5
+five_multiples(3);// Returns 15
+five_multiples(4);// Returns 60
+</pre></div>
+
+<p>In JavaScript, objects can be created as instances of a class.</p>
+
+<p>Object class example:</p>
+<div><pre>classBall{
+
+constructor(radius){
+this.radius=radius;
+this.area=Math.PI*(radius**2);
+}
+
+// Classes (and thus objects) can contain functions known as methods
+show(){
+console.log(this.radius);
+}
+};
+
+constmyBall=newBall(5);// Creates a new instance of the ball object with radius 5
+myBall.radius++;// Object properties can usually be modified from the outside
+myBall.show();// Using the inherited "show" function logs "6"
+</pre></div>
+
+<p>In JavaScript, objects can be instantiated directly from a function.</p>
+
+<p>Object functional example:</p>
+<div><pre>functionBall(radius){
+
+constarea=Math.PI*(radius**2);
+constobj={radius,area};
+
+// Objects are mutable, and functions can be added as properties.
+obj.show=()=&gt;console.log(obj.radius);
+returnobj;
+};
+
+constmyBall=Ball(5);// Creates a new ball object with radius 5. No "new" keyword needed.
+myBall.radius++;// The instance property can be modified.
+myBall.show();// Using the "show" function logs "6" - the new instance value.
+</pre></div>
+
+<p>Variadic function demonstration (<code>arguments</code> is a special variable):</p>
+
+<div><pre>functionsum(){
+letx=0;
+
+for(leti=0;i&lt;arguments.length;++i)
+x+=arguments[i];
+
+returnx;
+}
+
+sum(1,2);// Returns 3
+sum(1,2,3);// Returns 6
+
+// As of ES6, using the rest operator.
+functionsum(...args){
+returnargs.reduce((a,b)=&gt;a+b);
+}
+
+sum(1,2);// Returns 3
+sum(1,2,3);// Returns 6
+</pre></div>
+
+<p>Immediately-invoked function expressions are often used to create closures. Closures allow gathering properties and methods in a namespace and making some of them private:</p>
+
+<div><pre>letcounter=(function(){
+leti=0;// Private property
+
+return{// Public methods
+get:function(){
+alert(i);
+},
+set:function(value){
+i=value;
+},
+increment:function(){
+alert(++i);
+}
+};
+})();// Module
+
+counter.get();// Returns 0
+counter.set(6);
+counter.increment();// Returns 7
+counter.increment();// Returns 8
+</pre></div>
+ 	
+<p>Generator objects (in the form of generator functions) provide a function which can be called, exited, and re-entered while maintaining internal context (statefulness).</p><div><pre>function*rawCounter(){
+yield1;
+yield2;
+}
+
+function*dynamicCounter(){
+letcount=0;
+while(true){
+// It is not recommended to utilize while true loops in most cases.
+yield++count;
+}
+}
+
+// Instances
+constcounter1=rawCounter();
+constcounter2=dynamicCounter();
+
+// Implementation
+counter1.next();// {value: 1, done: false}
+counter1.next();// {value: 2, done: false}
+counter1.next();// {value: undefined, done: true}
+
+counter2.next();// {value: 1, done: false}
+counter2.next();// {value: 2, done: false}
+counter2.next();// {value: 3, done: false}
+// ...infinitely
+</pre></div>
+
+<p>JavaScript can export and import from modules:</p>
+
+<p>Export example:</p>
+<div><pre>/* mymodule.js */
+// This function remains private, as it is not exported
+letsum=(a,b)=&gt;{
+returna+b;
+}
+
+// Export variables
+exportletname='Alice';
+exportletage=23;
+
+// Export named functions
+exportfunctionadd(num1,num2){
+returnnum1+num2;
+}
+
+// Export class
+exportclassMultiplication{
+constructor(num1,num2){
+this.num1=num1;
+this.num2=num2;
+}
+
+add(){
+returnsum(this.num1,this.num2);
+}
+}
+</pre></div>
+
+<p>Import example:</p>
+<div><pre>// Import one property
+import{add}from'./mymodule.js';
+console.log(add(1,2));
+//&gt; 3
+
+// Import multiple properties
+import{name,age}from'./mymodule.js';
+console.log(name,age);
+//&gt; "Alice", 23
+
+// Import all properties from a module
+import*from'./module.js'
+console.log(name,age);
+//&gt; "Alice", 23
+console.log(add(1,2));
+//&gt; 3
+</pre></div>
+
+<h3>More advanced example</h3>
+<p>This sample code displays various JavaScript features.</p>
+
+
+<div><pre>/* Finds the lowest common multiple (LCM) of two numbers */
+functionLCMCalculator(x,y){// constructor function
+if(isNaN(x*y))thrownewTypeError("Non-numeric arguments not allowed.");
+constcheckInt=function(x){// inner function
+if(x%1!==0)
+thrownewTypeError(x+"is not an integer");
+
+returnx;
+};
+
+this.a=checkInt(x)
+//   semicolons   ^^^^  are optional, a newline is enough
+this.b=checkInt(y);
+}
+// The prototype of object instances created by a constructor is
+// that constructor's "prototype" property.
+LCMCalculator.prototype={// object literal
+constructor:LCMCalculator,// when reassigning a prototype, set the constructor property appropriately
+gcd:function(){// method that calculates the greatest common divisor
+// Euclidean algorithm:
+leta=Math.abs(this.a),b=Math.abs(this.b),t;
+
+if(a&lt;b){
+// swap variables
+// t = b; b = a; a = t;
+[a,b]=[b,a];// swap using destructuring assignment (ES6)
+}
+
+while(b!==0){
+t=b;
+b=a%b;
+a=t;
+}
+
+// Only need to calculate GCD once, so "redefine" this method.
+// (Actually not redefinition—it's defined on the instance itself,
+// so that this.gcd refers to this "redefinition" instead of LCMCalculator.prototype.gcd.
+// Note that this leads to a wrong result if the LCMCalculator object members "a" and/or "b" are altered afterwards.)
+// Also, 'gcd' === "gcd", this['gcd'] === this.gcd
+this['gcd']=function(){
+returna;
+};
+
+returna;
+},
+
+// Object property names can be specified by strings delimited by double (") or single (') quotes.
+"lcm":function(){
+// Variable names do not collide with object properties, e.g., |lcm| is not |this.lcm|.
+// not using |this.a*this.b| to avoid FP precision issues
+letlcm=this.a/this.gcd()*this.b;
+
+// Only need to calculate lcm once, so "redefine" this method.
+this.lcm=function(){
+returnlcm;
+};
+
+returnlcm;
+},
+
+// Methods can also be declared using ES6 syntax
+toString(){
+// Using both ES6 template literals and the (+) operator to concatenate values
+return`LCMCalculator: a = ${this.a}, b = `+this.b;
+}
+};
+
+// Define generic output function; this implementation only works for Web browsers
+functionoutput(x){
+document.body.appendChild(document.createTextNode(x));
+document.body.appendChild(document.createElement('br'));
+}
+
+// Note: Array's map() and forEach() are defined in JavaScript 1.6.
+// They are used here to demonstrate JavaScript's inherent functional nature.
+[
+[25,55],
+[21,56],
+[22,58],
+[28,56]
+].map(function(pair){// array literal + mapping function
+returnnewLCMCalculator(pair[0],pair[1]);
+}).sort((a,b)=&gt;a.lcm()-b.lcm())// sort with this comparative function; =&gt; is a shorthand form of a function, called "arrow function"
+.forEach(printResult);
+
+functionprintResult(obj){
+output(obj+", gcd = "+obj.gcd()+", lcm = "+obj.lcm());
+}
+</pre></div>
+
+<p>The following output should be displayed in the browser window.</p>
+<div><pre>LCMCalculator: a = 28, b = 56, gcd = 28, lcm = 56
+LCMCalculator: a = 21, b = 56, gcd = 7, lcm = 168
+LCMCalculator: a = 25, b = 55, gcd = 5, lcm = 275
+LCMCalculator: a = 22, b = 58, gcd = 2, lcm = 638
+</pre></div>
+
+
+
+<h2>Security</h2>
+<div>See also: Browser security</div>
+<p>JavaScript and the DOM provide the potential for malicious authors to deliver scripts to run on a client computer via the Web. Browser authors minimize this risk using two restrictions. First, scripts run in a sandbox in which they can only perform Web-related actions, not general-purpose programming tasks like creating files. Second, scripts are constrained by the same-origin policy: scripts from one Website do not have access to information such as usernames, passwords, or cookies sent to another site. Most JavaScript-related security bugs are breaches of either the same origin policy or the sandbox.</p>
+
+<p>There are subsets of general JavaScript—ADsafe, Secure ECMAScript (SES)—that provide greater levels of security, especially on code created by third parties (such as advertisements). Closure Toolkit is another project for safe embedding and isolation of third-party JavaScript and HTML.</p>
+
+<p>Content Security Policy is the main intended method of ensuring that only trusted code is executed on a Web page.</p>
+
+<h3>Cross-site vulnerabilities</h3>
+<div>Main articles: Cross-site scripting and Cross-site request forgery</div>
+
+<h4>Cross-site scripting</h4>
+<div>Main article: Cross-site scripting</div>
+
+<p>A common JavaScript-related security problem is cross-site scripting (XSS), a violation of the same-origin policy. XSS vulnerabilities occur when an attacker can cause a target Website, such as an online banking website, to include a malicious script in the webpage presented to a victim. The script in this example can then access the banking application with the privileges of the victim, potentially disclosing secret information or transferring money without the victim's authorization. A solution to XSS vulnerabilities is to use <i>HTML escaping</i> whenever displaying untrusted data.</p>
+
+<p>Some browsers include partial protection against <i>reflected</i> XSS attacks, in which the attacker provides a URL including malicious script. However, even users of those browsers are vulnerable to other XSS attacks, such as those where the malicious code is stored in a database. Only correct design of Web applications on the server-side can fully prevent XSS.</p>
+
+<p>XSS vulnerabilities can also occur because of implementation mistakes by browser authors.</p>
+
+<h4>Cross-site request forgery</h4>
+<div>Main article: Cross-site request forgery</div>
+
+<p>Another cross-site vulnerability is cross-site request forgery (CSRF). In CSRF, code on an attacker's site tricks the victim's browser into taking actions the user did not intend at a target site (like transferring money at a bank). When target sites rely solely on cookies for request authentication, requests originating from code on the attacker's site can carry the same valid login credentials of the initiating user. In general, the solution to CSRF is to require an authentication value in a hidden form field, and not only in the cookies, to authenticate any request that might have lasting effects. Checking the HTTP Referrer header can also help.</p>
+
+<p>"JavaScript hijacking" is a type of CSRF attack in which a <code>&lt;script&gt;</code> tag on an attacker's site exploits a page on the victim's site that returns private information such as JSON or JavaScript. Possible solutions include:</p>
+
+<ul><li>requiring an authentication token in the POST and GET parameters for any response that returns private information.</li></ul>
+
+<h3>Misplaced trust in the client</h3>
+<p>Developers of client-server applications must recognize that untrusted clients may be under the control of attackers. The application author cannot assume that their JavaScript code will run as intended (or at all) because any secret embedded in the code could be extracted by a determined adversary. Some implications are:</p>
+<ul><li>Website authors cannot perfectly conceal how their JavaScript operates because the raw source code must be sent to the client. The code can be obfuscated, but obfuscation can be reverse-engineered.</li>
+<li>JavaScript form validation only provides convenience for users, not security. If a site verifies that the user agreed to its terms of service, or filters invalid characters out of fields that should only contain numbers, it must do so on the server, not only the client.</li>
+<li>Scripts can be selectively disabled, so JavaScript cannot be relied on to prevent operations such as right-clicking on an image to save it.</li>
+<li>It is considered very bad practice to embed sensitive information such as passwords in JavaScript because it can be extracted by an attacker.</li></ul>
+
+<h3>Misplaced trust in developers</h3>
+<p>Package management systems such as npm and Bower are popular with JavaScript developers. Such systems allow a developer to easily manage their program's dependencies upon other developers' program libraries. Developers trust that the maintainers of the libraries will keep them secure and up to date, but that is not always the case. A vulnerability has emerged because of this blind trust. Relied-upon libraries can have new releases that cause bugs or vulnerabilities to appear in all programs that rely upon the libraries. Inversely, a library can go unpatched with known vulnerabilities out in the wild. In a study done looking over a sample of 133,000 websites, researchers found 37% of the websites included a library with at least one known vulnerability. "The median lag between the oldest library version used on each website and the newest available version of that library is 1,177 days in ALEXA, and development of some libraries still in active use ceased years ago." Another possibility is that the maintainer of a library may remove the library entirely. This occurred in March 2016 when Azer Koçulu removed his repository from npm. This caused tens of thousands of programs and websites depending upon his libraries to break.</p>
+
+<h3>Browser and plugin coding errors</h3>
+<div>Further information: Buffer overflow</div>
+<p>JavaScript provides an interface to a wide range of browser capabilities, some of which may have flaws such as buffer overflows. These flaws can allow attackers to write scripts that would run any code they wish on the user's system. This code is not by any means limited to another JavaScript application. For example, a buffer overrun exploit can allow an attacker to gain access to the operating system's API with superuser privileges.</p>
+
+<p>These flaws have affected major browsers including Firefox, Internet Explorer, and Safari.</p>
+
+<p>Plugins, such as video players, Adobe Flash, and the wide range of ActiveX controls enabled by default in Microsoft Internet Explorer, may also have flaws exploitable via JavaScript (such flaws have been exploited in the past).</p>
+
+<p>In Windows Vista, Microsoft has attempted to contain the risks of bugs such as buffer overflows by running the Internet Explorer process with limited privileges. Google Chrome similarly confines its page renderers to their own "sandbox".</p>
+
+<h3>Sandbox implementation errors</h3>
+<p>Web browsers are capable of running JavaScript outside the sandbox, with the privileges necessary to, for example, create or delete files. Such privileges are not intended to be granted to code from the Web.</p>
+
+<p>Incorrectly granting privileges to JavaScript from the Web has played a role in vulnerabilities in both Internet Explorer and Firefox. In Windows XP Service Pack 2, Microsoft demoted JScript's privileges in Internet Explorer.</p>
+
+<p>Microsoft Windows allows JavaScript source files on a computer's hard drive to be launched as general-purpose, non-sandboxed programs (see: Windows Script Host). This makes JavaScript (like VBScript) a theoretically viable vector for a Trojan horse, although JavaScript Trojan horses are uncommon in practice.</p>
+
+<h3>Hardware vulnerabilities</h3>
+<p>In 2015, a JavaScript-based proof-of-concept implementation of a rowhammer attack was described in a paper by security researchers.</p>
+
+<p>In 2017, a JavaScript-based attack via browser was demonstrated that could bypass ASLR. It is called "ASLR⊕Cache" or AnC.</p>
+
+<p>In 2018, the paper that announced the Spectre attacks against Speculative Execution in Intel and other processors included a JavaScript implementation.</p>
+
+
+
+<h2>Development tools</h2>
+<p>Important tools have evolved with the language.</p>
+
+<ul><li>Every major web browser has built-in web development tools, including a JavaScript debugger.</li>
+<li>Static program analysis tools, such as ESLint and JSLint, scan JavaScript code for conformance to a set of standards and guidelines.</li>
+<li>Some browsers have built-in profilers. Stand-alone profiling libraries have also been created, such as benchmark.js and jsbench.</li>
+<li>Many text editors have syntax highlighting support for JavaScript code.</li></ul>
+
+<h3>Static program analysis</h3>
+
+<h4>ESLint</h4>
+<div><div>This section is an excerpt from ESLint.[edit]</div><div>
+ESLint is a static code analysis tool for identifying problematic patterns found in JavaScript code. It was created by Nicholas C. Zakas in 2013. Rules in ESLint are configurable,  and customized rules can be defined and loaded. ESLint covers both code quality and coding style issues. ESLint supports current standards of ECMAScript, and experimental syntax from drafts for future standards. Code using JSX or TypeScript can also be processed when a plugin or transpiler is used.
+</div></div>
+
+<h4>JSLint</h4>
+<div><div>This section is an excerpt from JSLint.[edit]</div><div>
+JSLint is a static code analysis tool used in software development for checking if JavaScript source code complies with coding rules. It is provided primarily as a browser-based web application accessible through the domain jslint.com, but there are also command-line adaptations. It was created in 2002 by Douglas Crockford.
+</div></div>
+
+
+
+<h2>Related technologies</h2>
+<h3>Java</h3>
+<div>Main article: Java</div>
+<p>A common misconception is that JavaScript is the same as Java.  Both indeed have a C-like syntax (the C language being their most immediate common ancestor language). They are also typically sandboxed (when used inside a browser), and JavaScript was designed with Java's syntax and standard library in mind. In particular, all Java keywords were reserved in original JavaScript, JavaScript's standard library follows Java's naming conventions, and JavaScript's <code>Math</code> and <code>Date</code> objects are based on classes from Java 1.0.</p>
+
+<p>Java and JavaScript both first appeared in 1995, but Java was developed by James Gosling of Sun Microsystems and JavaScript by Brendan Eich of Netscape Communications.</p>
+
+<p>The differences between the two languages are more prominent than their similarities. Java has static typing, while JavaScript's typing is dynamic. Java is loaded from compiled bytecode, while JavaScript is loaded as human-readable source code. Java's objects are class-based, while JavaScript's are prototype-based. Finally, Java did not support functional programming until Java 8, while JavaScript has done so from the beginning, being influenced by Scheme.</p>
+
+<h3>JSON</h3>
+<div><div>This section is an excerpt from JSON.[edit]</div><div>
+<p>JSON (JavaScript Object Notation, pronounced /ˈdʒeɪsən/; also /ˈdʒeɪˌsɒn/) is an open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays (or other serializable values). It is a common data format with diverse  uses in electronic data interchange, including that of web applications with servers.</p>
+
+<p>JSON is a language-independent data format. It was derived from JavaScript, but many modern programming languages include code to generate and parse JSON-format data. JSON filenames use the extension <code>.json</code>.</p>
+
+Douglas Crockford originally specified the JSON format in the early 2000s. He and Chip Morningstar sent the first JSON message in April 2001.
+</div></div>
+
+<h3>TypeScript</h3>
+<div>Main article: TypeScript</div>
+<p>TypeScript (TS) is a strictly-typed variant of JavaScript. TS differs by introducing type annotations to variables and functions, and introducing a type language to describe the types within JS. Otherwise TS shares much the same featureset as JS, to allow it to be easily transpiled to JS for running client-side, and to interoperate with other JS code.</p>
+
+<h3>WebAssembly</h3>
+<div>Main article: WebAssembly</div>
+<p>Since 2017, web browsers have supported WebAssembly, a binary format that enables a JavaScript engine to execute performance-critical portions of web page scripts close to native speed. WebAssembly code runs in the same sandbox as regular JavaScript code.</p>
+
+<p>asm.js is a subset of JavaScript that served as the forerunner of WebAssembly.</p>
+
+
+
+<h3>Transpilers</h3>
+<div>Main article: Transpiler</div>
+<p>JavaScript is the dominant client-side language of the Web, and many websites are script-heavy. Thus transpilers have been created to convert code written in other languages, which can aid the development process.</p>
+
+<h3>Ajax</h3>
+<div><div>This section is an excerpt from Ajax (programming).[edit]</div><div>
+<p>Ajax (also AJAX /ˈeɪdʒæks/; short for "asynchronous JavaScript and XML") is a set of web development techniques that uses various web technologies on the client-side to create asynchronous web applications. With Ajax, web applications can send and retrieve data from a server asynchronously (in the background) without interfering with the display and behaviour of the existing page. By decoupling the data interchange layer from the presentation layer, Ajax allows web pages and, by extension, web applications, to change content dynamically without the need to reload the entire page. In practice, modern implementations commonly utilize JSON instead of XML.</p>
+
+Ajax is not a technology, but rather a programming concept. HTML and CSS can be used in combination to mark up and style information. The webpage can be modified by JavaScript to dynamically display—and allow the user to interact with the new information. The built-in XMLHttpRequest object is used to execute Ajax on webpages, allowing websites to load content onto the screen without refreshing the page. Ajax is not a new technology, nor is it a new language. Instead, it is existing technologies used in a new way.
+</div></div>
+

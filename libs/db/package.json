@@ -30,6 +30,7 @@
     "kysely": "0.26.3"
   },
   "devDependencies": {
+    "@dayjot/editor": "workspace:*",
     "@supastack/eslint-config": "workspace:*",
     "@supastack/tsconfig": "workspace:*",
     "@supastack/utils-types": "workspace:*",

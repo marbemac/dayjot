@@ -1,0 +1,287 @@
+<h1>Email</h1>
+
+<div>Mail sent using electronic means</div>
+<div>For the former company, see Email Limited.</div>
+
+
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Evolution_36_mail.png/220px-Evolution_36_mail.png" height="176" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Evolution_36_mail.png/330px-Evolution_36_mail.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Evolution_36_mail.png/440px-Evolution_36_mail.png 2x" />This screenshot shows the "Inbox" page of an email client; users can see new emails and take actions, such as reading, deleting, saving, or responding to these messages.
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/e/ee/E-post_fr%C3%A5n_Wikipedia_-_2019.jpg/220px-E-post_fr%C3%A5n_Wikipedia_-_2019.jpg" height="135" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/e/ee/E-post_fr%C3%A5n_Wikipedia_-_2019.jpg/330px-E-post_fr%C3%A5n_Wikipedia_-_2019.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/e/ee/E-post_fr%C3%A5n_Wikipedia_-_2019.jpg/440px-E-post_fr%C3%A5n_Wikipedia_-_2019.jpg 2x" />When a "robot" on Wikipedia makes changes to image files, the uploader receives an email about the changes made.
+
+<p><b>Electronic mail</b> (<b>email</b> or <b>e-mail</b>) is a method of transmitting and receiving messages using electronic devices. It was conceived in the late–20th century as the digital version of, or counterpart to, mail (hence <i>e- + mail</i>). Email is a ubiquitous and very widely used communication medium; in current use, an email address is often treated as a basic and necessary part of many processes in business, commerce, government, education, entertainment, and other spheres of daily life in most countries.</p>
+
+
+<p>Email operates across computer networks, primarily the Internet, and also local area networks. Today's email systems are based on a store-and-forward model. Email servers accept, forward, deliver, and store messages. Neither the users nor their computers are required to be online simultaneously; they need to connect, typically to a mail server or a webmail interface to send or receive messages or download it.</p>
+
+<p>Originally an ASCII text-only communications medium, Internet email was extended by Multipurpose Internet Mail Extensions (MIME) to carry text in other character sets and multimedia content attachments. International email, with internationalized email addresses using UTF-8, is standardized but not widely adopted.</p>
+
+
+
+
+<h2>Terminology</h2>
+<div>Further information: History of email §Terminology and usage</div>
+<p>The term <i>electronic mail</i> has been in use with its modern meaning since 1975, and variations of the shorter <i>E-mail</i> have been in use since 1979:</p>
+
+<ul><li><i><b>email</b></i> is now the common form, and recommended by style guides. It is the form required by IETF Requests for Comments (RFC) and working groups.  This spelling also appears in most dictionaries.</li>
+<li><i><b>e-mail</b></i> is the form favored in edited published American English and British English writing as reflected in the Corpus of Contemporary American English data, but is falling out of favor in some style guides.</li>
+<li><i>E-mail</i> is sometimes used. The original usage in June 1979 occurred in the journal <i>Electronics</i> in reference to the United States Postal Service initiative called E-COM, which was developed in the late 1970s and operated in the early 1980s.</li>
+<li><i><b>Email</b></i> is also used.</li>
+<li><i><b>EMAIL</b></i> was used by CompuServe starting in April 1981, which popularized the term.</li>
+<li><i><b>EMail</b></i> is a traditional form used in RFCs for the "Author's Address".</li></ul>
+
+<p>The service is often simply referred to as <i>mail</i>, and a single piece of electronic mail is called a <i>message</i>. The conventions for fields within emails—the "To," "From," "CC," "BCC" etc.—began with RFC-680 in 1975.</p>
+
+<p>An Internet email consists of an <i>envelope</i> and <i>content</i>; the content consists of a <i>header</i> and a <i>body</i>.</p>
+
+
+
+<h2>History</h2>
+
+<div>Main article: History of email</div>
+<p>Computer-based messaging between users of the same system became possible after the advent of time-sharing in the early 1960s, with a notable implementation by MIT's CTSS project in 1965. Most developers of early mainframes and minicomputers developed similar, but generally incompatible, mail applications. In 1971 the first ARPANET network mail was sent, introducing the now-familiar address syntax with the '@' symbol designating the user's system address. Over a series of RFCs, conventions were refined for sending mail messages over the File Transfer Protocol. </p>
+
+<p>Proprietary electronic mail systems soon began to emerge. IBM, CompuServe and Xerox used in-house mail systems in the 1970s; CompuServe sold a commercial intraoffice mail product in 1978 to IBM and to Xerox from 1981. DEC's ALL-IN-1 and Hewlett-Packard's HPMAIL (later HP DeskManager) were released in 1982; development work on the former began in the late 1970s and the latter became the world’s largest selling email system.</p>
+
+<p>The Simple Mail Transfer Protocol (SMTP) protocol was implemented on the ARPANET in 1983. LAN email systems emerged in the mid 1980s. For a time in the late 1980s and early 1990s, it seemed likely that either a proprietary commercial system or the X.400 email system, part of the Government Open Systems Interconnection Profile (GOSIP), would predominate. However, once the final restrictions on carrying commercial traffic over the Internet ended in 1995, a combination of factors made the current Internet suite of SMTP, POP3 and IMAP email protocols the standard (see Protocol Wars).</p>
+
+
+
+<h2>Operation</h2>
+<p>The following is a typical sequence of events that takes place when sender Alice transmits a message using a mail user agent (MUA) addressed to the email address of the recipient.</p>
+
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/7/72/Email.svg/220px-Email.svg.png" height="160" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/7/72/Email.svg/330px-Email.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/7/72/Email.svg/440px-Email.svg.png 2x" />Email operation
+<ol><li>The MUA formats the message in email format and uses the submission protocol, a profile of the Simple Mail Transfer Protocol (SMTP), to send the message content to the local mail submission agent (MSA), in this case <i>smtp.a.org</i>.</li>
+<li>The MSA determines the destination address provided in the SMTP protocol (not from the message header)—in this case, <i>bob@b.org</i>—which is a fully qualified domain address (FQDA). The part before the @ sign is the <i>local part</i> of the address, often the username of the recipient, and the part after the @ sign is a domain name. The MSA resolves a domain name to determine the fully qualified domain name of the mail server in the Domain Name System (DNS).</li>
+<li>The DNS server for the domain <i>b.org</i> (<i>ns.b.org</i>) responds with any MX records listing the mail exchange servers for that domain, in this case <i>mx.b.org</i>, a message transfer agent (MTA) server run by the recipient's ISP.</li>
+<li>smtp.a.org sends the message to mx.b.org using SMTP. This server may need to forward the message to other MTAs before the message reaches the final message delivery agent (MDA).</li>
+<li>The MDA delivers it to the mailbox of user <i>bob</i>.</li>
+<li>Bob's MUA picks up the message using either the Post Office Protocol (POP3) or the Internet Message Access Protocol (IMAP).</li></ol>
+
+<p>In addition to this example, alternatives and complications exist in the email system:</p>
+<ul><li>Alice or Bob may use a client connected to a corporate email system, such as IBM Lotus Notes or Microsoft Exchange. These systems often have their own internal email format and their clients typically communicate with the email server using a vendor-specific, proprietary protocol. The server sends or receives email via the Internet through the product's Internet mail gateway which also does any necessary reformatting. If Alice and Bob work for the same company, the entire transaction may happen completely within a single corporate email system.</li>
+<li>Alice may not have an MUA on her computer but instead may connect to a webmail service.</li>
+<li>Alice's computer may run its own MTA, so avoiding the transfer at step 1.</li>
+<li>Bob may pick up his email in many ways, for example logging into mx.b.org and reading it directly, or by using a webmail service.</li>
+<li>Domains usually have several mail exchange servers so that they can continue to accept mail even if the primary is not available.</li></ul>
+
+<p>Many MTAs used to accept messages for any recipient on the Internet and do their best to deliver them. Such MTAs are called <i>open mail relays</i>. This was very important in the early days of the Internet when network connections were unreliable.  However, this mechanism proved to be exploitable by originators of unsolicited bulk email and as a consequence open mail relays have become rare, and many MTAs do not accept messages from open mail relays.</p>
+
+
+
+<h2>Message format </h2>
+<p>The basic Internet message format used for email is defined by RFC5322, with encoding of non-ASCII data and multimedia content attachments defined in RFC 2045 through RFC 2049, collectively called <i>Multipurpose Internet Mail Extensions</i> or <i>MIME</i>. The extensions in International email apply only to email. RFC 5322 replaced the earlier RFC 2822 in 2008, then RFC 2822 in 2001 replaced RFC 822 – the standard for Internet email for decades. Published in 1982, RFC 822 was based on the earlier RFC 733 for the ARPANET.</p>
+
+<p>Internet email messages consist of two sections, "header" and "body". These are known as "content".  The header is structured into fields such as From, To, CC, Subject, Date, and other information about the email. In the process of transporting email messages between systems, SMTP communicates delivery parameters and information using message header fields. The body contains the message, as unstructured text, sometimes containing a signature block at the end. The header is separated from the body by a blank line.</p>
+
+<h3>Message header</h3>
+
+<p>RFC 5322 specifies the syntax of the email header. Each email message has a header (the "header section" of the message, according to the specification), comprising a number of fields ("header fields"). Each field has a name ("field name" or "header field name"), followed by the separator character ":", and a value ("field body" or "header field body").</p>
+
+<p>Each field name begins in the first character of a new line in the header section, and begins with a non-whitespace printable character. It ends with the separator character ":". The separator is followed by the field value (the "field body"). The value can continue onto subsequent lines if those lines have space or tab as their first character. Field names and, without SMTPUTF8, field bodies are restricted to 7-bit ASCII characters. Some non-ASCII values may be represented using MIME encoded words.</p>
+
+<h4>Header fields</h4>
+<p>Email header fields can be multi-line, with each line recommended to be no more than 78 characters, although the limit is 998 characters. Header fields defined by RFC 5322 contain only US-ASCII characters; for encoding characters in other sets, a syntax specified in RFC 2047 may be used. In some examples, the IETF EAI working group defines some standards track extensions, replacing previous experimental extensions so UTF-8 encoded Unicode characters may be used within the header. In particular, this allows email addresses to use non-ASCII characters. Such addresses are supported by Google and Microsoft products, and promoted by some government agents.</p>
+
+<p>The message header must include at least the following fields:</p>
+<ul><li><i>From</i>: The email address, and, optionally, the name of the author(s). Some email clients are changeable through account settings.</li>
+<li><i>Date</i>: The local time and date the message was written. Like the <i>From:</i> field, many email clients fill this in automatically before sending. The recipient's client may display the time in the format and time zone local to them.</li></ul>
+
+<p>RFC 3864 describes registration procedures for message header fields at the IANA; it provides for permanent and provisional field names, including also fields defined for MIME, netnews, and HTTP, and referencing relevant RFCs. Common header fields for email include:</p>
+
+<ul><li><i>To</i>: The email address(es), and optionally name(s) of the message's recipient(s). Indicates primary recipients (multiple allowed), for secondary recipients see Cc: and Bcc: below.</li>
+<li><i>Subject</i>: A brief summary of the topic of the message. Certain abbreviations are commonly used in the subject, including "RE:" and "FW:".</li>
+<li><i>Cc</i>: Carbon copy; Many email clients mark email in one's inbox differently depending on whether they are in the To: or Cc: list.</li>
+<li><i>Bcc</i>: Blind carbon copy; addresses are usually only specified during SMTP delivery, and not usually listed in the message header.</li>
+<li>Content-Type: Information about how the message is to be displayed, usually a MIME type.</li>
+<li><i>Precedence</i>: commonly with values "bulk", "junk", or "list"; used to indicate automated "vacation" or "out of office" responses should not be returned for this mail, e.g. to prevent vacation notices from sent to all other subscribers of a mailing list. Sendmail uses this field to affect prioritization of queued email, with "Precedence: special-delivery" messages delivered sooner. With modern high-bandwidth networks, delivery priority is less of an issue than it was. Microsoft Exchange respects a fine-grained automatic response suppression mechanism, the <i>X-Auto-Response-Suppress</i> field.</li>
+<li><i>Message-ID</i>: Also an automatic-generated field to prevent multiple deliveries and for reference in In-Reply-To: (see below).</li>
+<li><i>In-Reply-To</i>: Message-ID of the message this is a reply to. Used to link related messages together. This field only applies to reply messages.</li>
+<li><i>References</i>: Message-ID of the message this is a reply to, and the message-id of the message the previous reply was a reply to, etc.</li>
+<li><i>Reply-To</i>: Address should be used to reply to the message.</li>
+<li><i>Sender</i>: Address of the sender acting on behalf of the author listed in the From: field (secretary, list manager, etc.).</li>
+<li><i>Archived-At</i>: A direct link to the archived form of an individual email message.</li></ul>
+
+<p>The <i>To:</i> field may be unrelated to the addresses to which the message is delivered. The delivery list is supplied separately to the transport protocol, SMTP, which may be extracted from the header content. The "To:" field is similar to the addressing at the top of a conventional letter delivered according to the address on the outer envelope. In the same way, the "From:" field may not be the sender. Some mail servers apply email authentication systems to messages relayed. Data pertaining to the server's activity is also part of the header, as defined below.</p>
+
+<p>SMTP defines the <i>trace information</i> of a message saved in the header using the following two fields:</p>
+<ul><li><i>Received</i>: after an SMTP server accepts a message, it inserts this trace record at the top of the header (last to first).</li>
+<li><i>Return-Path</i>: after the delivery SMTP server makes the <i>final delivery</i> of a message, it inserts this field at the top of the header.</li></ul>
+
+<p>Other fields added on top of the header by the receiving server may be called <i>trace fields</i>.</p>
+<ul><li><i>Authentication-Results</i>: after a server verifies authentication, it can save the results in this field for consumption by downstream agents.</li>
+<li><i>Received-SPF</i>: stores results of SPF checks in more detail than Authentication-Results.</li>
+<li><i>DKIM-Signature</i>: stores results of DomainKeys Identified Mail (DKIM) decryption to verify the message was not changed after it was sent.</li>
+<li><i>Auto-Submitted</i>: is used to mark automatic-generated messages.</li>
+<li><i>VBR-Info</i>: claims VBR whitelisting</li></ul>
+
+<h3>Message body</h3>
+
+<h4>Content encoding</h4>
+<p>Internet email was designed for 7-bit ASCII. Most email software is 8-bit clean, but must assume it will communicate with 7-bit servers and mail readers. The MIME standard introduced character set specifiers and two content transfer encodings to enable transmission of non-ASCII data: quoted printable for mostly 7-bit content with a few characters outside that range and base64 for arbitrary binary data. The 8BITMIME and BINARY extensions were introduced to allow transmission of mail without the need for these encodings, but many mail transport agents may not support them. In some countries, e-mail software violates RFC5322 by sending raw non-ASCII text and several encoding schemes co-exist; as a result, by default, the message in a non-Latin alphabet language appears in non-readable form (the only exception is a coincidence if the sender and receiver use the same encoding scheme). Therefore, for international character sets, Unicode is growing in popularity.</p>
+
+<h4>Plain text and HTML</h4>
+<p>Most modern graphic email clients allow the use of either plain text or HTML for the message body at the option of the user. HTML email messages often include an automatic-generated plain text copy for compatibility.</p>
+
+<p>Advantages of HTML include the ability to include in-line links and images, set apart previous messages in block quotes, wrap naturally on any display, use emphasis such as underlines and italics, and change font styles. Disadvantages include the increased size of the email, privacy concerns about web bugs, abuse of HTML email as a vector for phishing attacks and the spread of malicious software.
+Some e-mail clients interpret the body as HTML even in the absence of a <code>Content-Type: html</code> header field; this may cause various problems.</p>
+
+<p>Some web-based mailing lists recommend all posts be made in plain text, with 72 or 80 characters per line for all the above reasons, and because they have a significant number of readers using text-based email clients such as Mutt.
+Various informal conventions evolved for marking up plain text in email and usenet posts, which later led to the development of formal languages like setext <i>(c. 1992)</i> and many others, the most popular of them being markdown.</p>
+
+<p>Some Microsoft email clients may allow rich formatting using their proprietary Rich Text Format (RTF), but this should be avoided unless the recipient is guaranteed to have a compatible email client.</p>
+
+
+
+<h2>Servers and client applications</h2>
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Mozilla_Thunderbird_3.1.png/220px-Mozilla_Thunderbird_3.1.png" height="145" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Mozilla_Thunderbird_3.1.png/330px-Mozilla_Thunderbird_3.1.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Mozilla_Thunderbird_3.1.png/440px-Mozilla_Thunderbird_3.1.png 2x" />The interface of an email client, Thunderbird
+
+<p>Messages are exchanged between hosts using the Simple Mail Transfer Protocol with software programs called mail transfer agents (MTAs); and delivered to a mail store by programs called mail delivery agents (MDAs, also sometimes called local delivery agents, LDAs). Accepting a message obliges an MTA to deliver it, and when a message cannot be delivered, that MTA must send a bounce message back to the sender, indicating the problem.</p>
+
+<p>Users can retrieve their messages from servers using standard protocols such as POP or IMAP, or, as is more likely in a large corporate environment, with a proprietary protocol specific to Novell Groupwise, Lotus Notes or Microsoft Exchange Servers.  Programs used by users for retrieving, reading, and managing email are called mail user agents (MUAs).</p>
+
+<p>When opening an email, it is marked as "read", which typically visibly distinguishes it from "unread" messages on clients' user interfaces. Email clients may allow hiding read emails from the inbox so the user can focus on the unread.</p>
+
+<p>Mail can be stored on the client, on the server side, or in both places. Standard formats for mailboxes include Maildir and mbox. Several prominent email clients use their own proprietary format and require conversion software to transfer email between them. Server-side storage is often in a proprietary format but since access is through a standard protocol such as IMAP, moving email from one server to another can be done with any MUA supporting the protocol.</p>
+
+<p>Many current email users do not run MTA, MDA or MUA programs themselves, but use a web-based email platform, such as Gmail or Yahoo! Mail, that performs the same tasks. Such webmail interfaces allow users to access their mail with any standard web browser, from any computer, rather than relying on a local email client.</p>
+
+<h3>Filename extensions</h3>
+<p>Upon reception of email messages, email client applications save messages in operating system files in the file system. Some clients save individual messages as separate files, while others use various database formats, often proprietary, for collective storage. A historical standard of storage is the <i>mbox</i> format. The specific format used is often indicated by special filename extensions:</p>
+<code>eml</code>
+Used by many email clients including Novell GroupWise, Microsoft Outlook Express, Lotus notes, Windows Mail, Mozilla Thunderbird, and Postbox. The files contain the email contents as plain text in MIME format, containing the email header and body, including attachments in one or more of several formats.
+<code>emlx</code>
+Used by Apple Mail.
+<code>msg</code>
+Used by Microsoft Office Outlook and OfficeLogic Groupware.
+<code>mbx</code>
+Used by Opera Mail, KMail, and Apple Mail based on the mbox format.
+
+<p>Some applications (like Apple Mail) leave attachments encoded in messages for searching while also saving separate copies of the attachments. Others separate attachments from messages and save them in a specific directory.</p>
+
+<h3>URI scheme mailto</h3>
+<div>Main article: mailto</div>
+<p>The URI scheme, as registered with the IANA, defines the <code>mailto:</code> scheme for SMTP email addresses. Though its use is not strictly defined, URLs of this form are intended to be used to open the new message window of the user's mail client when the URL is activated, with the address as defined by the URL in the <i>To:</i> field. Many clients also support query string parameters for the other email fields, such as its subject line or carbon copy recipients.</p>
+
+
+
+<h2>Types</h2>
+
+<h3>Web-based email</h3>
+<div>Main article: Webmail</div>
+<p>Many email providers have a web-based email client. This allows users to log into the email account by using any compatible web browser to send and receive their email. Mail is typically not downloaded to the web client, so it cannot be read without a current Internet connection.</p>
+
+<h3>POP3 email servers</h3>
+<p>The Post Office Protocol 3 (POP3) is a mail access protocol used by a client application to read messages from the mail server. Received messages are often deleted from the server. POP supports simple download-and-delete requirements for access to remote mailboxes (termed maildrop in the POP RFC's). POP3 allows downloading messages on a local computer and reading them even when offline.</p>
+
+<h3>IMAP email servers</h3>
+<p>The Internet Message Access Protocol (IMAP) provides features to manage a mailbox from multiple devices. Small portable devices like smartphones are increasingly used to check email while traveling and to make brief replies, larger devices with better keyboard access being used to reply at greater length. IMAP shows the headers of messages, the sender and the subject and the device needs to request to download specific messages. Usually, the mail is left in folders in the mail server.</p>
+
+<h3>MAPI email servers</h3>
+<p>Messaging Application Programming Interface (MAPI) is used by Microsoft Outlook to communicate to Microsoft Exchange Server—and to a range of other email server products such as Axigen Mail Server, Kerio Connect, Scalix, Zimbra, HP OpenMail, IBM Lotus Notes, Zarafa, and Bynari where vendors have added MAPI support to allow their products to be accessed directly via Outlook.</p>
+
+
+
+<h2>Uses</h2>
+<table><tbody><tr><td></td><td><div>This section <b>needs additional citations for verification</b>. Please help improve this article by adding citations to reliable sourcesin this section. Unsourced material may be challenged and removed.  <i>(November 2007)</i><i> (Learn how and when to remove this template message)</i></div></td></tr></tbody></table>
+
+<h3>Business and organizational use</h3>
+<p>Email has been widely accepted by businesses, governments and non-governmental organizations in the developed world, and it is one of the key parts of an 'e-revolution' in workplace communication (with the other key plank being widespread adoption of highspeed Internet). A sponsored 2010 study on workplace communication found 83% of U.S. knowledge workers felt email was critical to their success and productivity at work.</p>
+
+<p>It has some key benefits to business and other organizations, including:</p>
+Facilitating logistics
+Much of the business world relies on communications between people who are not physically in the same building, area, or even country; setting up and attending an in-person meeting, telephone call, or conference call can be inconvenient, time-consuming, and costly. Email provides a method of exchanging information between two or more people with no set-up costs and that is generally far less expensive than a physical meeting or phone call.
+Helping with synchronization
+With real time communication by meetings or phone calls, participants must work on the same schedule, and each participant must spend the same amount of time in the meeting or call. Email allows asynchrony: each participant may control their schedule independently. Batch processing of incoming emails can improve workflow compared to interrupting calls.
+Reducing cost
+Sending an email is much less expensive than sending postal mail, or long distance telephone calls, telex or telegrams.
+Increasing speed
+Much faster than most of the alternatives.
+Creating a "written" record
+Unlike a telephone or in-person conversation, email by its nature creates a detailed written record of the communication, the identity of the sender(s) and recipient(s) and the date and time the message was sent. In the event of a contract or legal dispute, saved emails can be used to prove that an individual was advised of certain issues, as each email has the date and time recorded on it.
+Possibility of auto-processing and improved distribution
+As well pre-processing of customer's orders or addressing the person in charge can be realized by automated procedures.
+
+<h4>Email marketing</h4>
+<p>Email marketing via "opt-in" is often successfully used to send special sales offerings and new product information. Depending on the recipient's culture, email sent without permission—such as an "opt-in"—is likely to be viewed as unwelcome "email spam".</p>
+
+<h3>Personal use</h3>
+
+<h4>Personal computer</h4>
+<p>Many users access their personal emails from friends and family members using a personal computer in their house or apartment.</p>
+
+<h4>Mobile</h4>
+<p>Email has become used on smartphones and on all types of computers. Mobile "apps" for email increase accessibility to the medium for users who are out of their homes. While in the earliest years of email, users could only access email on desktop computers, in the 2010s, it is possible for users to check their email when they are away from home, whether they are across town or across the world. Alerts can also be sent to the smartphone or other devices to notify them immediately of new messages. This has given email the ability to be used for more frequent communication between users and allowed them to check their email and write messages throughout the day. As of 2011, there were approximately 1.4 billion email users worldwide and 50 billion non-spam emails that were sent daily.</p>
+
+<p>Individuals often check emails on smartphones for both personal and work-related messages. It was found that US adults check their email more than they browse the web or check their Facebook accounts, making email the most popular activity for users to do on their smartphones. 78% of the respondents in the study revealed that they check their email on their phone. It was also found that 30% of consumers use only their smartphone to check their email, and 91% were likely to check their email at least once per day on their smartphone. However, the percentage of consumers using email on a smartphone ranges and differs dramatically across different countries. For example, in comparison to 75% of those consumers in the US who used it, only 17% in India did.</p>
+
+<h4>Declining use among young people</h4>
+<p>As of 2010, the number of Americans visiting email web sites had fallen 6 percent after peaking in November 2009. For persons 12 to 17, the number was down 18 percent. Young people preferred instant messaging, texting and social media. Technology writer Matt Richtel said in <i>The New York Times</i> that email was like the VCR, vinyl records and film cameras—no longer cool and something older people do.</p>
+
+<p>A 2015 survey of Android users showed that persons 13 to 24 used messaging apps 3.5 times as much as those over 45, and were far less likely to use email.</p>
+
+
+
+<h2>Issues</h2>
+<table><tbody><tr><td></td><td><div>This section <b>needs additional citations for verification</b>. Please help improve this article by adding citations to reliable sourcesin this section. Unsourced material may be challenged and removed.  <i>(October 2016)</i><i> (Learn how and when to remove this template message)</i></div></td></tr></tbody></table>
+
+<h3>Attachment size limitation</h3>
+<div>Main article: Email attachment</div>
+<p>Email messages may have one or more attachments, which are additional files that are appended to the email. Typical attachments include Microsoft Word documents, PDF documents, and scanned images of paper documents. In principle, there is no technical restriction on the size or number of attachments. However, in practice, email clients, servers, and Internet service providers implement various limitations on the size of files, or complete email – typically to 25MB or less. Furthermore, due to technical reasons, attachment sizes as seen by these transport systems can differ from what the user sees, which can be confusing to senders when trying to assess whether they can safely send a file by email. Where larger files need to be shared, various file hosting services are available and commonly used.</p>
+
+<h3>Information overload</h3>
+<p>The ubiquity of email for knowledge workers and "white collar" employees has led to concerns that recipients face an "information overload" in dealing with increasing volumes of email. With the growth in mobile devices, by default employees may also receive work-related emails outside of their working day. This can lead to increased stress and decreased satisfaction with work. Some observers even argue it could have a significant negative economic effect, as efforts to read the many emails could reduce productivity.</p>
+
+<h3>Spam</h3>
+<div>Main article: Email spam</div>
+<p>Email "spam" is unsolicited bulk email. The low cost of sending such email meant that, by 2003, up to 30% of total email traffic was spam, and was threatening the usefulness of email as a practical tool. The US CAN-SPAM Act of 2003 and similar laws elsewhere had some impact, and a number of effective anti-spam techniques now largely mitigate the impact of spam by filtering or rejecting it for most users, but the volume sent is still very high—and increasingly consists not of advertisements for products, but malicious content or links. In September 2017, for example, the proportion of spam to legitimate email rose to 59.56%. The percentage of spam email in 2021 is estimated to be 85%.</p>
+
+<h3>Malware</h3>
+<p>A range of malicious email types exist. These range from various types of email scams, including "social engineering" scams such as advance-fee scam "Nigerian letters", to phishing, email bombardment and email worms.</p>
+
+<h3>Email spoofing</h3>
+<div>Main article: Email spoofing</div>
+<p>Email spoofing occurs when the email message header is designed to make the message appear to come from a known or trusted source. Email spam and phishing methods typically use spoofing to mislead the recipient about the true message origin. Email spoofing may be done as a prank, or as part of a criminal effort to defraud an individual or organization. An example of a potentially fraudulent email spoofing is if an individual creates an email that appears to be an invoice from a major company, and then sends it to one or more recipients. In some cases, these fraudulent emails incorporate the logo of the purported organization and even the email address may appear legitimate.</p>
+
+<h3>Email bombing</h3>
+<div>Main article: Email bomb</div>
+
+<p>Email bombing is the intentional sending of large volumes of messages to a target address. The overloading of the target email address can render it unusable and can even cause the mail server to crash.</p>
+
+<h3>Privacy concerns</h3>
+<div>Main article: Email privacy</div>
+
+<p>Today it can be important to distinguish between the Internet and internal email systems. Internet email may travel and be stored on networks and computers without the sender's or the recipient's control. During the transit time it is possible that third parties read or even modify the content. Internal mail systems, in which the information never leaves the organizational network, may be more secure, although information technology personnel and others whose function may involve monitoring or managing may be accessing the email of other employees.</p>
+
+<p>Email privacy, without some security precautions, can be compromised because:</p>
+<ul><li>email messages are generally not encrypted.</li>
+<li>email messages have to go through intermediate computers before reaching their destination, meaning it is relatively easy for others to intercept and read messages.</li>
+<li>many Internet Service Providers (ISP) store copies of email messages on their mail servers before they are delivered. The backups of these can remain for up to several months on their server, despite deletion from the mailbox.</li>
+<li>the "Received:"-fields and other information in the email can often identify the sender, preventing anonymous communication.</li>
+<li>web bugs invisibly embedded in HTML content can alert the sender of any email whenever an email is rendered as HTML (some e-mail clients do this when the user reads, or re-reads the e-mail) and from which IP address. It can also reveal whether an email was read on a smartphone or a PC, or Apple Mac device via the user agent string.</li></ul>
+
+<p>There are cryptography applications that can serve as a remedy to one or more of the above. For example, Virtual Private Networks or the Tor network can be used to encrypt traffic from the user machine to a safer network while GPG, PGP, SMEmail, or S/MIME can be used for end-to-end message encryption, and SMTP STARTTLS or SMTP over Transport Layer Security/Secure Sockets Layer can be used to encrypt communications for a single mail hop between the SMTP client and the SMTP server.</p>
+
+<p>Additionally, many mail user agents do not protect logins and passwords, making them easy to intercept by an attacker. Encrypted authentication schemes such as SASL prevent this. Finally, the attached files share many of the same hazards as those found in peer-to-peer filesharing. Attached files may contain trojans or viruses.</p>
+
+<h3>Legal contracts</h3>
+<p>It is possible for an exchange of emails to form a binding contract, so users must be careful about what they send through email correspondence. A signature block on an email may be interpreted as satisfying a signature requirement for a contract.</p>
+
+<h3>Flaming</h3>
+<p>Flaming occurs when a person sends a message (or many messages) with angry or antagonistic content. The term is derived from the use of the word <i>incendiary</i> to describe particularly heated email discussions. The ease and impersonality of email communications mean that the social norms that encourage civility in person or via telephone do not exist and civility may be forgotten.</p>
+
+<h3>Email bankruptcy</h3>
+<div>Main article: Email bankruptcy</div>
+<p>Also known as "email fatigue", email bankruptcy is when a user ignores a large number of email messages after falling behind in reading and answering them. The reason for falling behind is often due to information overload and a general sense there is so much information that it is not possible to read it all. As a solution, people occasionally send a "boilerplate" message explaining that their email inbox is full, and that they are in the process of clearing out all the messages. Harvard University law professor Lawrence Lessig is credited with coining this term, but he may only have popularized it.</p>
+
+<h3>Internationalization</h3>
+<p>Originally Internet email was completely ASCII text-based. MIME now allows body content text and some header content text in international character sets, but other headers and email addresses using UTF-8, while standardized have yet to be widely adopted.</p>
+<div>Further information: International email and Email address §Internationalization</div>
+
+<h3>Tracking of sent mail</h3>
+<p>The original SMTP mail service provides limited mechanisms for tracking a transmitted message, and none for verifying that it has been delivered or read. It requires that each mail server must either deliver it onward or return a failure notice (bounce message), but both software bugs and system failures can cause messages to be lost. To remedy this, the IETF introduced Delivery Status Notifications (delivery receipts) and Message Disposition Notifications (return receipts); however, these are not universally deployed in production.</p>
+
+<p>Many ISPs now deliberately disable non-delivery reports (NDRs) and delivery receipts due to the activities of spammers:</p>
+<ul><li>Delivery Reports can be used to verify whether an address exists and if so, this indicates to a spammer that it is available to be spammed.</li>
+<li>If the spammer uses a forged sender email address (email spoofing), then the innocent email address that was used can be flooded with NDRs from the many invalid email addresses the spammer may have attempted to mail. These NDRs then constitute spam from the ISP to the innocent user.</li></ul>
+
+<p>In the absence of standard methods, a range of system based around the use of web bugs have been developed. However, these are often seen as underhand or raising privacy concerns, and only work with email clients that support rendering of HTML. Many mail clients now default to not showing "web content". Webmail providers can also disrupt web bugs by pre-caching images.</p>
+

@@ -1,0 +1,386 @@
+<h1>C++</h1>
+
+<div>General-purpose programming language</div>
+<div>Not to be confused with C++/CLI, a variant of C++, modified for the Common Language Infrastructure.</div>
+
+
+
+
+<p><b>C++</b> (/ˈsiːplʌsplʌs/, pronounced "<b>C plus plus</b>" and sometimes abbreviated as <b>CPP</b>) is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup. First released in 1985 as an extension of the C programming language, it has since expanded significantly over time; as of 1997 C++ has object-oriented, generic, and functional features, in addition to facilities for low-level memory manipulation. It is almost always implemented as a compiled language, and many vendors provide C++ compilers, including the Free Software Foundation, LLVM, Microsoft, Intel, Embarcadero, Oracle, and IBM.</p>
+
+<p>C++ was designed with systems programming and embedded, resource-constrained software and large systems in mind, with performance, efficiency, and flexibility of use as its design highlights. C++ has also been found useful in many other contexts, with key strengths being software infrastructure and resource-constrained applications, including desktop applications, video games, servers (e.g. e-commerce, web search, or databases), and performance-critical applications (e.g. telephone switches or space probes).</p>
+
+<p>C++ is standardized by the International Organization for Standardization (ISO), with the latest standard version ratified and published by ISO in December 2020 as <i>ISO/IEC 14882:2020</i> (informally known as C++20). The C++ programming language was initially standardized in 1998 as <i>ISO/IEC 14882:1998</i>, which was then amended by the C++03, C++11, C++14, and C++17 standards. The current C++20 standard supersedes these with new features and an enlarged standard library.  Before the initial standardization in 1998, C++ was developed by Stroustrup at Bell Labs since 1979 as an extension of the C language; he wanted an efficient and flexible language similar to C that also provided high-level features for program organization. Since 2012, C++ has been on a three-year release schedule with C++23 as the next planned standard.</p>
+
+
+
+<h2>History</h2>
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/d/da/BjarneStroustrup.jpg/220px-BjarneStroustrup.jpg" height="165" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/d/da/BjarneStroustrup.jpg/330px-BjarneStroustrup.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/d/da/BjarneStroustrup.jpg 2x" />Bjarne Stroustrup, the creator of C++, in his AT&amp;T New Jersey office, <abbr>c.</abbr> 2000
+
+<p>In 1979, Bjarne Stroustrup, a Danish computer scientist, began work on "C with Classes", the predecessor to C++. The motivation for creating a new language originated from Stroustrup's experience in programming for his PhD thesis. Stroustrup found that Simula had features that were very helpful for large software development, but the language was too slow for practical use, while BCPL was fast but too low-level to be suitable for large software development. When Stroustrup started working in AT&amp;T Bell Labs, he had the problem of analyzing the UNIX kernel with respect to distributed computing. Remembering his PhD experience, Stroustrup set out to enhance the C language with Simula-like features. C was chosen because it was general-purpose, fast, portable and widely used. As well as C and Simula's influences, other languages also influenced this new language, including ALGOL 68, Ada, CLU and ML.</p>
+
+<p>Initially, Stroustrup's "C with Classes" added features to the C compiler, Cpre, including classes, derived classes, strong typing, inlining and default arguments.</p>
+
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a0/20160121_CppFRUG_Joel_Falcou_CppQuiz_3.jpg/220px-20160121_CppFRUG_Joel_Falcou_CppQuiz_3.jpg" height="171" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a0/20160121_CppFRUG_Joel_Falcou_CppQuiz_3.jpg/330px-20160121_CppFRUG_Joel_Falcou_CppQuiz_3.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a0/20160121_CppFRUG_Joel_Falcou_CppQuiz_3.jpg/440px-20160121_CppFRUG_Joel_Falcou_CppQuiz_3.jpg 2x" />A quiz on C++11 features being given in Paris in 2015
+<p>In 1982, Stroustrup started to develop a successor to C with Classes, which he named "C++" (<code>++</code> being the increment operator in C) after going through several other names. New features were added, including virtual functions, function name and operator overloading, references, constants, type-safe free-store memory allocation (new/delete), improved type checking, and BCPL style single-line comments with two forward slashes (<code>//</code>). Furthermore, Stroustrup developed a new, standalone compiler for C++, Cfront.</p>
+
+<p>In 1984, Stroustrup implemented the first stream input/output library. The idea of providing an output operator rather than a named output function was suggested by Doug McIlroy (who had previously suggested Unix pipes).</p>
+
+<p>In 1985, the first edition of <i>The C++ Programming Language</i> was released, which became the definitive reference for the language, as there was not yet an official standard. The first commercial implementation of C++ was released in October of the same year.</p>
+
+<p>In 1989, C++ 2.0 was released, followed by the updated second edition of <i>The C++ Programming Language</i> in 1991. New features in 2.0 included multiple inheritance, abstract classes, static member functions, const member functions, and protected members. In 1990, <i>The Annotated C++ Reference Manual</i> was published. This work became the basis for the future standard. Later feature additions included templates, exceptions, namespaces, new casts, and a Boolean type.</p>
+
+<p>In 1998, C++98 was released, standardizing the language, and a minor update (C++03) was released in 2003.</p>
+
+<p>After C++98, C++ evolved relatively slowly until, in 2011, the C++11 standard was released, adding numerous new features, enlarging the standard library further, and providing more facilities to C++ programmers. After a minor C++14 update released in December 2014, various new additions were introduced in C++17. After becoming finalized in February 2020, a draft of the C++20 standard was approved on 4 September 2020 and officially published on 15 December 2020.</p>
+
+<p>On January 3, 2018, Stroustrup was announced as the 2018 winner of the Charles Stark Draper Prize for Engineering, "for conceptualizing and developing the C++ programming language".</p>
+
+
+<p>As of December2022 C++ ranked third on the TIOBE index, surpassing Java for the first time in the history of the index. It ranks 3rd, after Python and C.</p>
+
+<h3>Etymology</h3>
+<p>According to Stroustrup, "the name signifies the evolutionary nature of the changes from C". This name is credited to Rick Mascitti (mid-1983) and was first used in December 1983. When Mascitti was questioned informally in 1992 about the naming, he indicated that it was given in a tongue-in-cheek spirit. The name comes from C's <code>++</code> operator (which increments the value of a variable) and a common naming convention of using "+" to indicate an enhanced computer program.</p>
+
+<p>During C++'s development period, the language had been referred to as "new C" and "C with Classes" before acquiring its final name.</p>
+
+<h3>Philosophy</h3>
+<p>Throughout C++'s life, its development and evolution has been guided by a set of principles:</p>
+
+<ul><li>It must be driven by actual problems and its features should be immediately useful in real world programs.</li>
+<li>Every feature should be implementable (with a reasonably obvious way to do so).</li>
+<li>Programmers should be free to pick their own programming style, and that style should be fully supported by C++.</li>
+<li>Allowing a useful feature is more important than preventing every possible misuse of C++.</li>
+<li>It should provide facilities for organising programs into separate, well-defined parts, and provide facilities for combining separately developed parts.</li>
+<li>No implicit violations of the type system (but allow explicit violations; that is, those explicitly requested by the programmer).</li>
+<li>User-created types need to have the same support and performance as built-in types.</li>
+<li>Unused features should not negatively impact created executables (e.g. in lower performance).</li>
+<li>There should be no language beneath C++ (except assembly language).</li>
+<li>C++ should work alongside other existing programming languages, rather than fostering its own separate and incompatible programming environment.</li>
+<li>If the programmer's intent is unknown, allow the programmer to specify it by providing manual control.</li></ul>
+
+<h3>Standardization</h3>
+<div>Main articles: C++03, C++11, C++14, C++17, C++20, and C++23</div>
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/b/b1/C%2B%2B_Standards_Committee_meeting_-_July_1996_Stockholm_-_Wednesday_general_session.jpg/220px-C%2B%2B_Standards_Committee_meeting_-_July_1996_Stockholm_-_Wednesday_general_session.jpg" height="140" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/b/b1/C%2B%2B_Standards_Committee_meeting_-_July_1996_Stockholm_-_Wednesday_general_session.jpg/330px-C%2B%2B_Standards_Committee_meeting_-_July_1996_Stockholm_-_Wednesday_general_session.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/b/b1/C%2B%2B_Standards_Committee_meeting_-_July_1996_Stockholm_-_Wednesday_general_session.jpg/440px-C%2B%2B_Standards_Committee_meeting_-_July_1996_Stockholm_-_Wednesday_general_session.jpg 2x" />Scene during the C++ standards committee meeting in Stockholm in 1996
+<table>
+<caption>C++ standards</caption>
+<tbody><tr>
+<th>Year</th>
+<th>C++ Standard</th>
+<th>Informal name</th></tr>
+<tr>
+<th>1998</th>
+<td>ISO/IEC 14882:1998</td><td>C++98</td></tr>
+<tr>
+<th>2003</th>
+<td>ISO/IEC 14882:2003</td><td>C++03</td></tr>
+<tr>
+<th>2011</th>
+<td>ISO/IEC 14882:2011</td><td>C++11, C++0x</td></tr>
+<tr>
+<th>2014</th>
+<td>ISO/IEC 14882:2014</td><td>C++14, C++1y</td></tr>
+<tr>
+<th>2017</th>
+<td>ISO/IEC 14882:2017</td><td>C++17, C++1z</td></tr>
+<tr>
+<th>2020</th>
+<td>ISO/IEC 14882:2020</td><td>C++20, C++2a</td></tr>
+<tr>
+<th>2023</th>
+<td></td><td>C++23</td></tr>
+</tbody></table>
+
+<p>C++ is standardized by an ISO working group known as JTC1/SC22/WG21. So far, it has published six revisions of the C++ standard and is currently working on the next revision, C++23.</p>
+
+<p>In 1998, the ISO working group standardized C++ for the first time as <i>ISO/IEC 14882:1998</i>, which is informally known as <i>C++98</i>. In 2003, it published a new version of the C++ standard called <i>ISO/IEC 14882:2003</i>, which fixed problems identified in C++98.</p>
+
+<p>The next major revision of the standard was informally referred to as "C++0x", but it was not released until 2011.  C++11 (14882:2011) included many additions to both the core language and the standard library.</p>
+
+<p>In 2014, C++14 (also known as C++1y) was released as a small extension to C++11, featuring mainly bug fixes and small improvements.  The Draft International Standard ballot procedures completed in mid-August 2014.</p>
+
+<p>After C++14, a major revision C++17, informally known as C++1z, was completed by the ISO C++ committee in mid July 2017 and was approved and published in December 2017.</p>
+
+<p>As part of the standardization process, ISO also publishes technical reports and specifications:</p>
+
+<ul><li>ISO/IEC TR 18015:2006 on the use of C++ in embedded systems and on performance implications of C++ language and library features,</li>
+<li>ISO/IEC TR 19768:2007 (also known as the C++ Technical Report 1) on library extensions mostly integrated into C++11,</li>
+<li>ISO/IEC TR 29124:2010 on special mathematical functions, integrated into C++17</li>
+<li>ISO/IEC TR 24733:2011 on decimal floating-point arithmetic,</li>
+<li>ISO/IEC TS 18822:2015 on the standard filesystem library, integrated into C++17</li>
+<li>ISO/IEC TS 19570:2015 on parallel versions of the standard library algorithms, integrated into C++17</li>
+<li>ISO/IEC TS 19841:2015 on software transactional memory,</li>
+<li>ISO/IEC TS 19568:2015 on a new set of library extensions, some of which are already integrated into C++17,</li>
+<li>ISO/IEC TS 19217:2015 on the C++ concepts, integrated into C++20</li>
+<li>ISO/IEC TS 19571:2016 on the library extensions for concurrency, some of which are already integrated into C++20</li>
+<li>ISO/IEC TS 19568:2017 on a new set of general-purpose library extensions</li>
+<li>ISO/IEC TS 21425:2017 on the library extensions for ranges, integrated into C++20</li>
+<li>ISO/IEC TS 22277:2017 on coroutines, integrated into C++20</li>
+<li>ISO/IEC TS 19216:2018 on the networking library</li>
+<li>ISO/IEC TS 21544:2018 on modules, integrated into C++20</li>
+<li>ISO/IEC TS 19570:2018 on a new set of library extensions for parallelism</li>
+<li>ISO/IEC TS 23619:2021 on new extensions for reflection</li></ul>
+<p>More technical specifications are in development and pending approval, including new set of concurrency extensions.</p>
+
+
+
+<h2>Language</h2>
+<p>The C++ language has two main components: a direct mapping of hardware features provided primarily by the C subset, and zero-overhead abstractions based on those mappings. Stroustrup describes C++ as "a light-weight abstraction programming language [designed] for building and using efficient and elegant abstractions"; and "offering both hardware access and abstraction is the basis of C++. Doing it efficiently is what distinguishes it from other languages."</p>
+
+<p>C++ inherits most of C's syntax. The following is Bjarne Stroustrup's version of the Hello world program that uses the C++ Standard Library stream facility to write a message to standard output:</p>
+
+<div><pre>#include&lt;iostream&gt;
+
+intmain()
+{
+std::cout&lt;&lt;"Hello, world!\n";
+}
+</pre></div>
+
+<h3>Object storage</h3>
+<p>As in C, C++ supports four types of memory management: static storage duration objects, thread storage duration objects, automatic storage duration objects, and dynamic storage duration objects.</p>
+
+<h4>Static storage duration objects</h4>
+<p>Static storage duration objects are created before <code>main()</code> is entered (see exceptions below) and destroyed in reverse order of creation after <code>main()</code> exits. The exact order of creation is not specified by the standard (though there are some rules defined below) to allow implementations some freedom in how to organize their implementation. More formally, objects of this type have a lifespan that "shall last for the duration of the program".</p>
+
+<p>Static storage duration objects are initialized in two phases. First, "static initialization" is performed, and only <i>after</i> all static initialization is performed, "dynamic initialization" is performed.  In static initialization, all objects are first initialized with zeros; after that, all objects that have a constant initialization phase are initialized with the constant expression (i.e. variables initialized with a literal or <code>constexpr</code>). Though it is not specified in the standard, the static initialization phase can be completed at compile time and saved in the data partition of the executable.  Dynamic initialization involves all object initialization done via a constructor or function call (unless the function is marked with <code>constexpr</code>, in C++11). The dynamic initialization order is defined as the order of declaration within the compilation unit (i.e. the same file). No guarantees are provided about the order of initialization between compilation units.</p>
+
+<h4>Thread storage duration objects</h4>
+<p>Variables of this type are very similar to static storage duration objects. The main difference is the creation time is just prior to thread creation and destruction is done after the thread has been joined.</p>
+
+<h4>Automatic storage duration objects</h4>
+<p>The most common variable types in C++ are local variables inside a function or block, and temporary variables. The common feature about automatic variables is that they have a lifetime that is limited to the scope of the variable. They are created and potentially initialized at the point of declaration (see below for details) and destroyed in the <i>reverse</i> order of creation when the scope is left. This is implemented by allocation on the stack.</p>
+
+<p>Local variables are created as the point of execution passes the declaration point. If the variable has a constructor or initializer this is used to define the initial state of the object. Local variables are destroyed when the local block or function that they are declared in is closed. C++ destructors for local variables are called at the end of the object lifetime, allowing a discipline for automatic resource management termed RAII, which is widely used in C++.</p>
+
+<p>Member variables are created when the parent object is created. Array members are initialized from 0 to the last member of the array in order. Member variables are destroyed when the parent object is destroyed in the reverse order of creation. i.e. If the parent is an "automatic object" then it will be destroyed when it goes out of scope which triggers the destruction of all its members.</p>
+
+<p>Temporary variables are created as the result of expression evaluation and are destroyed when the statement containing the expression has been fully evaluated (usually at the <code>;</code> at the end of a statement).</p>
+
+<h4>Dynamic storage duration objects</h4>
+<div>Main article: new and delete (C++)</div>
+
+<p>These objects have a dynamic lifespan and can be created directly with a call to <code>new</code> and destroyed explicitly with a call to <code>delete</code>. C++ also supports <code>malloc</code> and <code>free</code>, from C, but these are not compatible with <code>new</code> and <code>delete</code>. Use of <code>new</code> returns an address to the allocated memory. The C++ Core Guidelines advise against using <code>new</code> directly for creating dynamic objects in favor of smart pointers through <code>make_unique&lt;T&gt;</code> for single ownership and <code>make_shared&lt;T&gt;</code> for reference-counted multiple ownership, which were introduced in C++11.</p>
+
+<h3>Templates</h3>
+<div>See also: Template metaprogramming and Generic programming</div>
+<p>C++ templates enable generic programming. C++ supports function, class, alias, and variable templates. Templates may be parameterized by types, compile-time constants, and other templates. Templates are implemented by <i>instantiation</i> at compile-time. To instantiate a template, compilers substitute specific arguments for a template's parameters to generate a concrete function or class instance. Some substitutions are not possible; these are eliminated by an overload resolution policy described by the phrase "Substitution failure is not an error" (SFINAE). Templates are a powerful tool that can be used for generic programming, template metaprogramming, and code optimization, but this power implies a cost. Template use may increase object code size, because each template instantiation produces a copy of the template code: one for each set of template arguments, however, this is the same or smaller amount of code that would be generated if the code were written by hand. This is in contrast to run-time generics seen in other languages (e.g., Java) where at compile-time the type is erased and a single template body is preserved.</p>
+
+<p>Templates are different from macros: while both of these compile-time language features enable conditional compilation, templates are not restricted to lexical substitution. Templates are aware of the semantics and type system of their companion language, as well as all compile-time type definitions, and can perform high-level operations including programmatic flow control based on evaluation of strictly type-checked parameters. Macros are capable of conditional control over compilation based on predetermined criteria, but cannot instantiate new types, recurse, or perform type evaluation and in effect are limited to pre-compilation text-substitution and text-inclusion/exclusion. In other words, macros can control compilation flow based on pre-defined symbols but cannot, unlike templates, independently instantiate new symbols. Templates are a tool for static polymorphism (see below) and generic programming.</p>
+
+<p>In addition, templates are a compile-time mechanism in C++ that is Turing-complete, meaning that any computation expressible by a computer program can be computed, in some form, by a template metaprogram prior to runtime.</p>
+
+<p>In summary, a template is a compile-time parameterized function or class written without knowledge of the specific arguments used to instantiate it. After instantiation, the resulting code is equivalent to code written specifically for the passed arguments. In this manner, templates provide a way to decouple generic, broadly applicable aspects of functions and classes (encoded in templates) from specific aspects (encoded in template parameters) without sacrificing performance due to abstraction.</p>
+
+<h3>Objects</h3>
+<div>Main article: C++ classes</div>
+<p>C++ introduces object-oriented programming (OOP) features to C. It offers classes, which provide the four features commonly present in OOP (and some non-OOP) languages: abstraction, encapsulation, inheritance, and polymorphism. One distinguishing feature of C++ classes compared to classes in other programming languages is support for deterministic destructors, which in turn provide support for the Resource Acquisition is Initialization (RAII) concept.</p>
+
+<h4>Encapsulation</h4>
+<p>Encapsulation is the hiding of information to ensure that data structures and operators are used as intended and to make the usage model more obvious to the developer. C++ provides the ability to define classes and functions as its primary encapsulation mechanisms. Within a class, members can be declared as either public, protected, or private to explicitly enforce encapsulation. A public member of the class is accessible to any function. A private member is accessible only to functions that are members of that class and to functions and classes explicitly granted access permission by the class ("friends"). A protected member is accessible to members of classes that inherit from the class in addition to the class itself and any friends.</p>
+
+<p>The object-oriented principle ensures the encapsulation of all and only the functions that access the internal representation of a type. C++ supports this principle via member functions and friend functions, but it does not enforce it. Programmers can declare parts or all of the representation of a type to be public, and they are allowed to make public entities not part of the representation of a type. Therefore, C++ supports not just object-oriented programming, but other decomposition paradigms such as modular programming.</p>
+
+<p>It is generally considered good practice to make all data private or protected, and to make public only those functions that are part of a minimal interface for users of the class. This can hide the details of data implementation, allowing the designer to later fundamentally change the implementation without changing the interface in any way.</p>
+
+<h4>Inheritance</h4>
+<p>Inheritance allows one data type to acquire properties of other data types. Inheritance from a base class may be declared as public, protected, or private. This access specifier determines whether unrelated and derived classes can access the inherited public and protected members of the base class. Only public inheritance corresponds to what is usually meant by "inheritance". The other two forms are much less frequently used. If the access specifier is omitted, a "class" inherits privately, while a "struct" inherits publicly. Base classes may be declared as virtual; this is called virtual inheritance. Virtual inheritance ensures that only one instance of a base class exists in the inheritance graph, avoiding some of the ambiguity problems of multiple inheritance.</p>
+
+<p>Multiple inheritance is a C++ feature allowing a class to be derived from more than one base class; this allows for more elaborate inheritance relationships. For example, a "Flying Cat" class can inherit from both "Cat" and "Flying Mammal". Some other languages, such as C# or Java, accomplish something similar (although more limited) by allowing inheritance of multiple interfaces while restricting the number of base classes to one (interfaces, unlike classes, provide only declarations of member functions, no implementation or member data). An interface as in C# and Java can be defined in C++ as a class containing only pure virtual functions, often known as an abstract base class or "ABC". The member functions of such an abstract base class are normally explicitly defined in the derived class, not inherited implicitly. C++ virtual inheritance exhibits an ambiguity resolution feature called dominance.</p>
+
+<h3>Operators and operator overloading</h3>
+<table>
+<caption>Operators that cannot be overloaded</caption>
+<tbody><tr><th>Operator</th>
+<th>Symbol</th></tr>
+<tr>
+<th>Scope resolution operator</th>
+<td><code>::</code></td></tr>
+<tr>
+<th>Conditional operator</th>
+<td><code>?:</code></td></tr>
+<tr>
+<th>dot operator</th>
+<td><code>.</code></td></tr>
+<tr>
+<th>Member selection operator</th>
+<td><code>.*</code></td></tr>
+<tr>
+<th>"sizeof" operator</th>
+<td><code>sizeof</code></td></tr>
+<tr>
+<th>"typeid" operator</th>
+<td><code>typeid</code></td></tr>
+</tbody></table>
+
+<div>Main article: Operators in C and C++</div>
+
+<p>C++ provides more than 35 operators, covering basic arithmetic, bit manipulation, indirection, comparisons, logical operations and others. Almost all operators can be overloaded for user-defined types, with a few notable exceptions such as member access (<code>.</code> and <code>.*</code>) as well as the conditional operator. The rich set of overloadable operators is central to making user-defined types in C++ seem like built-in types.</p>
+
+<p>Overloadable operators are also an essential part of many advanced C++ programming techniques, such as smart pointers. Overloading an operator does not change the precedence of calculations involving the operator, nor does it change the number of operands that the operator uses (any operand may however be ignored by the operator, though it will be evaluated prior to execution). Overloaded "<code>&amp;&amp;</code>" and "<code>||</code>" operators lose their short-circuit evaluation property.</p>
+
+<h3>Polymorphism</h3>
+<div>See also: Polymorphism (computer science)</div>
+
+<p>Polymorphism enables one common interface for many implementations, and for objects to act differently under different circumstances.</p>
+
+<p>C++ supports several kinds of <i>static</i> (resolved at compile-time) and <i>dynamic</i> (resolved at run-time) polymorphisms, supported by the language features described above. Compile-time polymorphism does not allow for certain run-time decisions, while runtime polymorphism typically incurs a performance penalty.</p>
+
+<h4>Static polymorphism</h4>
+<div>See also: Parametric polymorphism and ad hoc polymorphism</div>
+
+<p>Function overloading allows programs to declare multiple functions having the same name but with different arguments (i.e. <i>ad hoc</i> polymorphism). The functions are distinguished by the number or types of their formal parameters. Thus, the same function name can refer to different functions depending on the context in which it is used. The type returned by the function is not used to distinguish overloaded functions and differing return types would result in a compile-time error message.</p>
+
+<p>When declaring a function, a programmer can specify for one or more parameters a default value. Doing so allows the parameters with defaults to optionally be omitted when the function is called, in which case the default arguments will be used. When a function is called with fewer arguments than there are declared parameters, explicit arguments are matched to parameters in left-to-right order, with any unmatched parameters at the end of the parameter list being assigned their default arguments. In many cases, specifying default arguments in a single function declaration is preferable to providing overloaded function definitions with different numbers of parameters.</p>
+
+<p>Templates in C++ provide a sophisticated mechanism for writing generic, polymorphic code (i.e. parametric polymorphism). In particular, through the curiously recurring template pattern, it is possible to implement a form of static polymorphism that closely mimics the syntax for overriding virtual functions. Because C++ templates are type-aware and Turing-complete, they can also be used to let the compiler resolve recursive conditionals and generate substantial programs through template metaprogramming. Contrary to some opinion, template code will not generate a bulk code after compilation with the proper compiler settings.</p>
+
+<h4>Dynamic polymorphism</h4>
+
+<h5>Inheritance</h5>
+<div>See also: Subtyping</div>
+
+<p>Variable pointers and references to a base class type in C++ can also refer to objects of any derived classes of that type. This allows arrays and other kinds of containers to hold pointers to objects of differing types (references cannot be directly held in containers). This enables dynamic (run-time) polymorphism, where the referred objects can behave differently, depending on their (actual, derived) types.</p>
+
+<p>C++ also provides the <code>dynamic_cast</code> operator, which allows code to safely attempt conversion of an object, via a base reference/pointer, to a more derived type: <i>downcasting</i>. The <i>attempt</i> is necessary as often one does not know which derived type is referenced. (<i>Upcasting</i>, conversion to a more general type, can always be checked/performed at compile-time via <code>static_cast</code>, as ancestral classes are specified in the derived class's interface, visible to all callers.) <code>dynamic_cast</code> relies on run-time type information (RTTI), metadata in the program that enables differentiating types and their relationships. If a <code>dynamic_cast</code> to a pointer fails, the result is the <code>nullptr</code> constant, whereas if the destination is a reference (which cannot be null), the cast throws an exception. Objects <i>known</i> to be of a certain derived type can be cast to that with <code>static_cast</code>, bypassing RTTI and the safe runtime type-checking of <code>dynamic_cast</code>, so this should be used only if the programmer is very confident the cast is, and will always be, valid.</p>
+
+<h5>Virtual member functions</h5>
+<p>Ordinarily, when a function in a derived class overrides a function in a base class, the function to call is determined by the type of the object. A given function is overridden when there exists no difference in the number or type of parameters between two or more definitions of that function. Hence, at compile time, it may not be possible to determine the type of the object and therefore the correct function to call, given only a base class pointer; the decision is therefore put off until runtime. This is called dynamic dispatch. Virtual member functions or <i>methods</i> allow the most specific implementation of the function to be called, according to the actual run-time type of the object. In C++ implementations, this is commonly done using virtual function tables. If the object type is known, this may be bypassed by prepending a fully qualified class name before the function call, but in general calls to virtual functions are resolved at run time.</p>
+
+<p>In addition to standard member functions, operator overloads and destructors can be virtual. An inexact rule based on practical experience states that if any function in the class is virtual, the destructor should be as well. As the type of an object at its creation is known at compile time, constructors, and by extension copy constructors, cannot be virtual. Nonetheless, a situation may arise where a copy of an object needs to be created when a pointer to a derived object is passed as a pointer to a base object. In such a case, a common solution is to create a <code>clone()</code> (or similar) virtual function that creates and returns a copy of the derived class when called.</p>
+
+<p>A member function can also be made "pure virtual" by appending it with <code>=0</code> after the closing parenthesis and before the semicolon. A class containing a pure virtual function is called an <i>abstract class</i>. Objects cannot be created from an abstract class; they can only be derived from. Any derived class inherits the virtual function as pure and must provide a non-pure definition of it (and all other pure virtual functions) before objects of the derived class can be created. A program that attempts to create an object of a class with a pure virtual member function or inherited pure virtual member function is ill-formed.</p>
+
+<h3>Lambda expressions</h3>
+<p>C++ provides support for anonymous functions, also known as lambda expressions, with the following form:</p>
+
+<div><pre>[capture](parameters)-&gt;return_type{function_body}
+</pre></div>
+
+<p>Since C++20, the keyword <code>template</code> is optional for template parameters of lambda expressions:</p>
+
+<div><pre>[capture]&lt;template_parameters&gt;(parameters)-&gt;return_type{function_body}
+</pre></div>
+
+<p>If the lambda takes no parameters, and no return type or other specifiers are used, the () can be omitted, that is,</p>
+
+<div><pre>[capture]{function_body}
+</pre></div>
+
+<p>The return type of a lambda expression can be automatically inferred, if possible, e.g.:</p>
+
+<div><pre>[](intx,inty){returnx+y;}// inferred
+[](intx,inty)-&gt;int{returnx+y;}// explicit
+</pre></div>
+
+<p>The <code>[capture]</code> list supports the definition of closures. Such lambda expressions are defined in the standard as syntactic sugar for an unnamed function object.</p>
+
+<h3>Exception handling</h3>
+<p>Exception handling is used to communicate the existence of a runtime problem or error from where it was detected to where the issue can be handled. It permits this to be done in a uniform manner and separately from the main code, while detecting all errors. Should an error occur, an exception is thrown (raised), which is then caught by the nearest suitable exception handler. The exception causes the current scope to be exited, and also each outer scope (propagation) until a suitable handler is found, calling in turn the destructors of any objects in these exited scopes. At the same time, an exception is presented as an object carrying the data about the detected problem.</p>
+
+<p>Some C++ style guides, such as Google's, LLVM's, and Qt's forbid the usage of exceptions.</p>
+
+<p>The exception-causing code is placed inside a <code>try</code> block. The exceptions are handled in separate <code>catch</code> blocks (the handlers); each <code>try</code> block can have multiple exception handlers, as it is visible in the example below.</p>
+
+<div><pre>#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;stdexcept&gt;
+
+intmain(){
+try{
+std::vector&lt;int&gt;vec{3,4,3,1};
+inti{vec.at(4)};// Throws an exception, std::out_of_range (indexing for vec is from 0-3 not 1-4)
+}
+// An exception handler, catches std::out_of_range, which is thrown by vec.at(4)
+catch(conststd::out_of_range&amp;e){
+std::cerr&lt;&lt;"Accessing a non-existent element: "&lt;&lt;e.what()&lt;&lt;'\n';
+}
+// To catch any other standard library exceptions (they derive from std::exception)
+catch(conststd::exception&amp;e){
+std::cerr&lt;&lt;"Exception thrown: "&lt;&lt;e.what()&lt;&lt;'\n';
+}
+// Catch any unrecognised exceptions (i.e. those which don't derive from std::exception)
+catch(...){
+std::cerr&lt;&lt;"Some fatal error\n";
+}
+}
+</pre></div>
+
+<p>It is also possible to raise exceptions purposefully, using the <code>throw</code> keyword; these exceptions are handled in the usual way. In some cases, exceptions cannot be used due to technical reasons. One such example is a critical component of an embedded system, where every operation must be guaranteed to complete within a specified amount of time. This cannot be determined with exceptions as no tools exist to determine the maximum time required for an exception to be handled.</p>
+
+<p>Unlike signal handling, in which the handling function is called from the point of failure, exception handling exits the current scope before the catch block is entered, which may be located in the current function or any of the previous function calls currently on the stack.</p>
+
+<h3>Enumerated types</h3>
+<div><div>This section is an excerpt from Enumerated type § C++.[edit]</div><div>
+<p>C++ has enumeration types that are directly inherited from C's and work mostly like these, except that an enumeration is a real type in C++, giving added compile-time checking. Also (as with structs), the C++ <code>enum</code> keyword is combined with a typedef, so that instead of naming the type <code>enum name</code>, simply name it <code>name</code>. This can be simulated in C using a typedef: <code>typedefenum{Value1,Value2}name;</code></p>
+
+<p>C++11 also provides a second kind of enumeration, called a <i>scoped enumeration</i>. These are type-safe: the enumerators are not implicitly converted to an integer type. Among other things, this allows I/O streaming to be defined for the enumeration type. Another feature of scoped enumerations is that the enumerators do not leak, so usage requires prefixing with the name of the enumeration (e.g., <code>Color::Red</code> for the first enumerator in the example below), unless a <code>using enum</code> declaration (introduced in C++20) has been used to bring the enumerators into the current scope. A scoped enumeration is specified by the phrase <code>enum class</code> (or <code>enum struct</code>). For example:</p>
+
+<div><pre>enumclassColor{Red,Green,Blue};
+</pre></div>
+
+<p>The <i>underlying type</i> of an enumeration is an implementation-defined integral type that is large enough to hold all enumerated values; it does not have to be the smallest possible type. The underlying type can be specified directly, which allows "forward declarations" of enumerations:</p>
+
+<div><pre>enumclassColor:long{Red,Green,Blue};// must fit in size and memory layout the type 'long'
+enumclassShapes:char;// forward declaration. If later there are values defined that don't fit in 'char' it is an error.
+</pre></div>
+</div></div>
+
+
+
+<h2>Standard library</h2>
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/3/30/ANSI_ISO_C%2B%2B_WP.jpg/220px-ANSI_ISO_C%2B%2B_WP.jpg" height="165" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/30/ANSI_ISO_C%2B%2B_WP.jpg/330px-ANSI_ISO_C%2B%2B_WP.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/30/ANSI_ISO_C%2B%2B_WP.jpg/440px-ANSI_ISO_C%2B%2B_WP.jpg 2x" />The draft "Working Paper" standard that became approved as C++98; half of its size was devoted to the C++ Standard Library.
+<div>Main article: C++ Standard Library</div>
+<p>The C++ standard consists of two parts: the core language and the standard library. C++ programmers expect the latter on every major implementation of C++; it includes aggregate types (vectors, lists, maps, sets, queues, stacks, arrays, tuples), algorithms (find, for_each, binary_search, random_shuffle, etc.), input/output facilities (iostream, for reading from and writing to the console and files), filesystem library, localisation support, smart pointers for automatic memory management, regular expression support, multi-threading library, atomics support (allowing a variable to be read or written to by at most one thread at a time without any external synchronisation), time utilities (measurement, getting current time, etc.), a system for converting error reporting that does not use C++ exceptions into C++ exceptions, a random number generator and a slightly modified version of the C standard library (to make it comply with the C++ type system).</p>
+
+<p>A large part of the C++ library is based on the Standard Template Library (STL). Useful tools provided by the STL include containers as the collections of objects (such as vectors and lists), iterators that provide array-like access to containers, and algorithms that perform operations such as searching and sorting.</p>
+
+<p>Furthermore, (multi)maps (associative arrays) and (multi)sets are provided, all of which export compatible interfaces. Therefore, using templates it is possible to write generic algorithms that work with any container or on any sequence defined by iterators. As in C, the features of the library are accessed by using the <code>#include</code> directive to include a standard header. The C++ Standard Library provides 105 standard headers, of which 27 are deprecated.</p>
+
+<p>The standard incorporates the STL that was originally designed by Alexander Stepanov, who experimented with generic algorithms and containers for many years. When he started with C++, he finally found a language where it was possible to create generic algorithms (e.g., STL sort) that perform even better than, for example, the C standard library qsort, thanks to C++ features like using inlining and compile-time binding instead of function pointers. The standard does not refer to it as "STL", as it is merely a part of the standard library, but the term is still widely used to distinguish it from the rest of the standard library (input/output streams, internationalization, diagnostics, the C library subset, etc.).</p>
+
+<p>Most C++ compilers, and all major ones, provide a standards-conforming implementation of the C++ standard library.</p>
+
+
+
+<h2>C++ Core Guidelines</h2>
+<p>The C++ Core Guidelines are an initiative led by Bjarne Stroustrup, the inventor of C++, and Herb Sutter, the convener and chair of the C++ ISO Working Group, to help programmers write 'Modern C++' by using best practices for the language standards C++11 and newer, and to help developers of compilers and static checking tools to create rules for catching bad programming practices.</p>
+
+<p>The main aim is to efficiently and consistently write type and resource safe C++.</p>
+
+<p>The Core Guidelines were announced in the opening keynote at CPPCon 2015.</p>
+
+<p>The Guidelines are accompanied by the Guideline Support Library (GSL), a header only library of types and functions to implement the Core Guidelines and static checker tools for enforcing Guideline rules.</p>
+
+
+
+<h2>Compatibility</h2>
+<p>To give compiler vendors greater freedom, the C++ standards committee decided not to dictate the implementation of name mangling, exception handling, and other implementation-specific features. The downside of this decision is that object code produced by different compilers is expected to be incompatible. There were, however, attempts to standardize compilers for particular machines or operating systems (for example C++ ABI), though they seem to be largely abandoned now.</p>
+
+<h3>With C</h3>
+<div>Further information: Compatibility of C and C++</div>
+<p>C++ is often considered to be a superset of C but this is not strictly true. Most C code can easily be made to compile correctly in C++ but there are a few differences that cause some valid C code to be invalid or behave differently in C++. For example, C allows implicit conversion from <code>void*</code> to other pointer types but C++ does not (for type safety reasons). Also, C++ defines many new keywords, such as <code>new</code> and <code>class</code>, which may be used as identifiers (for example, variable names) in a C program.</p>
+
+<p>Some incompatibilities have been removed by the 1999 revision of the C standard (C99), which now supports C++ features such as line comments (<code>//</code>) and declarations mixed with code. On the other hand, C99 introduced a number of new features that C++ did not support that were incompatible or redundant in C++, such as variable-length arrays, native complex-number types (however, the <code>std::complex</code> class in the C++ standard library provides similar functionality, although not code-compatible), designated initializers, compound literals, and the <code>restrict</code> keyword. Some of the C99-introduced features were included in the subsequent version of the C++ standard, C++11 (out of those which were not redundant). However, the C++11 standard introduces new incompatibilities, such as disallowing assignment of a string literal to a character pointer, which remains valid C.</p>
+
+<p>To intermix C and C++ code, any function declaration or definition that is to be called from/used both in C and C++ must be declared with C linkage by placing it within an <code>extern"C"{/*...*/}</code> block. Such a function may not rely on features depending on name mangling (i.e., function overloading).</p>
+
+
+
+<h2>Criticism</h2>
+<div>Main article: Criticism of C++</div>
+<p>Despite its widespread adoption, some notable programmers have criticized the C++ language, including Linus Torvalds, Richard Stallman, Joshua Bloch, Ken Thompson and Donald Knuth.</p><p>
+
+One of the most often criticised points of C++ is its perceived complexity as a language, with the criticism that a large number of non-orthogonal features in practice necessitates restricting code to a subset of C++, thus eschewing the readability benefits of common style and idioms. As expressed by Joshua Bloch: </p><blockquote><p> I think C++ was pushed well beyond its complexity threshold, and yet there are a lot of people programming it. But what you do is you force people to subset it. So almost every shop that I know of that uses C++ says, "Yes, we're using C++ but we're not doing multiple-implementation inheritance and we're not using operator overloading." There are just a bunch of features that you're not going to use because the complexity of the resulting code is too high. And I don't think it's good when you have to start doing that. You lose this programmer portability where everyone can read everyone else's code, which I think is such a good thing. </p></blockquote>
+
+<p>Donald Knuth (1993, commenting on pre-standardized C++), who said of Edsger Dijkstra that "to think of programming in C++" "would make him physically ill": </p><blockquote><p> The problem that I have with them today is that... C++ is too complicated. At the moment, it's impossible for me to write portable code that I believe would work on lots of different systems, unless I avoid all exotic features. Whenever the C++ language designers had two competing ideas as to how they should solve some problem, they said "OK, we'll do them both". So the language is too baroque for my taste. </p></blockquote>
+
+<p>Ken Thompson, who was a colleague of Stroustrup at Bell Labs, gives his assessment: </p><blockquote><p> It certainly has its good points. But by and large I think it's a bad language. It does a lot of things half well and it's just a garbage heap of ideas that are mutually exclusive. Everybody I know, whether it's personal or corporate, selects a subset and these subsets are different. So it's not a good language to transport an algorithm—to say, "I wrote it; here, take it." It's way too big, way too complex. And it's obviously built by a committee.
+Stroustrup campaigned for years and years and years, way beyond any sort of technical contributions he made to the language, to get it adopted and used. And he sort of ran all the standards committees with a whip and a chair. And he said "no" to no one. He put every feature in that language that ever existed. It wasn't cleanly designed—it was just the union of everything that came along. And I think it suffered drastically from that. </p></blockquote><p>
+
+However Brian Kernighan, also a colleague at Bell Labs, disputes this assessment: </p><blockquote><p>C++ has been enormously influential. ... Lots of people say C++ is too big and too complicated etc. etc. but in fact it is a very powerful language and pretty much everything that is in there is there for a really sound reason: it is not somebody doing random invention, it is actually people trying to solve real world problems. Now a lot of the programs that we take for granted today, that we just use, are C++ programs. </p></blockquote>
+
+<p>Stroustrup himself comments that C++ semantics are much cleaner than its syntax: "within C++, there is a much smaller and cleaner language struggling to get out".</p>
+
+<p>Other complaints may include a lack of reflection or garbage collection, long compilation times, perceived feature creep, and verbose error messages, particularly from template metaprogramming.</p>
+

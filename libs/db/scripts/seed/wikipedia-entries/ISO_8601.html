@@ -1,0 +1,511 @@
+<h1>ISO 8601</h1>
+
+<div>International standards for dates and times</div>
+
+
+
+<p><b>ISO 8601</b> is an international standard covering the worldwide exchange and communication of date and time-related data. It is maintained by the International Organization for Standardization (ISO) and was first published in 1988, with updates in 1991, 2000, 2004, and 2019, and an amendment in 2022. The standard provides a well-defined, unambiguous method of representing calendar dates and times in worldwide communications, especially to avoid misinterpreting numeric dates and times when such data is transferred between countries with different conventions for writing numeric dates and times.</p>
+
+<p>ISO8601 applies to these representations and formats: <i>dates</i>, in the Gregorian calendar (including the proleptic Gregorian calendar); <i>times</i>, based on the 24-hour timekeeping system, with optional UTC offset; <i>time intervals</i>; and combinations thereof. The standard does not assign specific meaning to any element of the dates/times represented: the meaning of any element depends on the context of its use. Dates and times represented cannot use words that do not have a specified numerical meaning within the standard (thus excluding names of years in the Chinese calendar), or that do not use computer characters (excludes images or sounds).</p>
+
+<p>In representations that adhere to the ISO8601 <i>interchange standard</i>, dates and times are arranged such that the greatest temporal term (typically a year) is placed at the left and each successively lesser term is placed to the right of the previous term. Representations must be written in a combination of Arabic numerals and the specific computer characters (such as "‐", ":", "T", "W", "Z") that are assigned specific meanings within the standard; that is, such commonplace descriptors of dates (or parts of dates) as "January", "Thursday", or "New Year's Day" are not allowed in interchange representations within the standard.</p>
+
+
+
+<h2>History</h2>
+<p>The first edition of the ISO8601 standard was published as <i>ISO8601:1988</i> in 1988. It unified and replaced a number of older ISO standards on various aspects of date and time notation: ISO 2014, ISO 2015, ISO 2711, ISO 3307, and ISO 4031. It has been superseded by a second edition <i>ISO8601:2000</i> in 2000, by a third edition <i>ISO8601:2004</i> published on 1 December 2004, and withdrawn and revised by <i>ISO8601-1:2019</i> and <i>ISO8601-2:2019</i> on 25 February 2019. ISO8601 was prepared by, and is under the direct responsibility of, ISO Technical Committee TC 154.</p>
+
+<p>ISO2014, though superseded, is the standard that originally introduced the all-numeric date notation in most-to-least-significant order [YYYY]-[MM]-[DD]. The ISO week numbering system was introduced in ISO2015, and the identification of days by ordinal dates was originally defined in ISO2711.</p>
+
+<p>Issued in February 2019, the fourth revision of the standard ISO8601-1:2019 represents slightly updated contents of the previous ISO8601:2004 standard, whereas the new ISO8601-2:2019 defines various extensions such as uncertainties or parts of the Extended Date/Time Format (EDTF).</p>
+
+<p>An amendment was published in October 2022 featuring minor technical clarifications and attempts to remove ambiguities in definitions. The most significant change, however, was the reintroduction of the "24:00:00" format to refer to the instant at the <i>end</i> of a calendar day.</p>
+
+<table>
+<caption>History of published editions and amendments</caption>
+<tbody><tr><th>Name</th><th>Description</th></tr>
+<tr>
+<td>ISO 8601:1988</td><td>Data elements and interchange formats — Information interchange — Representation of dates and times</td></tr>
+<tr>
+<td>ISO 8601:1988/COR 1:1991</td><td>Data elements and interchange formats — Information interchange — Representation of dates and times — Technical Corrigendum 1</td></tr>
+<tr>
+<td>ISO 8601:2000</td><td>Data elements and interchange formats — Information interchange — Representation of dates and times</td></tr>
+<tr>
+<td>ISO 8601:2004</td><td>Data elements and interchange formats — Information interchange — Representation of dates and times</td></tr>
+<tr>
+<td>ISO 8601-1:2019</td><td>Date and time — Representations for information interchange — Part 1: Basic rules</td></tr>
+<tr>
+<td>ISO 8601-2:2019</td><td>Date and time — Representations for information interchange — Part 2: Extensions</td></tr>
+<tr>
+<td>ISO 8601-1:2019/Amd 1:2022</td><td>Date and time — Representations for information interchange — Part 1: Basic rules — Amendment 1: Technical corrections</td></tr>
+</tbody></table>
+
+
+
+<h2>General principles</h2>
+<ul><li>Date and time values are ordered from the largest to smallest unit of time: year, month (or week), day, hour, minute, second, and fraction of second. The lexicographical order of the representation thus corresponds to chronological order, except for date representations involving negative years or time offset. This allows dates to be naturally sorted by, for example, file systems.</li>
+<li>Each date and time value has a fixed number of digits that must be padded with leading zeros.</li>
+<li>Representations can be done in one of two formats–a <i>basic format</i> with a minimal number of separators or an <i>extended format</i> with separators added to enhance human readability. The standard notes that "The basic format should be avoided in plain text." The separator used between date values (year, month, week, and day) is the hyphen, while the colon is used as the separator between time values (hours, minutes, and seconds). For example, the 6th day of the 1st month of the year 2009 may be written as "2009-01-06" in the extended format or simply as "20090106" in the basic format without ambiguity.</li>
+<li> For reduced precision, any number of values may be dropped from any of the date and time representations, but in the order from the least to the most significant. For example, "2004-05" is a valid ISO8601 date, which indicates May (the fifth month) 2004. This format will never represent the 5th day of an unspecified month in 2004, nor will it represent a time-span extending from 2004 into 2005.</li>
+<li>If necessary for a particular application, the standard supports the addition of a decimal fraction to the smallest time value in the representation.</li></ul>
+
+
+
+<h2>Dates</h2>
+<table>
+<caption>October 2023</caption>
+<tbody><tr>
+<th>Week</th>
+<th>Mon</th>
+<th>Tue</th>
+<th>Wed</th>
+<th>Thu</th>
+<th>Fri</th>
+<th>Sat</th>
+<th>Sun</th></tr>
+
+<tr>
+<th>W39</th>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td>29</td>
+<td>30</td>
+<td>01</td></tr>
+<tr>
+<th>W40</th>
+<td>02</td>
+<td>03</td>
+<td>04</td>
+<td>05</td>
+<td>06</td>
+<td>07</td>
+<td>08</td></tr>
+<tr>
+<th>W41</th>
+<td>09</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td></tr>
+<tr>
+<th>W42</th>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>22</td></tr>
+<tr>
+<th>W43</th>
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td>29</td></tr>
+<tr>
+<th>W44</th>
+<td>30</td>
+<td>31</td>
+<td>01</td>
+<td>02</td>
+<td>03</td>
+<td>04</td>
+<td>05</td></tr>
+</tbody></table>
+<p>The standard uses the Gregorian calendar, which "serves as an international standard for civil use."</p>
+
+<p>ISO8601:2004 fixes a reference calendar date to the Gregorian calendar of 20 May 1875 as the date the <i>Convention du Mètre</i> (Metre Convention) was signed in Paris (the explicit reference date was removed in ISO8601-1:2019). However, ISO calendar dates before the convention are still compatible with the Gregorian calendar all the way back to the official introduction of the Gregorian calendar on 15 October 1582.</p>
+
+<p>Earlier dates, in the proleptic Gregorian calendar, may be used by mutual agreement of the partners exchanging information. The standard states that every date must be consecutive, so usage of the Julian calendar would be contrary to the standard (because at the switchover date, the dates would not be consecutive).</p>
+
+<h3>Years</h3>
+
+<p>ISO8601 prescribes, as a minimum, a four-digit year [YYYY] to avoid the year 2000 problem. It therefore represents years from 0000 to 9999, year 0000 being equal to 1 BC and all others AD, similar to astronomical year numbering. However, years before 1583 (the first full year following the introduction of the Gregorian calendar) are not automatically allowed by the standard. Instead, the standard states that "values in the range [0000] through [1582] shall only be used by mutual agreement of the partners in information interchange".</p>
+
+<p>To represent years before 0000 or after 9999, the standard also permits the expansion of the year representation but only by prior agreement between the sender and the receiver. An expanded year representation [±<u>Y</u>YYYY] must have an agreed-upon number of extra year digits beyond the four-digit minimum, and it must be prefixed with a + or − sign instead of the more common AD/BC (or CE/BCE) notation; by convention 1 BC is labelled +0000, 2 BC is labeled −0001, and so on.</p>
+
+<h3>Calendar dates</h3>
+
+
+<p>Calendar date representations are in the form shown in the adjacent box. [YYYY] indicates a four-digit year, 0000 through 9999. [MM] indicates a two-digit month of the year, 01 through 12. [DD] indicates a two-digit day of that month, 01 through 31. For example, "5 April 1981" may be represented as either "1981-04-05" in the <i>extended format</i> or "19810405" in the <i>basic format</i>.</p>
+
+<p>The standard also allows for calendar dates to be written with reduced precision. For example, one may write "1981-04" to mean "1981 April". One may simply write "1981" to refer to that year, "198" to refer to the decade from 1980 to 1989 inclusive, or "19" to refer to the century from 1900 to 1999 inclusive. Although the standard allows both the "YYYY-MM-DD" and YYYYMMDD formats for complete calendar date representations, if the day [DD] is omitted then only the YYYY-MM format is allowed. By disallowing dates of the form YYYYMM, the standard avoids confusion with the truncated representation YYMMDD (still often used). The 2000 version also allowed writing the truncation "--04-05" to mean "April 5" but the 2004 version does not allow omitting the year when a month is present.</p>
+
+<p>Examples:</p>
+
+<ul><li>7 January 2000 can be written as "2000-01-07" or "20000107"</li></ul>
+
+<h3>Week dates</h3>
+<div>Main article: ISO week date</div>
+
+<p>Week date representations are in the formats as shown in the adjacent box. [YYYY] indicates the <i>ISO week-numbering year</i> which is slightly different from the traditional Gregorian calendar year (see below). [Www] is the <i>week number</i> prefixed by the letter <i>W</i>, from W01 through W53. [D] is the <i>weekday number</i>, from 1 through 7, beginning with Monday and ending with Sunday.</p>
+
+<p>There are several mutually equivalent and compatible descriptions of week 01:</p>
+<ul><li>the week with the first business day in the starting year (considering that Saturdays, Sundays and 1 January are non-working days),</li>
+<li>the week with the starting year's first Thursday in it (the formal ISO definition),</li>
+<li>the week with 4 January in it,</li>
+<li>the first week with the majority (four or more) of its days in the starting year, and</li>
+<li>the week starting with the Monday in the period 29 December - 4 January.</li></ul>
+
+<p>As a consequence, if 1 January is on a Monday, Tuesday, Wednesday or Thursday, it is in week 01. If 1 January is on a Friday, Saturday or Sunday, it is in week 52 or 53 of the previous year (there is no week 00). 28 December is always in the last week of its year.</p>
+
+<p>The week number can be described by counting the Thursdays: week 12 contains the 12th Thursday of the year.</p>
+
+<p>The <i>ISO week-numbering year</i> starts at the first day (Monday) of week 01 and ends at the Sunday before the new ISO year (hence without overlap or gap). It consists of 52 or 53 full weeks. The first ISO week of a year may have up to three days that are actually in the Gregorian calendar year that is ending; if three, they are Monday, Tuesday and Wednesday. Similarly, the last ISO week of a year may have up to three days that are actually in the Gregorian calendar year that is starting; if three, they are Friday, Saturday, and Sunday. The Thursday of each ISO week is always in the Gregorian calendar year denoted by the ISO week-numbering year.</p>
+
+<p>Examples:</p>
+<ul><li>Monday 29 December 2008 is written "2009-W01-1"</li>
+<li>Sunday 3 January 2010 is written "2009-W53-7"</li></ul>
+
+<h3>Ordinal dates</h3>
+
+
+<p>An <i>ordinal date</i> is an ordinal format for the multiples of a day elapsed since the start of year.
+It is represented as "YYYY-DDD" (or YYYYDDD), where [YYYY] indicates a year and [DDD] is the "day of year", from 001 through 365 (366 in leap years). For example, "1981-04-05" is the same as "1981-095".</p>
+
+<p>This simple form is preferable for occasions when the arbitrary nature of week and month definitions are more of an impediment than an aid, for instance, when comparing dates from different calendars. 
+This format is used with simple hardware systems that have a need for a date system, but where including full calendar calculation software may be a significant nuisance. This system is sometimes referred to as "Julian Date", but this can cause confusion with the astronomical Julian day, a sequential count of the number of days since day 0 beginning 1 January 4713 BC Greenwich noon, Julian proleptic calendar (or noon on ISO date −4713-11-24 which uses the Gregorian proleptic calendar with a year 0000).</p>
+
+
+
+<h2>Times</h2>
+
+
+<p>ISO8601 uses the 24-hour clock system. As of ISO8601-1:2019, the <i>basic format</i> is T[hh][mm][ss] and the <i>extended format</i> is T[hh]:[mm]:[ss]. Earlier versions omitted the T (representing time) in both formats.</p>
+<ul><li>[hh] refers to a zero-padded hour between 00 and 24.</li>
+<li>[mm] refers to a zero-padded minute between 00 and 59.</li>
+<li>[ss] refers to a zero-padded second between 00 and 60 (where 60 is only used to denote an added leap second).</li></ul>
+<p>So a time might appear as either "T134730" in the <i>basic format</i> or "T13:47:30" in the <i>extended format</i>. ISO8601-1:2019 allows the T to be omitted in the extended format, as in "13:47:30", but only allows the T to be omitted in the basic format when there is no risk of confusion with date expressions.</p>
+
+<p>Either the seconds, or the minutes and seconds, may be omitted from the basic or extended time formats for greater brevity but decreased precision; the resulting reduced precision time formats are:</p>
+<ul><li>T[hh][mm] in <i>basic format</i> or T[hh]:[mm] in <i>extended format</i>, when seconds are omitted.</li>
+<li>T[hh], when both seconds and minutes are omitted.</li></ul>
+
+<p>As of ISO8601-1:2019/Amd 1:2022, "00:00:00" may be used to refer to <i>midnight</i> corresponding to the instant at the beginning of a calendar day; and "24:00:00" to refer to midnight corresponding to the instant at the end of a calendar day. ISO8601-1:2019 as originally published removed "24:00:00" as a representation for the end of day although it had been permitted in earlier versions of the standard.</p>
+
+<p>A decimal fraction may be added to the lowest order time element present in any of these representations. A decimal mark, either a comma or a dot, is used as a separator between the time element and its fraction. (Following ISO 80000-1 according to ISO8601:1-2019, it does not stipulate a preference except within International Standards, but with a preference for a comma according to ISO8601:2004.)
+For example, to denote "14 hours, 30 and one half minutes", do not include a seconds figure; represent it as "14:30,5", "T1430,5", "14:30.5", or "T1430.5".</p>
+
+<p>There is no limit on the number of decimal places for the decimal fraction. However, the number of decimal places needs to be agreed to by the communicating parties. For example, in Microsoft SQL Server, the precision of a decimal fraction is 3 for a DATETIME, i.e., "yyyy-mm-ddThh:mm:ss[.mmm]".</p>
+
+<h3>Time zone designators</h3>
+
+
+<p>Time zones in ISO8601 are represented as local time (with the location unspecified), as UTC, or as an offset from UTC.</p>
+
+<h4>Local time (unqualified)</h4>
+<p>If no UTC relation information is given with a time representation, the time is assumed to be in local time. While it <i>may</i> be safe to assume local time when communicating in the same time zone, it is ambiguous when used in communicating across different time zones. Even within a single geographic time zone, some local times will be ambiguous if the region observes daylight saving time. It is usually preferable to indicate a time zone (zone designator) using the standard's notation.</p>
+
+<h4>Coordinated Universal Time (UTC)</h4>
+<p>If the time is in UTC, add a <i>Z</i> directly after the time without a space. <i>Z</i> is the zone designator for the zero UTC offset. "09:30 UTC" is therefore represented as "09:30Z" or "T0930Z". "14:45:15 UTC" would be "14:45:15Z" or "T144515Z".</p>
+
+<p>The <i>Z</i> suffix in the ISO8601 time representation is sometimes referred to as "Zulu time" or "Zulu meridian" because the same letter is used to designate the Zulu time zone. However the ACP 121 standard that defines the list of military time zones makes no mention of UTC and derives the "Zulu time" from the Greenwich Mean Time which was formerly used as the international civil time standard. GMT is no longer precisely defined by the scientific community and can refer to either UTC or UT1 depending on context.</p>
+
+<h4>Time offsets from UTC</h4>
+<p>The UTC offset is appended to the time in the same way that 'Z' was above, though other Nautical time zone letters are not used. The offset is applied to UTC to get the civil time in the designated time zone in the format '±[hh]:[mm]', '±[hh][mm]', or '±[hh]'.</p>
+
+<p>A negative UTC offset describes a time zone west of the prime meridian where the civil time is behind UTC. So the zone designation for New York (on standard time) would be "−05:00","−0500", or "−05".</p>
+
+<p>A positive UTC offset describes a time zone east of the prime meridian where the civil time is ahead of UTC. So the zone designation for Cairo will be "+02:00","+0200", or "+02".</p>
+
+<p>A time zone where the civil time coincides with UTC is always designated as positive, though the offset is zero. So the zone designation for London (on standard time) would be "+00:00", "+0000", or "+00".</p>
+
+<h5>Additional examples</h5>
+<ul><li>"−10:00" for Honolulu</li>
+<li>"−06:00" for Chicago on standard time, or Denver on daylight savings time</li>
+<li>"+01:00" for London on British Summer Time</li>
+<li>"+04:00" for Dubai</li>
+<li>"+05:30" for Mumbai</li></ul>
+<p>See List of UTC offsets for other UTC offsets.</p>
+
+<h5>Other Specifications</h5>
+<p>It is not permitted to state it numerically with a negative sign, as "−00:00", "−0000", or "−00". The section dictating sign usage states that a plus sign must be used for a positive or zero value, and a minus sign for a negative value. A plus-minus-sign (±) may also be used if it is available. </p> 
+
+<p>Contrary to this rule, RFC 3339, which is otherwise a profile of ISO8601, permits the use of "−00" with the same denotation as "+00" but a differing connotation: an unknown UTC offset.</p>
+
+<p>To represent a negative offset, ISO8601 specifies using a minus sign (−). If the interchange character set is limited and does not have a minus sign character, then the hyphen-minus should be used, (-). ASCII does not have a minus sign, so its hyphen-minus character (code 4510) would be used. If the character set has a minus sign, such as U+2212−MINUS SIGN in Unicode, then that character should be used. The HTML character entity invocation for − is <code>&amp;minus;</code>.</p>
+
+<p>ISO 8601-2:2019 allows for general durations for time offsets. For example, more precision can be added to the time offset with the format '&lt;time&gt;±[hh]:[mm]:[ss].[sss]' or '&lt;time&gt;±[n]H[n]M[n]S' as below.</p>
+
+
+
+<h2>Combined date and time representations</h2>
+
+
+<p>A single point in time can be represented by concatenating a complete date expression, the letter <i>"T"</i> as a delimiter, and a valid time expression. For example, "2007-04-05T14:30". In ISO8601:2004 it was permitted to omit the <i>"T"</i> character by mutual agreement as in "200704051430", but this provision was removed in ISO8601-1:2019.
+Separating date and time parts with other characters such as space is not allowed in ISO8601, but allowed in its profile RFC 3339.</p>
+
+<p>If a time zone designator is required, it follows the combined date and time. For example, "2007-04-05T14:30Z" or "2007-04-05T12:30−02:00".</p>
+
+<p>Either basic or extended formats may be used, but both date and time must use the same format. The date expression may be calendar, week, or ordinal, and must use a complete representation. The time may be represented using a specified reduced precision format.</p>
+
+
+
+<h2>Durations</h2>
+
+<p>Durations define the amount of intervening time in a time interval and are represented by the format P[n]Y[n]M[n]DT[n]H[n]M[n]S or P[n]W as shown on the aside. In these representations, the [n] is replaced by the value for each of the date and time elements that follow the [n]. Leading zeros are not required, but the maximum number of digits for each element should be agreed to by the communicating parties. The capital letters <i>P</i>, <i>Y</i>, <i>M</i>, <i>W</i>, <i>D</i>, <i>T</i>, <i>H</i>, <i>M</i>, and <i>S</i> are designators for each of the date and time elements and are not replaced.</p>
+
+<ul><li><i>P</i> is the duration designator (for <i>period</i>) placed at the start of the duration representation.
+<ul><li><i>Y</i> is the year designator that follows the value for the number of calendar years.</li>
+<li><i>M</i> is the month designator that follows the value for the number of calendar months.</li>
+<li><i>W</i> is the week designator that follows the value for the number of weeks.</li>
+<li><i>D</i> is the day designator that follows the value for the number of calendar days.</li></ul></li>
+<li><i>T</i> is the time designator that precedes the time components of the representation.
+<ul><li><i>H</i> is the hour designator that follows the value for the number of hours.</li>
+<li><i>M</i> is the minute designator that follows the value for the number of minutes.</li>
+<li><i>S</i> is the second designator that follows the value for the number of seconds.</li></ul></li></ul>
+
+<p>For example, "P3Y6M4DT12H30M5S" represents a duration of "three years, six months, four days, twelve hours, thirty minutes, and five seconds".</p>
+
+<p>Date and time elements including their designator may be omitted if their value is zero, and lower-order elements may also be omitted for reduced precision. For example, "P23DT23H" and "P4Y" are both acceptable duration representations. However, at least one element must be present, thus "P" is not a valid representation for a duration of 0 seconds. "PT0S" or "P0D", however, are both valid and represent the same duration.</p>
+
+<p>To resolve ambiguity, "P1M" is a one-month duration and "PT1M" is a one-minute duration (note the time designator, T, that precedes the time value). The smallest value used may also have a decimal fraction, as in "P0.5Y" to indicate half a year. This decimal fraction may be specified with either a comma or a full stop, as in "P0,5Y" or "P0.5Y". The standard does not prohibit date and time values in a duration representation from exceeding their "carry over points" except as noted below. Thus, "PT36H" could be used as well as "P1DT12H" for representing the same duration. But keep in mind that "PT36H" is not the same as "P1DT12H" when switching from or to Daylight saving time.</p>
+
+<p>Alternatively, a format for duration based on combined date and time representations may be used by agreement between the communicating parties either in the basic format PYYYYMMDDThhmmss or in the extended format P[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]. For example, the first duration shown above would be "P0003-06-04T12:30:05". However, individual date and time values cannot exceed their moduli (e.g. a value of 13 for the month or 25 for the hour would not be permissible).</p>
+
+<p>The standard describes a duration as part of time intervals, which are discussed in the next section. The duration format on its own is ambiguous regarding the total number of days in a calendar year and calendar month. The number of seconds in a calendar day is also ambiguous because of leap seconds. For example "P1M" on its own could be 28, 29, 30, or 31 days. There is no ambiguity when used in a time interval. Using example "P2M" duration of two calendar months:</p>
+
+<ul><li>interval 2003-02-15T00:00:00Z/P2M ends two calendar months later at 2003-04-15T00:00:00Z which is 59 days later</li>
+<li>interval 2003-07-15T00:00:00Z/P2M ends two calendar months later at 2003-09-15T00:00:00Z which is 62 days later</li></ul>
+<p>The duration format (or a subset thereof) is widely used independent of time intervals, as with the Java 8 Duration class which supports a subset of the duration format.</p>
+
+
+
+<h2>Time intervals</h2>
+
+<p>A time interval is the intervening time between two time points. The amount of intervening time is expressed by a duration (as described in the previous section). The two time points (start and end) are expressed by either a combined date and time representation or just a date representation.</p>
+
+<p>There are four ways to express a time interval:</p>
+
+<ol><li>Start and end, such as "2007-03-01T13:00:00Z/2008-05-11T15:30:00Z"</li>
+<li>Start and duration, such as "2007-03-01T13:00:00Z/P1Y2M10DT2H30M"</li>
+<li>Duration and end, such as "P1Y2M10DT2H30M/2008-05-11T15:30:00Z"</li>
+<li>Duration only, such as "P1Y2M10DT2H30M", with additional context information</li></ol>
+
+<p>Of these, the first three require two values separated by an <i>interval designator</i> which is usually a solidus (more commonly referred to as a forward slash "/"). Section 3.2.6 of ISO8601-1:2019 notes that "A solidus may be replaced by a double hyphen ["--"] by mutual agreement of the communicating partners", and previous versions used notations like "2000--2002". Use of a double hyphen instead of a solidus allows inclusion in computer filenames; in common operating systems, a solidus is a reserved character and is not allowed in a filename.</p>
+
+<p>For &lt;start&gt;/&lt;end&gt; expressions, if any elements are missing from the end value, they are assumed to be the same as for the start value including the time zone. This feature of the standard allows for concise representations of time intervals. For example, the date of a two-hour meeting including the start and finish times could be simply shown as "2007-12-14T13:30/15:30", where "/15:30" implies "/2007-12-14T15:30" (the same date as the start), or the beginning and end dates of a monthly billing period as "2008-02-15/03-14", where "/03-14" implies "/2008-03-14" (the same year as the start).</p>
+
+<p>If greater precision is desirable to represent the time interval, then more time elements can be added to the representation. An interval denoted "2007-11-13/15" can start at any time on 2007-11-13 and end at any time on 2007-11-15, whereas "2007-11-13T09:00/15T17:00" includes the start and end times.
+To explicitly include all of the start and end dates, the interval would be represented as "2007-11-13T00:00/16T00:00".</p>
+
+<h3>Repeating intervals</h3>
+
+<p>Repeating intervals are specified in clause "4.5 Recurring time interval". They are formed by adding "R[n]/" to the beginning of an interval expression, where <i>R</i> is used as the letter itself and [n] is replaced by the number of repetitions. Leaving out the value for [n] or specifying a value of -1, means an unbounded number of repetitions. A value of 0 for [n] means the interval is not repeated.</p>
+
+<p>If the interval specifies the start (forms 1 and 2 above), then this is the start of the repeating interval. If the interval specifies the end but not the start (form 3 above), then this is the end of the repeating interval. For example, to repeat the interval of "P1Y2M10DT2H30M" five times starting at "2008-03-01T13:00:00Z", use "R5/2008-03-01T13:00:00Z/P1Y2M10DT2H30M".</p>
+
+
+
+<h2>Truncated representations (deprecated)</h2>
+<div>Not to be confused with §Reduced precision.</div>
+
+<p>ISO8601:2000 allowed truncation (by agreement), where leading components of a date or time are omitted. Notably, this allowed two-digit years to be used as well as the ambiguous formats YY-MM-DD and YYMMDD. This provision was removed in ISO8601:2004.</p>
+
+<table>
+<caption>Some Truncated Representations (last valid in ISO8601:2000)</caption>
+<tbody><tr>
+<th>Type</th><th>Basic format</th><th>Basic example</th><th>Extended format</th><th>Extended example</th></tr>
+<tr>
+<td>A specific date in the implied century</td><td>YYMMDD</td><td>851026</td><td>YY-MM-DD</td><td>85-10-26</td></tr>
+<tr>
+<td>A specific year and month in the implied century</td><td>-YYMM</td><td>-8510</td><td>-YY-MM</td><td>-85-10</td></tr>
+<tr>
+<td>A specific year in the implied century</td><td>-YY</td><td>-85</td><td>—</td></tr>
+<tr>
+<td>A specific day of a month in the implied year</td><td>--MMDD</td><td>--1026</td><td>--MM-DD</td><td>--10-26</td></tr>
+<tr>
+<td>A specific month in the implied year</td><td>--MM</td><td>--10</td><td>—</td></tr>
+<tr>
+<td>A specific day in the implied month</td><td>---DD</td><td>---26</td></tr>
+<tr>
+<td>A specific year and ordinal day in the implied century</td><td>YYDDD</td><td>85299</td><td>YY-DDD</td><td>85-299</td></tr>
+<tr>
+<td>A specific ordinal day in the implied year</td><td>-DDD</td><td>-299</td><td>—</td></tr>
+<tr>
+<td>A specific year and week in the implied decade</td><td>-YWww</td><td>-5W43</td><td>-Y-Www</td><td>-5-W43</td></tr>
+<tr>
+<td>A specific week and day in the implied year</td><td>-WwwD</td><td>-W436</td><td>-Www-D</td><td>-W43-6</td></tr>
+<tr>
+<td>A specific day in the implied week</td><td>-W-D</td><td>-W-6</td><td>—</td></tr>
+<tr>
+<td>A specific minute and second of the implied hour</td><td>-mmss</td><td>-3456</td><td>-mm:ss</td><td>-34:56</td></tr>
+<tr>
+<td>A specific second of the implied minute</td><td>-ss</td><td>-56</td><td>—</td></tr>
+<tr>
+<td>A specific minute and decimal fraction of the implied hour</td><td>-mm,m</td><td>-34,9</td><td>—</td></tr>
+</tbody></table>
+
+<p>The first and seventh examples given above omit the leading <code>-</code> for century. Other formats have one leading <code>-</code> per omitted century, year, month, week, hour and minute as necessary to disambiguate the format.</p>
+
+
+
+<h2>Standardised extensions</h2>
+<p>ISO8601-2:2019 defines a set of standardised extensions to the ISO8601 date and time formats.</p>
+
+ Extended Date/Time Format (EDTF)
+The EDTF is given as an example of a profile of ISO8601. Some of its features are:
+<ul><li>Uncertain and approximate qualifiers, '?' and '~', as well as their combined used, '%'; they can be applied to the whole date or to individual components.</li>
+<li>Time intervals with an open (unbounded) end or an unknown end.</li>
+<li>Exponential and significant figure notation in years.</li>
+<li>Special "month" values indicating sub-year groupings such as seasons and quarters.</li>
+<li>Syntax for serializing a list of dates.</li></ul>
+The EDTF features are described in the "Date and Time Extensions" section of ISO8601-2:2019.
+
+Repeat rules for recurring time intervals
+ISO8601-2:2019 also defines a format to constrain repeating intervals based on syntax from iCalendar.
+
+
+
+<h2>Usage</h2>
+<p>On the Internet, the World Wide Web Consortium (W3C) uses the IETF standard based on ISO8601 in defining a profile of the standard that restricts the supported date and time formats to reduce the chance of error and the complexity of software. The very simple specification is based on a draft of the RFC 3339 mentioned below.</p>
+
+<p>ISO8601 is referenced by several specifications, but the full range of options of ISO8601 is not always used. For example, the various electronic program guide standards for TV, digital radio, etc. use several forms to describe points in time and durations. The ID3 audio meta-data specification also makes use of a subset of ISO8601.
+The X.690 encoding standard's GeneralizedTime makes use of another subset of ISO8601.</p>
+
+<h3>Commerce</h3>
+<p>As of 2006, the ISO week date appears in its basic form on major brand commercial packaging in the United States. Its appearance depended on the particular packaging, canning, or bottling plant more than any particular brand. The format is particularly useful for quality assurance, so that production errors can be readily traced.</p>
+
+<h3>RFCs</h3>
+<p>IETF RFC 3339 defines a profile of ISO8601 for use in Internet protocols and standards. It explicitly excludes durations and dates before the common era. The more complex formats such as week numbers and ordinal days are not permitted.</p>
+
+<p>RFC 3339 deviates from ISO8601 in allowing a zero time zone offset to be specified as "-00:00", which ISO8601 forbids. RFC 3339 intends "-00:00" to carry the connotation that it is not stating a preferred time zone, whereas the conforming "+00:00" or any non-zero offset connotes that the offset being used is preferred. This convention regarding "-00:00" is derived from earlier RFCs, such as RFC 2822 which uses it for timestamps in email headers. RFC 2822 made no claim that any part of its timestamp format conforms to ISO8601, and so was free to use this convention without conflict.</p>
+
+<h3>Adoption as national standards</h3>
+
+<table>
+<tbody><tr>
+<th>Australia</th>
+<td>AS/NZS ISO 8601.1:2021, AS/NZS ISO 8601.2:2021 (replaced AS ISO 8601-2007)</td></tr>
+<tr>
+<th>Austria</th>
+<td>ÖNORM ISO 8601 (replaced ÖNORM EN 28601)</td></tr>
+<tr>
+<th>Belgium</th>
+<td>NBN EN 28601 (1993)</td></tr>
+<tr>
+<th>Brazil</th>
+<td>NBR 5892:2019</td></tr>
+<tr>
+<th>Canada</th>
+<td>CAN/CSA-Z234.4-89 (R2007)</td></tr>
+<tr>
+<th>Colombia</th>
+<td>NTC 1034:2014 Source ICONTEC (This standard is identical to ISO 8601:2004) Archived 2020-01-16 at the Wayback Machine</td></tr>
+<tr>
+<th>China</th>
+<td>GB/T 7408-2005</td></tr>
+<tr>
+<th>Czech Republic</th>
+<td>ČSN ISO 8601 (replaced ČSN EN 28601) (Obsolete as of 2019. No standard was given in exchange.)</td></tr>
+<tr>
+<th>Denmark</th>
+<td>DS/ISO 8601:2005 (replaced DS/EN 28601)</td></tr>
+<tr>
+<th>Estonia</th>
+<td>EVS 8:2008; EVS-ISO 8601:2011</td></tr>
+<tr>
+<th>European Norm</th>
+<td>EN ISO 8601, EN 28601:1992 (cancelled 7 October 2011)</td></tr>
+<tr>
+<th>Finland</th>
+<td>SFS-EN 28601</td></tr>
+<tr>
+<th>France</th>
+<td>NF Z69-200; NF EN 28601:1993-06-01 (cancelled)</td></tr>
+<tr>
+<th>Germany</th>
+<td>DIN ISO 8601:2006-09 (replaced DIN EN 28601:1993-02); related: DIN 5008:2011-04 (replaced DIN 5008:2005-05, DIN 5008:2001-11, DIN 5008:1996-05)</td></tr>
+<tr>
+<th>Greece</th>
+<td>ELOT EN 28601</td></tr>
+<tr>
+<th>Hungary</th>
+<td>MSZ ISO 8601:2003</td></tr>
+<tr>
+<th>Iceland</th>
+<td>IST EN 28601:1992 (obsolete)</td></tr>
+<tr>
+<th>India</th>
+<td>IS 7900:2001</td></tr>
+<tr>
+<th>Ireland</th>
+<td>IS/EN 28601:1993</td></tr>
+<tr>
+<th>Italy</th>
+<td>UNI EN 28601 (1993)</td></tr>
+<tr>
+<th>Japan</th>
+<td>JIS X 0301:2002</td></tr>
+<tr>
+<th>Korea, Republic of</th>
+<td>KS X ISO 8601</td></tr>
+<tr>
+<th>Lithuania</th>
+<td>LST ISO 8601:2006 (replaced LST ISO 8601:1997)</td></tr>
+<tr>
+<th>Luxembourg</th>
+<td>ITM-EN 28601</td></tr>
+<tr>
+<th>Mexico</th>
+<td>NMX-CH-150-IMNC-1999</td></tr>
+<tr>
+<th>Netherlands</th>
+<td>NEN ISO 8601, NEN EN 28601 (1994), NEN 2772</td></tr>
+<tr>
+<th>New Zealand</th>
+<td>AS/NZS ISO 8601.1:2021, AS/NZS ISO 8601.2:2021</td></tr>
+<tr>
+<th>Norway</th>
+<td>NS-ISO 8601</td></tr>
+<tr>
+<th>Poland</th>
+<td>PN-EN 28601:2002 (Obsolete as of 2008. No standard was given in exchange.)</td></tr>
+<tr>
+<th>Portugal</th>
+<td>NP EN 28601</td></tr>
+<tr>
+<th>Russia</th>
+<td>ГОСТ ИСО 8601-2001 (current), ГОСТ 7.64-90 (obsolete)</td></tr>
+<tr>
+<th>South Africa</th>
+<td>SANS 8601:2009</td></tr>
+<tr>
+<th>Spain</th>
+<td>UNE EN 28601:1995</td></tr>
+<tr>
+<th>Sweden</th>
+<td>SS-ISO 8601-1:2022, contains the official English version of ISO 8601-1:2019. (Approved 2022-05-13, replaces SS-ISO 8601:2011, edition 2)</td></tr>
+<tr>
+<th>Switzerland</th>
+<td>SN ISO 8601:2005-08 (replaced SN-EN 28601:1994)</td></tr>
+<tr>
+<th>Taiwan</th>
+<td>CNS 7648</td></tr>
+<tr>
+<th>Thailand</th>
+<td>TIS 1111:2535 (1992)</td></tr>
+<tr>
+<th>Turkey</th>
+<td>TS ISO 8601-1 and TS ISO 8601-2 (Accepted from 2021-02-15)</td></tr>
+<tr>
+<th>Ukraine</th>
+<td>ДСТУ ISO 8601:2010</td></tr>
+<tr>
+<th>United Kingdom</th>
+<td>BS ISO 8601:2004, BS EN 28601 (1989-06-30)</td></tr>
+<tr>
+<th>United States</th>
+<td>ANSI INCITS 30-1997 (R2008) and NIST FIPS PUB 4-2</td></tr>
+<tr>
+<th>Vietnam</th>
+<td>TCVN 6398-1:1998</td></tr>
+</tbody></table>
+

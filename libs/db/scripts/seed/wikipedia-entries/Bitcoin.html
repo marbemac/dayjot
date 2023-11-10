@@ -1,0 +1,427 @@
+<h1>Bitcoin</h1>
+
+<div>Decentralized digital currency</div>
+<div>"₿" redirects here. Not to be confused with "฿" for Thai baht.</div>
+
+
+<div>
+<div>
+
+<div><b>This article contains special characters.</b> Without proper rendering support, you may see question marks, boxes, or other symbols.</div></div>
+</div>
+
+<p><b>Bitcoin</b> (abbreviation: <b>BTC</b> or <b>XBT</b>; sign: <b>₿</b>) is a decentralized digital currency. Bitcoin transactions are verified by network nodes through cryptography and recorded in a public distributed ledger called a blockchain. The cryptocurrency was invented in 2008 by an unknown entity under the name Satoshi Nakamoto. The currency began use in 2009, when its implementation was released as open-source software.</p>
+
+<p>The Library of Congress reports that, as of November 2021, nine countries have fully banned bitcoin use, and a further forty-two have implicitly banned it. In contrast, a few governments have used bitcoin in some capacity. For example, El Salvador has adopted Bitcoin as legal tender, although use by merchants remains low. Ukraine has accepted cryptocurrency donations to fund the resistance to the 2022 Russian invasion, and Iran has used bitcoin to bypass political sanctions.</p>
+
+<p>Bitcoin has been described as an economic bubble by at least eight recipients of the Nobel Memorial Prize in Economic Sciences.</p>
+
+<p>The environmental effects of bitcoin are substantial. Its proof-of-work algorithm for bitcoin mining is designed to be computationally difficult, which requires the consumption of increasing quantities of electricity, the generation of which has contributed to climate change. According to the University of Cambridge, bitcoin has emitted an estimated 200 million tonnes of carbon dioxide since its launch, or about 0.04% of all carbon dioxide released since 2009.</p>
+
+
+
+
+
+<h2>Design</h2>
+<h3>Units and divisibility</h3>
+<p>The unit of account of the bitcoin system is the <i>bitcoin</i>. Currency codes for representing bitcoin are BTC and XBT. Its Unicode character is ₿. One bitcoin is divisible to eight decimal places. Units for smaller amounts of bitcoin are the millibitcoin (mBTC), equal to 1⁄1000 bitcoin, and the satoshi (sat), which is the smallest possible division, and named in homage to bitcoin's creator, representing 1⁄100000000 (one hundred millionth) bitcoin. 100,000 satoshis are one mBTC.</p>
+
+<h3>Blockchain</h3>
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bitcoin_Block_Data.png/400px-Bitcoin_Block_Data.png" height="155" width="400" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bitcoin_Block_Data.png/600px-Bitcoin_Block_Data.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bitcoin_Block_Data.png/800px-Bitcoin_Block_Data.png 2x" />Data structure of blocks in the ledger
+
+<p>The bitcoin blockchain is a public ledger that records bitcoin transactions. It is implemented as a chain of <i>blocks</i>, each block containing a cryptographic hash of the previous block up to the genesis block in the chain. A network of communicating nodes running bitcoin software maintains the blockchain. Transactions of the form <i>payer X sends Y bitcoins to payee Z</i> are broadcast to this network using readily available software applications.</p>
+
+<p>Network nodes can validate transactions, add them to their copy of the ledger, and then broadcast these ledger additions to other nodes. To achieve independent verification of the chain of ownership, each network node stores its own copy of the blockchain. At varying intervals of time averaging to every 10 minutes, a new group of accepted transactions, called a block, is created, added to the blockchain, and quickly published to all nodes, without requiring central oversight. This allows bitcoin software to determine when a particular bitcoin was spent, which is needed to prevent double-spending. A conventional ledger records the transfers of actual bills or promissory notes that exist apart from it, but as a digital ledger, bitcoins only exist by virtue of the blockchain; they are represented by the unspent outputs of transactions.</p>
+
+<p>Individual blocks, public addresses, and transactions within blocks can be examined using a blockchain explorer.</p>
+
+<h3>Transactions</h3>
+<div>See also: Bitcoin network</div>
+
+<p>Transactions are defined using a Forth-like scripting language. Transactions consist of one or more <i>inputs</i> and one or more <i>outputs</i>. When a user sends bitcoins, the user designates each address and the amount of bitcoin being sent to that address in an output. To prevent double spending, each input must refer to a previous unspent output in the blockchain. The use of multiple inputs corresponds to the use of multiple coins in a cash transaction. Since transactions can have multiple outputs, users can send bitcoins to multiple recipients in one transaction. As in a cash transaction, the sum of inputs (coins used to pay) can exceed the intended sum of payments. In such a case, an additional output is used, returning the change back to the payer. Any input <i>satoshis</i> not accounted for in the transaction outputs become the transaction fee.</p>
+
+<p>Though transaction fees are optional, miners can choose which transactions to process and prioritize those that pay higher fees. Miners may choose transactions based on the fee paid relative to their storage size, not the absolute amount of money paid as a fee. These fees are generally measured in <i>satoshis per byte (sat/b)</i>. The size of transactions is dependent on the number of inputs used to create the transaction and the number of outputs.</p>
+
+<p>The blocks in the blockchain were originally limited to 32 megabytes in size. The block size limit of one megabyte was introduced by Satoshi Nakamoto in 2010. Eventually, the block size limit of one megabyte created problems for transaction processing, such as increasing transaction fees and delayed processing of transactions. Andreas Antonopoulos has stated Lightning Network is a potential scaling solution and referred to lightning as a second-layer routing network.</p>
+
+<h3>Ownership</h3>
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bitcoin_Transaction_Visual.svg/350px-Bitcoin_Transaction_Visual.svg.png" height="220" width="350" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bitcoin_Transaction_Visual.svg/525px-Bitcoin_Transaction_Visual.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bitcoin_Transaction_Visual.svg/700px-Bitcoin_Transaction_Visual.svg.png 2x" />Simplified chain of ownership as illustrated in the bitcoin whitepaper. In practice, a transaction can have more than one input and more than one output.
+
+<p>In the blockchain, bitcoins are registered to bitcoin addresses. Creating a bitcoin address requires nothing more than picking a random valid private key and computing the corresponding bitcoin address. This computation can be done in a split second. But the reverse, computing the private key of a given bitcoin address, is practically unfeasible. Users can tell others or make public a bitcoin address without compromising its corresponding private key. Moreover, the number of valid private keys is so vast that it is extremely unlikely someone will compute a key pair that is already in use and has funds. The vast number of valid private keys makes it unfeasible that brute force could be used to compromise a private key. To be able to spend their bitcoins, the owner must know the corresponding private key and digitally sign the transaction. The network verifies the signature using the public key; the private key is never revealed.</p>
+
+<p>If the private key is lost, the bitcoin network will not recognize any other evidence of ownership; the coins are then unusable, and effectively lost. For example, in 2013 one user claimed to have lost ₿7,500, worth $7.5 million at the time, when he accidentally discarded a hard drive containing his private key. About 20% of all bitcoins are believed to be lost—they would have had a market value of about $20 billion at July 2018 prices.</p>
+
+<p>To ensure the security of bitcoins, the private key must be kept secret. If the private key is revealed to a third party, e.g. through a data breach, the third party can use it to steal any associated bitcoins. As of December2017, around ₿980,000 have been stolen from cryptocurrency exchanges.</p>
+
+<p>Regarding ownership distribution, as of 28 December 2022, 9.62% of bitcoin addresses own 98.51% of all bitcoins ever mined. The largest of these addresses are thought to belong to exchanges, which are keeping their bitcoin in cold storage.</p>
+
+
+
+<h2>Mining</h2>
+<div>See also: Bitcoin network §Mining</div>
+
+<div><div><div><div><div>Early bitcoin miners used GPUs for mining, as they were better suited to the proof-of-work algorithm than CPUs.</div></div><div><div>Later amateurs mined bitcoins with specialized FPGA and ASIC chips. The chips pictured have become obsolete due to increasing difficulty.</div></div><div><div>Today, bitcoin mining companies dedicate facilities to housing and operating large amounts of high-performance mining hardware.</div></div></div></div></div>
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/4/4b/History_of_Bitcoin_difficulty.svg/220px-History_of_Bitcoin_difficulty.svg.png" height="124" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/4/4b/History_of_Bitcoin_difficulty.svg/330px-History_of_Bitcoin_difficulty.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/4/4b/History_of_Bitcoin_difficulty.svg/440px-History_of_Bitcoin_difficulty.svg.png 2x" />Semi-log plot of relative mining difficulty
+
+<p><i>Mining</i> is a record-keeping service done through the use of computer processing power. Miners keep the blockchain consistent, complete, and unalterable by repeatedly grouping newly broadcast transactions into a <i>block</i>, which is then broadcast to the network and verified by recipient nodes. Each block contains a SHA-256 cryptographic hash of the previous block, thus linking it to the previous block and giving the blockchain its name.</p>
+
+<p>To be accepted by the rest of the network, a new block must contain a <i>proof-of-work</i> (PoW). The PoW requires miners to find a number called a <i>nonce</i> (a number used just once), such that when the block content is hashed along with the nonce, the result is numerically smaller than the network's <i>difficulty target</i>. This PoW is easy for any node in the network to verify, but extremely time-consuming to generate. Miners must try many different nonce values (usually the sequence of tested values is the ascending natural numbers: 0, 1, 2, 3,...) before a result happens to be less than the difficulty target. Because the difficulty target is extremely small compared to a typical SHA-256 hash, block hashes have many leading zeros as can be seen in this example block hash:</p>
+
+0000000000000000000590fc0f3eba193a278534220b2b37e9849e1a770ca959
+
+<p>By adjusting this difficulty target, the amount of work needed to generate a block can be changed. Every 2,016 blocks (approximately 14 days given roughly 10 minutes per block), nodes deterministically adjust the difficulty target based on the recent rate of block generation, with the aim of keeping the average time between new blocks at ten minutes. In this way the system automatically adapts to the total amount of mining power on the network. As of April 2022, it takes on average 122 sextillion (122 thousand billion billion) attempts to generate a block hash smaller than the difficulty target. Computations of this magnitude are extremely expensive and utilize specialized hardware.</p>
+
+<p>The proof-of-work system, alongside the chaining of blocks, makes modifications to the blockchain extremely hard, as an attacker must modify all subsequent blocks in order for the modifications of one block to be accepted. As new blocks are being generated continuously, the difficulty of modifying an old block increases as time passes and the number of subsequent blocks (also called <i>confirmations</i> of the given block) increases.</p>
+
+<p>The vast majority of mining power is grouped together in mining pools to reduce variance in miner income. Independent miners may have to work for several years to mine a single block of transactions and receive payment. In a mining pool, all participating miners get paid every time any participant generates a block. This payment is proportionate to the amount of work an individual miner contributed to the pool.</p>
+
+
+
+<h2>Supply</h2>
+<table><tbody><tr><td></td><td><div>This section <b>needs expansion</b>with: what is the history and timing of the changes in supply?. You can help by adding to it.  <i>(September 2023)</i></div></td></tr></tbody></table>
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Total-bitcoins.svg/220px-Total-bitcoins.svg.png" height="124" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Total-bitcoins.svg/330px-Total-bitcoins.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Total-bitcoins.svg/440px-Total-bitcoins.svg.png 2x" />Total bitcoins in circulation
+
+<p>Every 10 minutes, the successful miner finding the new block is allowed by the rest of the network to collect for themselves all transaction fees from transactions they included in the block, as well as a predetermined reward of newly created bitcoins. As of 11May2020, this reward is ₿6.25 in newly created bitcoins per block. To claim this reward, a special transaction called a <i>coinbase</i> is included in the block, with the miner as the payee. All bitcoins in existence have been created through this type of transaction. The bitcoin protocol specifies that the reward for adding a block will be reduced by half every 210,000 blocks (approximately every four years), until ₿21million are generated. The last new bitcoin will be generated around the year 2140. After that, a successful miner would be rewarded by transaction fees only.</p>
+
+
+
+<h2>Decentralization</h2>
+<p>Bitcoin is decentralized thus:</p>
+<ul><li>Bitcoin does not have a central authority.</li>
+<li>The bitcoin network is peer-to-peer, without central servers.</li>
+<li>The network also has no central storage; the bitcoin ledger is distributed.</li>
+<li>The ledger is public; anybody can store it on a computer.</li>
+<li>There is no single administrator; the ledger is maintained by a network of equally privileged miners.</li>
+<li>Anyone can become a miner.</li>
+<li>The additions to the ledger are maintained through competition. Until a new block is added to the ledger, it is not known which miner will create the block.</li>
+<li>The issuance of bitcoins is decentralized. They are issued as a reward for the creation of a new block.</li>
+<li>Anybody can create a new bitcoin address (a bitcoin counterpart of a bank account) without needing any approval.</li>
+<li>Anybody can send a transaction to the network without needing any approval; the network merely confirms that the transaction is legitimate.</li></ul>
+
+<p>Conversely, researchers have pointed out a "trend towards centralization". Although bitcoin can be sent directly from user to user, in practice intermediaries are widely used. Bitcoin miners join large mining pools to minimize the variance of their income. Because transactions on the network are confirmed by miners, decentralization of the network requires that no single miner or mining pool obtains 51% of the hashing power, which would allow them to double-spend coins, prevent certain transactions from being verified and prevent other miners from earning income. As of 2013 just six mining pools controlled 75% of overall bitcoin hashing power. In 2014 mining pool Ghash.io obtained 51% hashing power which raised significant controversies about the safety of the network. The pool has voluntarily capped its hashing power at 39.99% and requested other pools to act responsibly for the benefit of the whole network. Around the year 2017, over 70% of the hashing power and 90% of transactions were operating from China.</p>
+
+<p>According to researchers, other parts of the ecosystem are also "controlled by a small set of entities", notably the maintenance of the client software, online wallets, and simplified payment verification (SPV) clients.</p>
+
+
+
+<h2>Privacy and fungibility</h2>
+<p>Bitcoin is pseudonymous, meaning that funds are not tied to real-world entities but rather bitcoin addresses. Owners of bitcoin addresses are not explicitly identified, but all transactions on the blockchain are public. In addition, transactions can be linked to individuals and companies through "idioms of use" (e.g., transactions that spend coins from multiple inputs indicate that the inputs may have a common owner) and corroborating public transaction data with known information on owners of certain addresses. Additionally, bitcoin exchanges, where bitcoins are traded for traditional currencies, may be required by law to collect personal information. To heighten financial privacy, a new bitcoin address can be generated for each transaction.</p>
+
+<p>While the Bitcoin network treats each bitcoin the same, thus establishing the basic level of fungibility, applications and individuals who use the network are free to break that principle. For instance, wallets and similar software technically handle all bitcoins equally, none is different from another. Still, the history of each bitcoin is registered and publicly available in the blockchain ledger, and that can allow users of chain analysis to refuse to accept bitcoins coming from controversial transactions. For example, in 2012, Mt. Gox froze accounts of users who deposited bitcoins that were known to have just been stolen.</p>
+
+
+
+<h2>Wallets</h2>
+<div>For broader coverage of this topic, see Cryptocurrency wallet.</div>
+<div><div><div><div><div>Bitcoin Core, a full client</div></div><div><div>Electrum, a lightweight client</div></div></div></div></div>
+
+<p>A <i>wallet</i> stores the information necessary to transact bitcoins. While wallets are often described as a place to hold or store bitcoins, due to the nature of the system, bitcoins are inseparable from the blockchain transaction ledger. A wallet is more correctly defined as something that "stores the digital credentials for your bitcoin holdings" and allows one to access (and spend) them.  Bitcoin uses public-key cryptography, in which two cryptographic keys, one public and one private, are generated. At its most basic, a wallet is a collection of these keys.</p>
+
+<h3>Software wallets</h3>
+<p>The first wallet program, simply named <i>Bitcoin</i>, and sometimes referred to as the <i>Satoshi client</i>, was released in 2009 by Satoshi Nakamoto as open-source software. In version 0.5 the client moved from the wxWidgets user interface toolkit to Qt, and the whole bundle was referred to as <i>Bitcoin-Qt</i>. After the release of version 0.9, the software bundle was renamed <i>Bitcoin Core</i> to distinguish itself from the underlying network. Bitcoin Core is, perhaps, the best known implementation or client. Forks of Bitcoin Core exist, such as Bitcoin XT, Bitcoin Unlimited, and Parity Bitcoin.</p>
+
+<p>There are several modes in which wallets can operate. They have an inverse relationship with regard to trustlessness and computational requirements.</p>
+<ul><li><i>Full clients</i> verify transactions directly by downloading a full copy of the blockchain (over 150GB as of January2018). They do not require trust in any external parties. Full clients check the validity of mined blocks, preventing them from transacting on a chain that breaks or alters network rules. Because of its size and complexity, downloading and verifying the entire blockchain is not suitable for all computing devices.</li>
+<li><i>Lightweight clients</i> consult full nodes to send and receive transactions without requiring a local copy of the entire blockchain (see <i>simplified payment verification</i> – <i>SPV</i>). This makes lightweight clients much faster to set up and allows them to be used on low-power, low-bandwidth devices such as smartphones. When using a lightweight wallet, however, the user must trust full nodes, as it can report faulty values back to the user. Lightweight clients follow the longest blockchain and do not ensure it is valid, requiring trust in full nodes.</li></ul>
+
+<p>Third-party internet services called <i>online wallets</i> or <i>webwallets</i> offer similar functionality but may be easier to use. In this case, credentials to access funds are stored with the online wallet provider rather than on the user's hardware. As a result, the user must have complete trust in the online wallet provider. A malicious provider or a breach in server security may cause entrusted bitcoins to be stolen. An example of such a security breach occurred with Mt. Gox in 2011.</p>
+
+<h3>Cold storage</h3>
+<div><div><div><div><div>A paper wallet with a banknote-like design. Both the private key and the address are visible in text form and as 2D barcodes.</div></div><div><div>A paper wallet with the address visible for adding or checking stored funds. The part of the page containing the private key is folded over and sealed.</div></div></div><div><div><div>A brass token with a private key hidden beneath a tamper-evident security hologram. A part of the address is visible through a transparent part of the hologram.</div></div><div><div>A hardware wallet peripheral which processes bitcoin payments without exposing any credentials to the computer</div></div></div></div></div>
+
+<p>Wallet software is targeted by hackers because of the lucrative potential for stealing bitcoins. A technique called "cold storage" keeps private keys out of reach of hackers; this is accomplished by keeping private keys offline at all times by generating them on a device that is not connected to the internet. The credentials necessary to spend bitcoins can be stored offline in a number of different ways, from specialized hardware wallets to simple paper printouts of the private key.</p>
+
+<h3>Hardware wallets</h3>
+<p>A hardware wallet is a computer peripheral that signs transactions as requested by the user. These devices store private keys and carry out signing and encryption internally, and do not share any sensitive information with the host computer except already signed (and thus unalterable) transactions. Because hardware wallets never expose their private keys, even computers that may be compromised by malware do not have a vector to access or steal them.</p>
+
+<p>The user sets a passcode when setting up a hardware wallet. As hardware wallets are tamper-resistant, the passcode will be needed to extract any money.</p>
+
+<h3>Paper wallets</h3>
+<p>A paper wallet is created with a keypair generated on a computer with no internet connection; the private key is written or printed onto the paper and then erased from the computer. The paper wallet can then be stored in a safe physical location for later retrieval.</p>
+
+<p>Physical wallets can also take the form of metal token coins with a private key accessible under a security hologram in a recess struck on the reverse side. The security hologram self-destructs when removed from the token, showing that the private key has been accessed. Originally, these tokens were struck in brass and other base metals, but later used precious metals as bitcoin grew in value and popularity. Coins with stored face value as high as ₿1,000 have been struck in gold. The British Museum's coin collection includes four specimens from the earliest series of funded bitcoin tokens; one is currently on display in the museum's money gallery. In 2013, a Utah manufacturer of these tokens was ordered by the Financial Crimes Enforcement Network (FinCEN) to register as a money services business before producing any more funded bitcoin tokens.</p>
+
+
+
+<h2>History</h2>
+<div>Main article: History of bitcoin</div>
+
+<h3>Creation</h3>
+<div><div><div><div>Bitcoin logos made by Satoshi Nakamoto in 2009 (left) and 2010 (right) depict bitcoins as gold tokens.</div></div></div></div>
+
+<p>The domain name <i>bitcoin.org</i> was registered on 18 August 2008. On 31 October 2008, a link to a white paper authored by Satoshi Nakamoto titled <i>Bitcoin: A Peer-to-Peer Electronic Cash System</i> was posted to a cryptography mailing list. Nakamoto implemented the bitcoin software as open-source code and released it in January 2009. Nakamoto's identity remains unknown.</p>
+
+<p>The word "bitcoin" was defined the original white paper. It is a compound of the words <i>bit</i> and <i>coin</i>. No uniform convention for <i>bitcoin</i> capitalization exists; some sources use <i>Bitcoin</i>, capitalized, to refer to the technology and network and <i>bitcoin</i>, lowercase, for the unit of account. <i>The Wall Street Journal</i>, <i>The Chronicle of Higher Education</i>, and the <i>Oxford English Dictionary</i> advocate the use of lowercase <i>bitcoin</i> in all cases.</p>
+
+<p>On 3 January 2009, the bitcoin network was created when Nakamoto mined the starting block of the chain, known as the <i>genesis block</i>. Embedded in the coinbase of this block was the text "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks". This note references a headline published by <i>The Times</i> and has been interpreted as both a timestamp and a comment on the instability caused by fractional-reserve banking.</p>
+
+<p>The receiver of the first bitcoin transaction was Hal Finney, who had created the first reusable Proof-of-work system system (RPoW) in 2004. Finney downloaded the bitcoin software on its release date, and on 12 January 2009 received ten bitcoins from Nakamoto. Other early cypherpunk supporters were creators of bitcoin predecessors: Wei Dai, creator of b-money, and Nick Szabo, creator of bit gold. In 2010, the first known commercial transaction using bitcoin occurred when programmer Laszlo Hanyecz bought two Papa John's pizzas for ₿10,000 from Jeremy Sturdivant.</p>
+
+<p>Blockchain analysts estimate that Nakamoto had mined about one million bitcoins before disappearing in 2010 when he handed the network alert key and control of the code repository over to Gavin Andresen. Andresen later became lead developer at the Bitcoin Foundation. Andresen then sought to decentralize control. This left opportunity for controversy to develop over the future development path of bitcoin, in contrast to the perceived authority of Nakamoto's contributions.</p>
+
+<h3>2011–2012</h3>
+<p>After early "proof-of-concept" transactions, the first major users of bitcoin were black markets, such as Silk Road. During its 30 months of existence, beginning in February 2011, Silk Road exclusively accepted bitcoins as payment, transacting ₿9.9million, worth about $214million.</p>
+
+<p>In 2011, the price started at $0.30 per bitcoin, growing to $5.27 for the year. The price rose to $31.50 on 8 June. Within a month, the price fell to $11.00. The next month it fell to $7.80, and in another month to $4.77.</p>
+
+<p>In 2012, bitcoin prices started at $5.27, growing to $13.30 for the year. By 9 January the price had risen to $7.38, but then crashed by 49% to $3.80 over the next 16 days. The price then rose to $16.41 on 17 August, but fell by 57% to $7.10 over the next three days.</p>
+
+<p>The Bitcoin Foundation was founded in September 2012 to promote bitcoin's development and uptake.</p>
+
+<p>On 1 November 2011, the reference implementation Bitcoin-Qt version 0.5.0 was released. It introduced a front end that used the Qt user interface toolkit. The software previously used Berkeley DB for database management. Developers switched to LevelDB in release 0.8 in order to reduce blockchain synchronization time. The update to this release resulted in a minor blockchain fork on 11 March 2013. The fork was resolved shortly afterwards. Seeding nodes through IRC was discontinued in version 0.8.2. From version 0.9.0 the software was renamed to Bitcoin Core. Transaction fees were reduced again by a factor of ten as a means to encourage microtransactions. Although Bitcoin Core does not use OpenSSL for the operation of the network, the software did use OpenSSL for remote procedure calls. Version 0.9.1 was released to remove the network's vulnerability to the Heartbleed bug.</p>
+
+<h3>2013–2016</h3>
+<p>In 2013, prices started at $13.30 rising to $770 by 1 January 2014.</p>
+
+<p>In March 2013 the blockchain temporarily split into two independent chains with different rules due to a bug in version 0.8 of the bitcoin software. The two blockchains operated simultaneously for six hours, each with its own version of the transaction history from the moment of the split. Normal operation was restored when the majority of the network downgraded to version 0.7 of the bitcoin software, selecting the backwards-compatible version of the blockchain. As a result, this blockchain became the longest chain and could be accepted by all participants, regardless of their bitcoin software version. During the split, the Mt. Gox exchange briefly halted bitcoin deposits and the price dropped by 23% to $37 before recovering to the previous level of approximately $48 in the following hours.</p>
+
+<p>The US Financial Crimes Enforcement Network (FinCEN) established regulatory guidelines for "decentralized virtual currencies" such as bitcoin, classifying American bitcoin miners who sell their generated bitcoins as Money Service Businesses (MSBs), that are subject to registration or other legal obligations.</p>
+
+<p>In April, exchanges BitInstant and Mt. Gox experienced processing delays due to insufficient capacity resulting in the bitcoin price dropping from $266 to $76 before returning to $160 within six hours. The bitcoin price rose to $259 on 10 April, but then crashed by 83% to $45 over the next three days.</p>
+
+<p>On 15 May 2013, US authorities seized accounts associated with Mt. Gox after discovering it had not registered as a money transmitter with FinCEN in the US. On 23 June 2013, the US Drug Enforcement Administration listed ₿11.02 as a seized asset in a United States Department of Justice seizure notice pursuant to 21 U.S.C. § 881. This marked the first time a government agency had seized bitcoin, likely by either seizing a computer with an unencrypted wallet, or through a sting operation. The FBI seized about ₿30,000 in October 2013 from the dark web website Silk Road, following the arrest of Ross William Ulbricht. These bitcoins were sold at blind auction by the United States Marshals Service to venture capital investor Tim Draper. Bitcoin's price rose to $755 on 19 November and crashed by 50% to $378 the same day. On 30 November 2013, the price reached $1,163 before starting a long-term crash, declining by 87% to $152 in January 2015.</p>
+
+<p>On 5 December 2013, the People's Bank of China prohibited Chinese financial institutions from using bitcoin. After the announcement, the value of bitcoin dropped, and Baidu no longer accepted bitcoins for certain services. Buying real-world goods with any virtual currency had been illegal in China since at least 2009.</p>
+
+<p>In 2014, prices started at $770 and fell to $314 for the year.  On 30 July 2014, the Wikimedia Foundation started accepting donations of bitcoin.</p>
+
+<p>In 2015, prices started at $314 and rose to $434 for the year. In 2016, prices rose and climbed up to $998 by 1 January 2017.</p>
+
+<p>Release 0.10 of the software was made public on 16 February 2015. It introduced a consensus library which gave programmers easy access to the rules governing consensus on the network. In version 0.11.2 developers added a new feature which allowed transactions to be made unspendable until a specific time in the future.</p>
+
+<p>In July 2016, the CheckSequenceVerify soft fork activated. In August 2016, the Bitfinex cryptocurrency exchange platform was hacked in the second-largest breach of a Bitcoin exchange platform up to that time, and ₿119,756, worth about $72million at the time, were stolen.</p>
+
+<p>In October 2016, Bitcoin Core's 0.13.1 release featured the "Segwit" soft fork that included a scaling improvement aiming to optimize the bitcoin blocksize. The patch was originally finalized in April, and 35 developers were engaged to deploy it. This release featured Segregated Witness (SegWit) which aimed to place downward pressure on transaction fees as well as increase the maximum transaction capacity of the network. The 0.13.1 release endured extensive testing and research leading to some delays in its release date. SegWit prevents various forms of transaction malleability.</p>
+
+<h3>2017–2019</h3>
+<p>Research produced by the University of Cambridge estimated that in 2017, there were 2.9 to 5.8 million unique users using a cryptocurrency wallet, most of them using bitcoin. On 15 July 2017, the controversial Segregated Witness [SegWit] software upgrade was approved ("locked-in"). Segwit was intended to support the Lightning Network as well as improve scalability. SegWit was subsequently activated on the network on 24 August 2017. The bitcoin price rose almost 50% in the week following SegWit's approval. On 21 July 2017, bitcoin was trading at $2,748, up 52% from 14 July 2017's $1,835. Supporters of large blocks who were dissatisfied with the activation of SegWit forked the software on 1 August 2017 to create Bitcoin Cash, becoming one of many forks of bitcoin such as Bitcoin Gold.</p>
+
+<p>Prices started at $998 in 2017 and rose to $13,412.44 on 1 January 2018, after reaching its all-time high of $19,783.06 on 17 December 2017.</p>
+
+<p>China banned trading in bitcoin, with first steps taken in September 2017, and a complete ban that started on 1 February 2018. Bitcoin prices then fell from $9,052 to $6,914 on 5 February 2018. The percentage of bitcoin trading in the Chinese renminbi fell from over 90% in September 2017 to less than 1% in June 2018.</p>
+
+<p>Throughout the rest of the first half of 2018, bitcoin's price fluctuated between $11,480 and $5,848. On 1 July 2018, bitcoin's price was $6,343. The price on 1 January 2019 was $3,747, down 72% for 2018 and down 81% since the all-time high.</p>
+
+<p>In September 2018, an anonymous party discovered and reported an invalid-block denial-of-server vulnerability to developers of Bitcoin Core, Bitcoin ABC and Bitcoin Unlimited. Further analysis by bitcoin developers showed the issue could also allow the creation of blocks violating the 21 million coin limit and CVE-2018-17144 was assigned and the issue resolved.</p>
+
+<p>Bitcoin prices were negatively affected by several hacks or thefts from cryptocurrency exchanges, including thefts from Coincheck in January 2018, Bithumb in June, and Bancor in July. For the first six months of 2018, $761 million worth of cryptocurrencies was reported stolen from exchanges. Bitcoin's price was affected even though other cryptocurrencies were stolen at Coinrail and Bancor as investors worried about the security of cryptocurrency exchanges. In September 2019, the Intercontinental Exchange (the owner of the NYSE) began trading of bitcoin futures on its exchange called Bakkt. Bakkt also announced that it would launch options on bitcoin in December 2019. In December 2019, YouTube removed bitcoin and cryptocurrency videos, but later restored the content after judging they had "made the wrong call".</p>
+
+<p>In February 2019, Canadian cryptocurrency exchange Quadriga Fintech Solutions failed with approximately $200 million missing. By June 2019 the price had recovered to $13,000.</p>
+
+<h3>2020–present</h3>
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bitcoin_usd_price.svg/220px-Bitcoin_usd_price.svg.png" height="124" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bitcoin_usd_price.svg/330px-Bitcoin_usd_price.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/4/43/Bitcoin_usd_price.svg/440px-Bitcoin_usd_price.svg.png 2x" />Bitcoin price in US dollars
+<p>On 13 March 2020, bitcoin fell below $4,000 during a broad market selloff, after trading above $10,000 in February 2020. On 11 March 2020, 281,000 bitcoins were sold, held by owners for only thirty days. This compared to ₿4,131 that had laid dormant for a year or more, indicating that the vast majority of the bitcoin volatility on that day was from recent buyers. During the week of 11 March 2020, cryptocurrency exchange Kraken experienced an 83% increase in the number of account signups over the week of bitcoin's price collapse, a result of buyers looking to capitalize on the low price. These events were attributed to the onset of the COVID-19 pandemic.</p>
+
+<p>In August 2020, MicroStrategy invested $250 million in bitcoin as a treasury reserve asset. In October 2020, Square, Inc. placed approximately 1% of total assets ($50 million) in bitcoin. In November 2020, PayPal announced that US users could buy, hold, or sell bitcoin. On 30 November 2020, the bitcoin value reached a new all-time high of $19,860, topping the previous high of December 2017. Alexander Vinnik, founder of BTC-e, was convicted and sentenced to five years in prison for money laundering in France while refusing to testify during his trial. In December 2020, Massachusetts Mutual Life Insurance Company announced a bitcoin purchase of US$100 million, or roughly 0.04% of its general investment account.</p>
+
+<p>On 19 January 2021, Elon Musk placed the handle <i>#Bitcoin</i> in his Twitter profile, tweeting "In retrospect, it was inevitable", which caused the price to briefly rise about $5,000 in an hour to $37,299. On 25 January 2021, Microstrategy announced that it continued to buy bitcoin and as of the same date it had holdings of ₿70,784 worth $2.38 billion. On 8 February 2021 Tesla's announcement of a bitcoin purchase of US$1.5 billion and the plan to start accepting bitcoin as payment for vehicles, pushed the bitcoin price to $44,141. On 18 February 2021, Elon Musk stated that "owning bitcoin was only a little better than holding conventional cash, but that the slight difference made it a better asset to hold". After 49 days of accepting the digital currency, Tesla reversed course on 12 May 2021, saying they would no longer take bitcoin due to concerns that "mining" the cryptocurrency was contributing to the consumption of fossil fuels and climate change. The decision resulted in the price of bitcoin dropping around 12% on 13 May. During a July bitcoin conference, Musk suggested Tesla could possibly help bitcoin miners switch to renewable energy in the future and also stated at the same conference that if bitcoin mining reaches, and trends above 50 percent renewable energy usage, that "Tesla would resume accepting bitcoin." The price for bitcoin rose after this announcement.</p>
+
+<p>In June 2021, the Taproot network software upgrade was approved, adding support for Schnorr signatures, improved functionality of Smart contracts and Lightning Network. The upgrade was activated in November.</p>
+
+<p>In September 2021, Bitcoin in El Salvador became legal tender, alongside the US dollar.</p>
+
+<p>On 16 October 2021, the SEC approved the ProShares Bitcoin Strategy ETF, a cash-settled futures exchange-traded fund (ETF). The first bitcoin ETF in the United States gained 5% on its first trading day on 19 October 2021.</p>
+
+<p>In March 2022, Tulip Trading Limited based in the Seychelles sued four Bitcoin developers for breach of fiduciary duty under English law.  None of the developers are in England or Wales.  Tulip Trading lost control of over £3,000,000,000 in Bitcoins and believes the developers should be compelled to assist with regaining control by developing and deploying suitable patches.  The developers say they will not.  As of October2023, the case is active in the Court of Appeal.</p>
+
+<p>On 25 March 2022, Pavel Zavalny stated that Russia might accept bitcoin for payment for oil and gas exports, in response to sanctions stemming from the 2022 Russian invasion of Ukraine.</p>
+
+<p>On 27 April 2022 Central African Republic adopted bitcoin as legal tender alongside the CFA franc.</p>
+
+<p>On May 10, 2022, the bitcoin price fell to $31,324, as a result of a collapse of a UST stablecoin experiment named Terra, with bitcoin down more than 50% since the November 2021 high. By June 13, 2022, the Celsius Network (a decentralized finance loan company) halted withdrawals and resulted in the bitcoin price falling below $20,000.</p>
+
+<p>In May 2022, following a vote by Wikipedia editors the previous month, the Wikimedia Foundation announced it would stop accepting donations in bitcoin or other cryptocurrencies—eight years after it had first started taking contributions in bitcoin.</p>
+
+<p>On August 29th, 2023 the District of Columbia Court of Appeals ruled that the U.S. Securities and Exchange Commission was wrong to continue delaying decision on a proposed bitcoin exchange-traded fund application made by Grayscale Investments and ordered the SEC to make a decision.</p>
+
+
+
+<h2>Economics</h2>
+<div>Main article: Economics of bitcoin</div>
+
+<p>Bitcoin is a digital asset designed to work in peer-to-peer transactions as a currency. Bitcoins have three qualities useful in a currency, according to <i>The Economist</i> in January 2015: they are "hard to earn, limited in supply and easy to verify". Per some researchers, as of 2015, bitcoin functions more as a payment system than as a currency.</p>
+
+<p>Economists define money as serving the following three purposes: a store of value, a medium of exchange, and a unit of account. According to <i>The Economist</i> in 2014, bitcoin functions best as a medium of exchange. However, this is debated, and a 2018 assessment by <i>The Economist</i> stated that cryptocurrencies met none of these three criteria.
+In 2014 Yale economist Robert J. Shiller wrote that bitcoin has potential as a unit of account for measuring the relative value of goods, as with Chile's Unidad de Fomento, but that "Bitcoin in its present form... doesn't really solve any sensible economic problem".</p>
+
+<p>According to research by the University of Cambridge, between 2.9 million and 5.8 million unique users used a cryptocurrency wallet in 2017, most of them for bitcoin. The number of users has grown significantly since 2013, when there were 300,000–1.3 million users.</p>
+
+<h3>Acceptance by merchants</h3>
+
+<p>Dish Network, a <i>Fortune</i> 500 subscription TV provider, has been described as the first large company to accept bitcoin, in 2014.</p>
+
+<p>Bloomberg reported that the largest 17 crypto merchant-processing services handled $69 million in June 2018, down from $411 million in September 2017. Bitcoin is "not actually usable" for retail transactions because of high costs and the inability to process chargebacks, according to Nicholas Weaver, a researcher quoted by <i>Bloomberg</i>. High price volatility and transaction fees make paying for small retail purchases with bitcoin impractical, according to economist Kim Grauer. However, bitcoin continues to be used for large-item purchases on sites such as Overstock.com, and for cross-border payments to freelancers and other vendors.</p>
+
+<p>In 2017 and 2018, bitcoin's acceptance among major online retailers included only three of the top 500 U.S. online merchants, down from five in 2016. Reasons for this decline include high transaction fees due to bitcoin's scalability issues and long transaction times.</p>
+
+<p>As of 2018, the overwhelming majority of bitcoin transactions took place on cryptocurrency exchanges, rather than being used in transactions with merchants. Delays processing payments through the blockchain of about ten minutes make bitcoin use very difficult in a retail setting. Prices are not usually quoted in units of bitcoin and many trades involve one, or sometimes two, conversions into conventional currencies. Merchants that do accept bitcoin payments may use payment service providers to perform the conversions.</p>
+
+<h3>Financial institutions</h3>
+<p>Bitcoins can be bought on digital currency exchanges.</p>
+
+<p>Per researchers, "there is little sign of bitcoin use" in international remittances despite high fees charged by banks and Western Union who compete in this market. The <i>South China Morning Post</i>, however, mentions the use of bitcoin by Hong Kong workers to transfer money home.</p>
+
+<p>In 2014, the National Australia Bank closed accounts of businesses with ties to bitcoin, and HSBC refused to serve a hedge fund with links to bitcoin. Australian banks in general have been reported as closing down bank accounts of operators of businesses involving the currency.</p>
+
+<p>On 10 December 2017, the Chicago Board Options Exchange started trading bitcoin futures, followed by the Chicago Mercantile Exchange, which started trading bitcoin futures on 17 December 2017.</p>
+
+<p>In September 2019 the Central Bank of Venezuela, at the request of PDVSA, ran tests to determine if bitcoin and ether could be held in central bank's reserves. The request was motivated by oil company's goal to pay its suppliers.</p>
+
+<p>François R. Velde, Senior Economist at the Chicago Fed, described bitcoin as "an elegant solution to the problem of creating a digital currency". David Andolfatto, Vice President at the Federal Reserve Bank of St. Louis, stated that bitcoin is a threat to the establishment, which he argues is a good thing for the Federal Reserve System and other central banks, because it prompts these institutions to operate sound policies.</p>
+
+<h3>As an investment</h3>
+<p>The Winklevoss twins have purchased bitcoin. In 2013, <i>The Washington Post</i> reported a claim that they owned 1% of all the bitcoins in existence at the time.</p>
+
+<p>Other methods of investment are bitcoin funds. The first regulated bitcoin fund was established in Jersey in July 2014 and approved by the Jersey Financial Services Commission.</p>
+
+<p><i>Forbes</i> named bitcoin the best investment of 2013. In 2014, Bloomberg named bitcoin one of its worst investments of the year. In 2015, bitcoin topped Bloomberg's currency tables.</p>
+
+<p>According to bitinfocharts.com, in 2017, there were 9,272 bitcoin wallets with more than $1 million worth of bitcoins. The exact number of bitcoin millionaires is uncertain as a single person can have more than one bitcoin wallet.</p>
+
+<p>Some major companies invested in bitcoin as a store of value, including SpaceX, Tesla, MicroStrategy.</p>
+
+<h3>Venture capital</h3>
+<p>Peter Thiel's Founders Fund invested US$3 million in BitPay. In 2012, an incubator for bitcoin-focused start-ups was founded by Adam Draper, with financing help from his father, venture capitalist Tim Draper, one of the largest bitcoin holders after winning an auction of ₿30,000, at the time called "mystery buyer". The company's goal is to fund 100 bitcoin businesses within 2–3 years with $10,000 to $20,000 for a 6% stake. Investors also invest in bitcoin mining. According to a 2015 study by Paolo Tasca, bitcoin startups raised almost $1 billion in three years (Q1 2012 – Q1 2015).</p>
+
+<h3>Price and volatility</h3>
+
+<p>The price of bitcoins has gone through cycles of appreciation and depreciation referred to by some as bubbles and busts. In 2011, the value of one bitcoin rapidly rose from about US$0.30 to US$32 before returning to US$2. In the latter half of 2012 and during the 2012–13 Cypriot financial crisis, the bitcoin price began to rise, reaching a high of US$266 on 10 April 2013, before crashing to around US$50. On 29 November 2013, the cost of one bitcoin rose to a peak of US$1,242. In 2014, the price fell sharply, and as of April remained depressed at little more than half 2013 prices. As of August2014 it was under US$600.</p>
+
+<p>According to Mark T. Williams, as of 30September2014, bitcoin has volatility seven times greater than gold, eight times greater than the S&amp;P 500, and 18 times greater than the US dollar. Hodl is a meme created in reference to holding (as opposed to selling) during periods of volatility. Unusual for an asset, bitcoin weekend trading during December 2020 was higher than for weekdays. Hedge funds (using high leverage and derivates) have attempted to use the volatility to profit from downward price movements. At the end of January 2021, such positions were over $1billion, their highest of all time.
+As of 8February2021, the closing price of bitcoin equaled US$44,797.</p>
+
+
+
+<h2>Politics</h2>
+
+<h3>Bitcoin in mainstream politics</h3>
+
+<p>In El Salvador, Nayib Bukele was a presidential candidate from the Grand Alliance for National Unity. After he was elected as the president, the country has approved Bitcoin as a legal tender.</p>
+
+<p>Two presidential candidates for the 2024 United States presidential election, Robert F. Kennedy Jr (Democrate) and Ron DeSantis (Republican), voiced their support for bitcoin. In the previous presidential elections, Andrew Yang was a Democrat candidate strongly supporting bitcoin.</p>
+
+<p>Leaders of several countries voiced their position on bitcoin. Disapproval was voiced by Donald Trump (Republican), Joe Biden (Democrat), Olaf Scholz (SPD).</p>
+
+<p>In the US, cryptocurrency donations to political campaigns have been allowed in federal elections since 2014. Additionally, several US states explicitly allow or prohibit such donations for state-level elections. The 2022 re-election campaign of Colorado governor Jared Polis (Democrat) was officially accepting bitcoin and other cryptocurrencies.</p>
+
+<h3>Associated ideologies</h3>
+<p>Satoshi Nakamoto stated in an essay accompanying bitcoin's code that: "The root problem with conventional currencies is all the trust that's required to make it work. The central bank must be trusted not to debase the currency, but the history of fiat currencies is full of breaches of that trust."</p>
+
+<h4>Austrian economics roots</h4>
+<p>According to the European Central Bank, the decentralization of money offered by bitcoin has its theoretical roots in the Austrian school of economics, especially with Friedrich von Hayek in his book <i>Denationalisation of Money: The Argument Refined</i>, in which Hayek advocates a complete free market in the production, distribution and management of money to end the monopoly of central banks.</p>
+
+<h4>Anarchism and libertarianism</h4>
+<div>Further information: Crypto-anarchism</div>
+<p>According to <i>The New York Times</i>, libertarians and anarchists were attracted to the philosophical idea behind bitcoin. Early bitcoin supporter Roger Ver said: "At first, almost everyone who got involved did so for philosophical reasons. We saw bitcoin as a great idea, as a way to separate money from the state." <i>The Economist</i> describes bitcoin as "a techno-anarchist project to create an online version of cash, a way for people to transact without the possibility of interference from malicious governments or banks". Economist Paul Krugman argues that cryptocurrencies like bitcoin are "something of a cult" based in "paranoid fantasies" of government power.</p>
+
+<p> Nigel Dodd argues in <i>The Social Life of Bitcoin</i> that the essence of the bitcoin ideology is to remove money from social, as well as governmental, control. Dodd quotes a YouTube video, with Roger Ver, Jeff Berwick, Charlie Shrem, Andreas Antonopoulos, Gavin Wood, Trace Meyer and other proponents of bitcoin reading <i>The Declaration of Bitcoin's Independence</i>. The declaration includes a message of crypto-anarchism with the words: "Bitcoin is inherently anti-establishment, anti-system, and anti-state. Bitcoin undermines governments and disrupts institutions because bitcoin is fundamentally humanitarian."</p>
+
+<p>David Golumbia says that the ideas influencing bitcoin advocates emerge from right-wing extremist movements such as the Liberty Lobby and the John Birch Society and their anti-Central Bank rhetoric, or, more recently, Ron Paul and Tea Party-style libertarianism. Steve Bannon, who owns a "good stake" in bitcoin, considers it to be "disruptive populism. It takes control back from central authorities. It's revolutionary."</p>
+
+<p>A 2014 study of Google Trends data found correlations between bitcoin-related searches and ones related to computer programming and illegal activity, but not libertarianism or investment topics.</p>
+
+
+
+<h2>Legal status, tax and regulation</h2>
+<div>Further information: Legality of bitcoin by country or territory</div>
+
+<p>The legal status of bitcoin varies substantially from country to country and is still undefined or changing in many of them. Regulations and bans that apply to bitcoin probably extend to similar cryptocurrency systems. Because of its decentralized nature and its trading on online exchanges located in many countries, regulation of bitcoin has been difficult. However, the use of bitcoin can be criminalized, and shutting down exchanges and the peer-to-peer economy in a given country would constitute a de facto ban.</p>
+
+<p>According to the Library of Congress, an "absolute ban" on trading or using cryptocurrencies applies in nine countries: Algeria, Bolivia, Egypt, Iraq, Morocco, Nepal, Pakistan, Vietnam, and the United Arab Emirates. An "implicit ban" applies in another 42 countries, which include Bahrain, Bangladesh, China, Colombia, the Dominican Republic, Indonesia, Kuwait, Lesotho, Lithuania, Macau, Oman, Qatar, Saudi Arabia and Taiwan. On 22 October 2015, the European Court of Justice ruled that bitcoin transactions would be exempt from Value Added Tax.</p>
+
+<h3>Regulatory warnings</h3>
+<p>The U.S. Commodity Futures Trading Commission has issued four "Customer Advisories" for bitcoin and related investments. A July 2018 warning emphasized that trading in any cryptocurrency is often speculative, and there is a risk of theft from hacking, and fraud. In May 2014 the U.S. Securities and Exchange Commission warned that investments involving bitcoin might have high rates of fraud, and that investors might be solicited on social media sites. An earlier "Investor Alert" warned about the use of bitcoin in Ponzi schemes.</p>
+
+<p>The European Banking Authority issued a warning in 2013 focusing on the lack of regulation of bitcoin, the chance that exchanges would be hacked, the volatility of bitcoin's price, and general fraud. FINRA and the North American Securities Administrators Association have both issued investor alerts about bitcoin.</p>
+
+<h3>Price manipulation investigation</h3>
+<p>An official investigation into bitcoin traders was reported in May 2018. The U.S. Justice Department launched an investigation into possible price manipulation, including the techniques of spoofing and wash trades.</p>
+
+<p>The U.S. federal investigation was prompted by concerns of possible manipulation during futures settlement dates. The final settlement price of CME bitcoin futures is determined by prices on four exchanges, Bitstamp, Coinbase, itBit and Kraken. Following the first delivery date in January 2018, the CME requested extensive detailed trading information but several of the exchanges refused to provide it and later provided only limited data. The Commodity Futures Trading Commission then subpoenaed the data from the exchanges.</p>
+
+<p>State and provincial securities regulators, coordinated through the North American Securities Administrators Association, are investigating "bitcoin scams" and ICOs in 40 jurisdictions.</p>
+
+<p>Academic research published in the <i>Journal of Monetary Economics</i> concluded that price manipulation occurred during the Mt Gox bitcoin theft and that the market remains vulnerable to manipulation. The history of hacks, fraud and theft involving bitcoin dates back to at least 2011.</p>
+
+<p>Research by John M. Griffin and Amin Shams in 2018 suggests that trading associated with increases in the amount of the Tether cryptocurrency and associated trading at the Bitfinex exchange account for about half of the price increase in bitcoin in late 2017.</p>
+
+<p>J.L. van der Velde, CEO of both Bitfinex and Tether, denied the claims of price manipulation: "Bitfinex nor Tether is, or has ever, engaged in any sort of market or price manipulation. Tether issuances cannot be used to prop up the price of bitcoin or any other coin/token on Bitfinex."</p>
+
+<h3>Use by governments</h3>
+<div>See also: Legality of cryptocurrency by country or territory and Bitcoin in El Salvador</div>
+<p>In June 2021, the Legislative Assembly of El Salvador voted legislation to make bitcoin legal tender in El Salvador, alongside the US dollar. The law took effect on 7 September, making El Salvador the first country to do so. The implementation of the law has been met with protests and calls to make the currency optional, not compulsory. According to a survey by the Central American University, the majority of Salvadorans disagreed with using cryptocurrency as a legal tender, and a survey by the Center for Citizen Studies (CEC) showed that 91% of the country prefers the dollar over bitcoin. As of October 2021, the country's government was exploring mining bitcoin with geothermal power and issuing bonds tied to bitcoin. According to a survey done by the Central American University 100 days after the Bitcoin Law came into force: 34.8% of the population has no confidence in bitcoin, 35.3% has little confidence, 13.2% has some confidence, and 14.1% has a lot of confidence. 56.6% of respondents have downloaded the government bitcoin wallet; among them 62.9% has never used it or only once whereas 36.3% uses bitcoin at least once a month. In 2022, the International Monetary Fund (IMF) urged El Salvador to reverse its decision after bitcoin lost half its value in two months. The IMF also warned that it would be difficult to get a loan from the institution. According to one report in 2022, 80% of businesses refused to accept bitcoin despite being legally required to.</p>
+
+<p>In April 2022, the Central African Republic (CAR) adopted Bitcoin as legal tender alongside the CFA franc. After El Salvador, CAR was the second country to do so. In April 2023, CAR agreed to repeal the adoption of Bitcoin as legal tender.</p>
+
+<p>Ukraine accepted donations in cryptocurrency, including bitcoin, to fund the resistance against the Russian invasion. According to officials, 40% of the Ukraine's military suppliers are willing to accept cryptocurrencies without converting them into euros or dollars. In March 2022, Ukraine has passed a law that creates a legal framework for the cryptocurrency industry in the country, including judicial protection of the right to own virtual assets. In the same month, a cryptocurrency exchange was integrated into the Ukrainian e-governance service Diia.</p>
+
+<p>Iran announced pending regulations that would require bitcoin miners in Iran to sell bitcoin to the Central Bank of Iran, and the central bank would use it for imports. Iran, as of October 2020, had issued over 1,000 bitcoin mining licenses. The Iranian government initially took a stance against cryptocurrency, but later changed it after seeing that digital currency could be used to circumvent sanctions. The US Office of Foreign Assets Control listed two Iranians and their bitcoin addresses as part of its Specially Designated Nationals and Blocked Persons List for their role in the 2018 Atlanta cyberattack whose ransom was paid in bitcoin.</p>
+
+<p>Some constituent states accept tax payments in bitcoin, including Colorado (US) and Zug (Switzerland).</p>
+
+
+
+<h2>Economic and legal concerns</h2>
+<div>Further information: Cryptocurrency bubble and Economics of bitcoin</div>
+<p>Bitcoin, along with other cryptocurrencies, has been described as an economic bubble by at least eight Nobel Memorial Prize in Economic Sciences laureates, including Robert Shiller, Joseph Stiglitz, and Richard Thaler. Economist and columnist Paul Krugman has described bitcoin as "a bubble wrapped in techno-mysticism inside a cocoon of libertarian ideology", economist Nouriel Roubini of New York University has called bitcoin the "mother of all bubbles", and University of Chicago economist James Heckman has compared it to the 17th-century tulip mania. Another recipient of the prize, Robert Shiller, argues that bitcoin is not a bubble, and is in a period of expansion that he referred to as an "epidemic." Shiller describes a new economic framework for analyzing bitcoin, gold, and similar assets. The framework stipulates that the popularity of such assets is driven by a contagious spread of ideas which evolve over time and spread in a manner analogous to biological epidemic disease. In particular, Shiller describes one of the societal mechanisms that sustain the popularity of bitcoin as follows: "[a Bitcoin] narrative, enhanced by regular news of exciting fluctuations in the price of Bitcoins, gives them value. It generates fluctuations in Bitcoin prices in terms of national currencies, and these fluctuations thrive on and produce contagious narratives."</p>
+
+<p>Journalists, economists, investors, and the central bank of Estonia have voiced concerns that bitcoin is a Ponzi scheme. Eric Posner, a law professor at the University of Chicago, states that "a real Ponzi scheme takes fraud; bitcoin, by contrast, seems more like a collective delusion." A 2014 report by the World Bank concluded that bitcoin was not a deliberate Ponzi scheme. Also in 2014, the Swiss Federal Council examined concerns that bitcoin might be a pyramid scheme, and concluded that "since in the case of bitcoin the typical promises of profits are lacking, it cannot be assumed that bitcoin is a pyramid scheme."</p>
+
+<p>Bitcoin wealth is highly concentrated, with 0.01% holding 27% of in-circulation currency, as of 2021.</p>
+
+<h3>Use in illegal transactions</h3>
+<div>Further information: Cryptocurrency and crime and Bitcoin network §Alleged criminal activity</div>
+<p>The use of bitcoin by criminals has attracted the attention of financial regulators, legislative bodies, law enforcement, and the media.</p>
+
+<p>Several news outlets have asserted that the popularity of bitcoins hinges on the ability to use them to purchase illegal goods. Nobel-prize winning economist Joseph Stiglitz says that bitcoin's anonymity encourages money laundering and other crimes.</p>
+
+
+
+<h2>Environmental effects</h2>
+<div><div>This section is an excerpt from Environmental effects of bitcoin.[edit]</div><div>
+
+The process of bitcoin mining, by which bitcoins are created and transactions are finalized, is a time-consuming and energy-consuming process that results in carbon emissions and electronic waste. The amount of electrical energy and electronic waste generated by bitcoin mining is often compared with small countries like Ireland or the Netherlands, and the pollution created in this process has a negative effect on Earth's climate and natural environment because the electricity used is at least in part generated through fossil fuels. As of 2022, bitcoin mining is estimated to be responsible for 0.1% of world greenhouse gas emissions. Estimate on how much energy each individual bitcoin transaction consumes vary, with one claiming approximately 700 kWh, not including energy used in cooling. An August 2023 study found that bitcoin mining represented about 0.38% of global electricity consumption. Bitcoins are usually mined on specialized computer equipment, some of which has a short useful life expectancy. As of 2021, bitcoin mining was estimated to produce 30,000 tonnes of annual e-waste, which is comparable to the e-waste production of the Netherlands.
+</div></div>
+
+
+
+<h2>Software implementation</h2>
+
+
+<p><i>Bitcoin Core</i> is free and open-source software that serves as a bitcoin node (the set of which form the bitcoin network) and provides a bitcoin wallet which fully verifies payments. It is considered to be bitcoin's reference implementation. Initially, the software was published by Satoshi Nakamoto under the name "Bitcoin", and later renamed to "Bitcoin Core" to distinguish it from the network. It is also known as the <i>Satoshi client</i>.</p>
+
+<p>In 2019, MIT announced donations of $900,000 would be used to fund the Digital Currency Initiative, which would mainly go to developers of Bitcoin Core and related software.</p>
+
+<p>Bitcoin Core includes a transaction verification engine and connects to the bitcoin network as a full node. Moreover, a cryptocurrency wallet, which can be used to transfer funds, is included by default.  The wallet allows for the sending and receiving of bitcoins. It does not facilitate the buying or selling of bitcoin. It allows users to generate QR codes to receive payment.</p>
+
+<p>The software validates the entire blockchain, which includes all bitcoin transactions ever. This distributed ledger which has reached more than 235 gigabytes in size as of Jan 2019, must be downloaded or synchronized before full participation of the client may occur. Although the complete blockchain is not needed all at once since it is possible to run in pruning mode. A command line-based daemon with a JSON-RPC interface, bitcoind, is bundled with Bitcoin Core. It also provides access to testnet, a global testing environment that imitates the bitcoin main network using an alternative blockchain where valueless "test bitcoins" are used. Regtest or Regression Test Mode creates a private blockchain which is used as a local testing environment. Finally, bitcoin-cli, a simple program which allows users to send RPC commands to bitcoind, is also included.</p>
+
+<p>Checkpoints which have been hard coded into the client are used only to prevent Denial of Service attacks against nodes which are initially syncing the chain. For this reason the checkpoints included are only as of several years ago. A one megabyte block size limit was added in 2010 by Satoshi Nakamoto. This limited the maximum network capacity to about three transactions per second. Since then, network capacity has been improved incrementally both through block size increases and improved wallet behavior. A network-wide alert system was originally included by Satoshi Nakamoto as a way of informing users of important news regarding bitcoin. In November 2016 this system was retired.</p>
+
+<p>Bitcoin Core includes a scripting language inspired by Forth that can define transactions and specify parameters. ScriptPubKey is used to "lock" transactions based on a set of future conditions. scriptSig is used to meet these conditions or "unlock" a transaction. Operations on the data are performed by various opcodes. Two stacks are used – main and alt. Looping is forbidden.</p>
+
+<p>Bitcoin Core uses OpenTimestamps to timestamp merge commits.</p>
+
+<p>The original creator of the bitcoin client has described their approach to the software's authorship as it being written first to prove to themselves that the concept of purely peer-to-peer electronic cash was valid and that a paper with solutions could be written. The lead developer is Wladimir J. van der Laan, who took over the role on 8 April 2014. Gavin Andresen was the former lead maintainer for the software client. Andresen left the role of lead developer for bitcoin to work on the strategic development of its technology. Bitcoin Core in 2015 was central to a dispute with Bitcoin XT, a competing client that sought to increase the blocksize. Over a dozen different companies and industry groups fund the development of Bitcoin Core.</p>
+
+
+
+<h2>In popular culture</h2>
+
+<h3>Term "HODL"</h3>
+<p>Hodl (/ˈhɒdəl/ <i>HOD-əl</i>; often written <b>HODL</b>) is slang in the cryptocurrency community for holding a cryptocurrency rather than selling it. A person who does this is known as a Hodler. It originated in a December 2013 post on the Bitcoin Forum message board by an apparently inebriated user who posted with a typo in the subject, "I AM HODLING." It is often humorously suggested to be a backronym to "hold on for dear life". In 2017, <i>Quartz</i> listed it as one of the essential slang terms in bitcoin culture, and described it as a stance, "to stay invested in bitcoin and not to capitulate in the face of plunging prices." <i>TheStreet.com</i> referred to it as the "favorite mantra" of bitcoin holders. Bloomberg News referred to it as a mantra for holders during market routs.</p>
+
+<h3>Literature</h3>
+<p>In Charles Stross's 2013 science fiction novel <i>Neptune's Brood</i>, the universal interstellar payment system is known as "bitcoin" and operates using cryptography. Stross later blogged that the reference was intentional, saying "I wrote <i>Neptune's Brood</i> in 2011. Bitcoin was obscure back then, and I figured had just enough name recognition to be a useful term for an interstellar currency: it'd clue people in that it was a networked digital currency."</p>
+
+<h3>Film</h3>
+<p>The 2014 documentary <i>The Rise and Rise of Bitcoin</i> portrays the diversity of motives behind the use of bitcoin by interviewing people who use it. These include a computer programmer and a drug dealer. The 2016 documentary <i>Banking on Bitcoin</i> is an introduction to the beginnings of bitcoin and the ideas behind cryptocurrency today.</p>
+
+<h3>Academia</h3>
+<p>In September 2015, the establishment of the peer-reviewed academic journal <i>Ledger</i> (ISSN2379-5980) was announced. It covers studies of cryptocurrencies and related technologies, and is published by the University of Pittsburgh. The journal encourages authors to digitally sign a file hash of submitted papers, which will then be timestamped into the bitcoin blockchain. Authors are also asked to include a personal bitcoin address in the first page of their papers.</p>
+
+<p>In July 2019 Cambridge University Judge Business School launched the Cambridge Bitcoin Electricity Consumption Index (CBECI) in order to study Bitcoin’s energy usage through an academic, data-driven lens.</p>
+
+<h3>Visual art</h3>
+<p>Nelson Saiers installed a 9-foot inflatable rat covered with bitcoin references and code in front of the Federal Reserve as a homage to Satoshi Nakamoto and protests in New York City.</p>
+

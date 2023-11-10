@@ -4,7 +4,12 @@ import { preset } from '@supastack/ui-styles/tailwind';
 import type { Config } from 'tailwindcss';
 
 export default {
-  presets: [preset()],
+  presets: [
+    preset({
+      // Handling it custom
+      theme: false,
+    }),
+  ],
 
   content: [
     'app/**/*.{ts,tsx}',

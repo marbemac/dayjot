@@ -1,4 +1,6 @@
+import Highlight from '@tiptap/extension-highlight';
 import Image from '@tiptap/extension-image';
+import Link from '@tiptap/extension-link';
 import Placeholder from '@tiptap/extension-placeholder';
 import Table from '@tiptap/extension-table';
 import TableCell from '@tiptap/extension-table-cell';
@@ -20,6 +22,8 @@ export const initExtensions = () => [
 
   Image.configure(),
   Typography.configure(),
+  Link.configure(),
+  Highlight.configure(),
 
   TaskList.configure(),
   TaskItem.configure(),

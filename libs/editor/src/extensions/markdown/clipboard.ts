@@ -133,12 +133,12 @@ export const MarkdownClipboard = Extension.create<MarkdownClipboardOpts>({
               event.preventDefault();
 
               // get pasted content as slice
-              // const parsed = (this.editor.storage[MARKDOWN_KEY] as MarkdownStorage).parser.processSync(text)
-              //   .value as string;
               const parsed = (this.editor.storage[MARKDOWN_KEY] as MarkdownStorage).parser.render(text);
               if (!parsed) {
                 return false;
               }
+
+              console.debug('Editor.paste markdown', parsed);
 
               const slice = DOMParser.fromSchema(this.editor.schema).parseSlice(elementFromString(parsed), {
                 preserveWhitespace: true,

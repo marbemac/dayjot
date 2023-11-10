@@ -1,0 +1,131 @@
+<h1>Windows Server 2016</h1>
+
+<div>Eighth version of Windows Server, released in 2016</div>
+
+
+
+<p><b>Windows Server 2016</b> is the eighth release of the Windows Server operating system developed by Microsoft as part of the Windows NT family of operating systems. It was developed alongside Windows 10 and is the successor to the Windows 8.1-based Windows Server 2012 R2. The first early preview version (Technical Preview) became available on October 1, 2014 together with the first technical preview of System Center. Windows Server 2016 was released on September 26, 2016 at Microsoft's Ignite conference and broadly released for retail sale on October 12, 2016. It was succeeded by Windows Server 2019  and the Windows Server Semi-Annual Channel.</p>
+
+
+
+<h2>Features</h2>
+<p>Windows Server 2016 has a variety of new features, including</p>
+<ul><li>Active Directory Federation Services: It is possible to configure AD FS to authenticate users stored in non-AD directories, such as X.500 compliant Lightweight Directory Access Protocol (LDAP) directories and SQL databases.</li>
+<li>Windows Defender: Windows Server Antimalware is installed and enabled by default without the GUI, which is an installable Windows feature.</li>
+<li>Remote Desktop Services: Support for OpenGL 4.4 and OpenCL 1.1, performance and stability improvements; MultiPoint Services role (see Windows MultiPoint Server)</li>
+<li>Storage Services: Central Storage QoS Policies; Storage Replicas (storage-agnostic, block-level, volume-based, synchronous and asynchronous replication using SMB3 between servers for disaster recovery). Storage Replica replicates blocks instead of files; files can be in use. It's not multi-master, not one-to-many and not transitive. It periodically replicates snapshots, and the replication direction can be changed.</li>
+<li>Failover Clustering: Cluster operating system rolling upgrade, Storage Replicas</li>
+<li>Web Application Proxy: Preauthentication for HTTP Basic application publishing, wildcard domain publishing of applications, HTTP to HTTPS redirection, Propagation of client IP address to backend applications</li>
+<li>IIS 10: Support for HTTP/2</li>
+<li>Windows PowerShell 5.1</li>
+<li>Windows Server Containers </li></ul>
+
+<h3>Networking features</h3>
+<ul><li>DHCP: As Network Access Protection was deprecated in Windows Server 2012 R2, in Windows Server 2016 the DHCP role no longer supports NAP</li>
+<li>DNS: 
+<ul><li>DNS client: Service binding – enhanced support for computers with more than one network interface</li>
+<li>DNS Server: DNS policies, new DDS record types (TLSA, SPF, and unknown records), new PowerShell cmdlets and parameters</li></ul></li>
+<li>Windows Server Gateway now supports Generic Routing Encapsulation (GRE) tunnels</li>
+<li>IP address management (IPAM): Support for /31, /32, and /128 subnets; discovery of file-based, domain-joined DNS servers; new DNS functions; better integration of DNS, DHCP, and IP Address (DDI) Management</li>
+<li>Network Controller: A new server role to configure, manage, monitor, and troubleshoot virtual and physical network devices and services in the datacentre</li>
+<li>Hyper-V Network virtualization: Programmable Hyper-V switch (a new building block of Microsoft's software-defined networking solution); VXLAN encapsulation support; Microsoft Software Load Balancer interoperability; better IEEE Ethernet standard compliance.</li></ul>
+
+<h3>Hyper-V</h3>
+<ul><li>Rolling Hyper-V cluster update: Unlike upgrading clusters from Windows 2008 R2 to 2012 level, Windows Server 2016 cluster nodes can be added to a Hyper-V Cluster with nodes running Windows Server 2012 R2. The cluster continues to function at a Windows Server 2012 R2 feature level until all of the nodes in the cluster have been upgraded and the cluster functional level has been upgraded.</li>
+<li>Storage quality of service (QoS) to centrally monitor end-to-end storage performance and create policies using Hyper-V and Scale-Out File Servers</li>
+<li>New, more efficient binary virtual machine configuration format (.VMCX extension for virtual machine configuration data and the .VMRS extension for runtime state data)</li>
+<li>Production checkpoints</li>
+<li>Hyper-V Manager: Alternate credentials support, down-level management, WS-Management protocol</li>
+<li>Integration services for Windows guests distributed through Windows Update</li>
+<li>Hot add and remove for network adapters (for generation 2 virtual machines) and memory (for generation 1 and generation 2 virtual machines)</li>
+<li>Linux secure boot</li>
+<li>Connected Standby compatibility</li>
+<li>Storage Resiliency feature of Hyper-V is formed for detecting transitory loss of connectivity to VM storage. VMs will be paused until connectivity is re-established.</li>
+<li>RDMA compatible Virtual Switch</li></ul>
+
+<h3>Nano Server</h3>
+<p>Microsoft announced a new installation option, Nano Server, which offers a minimal-footprint headless version of Windows Server. It excludes the graphical user interface, WoW64 (support for 32-bit software) and Windows Installer. It does not support console login, either locally or via Remote Desktop Connection. All management is performed remotely via Windows Management Instrumentation (WMI), Windows PowerShell and Remote Server Management Tools (a collection of web-based GUI and command line tools). However, in Technical Preview 5, Microsoft has re-added the ability to administer Nano Server locally through PowerShell.
+According to Microsoft engineer Jeffrey Snover, Nano Server has 93% lower VHD size, 92% fewer critical security advisories, and 80% fewer reboots than Windows Server.</p>
+
+<p>Nano Server is only available to Microsoft Software Assurance customers and on cloud computing platforms such as Microsoft Azure and Amazon Web Services.</p>
+
+<p>Starting with the new feature release of Windows Server version 1709, Nano Server can only be installed inside a container host.</p>
+
+
+
+<h2>Development</h2>
+<p>Microsoft has been reorganized by Satya Nadella, putting the Server and System Center teams together. Previously, the Server team was more closely aligned with the Windows client team. The Azure team is also working closely with the Server team.</p>
+
+<p>In March 2017, Microsoft demonstrated an internal version of Server 2016 running on the ARMv8-A architecture. It was reported that Microsoft was working with Qualcomm Centriq and Cavium ThunderX2 chips. According to James Vincent of <i>The Verge</i>, this decision endangers Intel's dominance of the server CPU market. However, later inquiry from Microsoft revealed that this version of Windows Server is only for internal use and only impacts subscribers of Microsoft Azure service.</p>
+
+<h3>Preview releases</h3>
+<div>Main article: Windows Insider</div>
+<p>A public beta version of Windows Server 2016 (then still called <i>vNext</i>) branded as "Windows Server Technical Preview" was released on October 1, 2014; the technical preview builds are aimed toward enterprise users. The first Technical Preview was first set to expire on April 15, 2015 but Microsoft later released a tool to extend the expiry date, to last until the second tech preview of the OS in May 2015. The second beta version, "Technical Preview 2", was released on May 4, 2015. Third preview version, "Technical Preview 3" was released on August 19, 2015. "Technical Preview 4" was released on November 19, 2015. "Technical Preview 5" was released on April 27, 2016.</p>
+
+<p>Windows Server 2016 Insider Preview Build 16237 was released to Windows Insiders on July 13, 2017.</p>
+
+<h3>Public release</h3>
+<p>Windows Server 2016 was officially released at Microsoft's Ignite Conference on September 26, 2016. Unlike its predecessor, Windows Server 2016 is licensed by the number of CPU cores rather than number of CPU sockets—a change that has similarly been adopted by BizTalk Server 2013 and SQL Server 2014.  The new licensing structure that has been adopted by Windows Server 2016 has also moved away from the Windows Server 2012/2012R2 CPU socket licensing model in that now the amount of cores covered under one license is limited.  Windows Server 2016 Standard and Datacenter core licensing now covers a minimum of 8 core licenses for each physical processor and a minimum of 16 core licenses for each server.  Core licenses are sold in packs of two with Standard Edition providing the familiar rights to run 2 virtualized OS environments.  If the server goes over 16 core licenses for a 2 processor server additional licenses will now be required with Windows Server 2016.</p>
+
+
+
+<h2>Version history</h2>
+<h3>Technical Preview</h3>
+<p>Windows Server 2016 Technical Preview, released on October 1, 2014, was the first beta version of the operating system made publicly available. Its version number was 6.4.9841.</p>
+
+<h3>Technical Preview 2</h3>
+<p>Windows Server 2016 Technical Preview 2 was made available on May 4, 2015. Its version number was 10.0.10074. (A similar jump in the most significant part of the version number from 6 to 10 is seen in Windows 10.) Highlights of this version include:</p>
+<ul><li>Nano Server installation option</li>
+<li>Hyper-V: hot add and remove memory and NIC; resilient virtual machines to keep running even when their cluster fabric fails</li>
+<li>Rolling upgrades for Hyper-V and Storage clusters</li>
+<li>Networking: Converged NIC across tenant and RDMA traffic; PacketDirect on 40G</li>
+<li>Storage: Virtual Machine Storage Path resiliency; Storage Spaces Direct to aggregate Storage Spaces across multiple servers; Storage Replica</li>
+<li>Security: Host Guardian Service, helping to keep trust and isolation boundary between the cloud infrastructure and guest OS layers; Just Enough Administration, restricting users to perform only specific tasks</li>
+<li>Management: PowerShell Desired State Configuration; PowerShell Package Manager; Windows Management Framework 5.0 April Preview and DSC Resource Kit</li>
+<li>Other: Conditional access control in AD FS; application authentication support for OpenID Connect and OAuth; full OpenGL support with RDS for VDI; Server-side support for HTTP/2, including header compression, connection multiplexing and server push</li>
+<li>Installation options: Minimal Server Interface was made default and renamed the Server installation option to “Server with local admin tools”.</li></ul>
+
+<h3>Technical Preview 3</h3>
+<p>The third technical preview of Windows Server 2016 was made available on August 19, 2015. Its version number was 10.0.10514. Highlights of this version include:</p>
+<ul><li>Windows Server Containers</li>
+<li>Active Directory Federation Services (AD FS): authentication of users stored in Lightweight Directory Access Protocol (LDAP) directories</li>
+<li>Installation options: The Server installation option had been renamed to “Server with Desktop Experience” having the shell and Desktop Experience installed by default. Due to the structural changes required to deliver the Desktop Experience on Server, it is no longer possible to convert from Server with Desktop Experience to Server Core or to convert Server Core up to Server with Desktop Experience.</li></ul>
+
+<h3>Technical Preview 4</h3>
+<p>The fourth technical preview of the operating system was made available on November 19, 2015, one year and one month after the initial technical preview. Its version number was 10.0.10586, based on Windows 10 version 1511. Its highlights include:</p>
+<ul><li>Nano Server supports the DNS Server and IIS server roles, as well as MPIO, VMM, SCOM, DSC push mode, DCB, Windows Server Installer, and the WMI provider for Windows Update. Its Recovery Console supports editing and repairing the network configuration. A Windows PowerShell module is now available to simplify building Nano Server images.</li>
+<li>Hyper-V Containers encapsulates each container in a light weight virtual machine.</li></ul>
+
+<h3>Technical Preview 5</h3>
+<p>The last technical preview of Windows Server 2016 was made available on April 27, 2016. Its version number was 10.0.14300. Its highlights include:</p>
+<ul><li>Mostly general refinements. Greater time accuracy in both physical and virtual machines</li>
+<li>Container support adds performance improvements, simplified network management, and support for Windows containers on Windows 10</li>
+<li>Nano Server: an updated module for building Nano Server images, including more separation of physical host and guest virtual machine functionality as well as support for different Windows Server editions. Improvements to the Recovery Console, including separation of inbound and outbound firewall rules as well as the ability to repair configuration of WinRM</li>
+<li>Networking: traffic to new or existing virtual appliances can now be both mirrored and routed. With a distributed firewall and Network security groups, this enables dynamically segmented and secure workloads in a manner similar to Azure. One can deploy and manage the entire Software-defined networking (SDN) stack using System Center Virtual Machine Manager. Docker can be used to manage Windows Server container networking, and associate SDN policies not only with virtual machines but containers as well</li>
+<li>Remote Desktop Services: a highly available RDS deployment can leverage Azure SQL Database for the RD Connection Brokers in high availability mode</li>
+<li>Management: ability to run PowerShell.exe locally on Nano Server (no longer remote only), new Local Users &amp; Groups cmdlets to replace the GUI, added PowerShell debugging support, and added support in Nano Server for security logging &amp; transcription and JEA (Just Enough Administration)</li>
+<li>Shielded Virtual Machines: 
+<ul><li>New "Encryption Supported" mode that offers more protections than for an ordinary virtual machine, but less than "Shielded" mode, while still supporting vTPM, disk encryption, Live Migration traffic encryption, and other features, including direct fabric administration conveniences such as virtual machine console connections and Powershell Direct</li>
+<li>Full support for converting existing non-shielded Generation 2 virtual machines to shielded virtual machines, including automated disk encryption</li>
+<li>Shielded virtual machines are compatible with Hyper-V Replica</li></ul></li></ul>
+
+<h3>Release to manufacturing</h3>
+<p>Windows Server 2016 was released to manufacturing on September 26, 2016, bearing the version number of 10.0.14393 (same as Windows 10 Anniversary Update). Microsoft added the following final touches:</p>
+
+<ul><li>Available for a 180-day evaluation</li>
+<li>Fixed Start menu corruptions</li>
+<li>Improved user experience and performance</li>
+<li>Windows Store apps have been removed</li>
+<li>Login screen now has a background</li>
+<li>The Windows Hello feature has been added</li>
+<li>Dark theme has been added</li></ul>
+
+
+
+<h2>Semi-Annual Channel releases</h2>
+<h3>Version 1709</h3>
+<p><b>Windows Server, version 1709</b> (version shared with Windows 10 Fall Creators Update) was released on October 17, 2017. The release has dropped the Windows Server 2016 name and is just called Windows Server by Microsoft. It is offered to the Microsoft Software Assurance customers who have an active Windows Server 2016 license and has the same system requirements. This is the first Windows Server product to fall under the "Semi-Annual Channel" (SAC) release cadence. This product only features the Server Core and the Nano Server modes. Of the two, only the Server Core mode of the OS can be installed on a bare system. The Nano Server mode is only available as an operating system container.</p>
+
+<h3>Version 1803</h3>
+<p><b>Windows Server, version 1803</b> (version shared with Windows 10 April 2018 Update) is the second Semi-Annual Channel release of Windows Server. It is also the final version to be branched off the Server 2016 codebase, as the next release shares the version number 1809 with Windows Server 2019.</p>
+

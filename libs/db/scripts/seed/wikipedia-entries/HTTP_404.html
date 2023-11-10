@@ -1,0 +1,128 @@
+<h1>HTTP 404</h1>
+
+<div>Internet error message</div>
+<div>"404 Not Found" redirects here. For the TV episode, see 404 Not Found (<i>Mr. Robot</i>).</div>
+
+
+
+<p>
+In computer network communications, the <b>HTTP 404</b>, <b>404 not found</b>, <b>404</b>, <b>404 error</b>, <b>page not found</b>, or <b>file not found</b> error message is a hypertext transfer protocol (HTTP) standard response code,  to indicate that the browser was able to communicate with a given server, but the server could not find what was requested. The error may also be used when a server does not wish to disclose whether it has the requested information.</p>
+
+<p>The website hosting server will typically generate a "404 Not Found" web page when a user attempts to follow a broken or dead link; hence the 404 error is one of the most recognizable errors encountered on the World Wide Web.</p>
+
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/5/53/Wikipedia_404_Page.png/220px-Wikipedia_404_Page.png" height="84" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/5/53/Wikipedia_404_Page.png/330px-Wikipedia_404_Page.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/5/53/Wikipedia_404_Page.png/440px-Wikipedia_404_Page.png 2x" />English Wikipedia's 404 Page
+
+
+
+<h2>Overview</h2>
+
+<p>When communicating via HTTP, a server is required to respond to a request, such as a web browser request for a web page, with a numeric response code and an optional, mandatory, or disallowed (based upon the status code) message. In code 404, the first digit indicates a client error, such as a mistyped Uniform Resource Locator (URL). The following two digits indicate the specific error encountered. HTTP's use of three-digit codes is similar to the use of such codes in earlier protocols such as FTP and NNTP. At the HTTP level, a 404 response code is followed by a human-readable "reason phrase". The HTTP specification suggests the phrase "Not Found" and many web servers by default issue an HTML page that includes both the 404 code and the "Not Found" phrase.</p>
+
+<p>A 404 error is often returned when pages have been moved or deleted. In the first case, it is better to employ URL mapping or URL redirection by returning a 301 Moved Permanently response, which can be configured in most server configuration files, or through URL rewriting; in the second case, a 410 Gone should be returned. Because these two options require special server configuration, most websites do not make use of them.</p>
+
+<p>404 errors should not be confused with DNS errors, which appear when the given URL refers to a server name that does not exist. A 404 error indicates that the server itself was found, but that the server was not able to retrieve the requested page.</p>
+
+
+
+<h2>History</h2>
+
+<p>The origin of the 404 error code dates back to the early days of the World Wide Web. In 1992, Tim Berners-Lee, the inventor of the Web, and his team at CERN, the European Organization for Nuclear Research, created the first web server software, called CERN httpd. This software used a simple file system to store and retrieve web pages, and it assigned a three-digit number to each type of request and response. The number 404 was chosen to indicate that the requested file was not found on the server.</p>
+
+<p>The term "404 Not Found" was coined by Berners-Lee himself, who explained in a 1998 interview that he wanted to make the error message "slightly apologetic". He also said that he considered using "400 Bad Request" instead, but decided that it was too vague and technical.</p>
+
+<p>The first documented case of a 404 error appearing on a web page was in 1993, when a user tried to access a page about the Mosaic web browser on the NCSA website. The page had been moved to a different location, but the link had not been updated. The user reported the error to the NCSA team, who fixed the link and added a humorous message to their 404 page: "We're sorry, but the document you requested is not here. Maybe you should try someplace else."</p>
+
+<p>Since then, 404 errors have become one of the most common and recognizable errors on the Web. Many websites have customized their 404 pages with creative designs, messages, or features to entertain or assist their visitors. For example, Google's 404 page features a broken robot and a link to its homepage, while GitHub's 404 page shows a random image of a parallax star field and a link to its status page.  Some websites have also used their 404 pages to showcase their brand personality, humor, or social causes. For instance, Lego's 404 page shows the Lego minifigure Emmet along with a humorous message, while Amazon's 404 page displays the image of a dog,and Peugeot shows a picture of its 404 model.</p>
+
+
+
+<h2>Soft 404 errors</h2>
+
+
+<p>Some websites report a "not found" error by returning a standard web page with a "200 OK" response code, falsely reporting that the page loaded properly; this is known as a <i>soft 404</i>. The term "soft 404" was introduced in 2004 by Ziv Bar-Yossef <i>et al</i>.</p>
+
+<p>Soft 404s are problematic for automated methods of discovering whether a link is broken. Some search engines, like Yahoo and Google, use automated processes to detect soft 404s. Soft 404s can occur as a result of configuration errors when using certain HTTP server software, for example with the Apache software, when an Error Document 404 (specified in a .htaccess file) is specified as an absolute path (e.g. http://example.com/error.html) rather than a relative path (/error.html). This can also be done on purpose to force some browsers (like Internet Explorer) to display a customized 404 error message rather than replacing what is served with a browser-specific "friendly" error message (in Internet Explorer, this behavior is triggered when a 404 is served and the received HTML is shorter than a certain length, and can be manually disabled by the user).</p>
+
+<p>There are also "soft 3XX" errors where content is returned with a status 200 but comes from a redirected page, such as when missing pages are redirected to the domain root/home page.</p>
+
+<h3>Proxy servers</h3>
+<p>Some proxy servers generate a 404 error when a 500-range error code would be more correct. If the proxy server is unable to satisfy a request for a page because of a problem with the remote host (such as hostname resolution failures or refused TCP connections), this should be described as a 5xx Internal Server Error, but might deliver a 404 instead. This can confuse programs that expect and act on specific responses, as they can no longer easily distinguish between an absent web server and a missing web page on a web server that is present.</p>
+
+<h3>Intentional 404s</h3>
+<p>In July 2004, the UK telecom provider BT Group deployed the Cleanfeed content blocking system, which returns a 404 error to any request for content identified as potentially illegal by the Internet Watch Foundation. Other ISPs return a HTTP 403 "forbidden" error in the same circumstances. The practice of employing fake 404 errors as a means to conceal censorship has also been reported in Thailand and Tunisia. In Tunisia, where censorship was severe before the 2011 revolution, people became aware of the nature of the fake 404 errors and created an imaginary character named "Ammar 404" who represents "the invisible censor".</p>
+
+
+
+<h2>Microsoft Internet Server 404 substatus error codes</h2>
+<p>The webserver software developed by Microsoft, Microsoft's Internet Information Services (IIS), returns a set of substatus codes with its 404 responses. The substatus codes take the form of decimal numbers appended to the 404 status code. The substatus codes are not officially recognized by IANA and are not returned by non-Microsoft servers.</p>
+
+<h3>Substatus codes</h3>
+<p>Microsoft's IIS 7.0, IIS 7.5, and IIS 8.0 servers define the following HTTP substatus codes to indicate a more specific cause of a 404 error:</p>
+
+<ul><li>404.0 – Not found.</li>
+<li>404.1 – Site Not Found.</li>
+<li>404.2 – ISAPI or CGI restriction.</li>
+<li>404.3 – MIME type restriction.</li>
+<li>404.4 – No handler configured.</li>
+<li>404.5 – Denied by request filtering configuration.</li>
+<li>404.6 – Verb denied.</li>
+<li>404.7 – File extension denied.</li>
+<li>404.8 – Hidden namespace.</li>
+<li>404.9 – File attribute hidden.</li>
+<li>404.10 – Request header too long.</li>
+<li>404.11 – Request contains double escape sequence.</li>
+<li>404.12 – Request contains high-bit characters.</li>
+<li>404.13 – Content length too large.</li>
+<li>404.14 – Request URL too long.</li>
+<li>404.15 – Query string too long.</li>
+<li>404.16 – DAV request sent to the static file handler.</li>
+<li>404.17 – Dynamic content mapped to the static file handler via a wildcard MIME mapping.</li>
+<li>404.18 – Query string sequence denied.</li>
+<li>404.19 – Denied by filtering rule.</li>
+<li>404.20 – Too Many URL Segments.</li></ul>
+
+
+
+<h2>Custom error pages</h2>
+<img src="//upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Wikimedia_error_404.png/220px-Wikimedia_error_404.png" height="85" width="220" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Wikimedia_error_404.png/330px-Wikimedia_error_404.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Wikimedia_error_404.png/440px-Wikimedia_error_404.png 2x" />The Wikimedia 404 message
+
+<p>Web servers can typically be configured to display a customised 404 error page, including a more natural description, the parent site's branding, and sometimes a site map, a search form or 404-page widget. The protocol level phrase, which is hidden from the user, is rarely customized. Internet Explorer, however, will not display custom pages unless they are larger than 512 bytes, opting instead to display a "friendly" error page. Google Chrome included similar functionality, where the 404 is replaced with alternative suggestions generated by Google algorithms, if the page is under 512 bytes in size. Another problem is that if the page does not provide a favicon, and a separate custom 404-page exists, extra traffic and longer loading times will be generated on every page view.</p>
+
+<p>Many organizations use 404 error pages as an opportunity to inject humor into what may otherwise be a serious website. For example, Metro UK shows a polar bear on a skateboard, and the web development agency Left Logic has a simple drawing program. During the 2015 UK general election campaign the main political parties all used their 404 pages to either take aim at political opponents or show relevant policies to potential supporters. In Europe, the NotFound project, created by multiple European organizations including Missing Children Europe and Child Focus, encourages site operators to add a snippet of code to serve customized 404 error pages which provide data about missing children.</p>
+
+<p>While many websites send additional information in a 404 error message—such as a link to the homepage of a website or a search box—some also endeavor to find the correct web page the user wanted. Extensions are available for some content management systems (CMSs) to do this.</p>
+
+
+
+<h2>Tracking 404 errors</h2>
+<p>A number of tools exist that crawl through a website to find pages that return 404 status codes. These tools can be helpful in finding links that exist within a particular website. The limitation of these tools is that they only find links within one particular website, and ignore 404s resulting from links on other websites. As a result, these tools miss out on 83% of the 404s on websites. One way around this is to find 404 errors by analyzing external links.</p>
+
+<p>One of the most effective ways to discover 404 errors is by using Google Search Console, Google Analytics or crawling software.</p>
+
+<p>Another common method is tracking traffic to 404 pages using log file analysis. This can be useful to understand more about what 404s users reached on the site. Another method of tracking traffic to 404 pages is using JavaScript-based traffic tracking tools.</p>
+
+
+
+<h2>Causes</h2>
+<p>There are many possible causes for a page not to exist. Some of the common ones are:</p>
+
+<ul><li>The page was deleted by the owner or administrator of the website.</li>
+<li>The page was moved to a different location or renamed without updating the links that point to it.</li>
+<li>The page was never created in the first place or is still under construction.</li>
+<li>The page is temporarily unavailable due to maintenance or technical issues.</li>
+<li>The page is blocked by the user's network or firewall settings.</li>
+<li>The page is restricted by the website's privacy or security policies.</li>
+<li>The page contains illegal or harmful content that was removed by the authorities or the website itself.</li></ul>
+
+
+
+<h2>Solutions</h2>
+<p>If a user encounters a page that doesn't exist, there are some steps they can take to try to find the information they are looking for or to report the problem.</p>
+
+<ul><li><b>Check the URL of the page.</b> Sometimes, a simple typo or spelling mistake can cause a page not to load. Make sure the correct address is entered and try again.</li>
+<li><b>Refresh the page.</b> Sometimes, a temporary glitch or network issue can prevent a page from loading. Try reloading the page by pressing F5 or clicking on the refresh button on the browser.</li>
+<li><b>Go back to the previous page.</b> Sometimes, a link might be broken or outdated. Try going back to the page where the link was found and see if there is an updated or alternative link to the same information.</li>
+<li><b>Use a search engine.</b> Sometimes, a page might be indexed by a search engine even if it doesn't exist anymore. Try searching for keywords related to the topic of the page and see if other sources of information can be found.</li>
+<li><b>Contact the website owner or administrator.</b> Sometimes, a page might be removed or moved without notice. Try contacting the person or organization responsible for the website and ask them about the status of the page. Their contact information can usually be found on their homepage or in their footer section.</li>
+<li><b>Report the error.</b> Sometimes, a page might not exist due to an error on the website's part. Try reporting the error to the website owner or administrator so they can fix it as soon as possible. Their feedback form or email address can usually be found on their homepage or in their footer section.</li></ul>
+

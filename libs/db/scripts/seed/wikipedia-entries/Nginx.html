@@ -1,0 +1,105 @@
+<h1>Nginx</h1>
+
+<div>Open source web server and a reverse proxy server</div>
+<table><tbody><tr><td></td><td><div>This article <b>relies excessively on references to primary sources</b>. Please improve this article by adding secondary or tertiary sources. <br /><i>Find sources:</i>"Nginx"–news <b>·</b> newspapers <b>·</b> books <b>·</b> scholar <b>·</b> JSTOR  <i>(June 2015)</i><i> (Learn how and when to remove this template message)</i></div></td></tr></tbody></table>
+
+
+
+<p><b>Nginx</b> (pronounced "engine x"  /ˌɛndʒɪnˈɛks/ <i>EN-jin-EKS</i>, stylized as <b>NGINX</b> or <b>nginx</b>) is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache.  The software was created by Igor Sysoev and publicly released in 2004. Nginx is free and open-source software, released under the terms of the 2-clause BSD license. A large fraction of web servers use Nginx, often as a load balancer.</p>
+
+<p>A company of the same name was founded in 2011 to provide support and <i>NGINX Plus</i> paid software. In March 2019, the company was acquired by F5, Inc. for $670million.</p>
+
+
+
+<h2>Popularity</h2>
+<p>As of June2022, W3Tech's web server count of all web sites ranked Nginx first with 33.6%. Apache was second at 31.4% and Cloudflare Server third at 21.6%. As of March2022, Netcraft estimated that Nginx served 22.01% of the million busiest websites with Apache a little ahead at 23.04%. Cloudflare at 19.53% and Microsoft Internet Information Services at 5.78% rounded out the top four servers for the busiest websites. Some of Netcraft's other statistics show Nginx ahead of Apache.</p>
+
+<p>A 2018 survey of Docker usage found that Nginx was the most commonly deployed technology in Docker containers. In OpenBSD version 5.2 (November 2012), Nginx became part of the OpenBSD base system, providing an alternative to the system's fork of Apache 1.3, which it was intended to replace, but later in version 5.6 (November 2014) it was removed in favor of OpenBSD's own httpd(8).</p>
+
+
+
+<h2>Features</h2>
+<p>Nginx is easy to configure in order to serve static web content or to act as a proxy server.</p>
+
+<p>Nginx can be deployed to also serve dynamic content on the network using FastCGI, SCGI handlers for scripts, WSGI application servers or Phusion Passenger modules, and can serve as a software load balancer.</p>
+
+<p>Nginx uses an asynchronous event-driven approach, rather than threads, to handle requests. Nginx's modular event-driven architecture can provide predictable performance under high loads.</p>
+
+<h3>HTTP proxy and Web server features</h3>
+
+<ul><li>Ability to handle more than 10,000 simultaneous connections with a low memory footprint (~2.5MB per 10k inactive HTTP keep-alive connections)</li>
+<li>Handling of static files, index files and auto-indexing</li>
+<li>Reverse proxy with caching</li>
+<li>Load balancing with in-band health checks</li>
+<li>TLS/SSL with SNI and OCSP stapling support, via OpenSSL</li>
+<li>FastCGI, SCGI, uWSGI support with caching</li>
+<li>gRPC support since March 2018, version 1.13.10.</li>
+<li>Name- and IP address-based virtual servers</li>
+<li>IPv6-compatible</li>
+<li>WebSockets since 1.3.13, including acting as a reverse proxy and do load balancing of WebSocket applications.</li>
+<li>HTTP/1.1 Upgrade (101 Switching Protocols)</li>
+<li>HTTP/2 protocol support</li>
+<li>HTTP/3 protocol support (experimental since 1.25.0)</li>
+<li>URL rewriting and redirection</li></ul>
+
+<h3>Mail proxy features</h3>
+
+<ul><li>TLS/SSL support</li>
+<li>STARTTLS support</li>
+<li>SMTP, POP3, and IMAP proxy</li>
+<li>Requires authentication using an external HTTP server or by an authentication script</li></ul>
+
+<p>Other features include upgrading executable and configuration without client connections loss, and a module-based architecture with both core and third-party module support.</p>
+
+<p>The paid Plus product includes additional features such as advanced load balancing and access to an expanded suite of metrics for performance monitoring.</p>
+
+
+
+<h2>Nginx vs Nginx Plus</h2>
+
+<p>There are two versions of Nginx: Nginx Open Source and Nginx Plus.</p>
+
+<p>Nginx Open Source is free and open-source software.</p>
+
+<p>Nginx Plus is sold as a subscription model. It offers features in addition to Nginx Open Source, such as active health checks, session persistence based on cookies, DNS-service-discovery integration, Cache Purging API, AppDynamic, Datalog, Dynatrace New Relic plug-ins, Active-Active HA with config sync, Key-Value Store, on-the-fly with zero downtime updates upstream configurations, and key‑value stores using Nginx Plus API and web application firewall (WAF) dynamic module.</p>
+
+
+
+<h2>Nginx in comparison to Apache</h2>
+
+<p>Nginx was written with an explicit goal of outperforming the Apache web server. While in the past Nginx used to outperform Apache, since Apache 2.4 they offer similar performance.  This former performance boost came at a cost of decreased flexibility, such as the ability to override system-wide access settings on a per-file basis (Apache accomplishes this with an .htaccess file, while Nginx has no such feature built in).</p>
+
+<p>Formerly, adding third-party modules to Nginx required recompiling the application from source with the modules statically linked. This was partially overcome in version 1.9.11 in February 2016, with the addition of dynamic module loading. However, the modules still must be compiled at the same time as Nginx, and not all modules are compatible with this system; some require the older static linking process.</p>
+
+
+
+<h2>Nginx Unit</h2>
+
+<p>Nginx Unit is an open-source web application server, released in 2017 by NGINX, Inc. to target multi-language microservices-based applications. The initial release supported applications written in Go, PHP, and Python. By version 1.11.0, the support was extended to Java, Node.js, Perl, and Ruby applications; other features include dynamic configuration, request routing, and load balancing.</p>
+
+
+
+<h2>History</h2>
+
+<p>Igor Sysoev began development of Nginx in 2002. Originally, Nginx was developed to solve the C10k problem, and to fill the needs of multiple websites including the Rambler search engine and portal, for which it was serving 500 million requests per day by September 2008.</p>
+
+<p>Nginx Inc. was founded in July 2011 by Sysoev and Maxim Konovalov to provide commercial products and support for the software.</p>
+
+<p>The company's principal place of business is San Francisco, California, while legally incorporated in British Virgin Islands.</p>
+
+<p>In October 2011, Nginx, Inc. raised $3million from BV Capital, Runa Capital, and MSD Capital, Michael Dell's venture fund.</p>
+
+<p>The company announced commercial support options for companies using Nginx in production. Nginx offered commercial support in February 2012, and paid Nginx Plus subscription in August 2013. Support packages focus on installation, configuration, performance improvement, etc. Support includes proactive notifications about major changes, security patches, updates and patches. Nginx, Inc. also offers consulting services to assist customers in custom configuration or adding additional features.</p>
+
+<p>In October 2013, Nginx, Inc. raised a $10million series B investment round led by New Enterprise Associates. That round included previous investors, as well as Aaron Levie, CEO and founder of Box.com. In December 2014, Nginx raised a $20million series B1 round led by New Enterprise Associates, with participation from e.ventures (formerly <i>BV Capital</i>), Runa Capital, Index Ventures and Nginx's own CEO Gus Robertson.</p>
+
+<p>In September 2017, Nginx announced an API management tool, NGINX Controller, which would build off of their API Gateway, NGINX Plus. In October 2017, Nginx, Inc. announced general available Nginx Amplify SaaS providing monitoring and analytics capabilities for Nginx.</p>
+
+<p>In June 2018, Nginx, Inc. raised $43million in Series C Funding in a round led by Goldman Sachs "to Accelerate Application Modernization and Digital Transformation for Enterprises".</p>
+
+<p>On 11 March 2019, F5, Inc. acquired Nginx, Inc. for US$670 million.</p>
+
+<p>On 12 December 2019, it was reported that the Moscow offices of Nginx Inc. had been raided by police, and that Sysoev and Konovalov had been detained. The raid was conducted under a search warrant connected to a copyright claim over Nginx by Rambler—which asserts that it owns all rights to the code because it was written while Sysoev was an employee of the company. On 16 December 2019, Russian state lender Sberbank, which owns 46.5 percent of Rambler, called an extraordinary meeting of Rambler's board of directors asking Rambler's management team to request Russian law enforcement agencies cease pursuit of the criminal case, and begin talks with Nginx and with F5.</p>
+
+<p>On 18 January 2022, it was announced that Igor Sysoev was leaving Nginx and F5.</p>
+

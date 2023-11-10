@@ -48,7 +48,7 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
         <EntryEditor entry={entry} />
       ) : (
         <Box
-          tw="h-5 w-full cursor-text bg-transparent text-soft"
+          tw="w-full cursor-text bg-transparent text-lg text-soft"
           tabIndex={0}
           onClick={handleStartEditor}
           onFocus={handleStartEditor}
@@ -61,12 +61,6 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
 });
 
 DailyEntry.displayName = 'DailyEntry';
-
-// const EntryEditor = ({ entry }: { entry: EntryDoc }) => {
-//   const entryDoc = useEntryEditor2(entry);
-
-//   return <Editor id={entry.day} editor={entryDoc.editor} />;
-// };
 
 const EntryEditor = ({ entry }: { entry: EntryDoc }) => {
   useEntryEditor(entry);
