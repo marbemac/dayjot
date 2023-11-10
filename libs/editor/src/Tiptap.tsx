@@ -3,7 +3,7 @@ import './styles.css';
 import { EditorContent } from '@tiptap/react';
 import { useEffect } from 'react';
 
-import type { EditorId } from './state.ts';
+import type { EditorId } from './create-editor.ts';
 import { editors } from './state.ts';
 import { useTipTapEditor } from './use-editor.ts';
 

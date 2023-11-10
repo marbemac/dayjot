@@ -22,6 +22,7 @@ var jsesc = require('jsesc');
 var pick = require('lodash/pick');
 var pc = require('picocolors');
 var config = require('../config.js');
+var invariant = require('../invariant.js');
 var adapter = require('./node/adapter.js');
 var styles = require('./styles.js');
 var vmod = require('./vmod.js');
@@ -71,9 +72,12 @@ const resolveFileUrl = ({
   rootDirectory
 }, filePath) => {
   let relativePath = path__namespace.relative(rootDirectory, filePath);
-  if (relativePath.startsWith("..") || path__namespace.isAbsolute(relativePath)) {
-    throw new Error(`Cannot resolve asset path "${filePath}" outside of root directory "${rootDirectory}".`);
-  }
+  let isWithinRoot = !relativePath.startsWith("..") && !path__namespace.isAbsolute(relativePath);
+
+  // Vite will prevent serving files outside of the workspace
+  // unless user explictly opts in with `server.fs.allow`
+  // https://vitejs.dev/config/server-options.html#server-fs-allow
+  if (!isWithinRoot) return `/@fs` + filePath;
   return `/${normalizePath(relativePath)}`;
 };
 const isJsFile = filePath => /\.[cm]?[jt]sx?$/i.test(filePath);
@@ -87,25 +91,44 @@ const getHash = (source, maxLength) => {
   let hash = node_crypto.createHash("sha256").update(source).digest("hex");
   return typeof maxLength === "number" ? hash.slice(0, maxLength) : hash;
 };
-const resolveBuildAssetPaths = (pluginConfig, manifest, absoluteFilePath) => {
-  var _manifestEntry$import, _manifestEntry$css;
+const resolveBuildAssetPaths = (pluginConfig, viteManifest, absoluteFilePath) => {
   let rootRelativeFilePath = path__namespace.relative(pluginConfig.rootDirectory, absoluteFilePath);
   let manifestKey = normalizePath(rootRelativeFilePath);
-  let manifestEntry = manifest[manifestKey];
-  if (!manifestEntry) {
-    let knownManifestKeys = Object.keys(manifest).map(key => '"' + key + '"').join(", ");
+  let entryChunk = viteManifest[manifestKey];
+  if (!entryChunk) {
+    let knownManifestKeys = Object.keys(viteManifest).map(key => '"' + key + '"').join(", ");
     throw new Error(`No manifest entry found for "${manifestKey}". Known manifest keys: ${knownManifestKeys}`);
   }
+  let chunks = resolveDependantChunks(viteManifest, entryChunk);
   return {
-    module: `${pluginConfig.publicPath}${manifestEntry.file}`,
-    imports: ((_manifestEntry$import = manifestEntry.imports) === null || _manifestEntry$import === void 0 ? void 0 : _manifestEntry$import.map(imported => {
-      return `${pluginConfig.publicPath}${manifest[imported].file}`;
-    })) ?? [],
-    css: ((_manifestEntry$css = manifestEntry.css) === null || _manifestEntry$css === void 0 ? void 0 : _manifestEntry$css.map(href => {
+    module: `${pluginConfig.publicPath}${entryChunk.file}`,
+    imports: dedupe(chunks.flatMap(e => e.imports ?? [])).map(imported => {
+      return `${pluginConfig.publicPath}${viteManifest[imported].file}`;
+    }) ?? [],
+    css: dedupe(chunks.flatMap(e => e.css ?? [])).map(href => {
       return `${pluginConfig.publicPath}${href}`;
-    })) ?? []
+    }) ?? []
   };
 };
+function resolveDependantChunks(viteManifest, entryChunk) {
+  let chunks = new Set();
+  function walk(chunk) {
+    if (chunks.has(chunk)) {
+      return;
+    }
+    if (chunk.imports) {
+      for (let importKey of chunk.imports) {
+        walk(viteManifest[importKey]);
+      }
+    }
+    chunks.add(chunk);
+  }
+  walk(entryChunk);
+  return Array.from(chunks);
+}
+function dedupe(array) {
+  return [...new Set(array)];
+}
 const writeFileSafe = async (file, contents) => {
   await fs__namespace.mkdir(path__namespace.dirname(file), {
     recursive: true
@@ -153,23 +176,6 @@ const getViteMajor = () => {
   let vitePkg = require("vite/package.json");
   return parseInt(vitePkg.version.split(".")[0]);
 };
-
-// export default class ViteReqCtx {
-//   static _bindings = new WeakMap<Request, ViteReqCtx>();
-
-//   public foo = 'bar';
-
-//   constructor () {}
-
-//   static bind (req: Request) : void {
-//     const ctx = new ViteReqCtx();
-//     Context._bindings.set(req, ctx);
-//   }
-
-//   static get (req: Request) : Context | null {
-//     return Context._bindings.get(req) || null;
-//   }
-// }
 let viteReqCtx = new WeakMap();
 const getViteReqCtx = req => viteReqCtx.get(req);
 const remixVitePlugin = (options = {}) => {
@@ -179,6 +185,7 @@ const remixVitePlugin = (options = {}) => {
   let cssModulesManifest = {};
   let ssrBuildContext;
   let viteChildCompiler = null;
+  let cachedPluginConfig;
   let resolvePluginConfig = async () => {
     var _options$future;
     let rootDirectory = viteUserConfig.root ?? process.env.REMIX_ROOT ?? process.cwd();
@@ -304,6 +311,9 @@ const remixVitePlugin = (options = {}) => {
     return {
       version: String(Math.random()),
       url: vmod.url(browserManifestId),
+      hmr: {
+        runtime: vmod.url(injectHmrRuntimeId)
+      },
       entry: {
         module: resolveFileUrl(pluginConfig, pluginConfig.entryClientFilePath),
         imports: []
@@ -318,6 +328,7 @@ const remixVitePlugin = (options = {}) => {
       viteUserConfig = _viteUserConfig;
       viteCommand = viteConfigEnv.command;
       let pluginConfig = await resolvePluginConfig();
+      cachedPluginConfig = pluginConfig;
       return {
         appType: "custom",
         experimental: {
@@ -325,14 +336,27 @@ const remixVitePlugin = (options = {}) => {
         },
         optimizeDeps: {
           include: [
-          // pre-bundle React dependencies to avoid React duplicates,
-          // even if React dependencies are not direct dependencies
+          // Pre-bundle React dependencies to avoid React duplicates,
+          // even if React dependencies are not direct dependencies.
           // https://react.dev/warnings/invalid-hook-call-warning#duplicate-react
-          "react", `react/jsx-runtime`, `react/jsx-dev-runtime`, "react-dom/client"]
+          "react", "react/jsx-runtime", "react/jsx-dev-runtime", "react-dom/client",
+          // Pre-bundle Remix dependencies to avoid Remix router duplicates.
+          // Our remix-remix-react-proxy plugin does not process default client and
+          // server entry files since those come from within `node_modules`.
+          // That means that before Vite pre-bundles dependencies (e.g. first time dev server is run)
+          // mismatching Remix routers cause `Error: You must render this element inside a <Remix> element`.
+          "@remix-run/react"]
+        },
+        esbuild: {
+          jsx: "automatic",
+          jsxDev: viteCommand !== "build"
         },
         resolve: {
+          dedupe: [
           // https://react.dev/warnings/invalid-hook-call-warning#duplicate-react
-          dedupe: ["react", "react-dom"]
+          "react", "react-dom",
+          // see description for `@remix-run/react` in `optimizeDeps.include`
+          "@remix-run/react"]
         },
         ...(viteCommand === "build" && {
           base: pluginConfig.publicPath,
@@ -366,6 +390,7 @@ const remixVitePlugin = (options = {}) => {
       await esModuleLexer.init;
       viteChildCompiler = await vite.createServer({
         ...viteUserConfig,
+        mode: viteConfig.mode,
         server: {
           ...viteUserConfig.server,
           // when parent compiler runs in middleware mode to support
@@ -416,48 +441,76 @@ const remixVitePlugin = (options = {}) => {
       (_vite$httpServer = vite.httpServer) === null || _vite$httpServer === void 0 ? void 0 : _vite$httpServer.on("listening", () => {
         setTimeout(showUnstableWarning, 50);
       });
+
+      // We cache the pluginConfig here to make sure we're only invalidating virtual modules when necessary.
+      // This requires a separate cache from `cachedPluginConfig`, which is updated by remix-hmr-updates. If
+      // we shared the cache, it would already be refreshed by remix-hmr-updates at this point, and we'd
+      // have no way of comparing against the cache to know if the virtual modules need to be invalidated.
+      let previousPluginConfig;
+      let localsByRequest = new WeakMap();
       return () => {
         vite.middlewares.use(async (req, res, next) => {
           try {
-            // Invalidate all virtual modules
-            vmods.forEach(vmod$1 => {
-              let mod = vite.moduleGraph.getModuleById(vmod.resolve(vmod$1));
-              if (mod) {
-                vite.moduleGraph.invalidateModule(mod);
-              }
-            });
+            let pluginConfig = await resolvePluginConfig();
+            if (JSON.stringify(pluginConfig) !== JSON.stringify(previousPluginConfig)) {
+              previousPluginConfig = pluginConfig;
+
+              // Invalidate all virtual modules
+              vmods.forEach(vmod$1 => {
+                let mod = vite.moduleGraph.getModuleById(vmod.resolve(vmod$1));
+                if (mod) {
+                  vite.moduleGraph.invalidateModule(mod);
+                }
+              });
+            }
             let {
               url
             } = req;
-            let [pluginConfig, build] = await Promise.all([resolvePluginConfig(), vite.ssrLoadModule(serverEntryId)]);
+            let build = await vite.ssrLoadModule(serverEntryId);
             let criticalCss = await styles.getStylesForUrl(vite, pluginConfig, cssModulesManifest, build, url);
+            localsByRequest.set(req, {
+              build,
+              criticalCss
+            });
             viteReqCtx.set(req, {
               build,
               criticalCss
             });
+
+            // If the middleware is being used in Express, the "res.locals"
+            // object (https://expressjs.com/en/api.html#res.locals) will be
+            // present. If so, we attach the critical CSS as metadata to the
+            // response object so the Remix Express adapter has access to it.
+            if ("locals" in res && typeof res.locals === "object" && res.locals !== null) {
+              res.locals.__remixDevCriticalCss = criticalCss;
+            }
             next();
           } catch (error) {
             next(error);
           }
         });
 
-        // Let user servers handle SSR requests in middleware mode
-        if (vite.config.server.middlewareMode) return;
-        vite.middlewares.use(async (req, res, next) => {
-          let {
-            build,
-            criticalCss
-          } = viteReqCtx.get(req);
-          try {
-            let handle = adapter.createRequestHandler(build, {
-              mode: "development",
-              criticalCss
-            });
-            await handle(req, res);
-          } catch (error) {
-            next(error);
-          }
-        });
+        // Let user servers handle SSR requests in middleware mode,
+        // otherwise the Vite plugin will handle the request
+        if (!vite.config.server.middlewareMode) {
+          vite.middlewares.use(async (req, res, next) => {
+            try {
+              let locals = localsByRequest.get(req);
+              invariant["default"](locals, "No Remix locals found for request");
+              let {
+                build,
+                criticalCss
+              } = locals;
+              let handle = adapter.createRequestHandler(build, {
+                mode: "development",
+                criticalCss
+              });
+              await handle(req, res);
+            } catch (error) {
+              next(error);
+            }
+          });
+        }
       };
     },
     async buildEnd() {
@@ -519,7 +572,7 @@ const remixVitePlugin = (options = {}) => {
     // Ensure we're operating on the transformed code to support MDX etc.
     async transform(code, id, options) {
       if (options !== null && options !== void 0 && options.ssr) return;
-      let pluginConfig = await resolvePluginConfig();
+      let pluginConfig = cachedPluginConfig || (await resolvePluginConfig());
       let route = getRoute(pluginConfig, id);
       if (!route) return;
       let serverExports = ["loader", "action", "headers"];
@@ -542,9 +595,10 @@ const remixVitePlugin = (options = {}) => {
       if (id === vmod.resolve(remixReactProxyId)) {
         return;
       }
+      let hasLiveReloadHints = code.includes("LiveReload") && code.includes("@remix-run/react");
 
       // Don't transform files that don't need the proxy
-      if (!code.includes("@remix-run/react") && !code.includes("LiveReload")) {
+      if (!hasLiveReloadHints) {
         return;
       }
 
@@ -558,7 +612,7 @@ const remixVitePlugin = (options = {}) => {
     load(id) {
       if (id === vmod.resolve(remixReactProxyId)) {
         // TODO: ensure react refresh is initialized before `<Scripts />`
-        return ['import { createElement } from "react";', 'export * from "@remix-run/react";', 'export const LiveReload = process.env.NODE_ENV !== "development" ? () => null : ', '() => createElement("script", {', ' type: "module",', " async: true,", ` src: "${vmod.url(injectHmrRuntimeId)}"`, "});"].join("\n");
+        return ['import { createElement } from "react";', 'export * from "@remix-run/react";', 'export const LiveReload = process.env.NODE_ENV !== "development" ? () => null : ', '() => createElement("script", {', "  dangerouslySetInnerHTML: { ", "    __html: `window.__remixLiveReloadEnabled = true`", "  }", "});"].join("\n");
       }
     }
   }, {
@@ -604,14 +658,14 @@ const remixVitePlugin = (options = {}) => {
           allowAwaitOutsideFunction: true,
           plugins: ["jsx", "typescript"]
         },
-        plugins: ["react-refresh/babel"],
+        plugins: [require("react-refresh/babel")],
         sourceMaps: true
       });
       if (result === null) return;
       code = result.code;
       let refreshContentRE = /\$Refresh(?:Reg|Sig)\$\(/;
       if (refreshContentRE.test(code)) {
-        let pluginConfig = await resolvePluginConfig();
+        let pluginConfig = cachedPluginConfig || (await resolvePluginConfig());
         code = addRefreshWrapper(pluginConfig, code, id);
       }
       return {
@@ -627,6 +681,8 @@ const remixVitePlugin = (options = {}) => {
       modules
     }) {
       let pluginConfig = await resolvePluginConfig();
+      // Update the config cache any time there is a file change
+      cachedPluginConfig = pluginConfig;
       let route = getRoute(pluginConfig, file);
       server.ws.send({
         type: "custom",
@@ -659,11 +715,10 @@ const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof 
 let prevRefreshReg;
 let prevRefreshSig;
 
-if (import.meta.hot && !inWebWorker) {
+if (import.meta.hot && !inWebWorker && window.__remixLiveReloadEnabled) {
   if (!window.__vite_plugin_react_preamble_installed__) {
     throw new Error(
-      "@vitejs/plugin-react can't detect preamble. Something is wrong. " +
-      "See https://github.com/vitejs/vite-plugin-react/pull/11#discussion_r430879201"
+      "Remix Vite plugin can't detect preamble. Something is wrong."
     );
   }
 
@@ -675,7 +730,7 @@ if (import.meta.hot && !inWebWorker) {
   window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
 }`.replace(/\n+/g, "");
 const REACT_REFRESH_FOOTER = `
-if (import.meta.hot && !inWebWorker) {
+if (import.meta.hot && !inWebWorker && window.__remixLiveReloadEnabled) {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
   RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {

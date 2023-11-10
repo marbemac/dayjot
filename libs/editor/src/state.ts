@@ -1,9 +1,7 @@
-import Placeholder from '@tiptap/extension-placeholder';
-import { Editor } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
+import type { Editor } from '@tiptap/react';
 import { createStore } from '@udecode/zustood';
 
-export type EditorId = string;
+import { createEditor, type CreateEditorOpts, type EditorId } from './create-editor.ts';
 
 type EditorsStore = {
   focusedEditor: EditorId | null;
@@ -41,33 +39,3 @@ export const editors = createStore('editors')<EditorsStore>({
       return newEditor;
     },
   }));
-
-type CreateEditorOpts = {
-  editable?: boolean;
-  initialContent?: string;
-};
-
-const createEditor = (id: EditorId, { initialContent, ...rest }: CreateEditorOpts = {}) => {
-  const extensions = [
-    StarterKit.configure(),
-
-    Placeholder.configure({
-      placeholder: 'Write here...',
-    }),
-  ];
-
-  let jsonContent;
-  try {
-    if (initialContent) {
-      jsonContent = typeof initialContent === 'string' ? JSON.parse(initialContent) : initialContent;
-    }
-  } catch {
-    console.warn('Error parsing initial content for editor', { id });
-  }
-
-  return new Editor({
-    extensions,
-    content: jsonContent,
-    ...rest,
-  });
-};

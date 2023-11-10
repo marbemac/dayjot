@@ -1,7 +1,7 @@
+import { editors } from '@dayjot/editor';
 import type { EditorEvents } from '@tiptap/react';
 import debounce from 'lodash.debounce';
 
-import { editors } from '~/components/Editor/state.ts';
 import type { EntryDoc } from '~/local-db/schemas.client.ts';
 
 const EntryEditors = new Map<string, EntryEditor>();

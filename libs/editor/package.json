@@ -1,0 +1,46 @@
+{
+  "name": "@dayjot/editor",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./html": "./src/html.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@supastack/ui-primitives": "workspace:*",
+    "@supastack/ui-styles": "workspace:*",
+    "@tiptap/core": "2.1.12",
+    "@tiptap/extension-code-block-lowlight": "2.1.12",
+    "@tiptap/extension-image": "2.1.12",
+    "@tiptap/extension-placeholder": "2.1.12",
+    "@tiptap/extension-table": "2.1.12",
+    "@tiptap/extension-table-cell": "2.1.12",
+    "@tiptap/extension-table-header": "2.1.12",
+    "@tiptap/extension-table-row": "2.1.12",
+    "@tiptap/extension-task-item": "2.1.12",
+    "@tiptap/extension-task-list": "2.1.12",
+    "@tiptap/extension-typography": "2.1.12",
+    "@tiptap/pm": "2.1.12",
+    "@tiptap/react": "2.1.12",
+    "@tiptap/starter-kit": "2.1.12",
+    "@udecode/zustood": "2.0.0",
+    "lowlight": "3.1.0",
+    "markdown-it": "13.0.2"
+  },
+  "devDependencies": {
+    "@supastack/eslint-config": "workspace:*",
+    "@supastack/tsconfig": "workspace:*",
+    "@types/markdown-it": "13.0.6",
+    "typescript": "5.2.2"
+  }
+}
