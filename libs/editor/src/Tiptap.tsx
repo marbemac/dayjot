@@ -4,15 +4,16 @@ import { EditorContent } from '@tiptap/react';
 import { useEffect } from 'react';
 
 import type { EditorId } from './create-editor.ts';
+import type { FindOrCreateOpts } from './state.ts';
 import { editors } from './state.ts';
 import { useTipTapEditor } from './use-editor.ts';
 
-export type RichTextEditorProps = {
+export type RichTextEditorProps = Partial<FindOrCreateOpts> & {
   id: EditorId;
 };
 
-export const RichTextEditor = ({ id }: RichTextEditorProps) => {
-  const editor = editors.set.findOrCreate(id);
+export const RichTextEditor = ({ id, ...findOrCreateOpts }: RichTextEditorProps) => {
+  const editor = editors.set.findOrCreate(id, findOrCreateOpts);
   const shouldFocus = editors.use.shouldFocus(id);
 
   useTipTapEditor({}, [], editor);

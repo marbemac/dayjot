@@ -8,10 +8,12 @@ export type EditorId = string;
 export type CreateEditorOpts = {
   editable?: boolean;
   initialContent?: string;
+  placeholder?: string;
+  size?: 'sm' | 'md';
 };
 
-export const createEditor = (id: EditorId, { initialContent, ...rest }: CreateEditorOpts = {}) => {
-  const extensions = initExtensions();
+export const createEditor = (id: EditorId, { initialContent, placeholder, size, ...rest }: CreateEditorOpts = {}) => {
+  const extensions = initExtensions({ placeholder });
 
   let jsonContent;
   try {
@@ -28,7 +30,7 @@ export const createEditor = (id: EditorId, { initialContent, ...rest }: CreateEd
     ...rest,
     editorProps: {
       attributes: {
-        class: tx('ui-prose'),
+        class: tx('ui-prose', size === 'sm' && 'ui-prose-sm'),
       },
     },
   });

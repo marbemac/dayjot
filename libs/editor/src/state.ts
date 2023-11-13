@@ -8,7 +8,7 @@ type EditorsStore = {
   editors: Record<EditorId, Editor>;
 };
 
-type FindOrCreateOpts = CreateEditorOpts & {
+export type FindOrCreateOpts = CreateEditorOpts & {
   onCreate?: (props: { editor: Editor }) => void;
 };
 

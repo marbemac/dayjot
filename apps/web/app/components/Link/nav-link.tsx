@@ -11,7 +11,7 @@ export type NavLinkProps = LinkProps & {
 
 export const useRouteIsActive = ({ to, exact }: Pick<NavLinkProps, 'to' | 'exact'>) => {
   const { pathname } = useLocation();
-  const hrefString = typeof to === 'string' ? to : to.pathname || '';
+  const hrefString = typeof to === 'string' ? to : to.pathname ?? '';
   return exact ? pathname === hrefString : pathname.startsWith(hrefString);
 };
 

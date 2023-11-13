@@ -1,10 +1,10 @@
 import { editors, RichTextEditor } from '@dayjot/editor';
-import { Box, Heading, VStack } from '@supastack/ui-primitives';
+import { Box, Card, Heading, VStack } from '@supastack/ui-primitives';
 import { dayjs } from '@supastack/utils-dates';
 import { memo, useCallback } from 'react';
-import type { RxCollection } from 'rxdb';
-import { useRxCollection, useRxData } from 'rxdb-hooks';
+import { useRxCollection } from 'rxdb-hooks';
 
+import { useDayEntry } from '~/local-db/hooks.ts';
 import { TableName } from '~/local-db/index.client.ts';
 import type { Entry, EntryDoc } from '~/local-db/schemas.client.ts';
 
@@ -23,10 +23,7 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
   });
 
   const entries = useRxCollection<Entry>(TableName.Entries)!;
-  const q = useCallback((c: RxCollection<Entry>) => c.findOne(dayId), [dayId]);
-
-  const { result } = useRxData<Entry>(TableName.Entries, q);
-  const entry = result[0] as EntryDoc | undefined;
+  const entry = useDayEntry(day);
 
   const handleStartEditor = useCallback(async () => {
     await entries.upsert({
@@ -39,24 +36,28 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
 
   return (
     // -mt-px so that the top entry in the list doesn't show a border (doubling up with navbar bottom border)
-    <VStack tw="-mt-px p-8" spacing={5}>
-      <Heading size={4} as="h4">
-        {formattedDate}
-      </Heading>
+    <Box tw="px-10 pt-10">
+      <Card size="lg">
+        <VStack spacing={5}>
+          <Heading size={4} as="h4">
+            {formattedDate}
+          </Heading>
 
-      {entry ? (
-        <EntryEditor entry={entry} />
-      ) : (
-        <Box
-          tw="w-full cursor-text bg-transparent text-lg text-soft"
-          tabIndex={0}
-          onClick={handleStartEditor}
-          onFocus={handleStartEditor}
-        >
-          Write here...
-        </Box>
-      )}
-    </VStack>
+          {entry ? (
+            <EntryEditor entry={entry} />
+          ) : (
+            <Box
+              tw="w-full cursor-text bg-transparent text-lg text-soft"
+              tabIndex={0}
+              onClick={handleStartEditor}
+              onFocus={handleStartEditor}
+            >
+              Write here...
+            </Box>
+          )}
+        </VStack>
+      </Card>
+    </Box>
   );
 });
 

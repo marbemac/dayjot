@@ -13,12 +13,10 @@ import StarterKit from '@tiptap/starter-kit';
 
 import { Markdown } from './extensions/markdown/extension.ts';
 
-export const initExtensions = () => [
+export const initExtensions = ({ placeholder = 'Write here...' }: { placeholder?: string } = {}) => [
   StarterKit.configure(),
 
-  Placeholder.configure({
-    placeholder: 'Write here...',
-  }),
+  Placeholder.configure({ placeholder }),
 
   Image.configure(),
   Typography.configure(),

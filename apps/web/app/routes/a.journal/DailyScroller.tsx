@@ -1,36 +1,63 @@
-import { tx } from '@supastack/ui-styles';
-import { dayjs } from '@supastack/utils-dates';
-import { useCallback, useState } from 'react';
+import type { dayjs } from '@supastack/utils-dates';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Virtuoso } from 'react-virtuoso';
+
+import { calendarStore } from '~/components/Calendar/state.ts';
 
 type DailyScrollProps = {
   Entry: (props: { day: dayjs.ConfigType }) => React.ReactNode;
 };
 
-export const DailyScroller = ({ Entry }: DailyScrollProps) => {
-  const INITIAL_FUTURE_COUNT = 5;
-  const INITIAL_PAST_COUNT = 30;
-  const INITIAL_INDEX = INITIAL_FUTURE_COUNT;
-  const COUNT_PER_PREPEND = 10;
-  const COUNT_PER_APPEND = 20;
+const INITIAL_FUTURE_COUNT = 10;
+const INITIAL_PAST_COUNT = 30;
+const INITIAL_INDEX = INITIAL_FUTURE_COUNT;
+const COUNT_PER_PREPEND = 20;
+const COUNT_PER_APPEND = 20;
 
-  const anchorDate = dayjs();
-
-  const [days, setDays] = useState(() => [
+const generateDaysWindow = (anchorDate: dayjs.Dayjs) => {
+  return [
     ...generateDays({ count: INITIAL_FUTURE_COUNT, from: anchorDate, dir: 'future' }),
     anchorDate,
     ...generateDays({ count: INITIAL_PAST_COUNT, from: anchorDate, dir: 'past' }),
-  ]);
+  ];
+};
+
+export const DailyScroller = ({ Entry }: DailyScrollProps) => {
+  // const anchorDate = dayjs('2023-10-20');
+  const anchorDate = calendarStore.use.active();
+
+  const hasBeenRendered = useRef(false);
+  const [anchorKey, setAnchorKey] = useState(anchorDate.format('YYYY-MM-DD'));
+  const [days, setDays] = useState(generateDaysWindow(anchorDate));
+
+  useEffect(() => {
+    if (hasBeenRendered.current) {
+      setAnchorKey(anchorDate.format('YYYY-MM-DD'));
+      setDays(generateDaysWindow(anchorDate));
+    }
+
+    hasBeenRendered.current = true;
+  }, [anchorDate]);
+
+  // key forces a re-mount when the anchorDate changes, to reset the scroller
+  return <Scroller key={anchorKey} Entry={Entry} initialDays={days} />;
+};
+
+const Scroller = ({ Entry, initialDays }: DailyScrollProps & { initialDays: dayjs.Dayjs[] }) => {
+  const [days, setDays] = useState(() => initialDays);
+
+  useEffect(() => {
+    console.debug('[Scroller] mount');
+  }, []);
 
   const [firstItemIndex, setFirstItemIndex] = useState(999999);
 
   const prependDays = useCallback(() => {
     const nextFirstItemIndex = firstItemIndex - COUNT_PER_PREPEND;
+    // console.debug('[Scroller] start reached, prepend days', { nextFirstItemIndex, from: days[0]! });
 
-    setTimeout(() => {
-      setFirstItemIndex(() => nextFirstItemIndex);
-      setDays(() => [...generateDays({ count: COUNT_PER_PREPEND, from: days[0]!, dir: 'future' }), ...days]);
-    }, 100);
+    setFirstItemIndex(() => nextFirstItemIndex);
+    setDays(() => [...generateDays({ count: COUNT_PER_PREPEND, from: days[0]!, dir: 'future' }), ...days]);
 
     return false;
   }, [firstItemIndex, days]);
@@ -45,6 +72,8 @@ export const DailyScroller = ({ Entry }: DailyScrollProps) => {
 
   return (
     <Virtuoso
+      // useWindowScroll // can be buggy, avoiding for now...
+      // logLevel={LogLevel.DEBUG}
       firstItemIndex={firstItemIndex}
       initialTopMostItemIndex={INITIAL_INDEX}
       data={days}
@@ -52,7 +81,6 @@ export const DailyScroller = ({ Entry }: DailyScrollProps) => {
       endReached={appendDays}
       overscan={{ main: 500, reverse: 500 }}
       itemContent={(index, day) => <Entry day={day} />}
-      className={tx('[&_[data-test-id="virtuoso-item-list"]]:divide-y')}
     />
   );
 };
