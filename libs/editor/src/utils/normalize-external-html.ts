@@ -12,6 +12,8 @@
  * Currently relies on document being available in the global scope, so we can only use this on the client ATM.
  */
 export function normalizeExternalHtml(html: string) {
+  if (typeof document === 'undefined') return html;
+
   const container = document.createElement('div');
   container.innerHTML = html;
 

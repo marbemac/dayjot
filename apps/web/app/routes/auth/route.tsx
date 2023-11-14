@@ -1,6 +1,7 @@
 import { Box } from '@supastack/ui-primitives';
 
 import { enforceSignedOut } from '~/auth.tsx';
+import { SiteNav } from '~/components/SiteNav.tsx';
 import { EmailAuthForm } from '~/forms/EmailAuth.tsx';
 import type { LoaderFunctionArgs, MetaFunction } from '~/remix-types.ts';
 
@@ -16,8 +17,11 @@ export async function loader({ context }: LoaderFunctionArgs) {
 
 export default function Auth() {
   return (
-    <Box tw="flex flex-1 items-center justify-center p-20">
-      <EmailAuthForm />
-    </Box>
+    <>
+      <SiteNav />
+      <Box tw="flex flex-1 items-center justify-center p-20">
+        <EmailAuthForm />
+      </Box>
+    </>
   );
 }
