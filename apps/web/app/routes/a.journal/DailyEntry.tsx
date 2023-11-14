@@ -35,7 +35,6 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
   }, [dayId, entries]);
 
   return (
-    // -mt-px so that the top entry in the list doesn't show a border (doubling up with navbar bottom border)
     <Box tw="px-10 pt-10">
       <Card size="lg">
         <VStack spacing={5}>

@@ -1,12 +1,8 @@
-import '@fortawesome/fontawesome-svg-core/styles.css';
 import './globals.css';
 
-import { config } from '@fortawesome/fontawesome-svg-core';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 
 import { Providers } from '~/providers.tsx';
-
-config.autoAddCss = false;
 
 export default function App() {
   return (
@@ -21,7 +17,8 @@ export default function App() {
           crossOrigin="anonymous"
           async
           data-auto-replace-svg="nest"
-        ></script>
+          data-auto-add-css="false"
+        />
 
         <Meta />
         <Links />
@@ -33,8 +30,8 @@ export default function App() {
         </Providers>
 
         <ScrollRestoration />
-        <LiveReload />
         <Scripts />
+        <LiveReload />
       </body>
     </html>
   );

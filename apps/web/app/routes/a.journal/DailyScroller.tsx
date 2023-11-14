@@ -46,10 +46,6 @@ export const DailyScroller = ({ Entry }: DailyScrollProps) => {
 const Scroller = ({ Entry, initialDays }: DailyScrollProps & { initialDays: dayjs.Dayjs[] }) => {
   const [days, setDays] = useState(() => initialDays);
 
-  useEffect(() => {
-    console.debug('[Scroller] mount');
-  }, []);
-
   const [firstItemIndex, setFirstItemIndex] = useState(999999);
 
   const prependDays = useCallback(() => {

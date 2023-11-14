@@ -1,7 +1,7 @@
 import { Box, Button, Card, HStack, VStack } from '@supastack/ui-primitives';
 import { tx } from '@supastack/ui-styles';
 import { dayjs } from '@supastack/utils-dates';
-import { useMemo } from 'react';
+import { Fragment, useMemo } from 'react';
 
 import { calendarStore } from './state.ts';
 
@@ -9,7 +9,6 @@ export type RenderDayProps = {
   onClick: React.MouseEventHandler;
   className: string;
   children: React.ReactNode;
-  key: React.Key;
 };
 
 export type CalendarProps = {
@@ -93,7 +92,6 @@ const Days = ({ renderDay }: Pick<CalendarProps, 'renderDay'>) => {
     isActiveDay = !isActiveDay && d.date.isSame(active, 'day');
 
     const dayProps = {
-      key: index,
       onClick: () => calendarStore.set.activeDate(d.date),
       children: d.day,
       className: tx([
@@ -104,7 +102,9 @@ const Days = ({ renderDay }: Pick<CalendarProps, 'renderDay'>) => {
       ]),
     };
 
-    dayElems.push(renderDay ? renderDay(d.date, dayProps) : <div {...dayProps} />);
+    dayElems.push(
+      renderDay ? <Fragment key={index}>{renderDay(d.date, dayProps)}</Fragment> : <div key={index} {...dayProps} />,
+    );
   });
 
   return <Box tw={`grid grid-cols-7 place-items-center ${GRID_GAP}`}>{dayElems}</Box>;
