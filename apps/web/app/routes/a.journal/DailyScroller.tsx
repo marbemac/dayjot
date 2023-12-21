@@ -4,9 +4,7 @@ import { Virtuoso } from 'react-virtuoso';
 
 import { calendarStore } from '~/components/Calendar/state.ts';
 
-type DailyScrollProps = {
-  Entry: (props: { day: dayjs.ConfigType }) => React.ReactNode;
-};
+import { DailyEntry } from './DailyEntry.tsx';
 
 const INITIAL_FUTURE_COUNT = 10;
 const INITIAL_PAST_COUNT = 30;
@@ -22,7 +20,7 @@ const generateDaysWindow = (anchorDate: dayjs.Dayjs) => {
   ];
 };
 
-export const DailyScroller = ({ Entry }: DailyScrollProps) => {
+export default function DailyScroller() {
   // const anchorDate = dayjs('2023-10-20');
   const anchorDate = calendarStore.use.active();
 
@@ -40,10 +38,16 @@ export const DailyScroller = ({ Entry }: DailyScrollProps) => {
   }, [anchorDate]);
 
   // key forces a re-mount when the anchorDate changes, to reset the scroller
-  return <Scroller key={anchorKey} Entry={Entry} initialDays={days} />;
-};
+  return <Scroller key={anchorKey} Entry={DailyEntry} initialDays={days} />;
+}
 
-const Scroller = ({ Entry, initialDays }: DailyScrollProps & { initialDays: dayjs.Dayjs[] }) => {
+const Scroller = ({
+  Entry,
+  initialDays,
+}: {
+  Entry: (props: { day: dayjs.ConfigType }) => React.ReactNode;
+  initialDays: dayjs.Dayjs[];
+}) => {
   const [days, setDays] = useState(() => initialDays);
 
   const [firstItemIndex, setFirstItemIndex] = useState(999999);

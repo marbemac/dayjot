@@ -1,8 +1,8 @@
 {
+  "id": "ac5f25c4-c5d8-43d6-b18c-6e458467015f",
+  "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
-  "id": "f5fff5c0-9235-44a7-b686-2bb11bedd0b9",
-  "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "entries": {
       "name": "entries",
@@ -205,6 +205,27 @@
           "primaryKey": false,
           "notNull": false,
           "default": "now()"
+        },
+        "email_times": {
+          "name": "email_times",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{\"su\":\"7\",\"mo\":\"7\",\"tu\":\"7\",\"we\":\"7\",\"th\":\"7\",\"fr\":\"7\",\"sa\":\"none\"}'::jsonb"
+        },
+        "email_include_memory": {
+          "name": "email_include_memory",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "time_zone": {
+          "name": "time_zone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'US/Eastern'"
         }
       },
       "indexes": {},

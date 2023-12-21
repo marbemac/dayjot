@@ -12,7 +12,7 @@ const DO_ANAlYZE = process.env['ANALYZE'];
 // const DO_ANAlYZE = true;
 
 // https://vitejs.dev/config/
-export default defineConfig(({ ssrBuild, command }) => ({
+export default defineConfig(({ isSsrBuild, command }) => ({
   ssr: {
     noExternal: ['@ssrx/plugin-tanstack-query', '@ssrx/plugin-trpc-react', '@ssrx/remix'],
   },
@@ -21,7 +21,7 @@ export default defineConfig(({ ssrBuild, command }) => ({
     remix(),
     tsconfigPaths(),
 
-    !ssrBuild &&
+    !isSsrBuild &&
       command === 'build' &&
       !!DO_ANAlYZE &&
       (visualizer({
@@ -35,7 +35,7 @@ export default defineConfig(({ ssrBuild, command }) => ({
       external: ['cloudflare:sockets'],
 
       // output: {
-      //   manualChunks: !ssrBuild && command === 'build' ? manualChunks : undefined,
+      //   manualChunks: !isSsrBuild && command === 'build' ? manualChunks : undefined,
       // },
     },
   },

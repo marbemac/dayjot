@@ -1,9 +1,8 @@
 import type { dayjs } from '@supastack/utils-dates';
 import { useCallback } from 'react';
 import type { RxCollection } from 'rxdb';
-import { useRxData } from 'rxdb-hooks';
 
-import { TableName } from './index.client.ts';
+import { TableName, useRxData } from './index.client.ts';
 import type { Entry, EntryDoc } from './schemas.client.ts';
 
 export const useDayEntry = (day: dayjs.Dayjs) => {

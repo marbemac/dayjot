@@ -44,7 +44,7 @@
   "devDependencies": {
     "@supastack/eslint-config": "workspace:*",
     "@supastack/tsconfig": "workspace:*",
-    "@types/markdown-it": "13.0.6",
-    "typescript": "5.2.2"
+    "@types/markdown-it": "13.0.7",
+    "typescript": "5.3.2"
   }
 }

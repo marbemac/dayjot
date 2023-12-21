@@ -24,6 +24,8 @@ export const initAuth = ({ sql }: { sql: Sql }) => {
         name: data.name,
         email: data.email,
         image: data.image,
+        timeZone: data.time_zone!,
+        emailTimes: data.email_times!,
       };
     },
 

@@ -1,11 +1,10 @@
 import { type ReplicationOptions, type RxCollection, type RxReplicationWriteToMasterRow, type WithDeleted } from 'rxdb';
 import type { RxReplicationState } from 'rxdb/plugins/replication';
 import { replicateRxCollection } from 'rxdb/plugins/replication';
-import { useRxCollection } from 'rxdb-hooks';
 
 import { ctx } from '~/app.ts';
 
-import { TableName } from './index.client.ts';
+import { TableName, useRxCollection } from './index.client.ts';
 
 export const DbSyncer = () => {
   const { mutateAsync: pushEntries } = ctx.trpc.sync.pushEntries.useMutation();

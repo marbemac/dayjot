@@ -2,10 +2,8 @@ import { editors, RichTextEditor } from '@dayjot/editor';
 import { Box, Card, Heading, VStack } from '@supastack/ui-primitives';
 import { dayjs } from '@supastack/utils-dates';
 import { memo, useCallback } from 'react';
-import { useRxCollection } from 'rxdb-hooks';
 
-import { useDayEntry } from '~/local-db/hooks.ts';
-import { TableName } from '~/local-db/index.client.ts';
+import { TableName, useDayEntry, useRxCollection } from '~/local-db/index.client.ts';
 import type { Entry, EntryDoc } from '~/local-db/schemas.client.ts';
 
 import { useEntryEditor } from './use-entry-editor.ts';
@@ -35,7 +33,7 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
   }, [dayId, entries]);
 
   return (
-    <Box tw="px-10 pt-10">
+    <Box tw="mx-auto max-w-6xl px-10 pt-10">
       <Card size="lg">
         <VStack spacing={5}>
           <Heading size={4} as="h4">

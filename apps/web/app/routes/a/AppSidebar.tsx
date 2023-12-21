@@ -1,14 +1,15 @@
 import type { IconProps } from '@supastack/ui-primitives';
-import { Box, Card, HStack, Icon, VStack } from '@supastack/ui-primitives';
+import { Box, Button, ButtonGroup, Card, HStack, Icon, VStack } from '@supastack/ui-primitives';
 import type { dayjs } from '@supastack/utils-dates';
 import { $path } from 'remix-routes';
 
 import type { RenderDayProps } from '~/components/Calendar/Calendar.tsx';
 import { Calendar } from '~/components/Calendar/Calendar.tsx';
+import { Link } from '~/components/Link/link.tsx';
 import { NavLink } from '~/components/Link/nav-link.tsx';
-import { useDayEntry } from '~/local-db/hooks.ts';
-
-import { QuickAdd } from './QuickAdd.tsx';
+import { UserDropdownMenu } from '~/components/UserDropdownMenu.tsx';
+import { useDayEntry } from '~/local-db/hooks.client.ts';
+import { useModalPath } from '~/modals/index.tsx';
 
 /**
  * settings:
@@ -25,18 +26,30 @@ import { QuickAdd } from './QuickAdd.tsx';
 export const AppSidebar = () => {
   return (
     <VStack spacing={4}>
-      <QuickAdd />
-
-      <Calendar renderDay={(date, props) => <CalendarDay date={date} {...props} />} />
-
       <Card size="sm">
         <VStack spacing={1}>
-          <SidebarLink to={$path('/a/account')} icon="circle-user" label="Your Account" />
           <SidebarLink to={$path('/a/journal')} icon="books" label="Journal" />
+          <SidebarLink to={$path('/a/account')} icon="cog" label="Settings" />
         </VStack>
       </Card>
+
+      {/* <ButtonGroup spacing={3} variant="outline">
+        <Button startIcon="pencil-alt" fullWidth tw="justify-start">
+          Quick add
+        </Button>
+
+        <SettingsButton />
+      </ButtonGroup> */}
+
+      <Calendar renderDay={(date, props) => <CalendarDay date={date} {...props} />} />
     </VStack>
   );
+};
+
+const SettingsButton = () => {
+  // return <Button as={Link} to={useModalPath('settings')} startIcon="cog" aria-label="Settings" />;
+
+  return <UserDropdownMenu trigger={<Button startIcon="cog" aria-label="Settings" />} />;
 };
 
 const CalendarDay = ({ date, className, ...rest }: { date: dayjs.Dayjs } & RenderDayProps) => {

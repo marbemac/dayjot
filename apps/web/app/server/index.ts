@@ -1,4 +1,4 @@
-import { getViteReqCtx, unstable_createViteServer, unstable_loadViteServerBuild } from '@remix-run/dev';
+import { unstable_viteServerBuildModuleId } from '@remix-run/dev';
 import { createRequestHandler as createRemixRequestHandler } from '@remix-run/server-runtime';
 import { createAdaptorServer } from '@supastack/server-hono-node';
 import connect from 'connect';
@@ -37,22 +37,28 @@ server.use(
  * The frontend app
  */
 
-const vite = import.meta.env.DEV ? await unstable_createViteServer() : undefined;
+const vite = !import.meta.env.DEV
+  ? undefined
+  : await import('vite').then(({ createServer }) =>
+      createServer({
+        server: {
+          middlewareMode: true,
+        },
+      }),
+    );
 
 const handleFrontendRequest = createRemixRequestHandler(
   vite
-    ? () => unstable_loadViteServerBuild(vite)
+    ? () => vite.ssrLoadModule(unstable_viteServerBuildModuleId)
     : // @ts-expect-error ignore, not always built
       await import('./build/index.js'),
+  import.meta.env.DEV ? 'development' : 'production',
 );
 
-const reqToDevReq = new WeakMap<Request, any>();
-
-server.get('*', reqCtxMiddleware, async c => {
+server.get('*', reqCtxMiddleware, c => {
   try {
-    const { criticalCss } = getViteReqCtx(reqToDevReq.get(c.req.raw));
     const loadContext: AppLoadContext = c.var;
-    return handleFrontendRequest(c.req.raw, loadContext, { __criticalCss: criticalCss });
+    return handleFrontendRequest(c.req.raw, loadContext);
   } catch (err: any) {
     console.log('Rendering error', err);
 
@@ -66,17 +72,14 @@ server.get('*', reqCtxMiddleware, async c => {
 
 // In development, we start up our own server, passing the Vite connect instance
 if (import.meta.env.DEV) {
-  const port = Number(process.env['PORT'] || 3000);
+  const port = Number(process.env['PORT'] ?? 3000);
   const devServer = createAdaptorServer({
-    connectApp: connect().use(vite.middlewares),
-    fetch: (req, originalReq) => {
-      reqToDevReq.set(req, originalReq);
-      return server.fetch(req, process.env);
-    },
+    connectApp: connect().use(vite!.middlewares),
+    fetch: server.fetch,
   });
 
   devServer.listen(port, '0.0.0.0', () => {
-    console.log(`🚀 Server started on port ${port}`);
+    console.log(`🚀 Web app available at http://localhost:${port}`);
   });
 }
 

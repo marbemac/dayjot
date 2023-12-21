@@ -30,6 +30,9 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"image" text,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
 	"updated_at" timestamp with time zone DEFAULT now(),
+	"email_times" jsonb DEFAULT '{"su":"7","mo":"7","tu":"7","we":"7","th":"7","fr":"7","sa":"none"}'::jsonb NOT NULL,
+	"email_include_memory" boolean DEFAULT true NOT NULL,
+	"time_zone" text DEFAULT 'US/Eastern' NOT NULL,
 	CONSTRAINT "users_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint

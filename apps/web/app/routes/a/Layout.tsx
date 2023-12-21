@@ -1,10 +1,10 @@
 import { Outlet } from '@remix-run/react';
 import { Box } from '@supastack/ui-primitives';
 import { useEffect, useState } from 'react';
-import { Provider } from 'rxdb-hooks';
 
 import { DbSyncer } from '~/local-db/DbSyncer.client.tsx';
-import { initLocalDb } from '~/local-db/index.client.ts';
+import { initLocalDb, RxdbHooksProvider } from '~/local-db/index.client.ts';
+import { Modals } from '~/modals/index.tsx';
 
 import { AppSidebar } from './AppSidebar.tsx';
 
@@ -24,7 +24,7 @@ export default function AppLayout() {
   }, []);
 
   return (
-    <Provider db={db}>
+    <RxdbHooksProvider db={db}>
       <Box style={{ paddingLeft: SIDEBAR_WIDTH }}>
         <Box tw="fixed inset-y-0 left-0 py-10 pl-10" style={{ width: SIDEBAR_WIDTH }}>
           <AppSidebar />
@@ -36,6 +36,8 @@ export default function AppLayout() {
       </Box>
 
       <DbSyncer />
-    </Provider>
+
+      <Modals />
+    </RxdbHooksProvider>
   );
 }

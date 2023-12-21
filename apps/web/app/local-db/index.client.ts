@@ -5,6 +5,9 @@ import { getRxStorageDexie } from 'rxdb/plugins/storage-dexie';
 
 import { type EntryCollection, entryCollectionMethods, entryDocMethods, entrySchema } from './schemas.client.ts';
 
+export * from './hooks.client.ts';
+export { Provider as RxdbHooksProvider, useRxCollection, useRxData } from 'rxdb-hooks';
+
 if (import.meta.env.DEV) {
   addRxPlugin(RxDBDevModePlugin);
 }

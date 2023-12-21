@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <AuthContext.Provider
       value={{
-        user: data || null,
+        user: data ?? null,
         isSignedIn: !!data,
         isLoaded: isFetched,
       }}
@@ -69,7 +69,7 @@ export const useUserOrRedirect = (props: { to?: string } = {}) => {
     }, [user, navigate, to]);
   }
 
-  return (user || {}) as NonNullable<RouterOutputs['auth']['me']>;
+  return (user ?? {}) as NonNullable<RouterOutputs['auth']['me']>;
 };
 
 /**

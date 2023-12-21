@@ -4,7 +4,7 @@ import type {
 } from '@remix-run/router';
 import type { ServerRuntimeMetaFunction } from '@remix-run/server-runtime';
 
-import type { ReqCtx } from './api/types.ts';
+import type { ReqCtx } from './server/types.ts';
 
 // Remix's loader context
 export type AppLoadContext = ReqCtx;

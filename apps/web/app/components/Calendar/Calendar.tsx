@@ -34,14 +34,16 @@ const MonthHeading = () => {
 
   return (
     <Box tw="flex items-center pb-3">
-      <Button
-        size="sm"
-        variant="ghost"
-        startIcon="calendar-alt"
-        aria-label="Go to today"
-        onClick={() => calendarStore.set.today()}
-      />
-      <Box tw="flex-1 font-medium">{[month, year].filter(Boolean).join(', ')}</Box>
+      <HStack spacing={1} center="y" tw="flex-1">
+        <Button
+          size="sm"
+          variant="ghost"
+          startIcon="calendar-alt"
+          aria-label="Go to today"
+          onClick={() => calendarStore.set.today()}
+        />
+        <Box tw="font-medium">{[month, year].filter(Boolean).join(', ')}</Box>
+      </HStack>
 
       <HStack spacing={1}>
         <Button

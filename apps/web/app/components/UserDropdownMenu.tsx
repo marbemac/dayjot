@@ -25,9 +25,10 @@ type UserDropdownMenuProps = {
   trigger: React.ReactNode;
 };
 
+// @TODO remove?
 export const UserDropdownMenu = ({ trigger }: UserDropdownMenuProps) => {
   const currentTheme = useGlobalTheme();
-  const [currentThemeId, setCurrentThemeId] = useState(currentTheme?.baseThemeId || 'system');
+  const [currentThemeId, setCurrentThemeId] = useState(currentTheme?.baseThemeId ?? 'system');
 
   const revalidator = useRevalidator();
   const logout = ctx.trpc.auth.logout.useMutation({

@@ -27,7 +27,7 @@ const TokenSchema = object({
 
 export const authRouter = router({
   me: publicProcedure.query(async ({ ctx }) => {
-    return ctx.user || null;
+    return ctx.user ?? null;
   }),
 
   listLoginOptions: publicProcedure.input(wrap(EmailSchema)).mutation(async ({ input, ctx }) => {
