@@ -31,7 +31,6 @@ const $initLocalDb = async () => {
   const rxdb = await createRxDatabase<LocalDbCollections>({
     name: 'dayjot-rx',
     storage: getRxStorageDexie(),
-    eventReduce: true,
     // password: 'myPassword',
   });
 
