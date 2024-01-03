@@ -1,6 +1,5 @@
 import type { BuildQueriesOpts } from '@supastack/db-model';
 import { dayjs } from '@supastack/utils-dates';
-import { hash } from '@supastack/utils-ids';
 import type { SetOptional } from '@supastack/utils-types';
 import type { Kysely } from 'kysely';
 
@@ -22,7 +21,7 @@ export const entryQueries = <T extends DbSchema>(opts: BuildQueriesOpts<T>) => {
   };
 };
 
-const summarySelect = ['id', 'day', 'contentHash', 'createdAt', 'updatedAt'] satisfies EntryColNames[];
+const summarySelect = ['id', 'day', 'createdAt', 'updatedAt'] satisfies EntryColNames[];
 const detailedSelect = [...summarySelect, 'content'] satisfies EntryColNames[];
 
 // Allow passing in any format for day and updated at - queries will make sure they are formatted correctly
@@ -42,7 +41,6 @@ const bulkUpsertEntries = ({ db }: InsertQueryOpts) => {
         values.map(({ day, ...v }) => ({
           id: EntryId.generate(),
           ...v,
-          contentHash: hash(v.content),
           day: formatEntryDay(day),
           updatedAt: dayjs.utc().toDate(),
         })),
@@ -50,28 +48,33 @@ const bulkUpsertEntries = ({ db }: InsertQueryOpts) => {
       .onConflict(oc =>
         oc.columns(['userId', 'day']).doUpdateSet({
           content: eb => eb.ref('excluded.content'),
-          contentHash: eb => eb.ref('excluded.contentHash'),
         }),
       )
-      .returning(['id', 'day', 'contentHash', 'updatedAt'])
+      .returning(['id', 'day', 'updatedAt'])
       .execute();
   };
 };
 
 const listSinceCheckpoint = ({ db }: InsertQueryOpts) => {
   return async ({
-    updatedSince,
+    checkpoint,
     limit,
     userId,
   }: {
     userId: TUserId;
     limit: number;
-    updatedSince?: dayjs.ConfigType;
+    checkpoint?: {
+      updatedAt: dayjs.ConfigType;
+      day: string;
+    };
   }) => {
     let q = db.selectFrom(ENTRIES_KEY).select(detailedSelect).where('userId', '=', userId);
 
-    if (updatedSince) {
-      q = q.where('updatedAt', '>', dayjs(updatedSince).toDate());
+    if (checkpoint) {
+      const d = dayjs(checkpoint.updatedAt).toDate();
+      q = q.where(eb =>
+        eb.or([eb('updatedAt', '>', d), eb.and([eb('updatedAt', '=', d), eb('day', '>', checkpoint.day)])]),
+      );
     }
 
     return q.orderBy(['updatedAt asc', 'day asc']).limit(limit).execute();

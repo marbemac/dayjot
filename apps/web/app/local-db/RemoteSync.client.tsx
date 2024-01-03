@@ -21,18 +21,27 @@ export const RemoteSync = () => {
   const { trpc } = useTrpc();
   const { mutateAsync: pushEntries } = trpc.sync.pushEntries.useMutation();
   const { mutateAsync: pullEntries } = trpc.sync.pullEntries.useMutation();
-  useReplicator({ collectionName: TableName.Entries, handlePull: pullEntries, handlePush: pushEntries });
+  useReplicator({
+    collectionName: TableName.Entries,
+    checkpointFromDoc: d => ({ deterministicId: d.day, minUpdatedAt: d.updatedAt }),
+    handlePull: pullEntries,
+    handlePush: pushEntries,
+  });
 
   return null;
 };
 
-function useReplicator<RxDocType extends { updatedAt: string }>({
+function useReplicator<RxDocType>({
   collectionName,
+  checkpointFromDoc,
   handlePull,
   handlePush,
-}: { collectionName: TableName } & Pick<InitReplicatorProps<RxDocType>, 'handlePush' | 'handlePull'>) {
+}: { collectionName: TableName } & Pick<
+  InitReplicatorProps<RxDocType>,
+  'checkpointFromDoc' | 'handlePush' | 'handlePull'
+>) {
   const collection = useRxCollection(collectionName) as RxCollection<RxDocType> | null;
-  const instance = useInitReplicator({ collection, handlePush, handlePull });
+  const instance = useInitReplicator({ collection, checkpointFromDoc, handlePush, handlePull });
 
   // Re-sync
   useQuery({
@@ -53,17 +62,19 @@ type PushHandlerFn<RxDocType> = (data: {
 }) => Promise<WithDeleted<RxDocType>[]>;
 type PullHandlerFn<RxDocType> = (data: {
   limit: number;
-  checkpoint?: { minUpdatedAt: string };
+  checkpoint?: CheckpointType;
 }) => Promise<{ docs: WithDeleted<RxDocType>[] }>;
 
 type InitReplicatorProps<RxDocType> = {
   collection: RxCollection<RxDocType> | null;
+  checkpointFromDoc: (doc: RxDocType) => CheckpointType;
   handlePush: PushHandlerFn<RxDocType>;
   handlePull: PullHandlerFn<RxDocType>;
 };
 
-function useInitReplicator<RxDocType extends { updatedAt: string }>({
+function useInitReplicator<RxDocType>({
   collection,
+  checkpointFromDoc,
   handlePush,
   handlePull,
 }: InitReplicatorProps<RxDocType>): RxReplicationState<RxDocType, CheckpointType> | null {
@@ -213,12 +224,7 @@ function useInitReplicator<RxDocType extends { updatedAt: string }>({
              * On the next call to the pull handler,
              * this checkpoint will be passed as 'lastCheckpoint'
              */
-            checkpoint:
-              docs.length === 0
-                ? lastCheckpoint ?? null
-                : {
-                    minUpdatedAt: docs[docs.length - 1]!.updatedAt,
-                  },
+            checkpoint: docs.length === 0 ? lastCheckpoint ?? null : checkpointFromDoc(docs[docs.length - 1]!),
           };
         },
       },

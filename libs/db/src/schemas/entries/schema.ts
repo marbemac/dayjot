@@ -25,11 +25,6 @@ export const entries = pgTable(
      */
     content: text('content').notNull(),
 
-    /**
-     * hash(content)
-     */
-    contentHash: text('content_hash').notNull(),
-
     createdAt: timestampCol('created_at').defaultNow().notNull(),
     updatedAt: timestampCol('updated_at'),
 

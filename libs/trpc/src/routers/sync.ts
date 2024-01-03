@@ -25,6 +25,8 @@ const PullEntriesSchema = object({
   limit: number(),
   checkpoint: optional(
     object({
+      // for entries, the determinstic fallback is the day (when updatedAt is the same on multiple entries)
+      deterministicId: string(),
       minUpdatedAt: string(),
     }),
   ),
@@ -34,8 +36,10 @@ export const syncRouter = router({
   pullEntries: protectedProcedure
     .input(i => parse(PullEntriesSchema, i))
     .mutation(async ({ input, ctx }) => {
+      const { checkpoint } = input;
+
       const docs = await ctx.db.queries.entries.listSinceCheckpoint({
-        updatedSince: input.checkpoint?.minUpdatedAt,
+        checkpoint: checkpoint ? { updatedAt: checkpoint.minUpdatedAt, day: checkpoint.deterministicId } : undefined,
         limit: input.limit,
         userId: ctx.user.id,
       });

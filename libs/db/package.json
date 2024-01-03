@@ -37,7 +37,7 @@
     "@supastack/tsconfig": "workspace:*",
     "@supastack/utils-types": "workspace:*",
     "dotenv-cli": "^7.3.0",
-    "drizzle-kit": "~0.20.9",
+    "drizzle-kit": "0.20.6",
     "tsx": "4.7.0",
     "typescript": "5.3.3"
   }

@@ -1,5 +1,5 @@
 {
-  "id": "ac5f25c4-c5d8-43d6-b18c-6e458467015f",
+  "id": "0ebe7aec-da0e-4b7e-a1f1-f48040ca20e1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -22,12 +22,6 @@
         },
         "content": {
           "name": "content",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "content_hash": {
-          "name": "content_hash",
           "type": "text",
           "primaryKey": false,
           "notNull": true

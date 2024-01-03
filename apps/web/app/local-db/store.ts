@@ -5,7 +5,7 @@ import type { RxReplicationState } from 'rxdb/plugins/replication';
 
 import type { LocalDb, TableName } from './index.client.ts';
 
-export type CheckpointType = { minUpdatedAt: string };
+export type CheckpointType = { deterministicId: string; minUpdatedAt: string };
 
 // In-memory non-reactive cache of replicator instances - otherwise we end up with issues in react strict mode...
 export const replicatorInstances = new Map<TableName, RxReplicationState<any, CheckpointType>>();
