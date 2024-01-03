@@ -4,9 +4,9 @@ import { safeParse, safeStringify } from '@supastack/utils-json';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { RxCollection, RxLocalDocument } from 'rxdb';
 
-import type { LocalSyncInfo } from './DbSyncer.client.tsx';
-import { LocalDocId } from './DbSyncer.client.tsx';
 import { initLocalDb, TableName, useRxCollection, useRxData } from './index.client.ts';
+import type { LocalSyncInfo } from './RemoteSync.client.tsx';
+import { LocalDocId } from './RemoteSync.client.tsx';
 import type { Entry, EntryDoc, Setting } from './schemas.client.ts';
 import { localDbStore$ } from './store.ts';
 
@@ -74,22 +74,43 @@ export const useUpsertDayEntry = () => {
  * Setting
  */
 
+// Syncs settings from rxjs to localDbStore$ for ease of use across
+// the app (in read-only context, writes still must go to rxdb)
+export const useSubscribeSettings = () => {
+  const isSettingsLoaded = localDbStore$.isSettingsLoaded.get();
+
+  const q = useCallback((c: RxCollection<Setting>) => c.find(), []);
+  const { isFetching, result } = useRxData<Setting>(TableName.Settings, q);
+
+  useEffect(() => {
+    for (const setting of result) {
+      const data = setting.toJSON();
+      localDbStore$.settings[data.name as SettingName].set(safeParse(data.value));
+    }
+  }, [result]);
+
+  useEffect(() => {
+    if (!isSettingsLoaded && !isFetching) {
+      localDbStore$.isSettingsLoaded.set(true);
+    }
+  }, [isFetching, isSettingsLoaded]);
+};
+
 export const useSettingValue = <S extends SettingName, F extends boolean>(
   name: S,
   useFallback?: F,
-): F extends true ? Settings[S] : Settings[S] | undefined => {
+): Settings[S] | undefined => {
   const q = useCallback((c: RxCollection<Setting>) => c.findOne(name), [name]);
 
-  const { result } = useRxData<Setting>(TableName.Settings, q);
+  const { result, isFetching } = useRxData<Setting>(TableName.Settings, q);
   const value = result[0]?.value;
   const parsed = useMemo(() => safeParse(value), [value]);
 
-  if (useFallback) {
+  if (!isFetching && useFallback) {
     return parsed ?? (settingDefault(name) as Settings[S]);
   }
 
-  // @ts-expect-error tricky typing, not a huge deal
-  return parsed as Settings[S] | undefined;
+  return parsed;
 };
 
 export const useUpsertSetting = <S extends SettingName>() => {

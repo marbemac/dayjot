@@ -9,9 +9,10 @@ import { createTRPCUntypedClient, httpBatchLink } from '@trpc/client';
 import { createContext, memo, useContext, useEffect } from 'react';
 
 import { appStore$, userStore$ } from '~/app-store.ts';
-import { DbSyncer } from '~/local-db/DbSyncer.client.tsx';
 import { RxdbHooksProvider, useInitLocalDb, useSettingValue } from '~/local-db/index.client.ts';
+import { RemoteSync } from '~/local-db/RemoteSync.client.tsx';
 
+import { SettingsSync } from './local-db/SettingsSync.tsx';
 import { localDbStore$ } from './local-db/store.ts';
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
@@ -110,9 +111,11 @@ export const useTrpc = () => {
 export const ThemedGlobal = memo(({ children }: { children: React.ReactNode }) => {
   const baseTheme = useSettingValue('theme', true);
 
-  const generatedTheme = generateTheme(baseTheme.baseThemeId, baseTheme.customTheme);
-
-  return <ThemedGlobalInner generatedTheme={generatedTheme}>{children}</ThemedGlobalInner>;
+  return baseTheme ? (
+    <ThemedGlobalInner generatedTheme={generateTheme(baseTheme.baseThemeId, baseTheme.customTheme)}>
+      {children}
+    </ThemedGlobalInner>
+  ) : null;
 });
 
 ThemedGlobal.displayName = 'ThemedGlobal';
@@ -123,7 +126,7 @@ ThemedGlobal.displayName = 'ThemedGlobal';
 
 export const LocalDBProvider = observer(({ children }: { children: React.ReactNode }) => {
   const db = localDbStore$.db.get();
-  const shouldSync = useComputed(() => localDbStore$.isReady.get() && userStore$.isLoggedIn.get());
+  const shouldSyncRemote = useComputed(() => localDbStore$.isReady.get() && userStore$.isLoggedIn.get());
 
   useInitLocalDb();
 
@@ -131,7 +134,8 @@ export const LocalDBProvider = observer(({ children }: { children: React.ReactNo
     <RxdbHooksProvider db={db}>
       {children}
 
-      {shouldSync.get() ? <DbSyncer /> : null}
+      {db ? <SettingsSync /> : null}
+      {shouldSyncRemote.get() ? <RemoteSync /> : null}
     </RxdbHooksProvider>
   );
 });

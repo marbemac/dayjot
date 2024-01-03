@@ -1,11 +1,11 @@
-import { useObserveEffect } from '@legendapp/state/react';
+import { observer, useObserveEffect } from '@legendapp/state/react';
 import { useNavigate } from '@remix-run/react';
 import { $path } from 'remix-routes';
 
 import { userStore$ } from '~/app-store.ts';
 
 import { AppLayout } from './Layout.tsx';
-import { Loading } from './Loading.tsx';
+import { Loading, useLoadingState } from './Loading.tsx';
 
 const useRedirectIfNotLoggedIn = () => {
   const navigate = useNavigate();
@@ -17,13 +17,9 @@ const useRedirectIfNotLoggedIn = () => {
   });
 };
 
-export default function AuthedLayout() {
+export default observer(function AuthedLayout() {
   useRedirectIfNotLoggedIn();
+  const { isAppReady } = useLoadingState();
 
-  return (
-    <>
-      <AppLayout />
-      <Loading />
-    </>
-  );
-}
+  return isAppReady ? <AppLayout /> : <Loading />;
+});

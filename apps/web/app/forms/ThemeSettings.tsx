@@ -1,3 +1,4 @@
+import type { Settings } from '@libs/settings';
 import { SelectContent, SelectGroup, SelectItem } from '@supastack/ui-primitives/select';
 import { SettingsRow } from '@supastack/ui-primitives/settings';
 import type { PrebuiltThemeIds } from '@supastack/ui-theme';
@@ -7,19 +8,23 @@ import { useCallback } from 'react';
 import { useSettingValue, useUpsertSetting } from '~/local-db/index.client.ts';
 
 export const ThemeSettingsForm = () => {
-  const currentTheme = useSettingValue('theme', true);
+  const currentConfig = useSettingValue('theme', true);
 
+  return currentConfig ? <BaseThemeSetting currentConfig={currentConfig} /> : null;
+};
+
+export const BaseThemeSetting = ({ currentConfig }: { currentConfig: Settings['theme'] }) => {
   const upsertSetting = useUpsertSetting();
   const handleThemeChange = useCallback(
     async (nextTheme: PrebuiltThemeIds) => {
       try {
-        await upsertSetting('theme', { ...currentTheme, baseThemeId: nextTheme });
+        await upsertSetting('theme', { ...currentConfig, baseThemeId: nextTheme });
       } catch (err) {
         // @TODO handle error, toast?
         console.error('Error setting theme', err);
       }
     },
-    [upsertSetting, currentTheme],
+    [upsertSetting, currentConfig],
   );
 
   return (
@@ -27,7 +32,7 @@ export const ThemeSettingsForm = () => {
       type="select"
       label="Colors"
       hint="Set your color scheme."
-      value={currentTheme.baseThemeId}
+      value={currentConfig.baseThemeId}
       onValueChange={handleThemeChange}
       renderSelectContent={ThemeSelectContent}
     />

@@ -3,8 +3,14 @@ import { Box } from '@supastack/ui-primitives';
 
 import { localDbStore$ } from '~/local-db/store.ts';
 
-export const Loading = observer(() => {
+export const useLoadingState = () => {
   const localDbInitialized = localDbStore$.isReady.get();
+  const settingsReady = localDbStore$.isSettingsLoaded.get();
+  const isAppReady = localDbInitialized && settingsReady;
 
-  return <Box tw={['fixed inset-0 bg-canvas', localDbInitialized && 'hidden']}>Loading...</Box>;
+  return { localDbInitialized, settingsReady, isAppReady };
+};
+
+export const Loading = observer(() => {
+  return <Box tw={['fixed inset-0 bg-canvas']}>Loading...</Box>;
 });

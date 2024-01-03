@@ -29,8 +29,8 @@ export const AppSidebar = () => {
       <HStack>
         <UserDropdownMenu
           trigger={
-            <Button startIcon="user-circle" endIcon="chevron-down" variant="outline">
-              {userStore$.user.name.get() || 'Account'}
+            <Button endIcon="chevron-down" variant="outline">
+              Dayjot
             </Button>
           }
         />

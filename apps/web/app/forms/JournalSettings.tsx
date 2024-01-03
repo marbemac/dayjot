@@ -1,4 +1,4 @@
-import type { JournalDay, JournalDayConfig } from '@libs/settings';
+import type { JournalDay, JournalDayConfig, Settings } from '@libs/settings';
 import { Box, Button, VStack } from '@supastack/ui-primitives';
 import { SelectContent, SelectGroup, SelectItem, SelectRoot, SelectTrigger } from '@supastack/ui-primitives/select';
 import { useCallback } from 'react';
@@ -16,14 +16,14 @@ const days: { displayName: string; name: JournalDay }[] = [
 ];
 
 export function JournalSettingsForm() {
-  return <DaysConfig />;
+  const currentConfig = useSettingValue('journalDays', true);
+
+  return currentConfig ? <DaysConfig currentConfig={currentConfig} /> : null;
 }
 
 type DayConfigHandleChangeFn = (day: JournalDay, config: Partial<JournalDayConfig>) => Promise<void>;
 
-const DaysConfig = () => {
-  const currentConfig = useSettingValue('journalDays', true);
-
+const DaysConfig = ({ currentConfig }: { currentConfig: Settings['journalDays'] }) => {
   const upsertSetting = useUpsertSetting();
   const handleChange = useCallback<DayConfigHandleChangeFn>(
     async (day, config) => {

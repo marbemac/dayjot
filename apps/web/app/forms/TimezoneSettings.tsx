@@ -1,3 +1,4 @@
+import type { Settings } from '@libs/settings';
 import { SelectContent, SelectGroup, SelectItem } from '@supastack/ui-primitives/select';
 import { SettingsRow } from '@supastack/ui-primitives/settings';
 import { dayjs, majorTimezones } from '@supastack/utils-dates';
@@ -6,14 +7,18 @@ import { useCallback } from 'react';
 import { useSettingValue, useUpsertSetting } from '~/local-db/index.client.ts';
 
 export const TimezoneSettingsForm = () => {
-  const currentZone = useSettingValue('timeZone', true);
+  const currentConfig = useSettingValue('timeZone', true);
 
+  return currentConfig ? <TimezoneSetting currentConfig={currentConfig} /> : null;
+};
+
+export const TimezoneSetting = ({ currentConfig }: { currentConfig: Settings['timeZone'] }) => {
   const upsertSetting = useUpsertSetting();
   const handleChange = useCallback(
     async (offset: string) => {
       try {
         await upsertSetting('timeZone', {
-          ...currentZone,
+          ...currentConfig,
           name: majorTimezones[offset as keyof typeof majorTimezones],
           offset: parseInt(offset),
         });
@@ -22,7 +27,7 @@ export const TimezoneSettingsForm = () => {
         console.error('Error setting timezone', err);
       }
     },
-    [upsertSetting, currentZone],
+    [upsertSetting, currentConfig],
   );
 
   return (
@@ -30,7 +35,7 @@ export const TimezoneSettingsForm = () => {
       type="select"
       label="Timezone"
       hint="Set your timezone to ensure your reminder emails are sent at the correct time."
-      value={String(currentZone.offset)}
+      value={String(currentConfig.offset)}
       onValueChange={handleChange}
       renderSelectContent={TimezoneSelectContent}
     />

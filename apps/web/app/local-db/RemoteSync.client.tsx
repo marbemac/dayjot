@@ -17,7 +17,7 @@ export type LocalSyncInfo = {
   time: number;
 };
 
-export const DbSyncer = () => {
+export const RemoteSync = () => {
   const { trpc } = useTrpc();
   const { mutateAsync: pushEntries } = trpc.sync.pushEntries.useMutation();
   const { mutateAsync: pullEntries } = trpc.sync.pullEntries.useMutation();

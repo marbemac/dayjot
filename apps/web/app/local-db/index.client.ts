@@ -75,6 +75,8 @@ const $initLocalDb = async () => {
   return rxdb;
 };
 
+export type LocalDb = Awaited<ReturnType<typeof initLocalDb>>;
+
 export const initLocalDb = async () => {
   // Make sure we only init once. App is run in react <StrictMode> so this ends up being called twice.
   if (!localDbSingleton) {
