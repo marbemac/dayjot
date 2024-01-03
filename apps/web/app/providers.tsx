@@ -148,7 +148,7 @@ const AuthSyncer = observer(() => {
   const { trpc } = useTrpc();
 
   const enabled = useComputed(() => userStore$.isLoggedIn.get() || !userStore$.checkedAt.get()).get();
-  const { data, isFetched, dataUpdatedAt } = trpc.auth.me.useQuery(undefined, {
+  const { data, isFetched, dataUpdatedAt, error, failureReason } = trpc.auth.me.useQuery(undefined, {
     enabled,
   });
 
@@ -164,7 +164,9 @@ const AuthSyncer = observer(() => {
     if (data !== undefined) {
       userStore$.user.set(data);
     }
-  }, [isFetched, data, dataUpdatedAt]);
+
+    appStore$.remoteError.set(String(failureReason ?? error) ?? null);
+  }, [isFetched, data, dataUpdatedAt, failureReason, error]);
 
   return null;
 });

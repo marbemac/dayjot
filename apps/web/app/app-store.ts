@@ -8,6 +8,7 @@ import type { RouterOutputs } from './types.ts';
 export const appStore$ = observable({
   isOnline: onlineManager.isOnline(),
   isVisible: focusManager.isFocused(),
+  remoteError: null as string | null,
 });
 
 export const userStore$ = observable({

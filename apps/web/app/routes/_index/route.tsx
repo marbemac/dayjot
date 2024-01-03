@@ -1,6 +1,7 @@
+import { observer } from '@legendapp/state/react';
 import { Box, Button, VStack } from '@supastack/ui-primitives';
 
-import { userStore$ } from '~/app-store.ts';
+import { appStore$, userStore$ } from '~/app-store.ts';
 import { Link } from '~/components/Link.tsx';
 import { SiteNav } from '~/components/SiteNav.tsx';
 import { TableName, useLocalSyncInfo } from '~/local-db/index.client.ts';
@@ -13,7 +14,7 @@ export const meta: MetaFunction = () => {
   return [{ title: 'Home' }];
 };
 
-export default function Home() {
+export default observer(function Home() {
   const syncInfo = useLocalSyncInfo(TableName.Entries);
 
   const logout = useLogout({
@@ -37,6 +38,7 @@ export default function Home() {
         <Box>Last checked: {String(userStore$.checkedAt.get())}</Box>
         <Box>User: {String(userStore$.user.id.get())}</Box>
         <Box>Entries last synced at: {String(syncInfo?.toJSON().data.time)}</Box>
+        <Box>Remote error: {String(appStore$.remoteError.get())}</Box>
         <Box>
           {userStore$.isLoggedIn.get() ? (
             <Button
@@ -55,7 +57,7 @@ export default function Home() {
       </VStack>
     </>
   );
-}
+});
 
 const useLogout = ({ onSuccess }: { onSuccess?: () => void | Promise<void> } = {}) => {
   const { trpc } = useTrpc();

@@ -1,4 +1,6 @@
 import { appRouter } from '@libs/trpc';
+import { getTRPCErrorFromUnknown } from '@trpc/server';
+import { getErrorShape } from '@trpc/server/shared';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 
@@ -34,5 +36,37 @@ server.use(
     }),
   }),
 );
+
+server.onError((err, c) => {
+  const isTrpcRequest = c.req.routePath === `/${TRPC_ROOT}/*`;
+  if (isTrpcRequest) {
+    const trpcError = getErrorShape({
+      config: appRouter._def._config,
+      error: getTRPCErrorFromUnknown(err),
+      ctx: c.var,
+      type: 'unknown',
+      path: '',
+      input: undefined,
+    });
+
+    return c.json(
+      {
+        id: null,
+        error: trpcError,
+      },
+      trpcError.data.httpStatus ?? 500,
+    );
+  }
+
+  return c.json(
+    {
+      id: null,
+      error: {
+        message: 'unknown error',
+      },
+    },
+    500,
+  );
+});
 
 export default server;
