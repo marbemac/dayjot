@@ -18,8 +18,7 @@
     "react-dom": "18.3.0-canary-587ae49d7-20230720",
     "@remix-run/dev": "file:.yalc/@remix-run/dev",
     "@remix-run/react": "file:.yalc/@remix-run/react",
-    "@remix-run/server-runtime": "file:.yalc/@remix-run/server-runtime",
-    "zustand-x": "file:.yalc/zustand-x"
+    "@remix-run/server-runtime": "file:.yalc/@remix-run/server-runtime"
   },
   "scripts": {
     "--deps--": "",

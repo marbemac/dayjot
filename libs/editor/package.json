@@ -17,6 +17,7 @@
     "react-dom": ">=18"
   },
   "dependencies": {
+    "@legendapp/state": "^2.1.4",
     "@supastack/ui-primitives": "workspace:*",
     "@supastack/ui-styles": "workspace:*",
     "@tiptap/core": "2.1.13",

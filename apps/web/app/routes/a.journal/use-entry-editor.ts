@@ -1,4 +1,4 @@
-import { editors } from '@libs/editor';
+import { editors$ } from '@libs/editor';
 import type { EditorEvents } from '@tiptap/react';
 import debounce from 'lodash.debounce';
 
@@ -48,7 +48,7 @@ export class EntryEditor {
   };
 
   get editor() {
-    return editors.set.findOrCreate(this.entry.day, {
+    return editors$.findOrCreate(this.entry.day, {
       initialContent: this.entry.content,
       onCreate: () => {
         this.#lastContent = this.entry.content;

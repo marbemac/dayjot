@@ -3230,6 +3230,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@libs/editor@workspace:libs/editor"
   dependencies:
+    "@legendapp/state": "npm:^2.1.4"
     "@supastack/eslint-config": "workspace:*"
     "@supastack/tsconfig": "workspace:*"
     "@supastack/ui-primitives": "workspace:*"
@@ -12780,13 +12781,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immer@npm:^10.0.3":
-  version: 10.0.3
-  resolution: "immer@npm:10.0.3"
-  checksum: 282a4f8479a40f7d12b2b3243c095e3e892bf99058e2ffcdd6b8e9fd143e6a90f2717ab9b6c8b97c927ffb8054465c8f647056f41660dbfd672e240cf1063503
-  languageName: node
-  linkType: hard
-
 "import-fresh@npm:^3.2.1":
   version: 3.3.0
   resolution: "import-fresh@npm:3.3.0"
@@ -14071,13 +14065,6 @@ __metadata:
   version: 4.5.0
   resolution: "lodash.isequal@npm:4.5.0"
   checksum: dfdb2356db19631a4b445d5f37868a095e2402292d59539a987f134a8778c62a2810c2452d11ae9e6dcac71fc9de40a6fedcb20e2952a15b431ad8b29e50e28f
-  languageName: node
-  linkType: hard
-
-"lodash.mapvalues@npm:^4.6.0":
-  version: 4.6.0
-  resolution: "lodash.mapvalues@npm:4.6.0"
-  checksum: a976bfc3923d4d8d2034e049ec4700e3aaf141a6143c973d06be3b2c87697923cd0158ee770484ad1af52dfed93ae90d2b76268413db95a42a2f46d7e1754828
   languageName: node
   linkType: hard
 
@@ -17281,13 +17268,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"proxy-compare@npm:2.4.0":
-  version: 2.4.0
-  resolution: "proxy-compare@npm:2.4.0"
-  checksum: 33812fc4cc616ebb16300d40a3da98623ef1d58e2ca91a88c4192b6aa0e2860bf778a01a4833544891e8d4d7d7da495106f643102ba815557df302e592daf680
-  languageName: node
-  linkType: hard
-
 "proxy-from-env@npm:^1.0.0, proxy-from-env@npm:^1.1.0":
   version: 1.1.0
   resolution: "proxy-from-env@npm:1.1.0"
@@ -17663,26 +17643,6 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 6d66f3bdb65e1ec79089f80314da97c9a005087a04ee034255a5de129a4c0d9fd0bf99fa7bf642781ac2dc745ca687aae3de082bd8afdd0d117bc953241e15ad
-  languageName: node
-  linkType: hard
-
-"react-tracked@npm:^1.7.11":
-  version: 1.7.11
-  resolution: "react-tracked@npm:1.7.11"
-  dependencies:
-    proxy-compare: "npm:2.4.0"
-    use-context-selector: "npm:1.4.1"
-  peerDependencies:
-    react: ">=16.8.0"
-    react-dom: "*"
-    react-native: "*"
-    scheduler: ">=0.19.0"
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-    react-native:
-      optional: true
-  checksum: 9f9ac8e565f7b40383e6300e99cb29b7cc7e75eab2eb0072105f5c2e9edbfacc0aee342509238311a5db66a3a14231f9475ed0ed50b0554ccb43289ef488d3e4
   languageName: node
   linkType: hard
 
@@ -20368,23 +20328,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-context-selector@npm:1.4.1":
-  version: 1.4.1
-  resolution: "use-context-selector@npm:1.4.1"
-  peerDependencies:
-    react: ">=16.8.0"
-    react-dom: "*"
-    react-native: "*"
-    scheduler: ">=0.19.0"
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-    react-native:
-      optional: true
-  checksum: 9751181117fdb47049aec8f3a6ccc4f1286e8661c769dbed554d58e478538cb83dac180a62baedcb3f65c99c3ed41d5423a955c9b7c12133b0e4263c30255bff
-  languageName: node
-  linkType: hard
-
 "use-isomorphic-layout-effect@npm:^1.1.2":
   version: 1.1.2
   resolution: "use-isomorphic-layout-effect@npm:1.1.2"
@@ -20425,7 +20368,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:1.2.0, use-sync-external-store@npm:^1.0.0, use-sync-external-store@npm:^1.2.0":
+"use-sync-external-store@npm:^1.0.0, use-sync-external-store@npm:^1.2.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:
@@ -20876,8 +20819,6 @@ __metadata:
     vite: "npm:5.0.10"
     vite-tsconfig-paths: "npm:4.2.3"
     wrangler: "npm:3.22.2"
-    zustand: "npm:4.4.7"
-    zustand-x: "npm:^3.0.2"
   languageName: unknown
   linkType: soft
 
@@ -21418,39 +21359,6 @@ __metadata:
   version: 3.22.4
   resolution: "zod@npm:3.22.4"
   checksum: 7578ab283dac0eee66a0ad0fc4a7f28c43e6745aadb3a529f59a4b851aa10872b3890398b3160f257f4b6817b4ce643debdda4fb21a2c040adda7862cab0a587
-  languageName: node
-  linkType: hard
-
-"zustand-x@file:.yalc/zustand-x::locator=dayjot-mono%40workspace%3A.":
-  version: 3.0.2
-  resolution: "zustand-x@file:.yalc/zustand-x#.yalc/zustand-x::hash=cf26c5&locator=dayjot-mono%40workspace%3A."
-  dependencies:
-    immer: "npm:^10.0.3"
-    lodash.mapvalues: "npm:^4.6.0"
-    react-tracked: "npm:^1.7.11"
-  peerDependencies:
-    zustand: ">=4.3.9"
-  checksum: 2c9037dfd36247fd6578da5084cc018a323a501a145cecebe9048205e94f8093ee0c23a5971fb3180e5767cdb1e3d3872d4fe438c109e71f5423a58696bb3192
-  languageName: node
-  linkType: hard
-
-"zustand@npm:4.4.7":
-  version: 4.4.7
-  resolution: "zustand@npm:4.4.7"
-  dependencies:
-    use-sync-external-store: "npm:1.2.0"
-  peerDependencies:
-    "@types/react": ">=16.8"
-    immer: ">=9.0"
-    react: ">=16.8"
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-    immer:
-      optional: true
-    react:
-      optional: true
-  checksum: de507f09eb79039d74d282df6ffac6c7fb6b840ca3620b0392bcbe3f9049902802db5448b4002e6fcb32f903f7ec1aea14602049eb2a3a8410bfea7186d72fb7
   languageName: node
   linkType: hard
 

@@ -1,41 +1,33 @@
+import type { OpaqueObject } from '@legendapp/state';
+import { computed, observable, opaqueObject } from '@legendapp/state';
 import type { Editor } from '@tiptap/react';
-import { createStore } from 'zustand-x';
 
 import { createEditor, type CreateEditorOpts, type EditorId } from './create-editor.ts';
-
-type EditorsStore = {
-  focusedEditor: EditorId | null;
-  editors: Record<EditorId, Editor>;
-};
 
 export type FindOrCreateOpts = CreateEditorOpts & {
   onCreate?: (props: { editor: Editor }) => void;
 };
 
-export const editors = createStore('editors')<EditorsStore>({
-  focusedEditor: null,
-  editors: {},
-})
-  .extendSelectors((state, get, api) => ({
-    editor: (id: EditorId) => get.editors()[id],
-    shouldFocus: (id: EditorId) => get.focusedEditor() === id,
-  }))
-  .extendActions((set, get, api) => ({
-    focusOnEditor: (id: EditorId) => {
-      set.focusedEditor(id);
-    },
+export const editors$ = observable({
+  focusedEditor: null as EditorId | null,
+  editors: {} as Record<EditorId, OpaqueObject<Editor>>,
 
-    findOrCreate: (id: EditorId, { onCreate, ...opts }: FindOrCreateOpts = {}) => {
-      const editors = get.editors();
-      const existing = editors[id];
-      if (existing) return existing;
+  shouldFocus: (id: EditorId) => computed(() => editors$.focusedEditor.get() === id),
 
-      const newEditor = createEditor(id, opts);
+  focusOnEditor: (id: EditorId) => {
+    editors$.focusedEditor.set(id);
+  },
 
-      if (onCreate) onCreate({ editor: newEditor });
+  findOrCreate: (id: EditorId, { onCreate, ...opts }: FindOrCreateOpts = {}) => {
+    const existing = editors$.editors[id]!.get();
+    if (existing) return existing;
 
-      set.editors({ ...editors, [id]: newEditor });
+    const newEditor = opaqueObject(createEditor(id, opts));
 
-      return newEditor;
-    },
-  }));
+    if (onCreate) onCreate({ editor: newEditor });
+
+    editors$.editors[id]!.set(newEditor);
+
+    return newEditor;
+  },
+});

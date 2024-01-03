@@ -1,8 +1,9 @@
+import { observer } from '@legendapp/state/react';
 import type { dayjs } from '@supastack/utils-dates';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 
-import { calendarStore } from '~/components/Calendar/state.ts';
+import { calendarStore$ } from '~/components/Calendar/state.ts';
 
 import { DailyEntry } from './DailyEntry.tsx';
 
@@ -20,9 +21,9 @@ const generateDaysWindow = (anchorDate: dayjs.Dayjs) => {
   ];
 };
 
-export default function DailyScroller() {
+export default observer(function DailyScroller() {
   // const anchorDate = dayjs('2023-10-20');
-  const anchorDate = calendarStore.use.active();
+  const anchorDate = calendarStore$.active.get();
 
   const hasBeenRendered = useRef(false);
   const [anchorKey, setAnchorKey] = useState(anchorDate.format('YYYY-MM-DD'));
@@ -39,7 +40,7 @@ export default function DailyScroller() {
 
   // key forces a re-mount when the anchorDate changes, to reset the scroller
   return <Scroller key={anchorKey} Entry={DailyEntry} initialDays={days} />;
-}
+});
 
 const Scroller = ({
   Entry,

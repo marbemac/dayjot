@@ -1,9 +1,10 @@
+import { observer } from '@legendapp/state/react';
 import { Box, Button, Card, HStack, VStack } from '@supastack/ui-primitives';
 import { tx } from '@supastack/ui-styles';
 import { dayjs } from '@supastack/utils-dates';
 import { Fragment, useMemo } from 'react';
 
-import { calendarStore } from './state.ts';
+import { calendarStore$ } from './state.ts';
 
 export type RenderDayProps = {
   onClick: React.MouseEventHandler;
@@ -27,8 +28,8 @@ export const Calendar = (props: CalendarProps) => {
   );
 };
 
-const MonthHeading = () => {
-  const now = calendarStore.use.now();
+const MonthHeading = observer(() => {
+  const now = calendarStore$.now.get();
   const month = useMemo(() => now.format('MMMM'), [now]);
   const year = useMemo(() => (now.isSame(dayjs(), 'year') ? null : now.format('YYYY')), [now]);
 
@@ -40,7 +41,7 @@ const MonthHeading = () => {
           variant="ghost"
           startIcon="calendar-alt"
           aria-label="Go to today"
-          onClick={() => calendarStore.set.today()}
+          onClick={() => calendarStore$.goToToday()}
         />
         <Box tw="font-medium">{[month, year].filter(Boolean).join(', ')}</Box>
       </HStack>
@@ -51,7 +52,7 @@ const MonthHeading = () => {
           variant="ghost"
           startIcon="chevron-left"
           aria-label="Previous month"
-          onClick={() => calendarStore.set.prevMonth()}
+          onClick={() => calendarStore$.goToPrevMonth()}
         />
 
         <Button
@@ -59,18 +60,18 @@ const MonthHeading = () => {
           variant="ghost"
           startIcon="chevron-right"
           aria-label="Next month"
-          onClick={() => calendarStore.set.nextMonth()}
+          onClick={() => calendarStore$.goToNextMonth()}
         />
       </HStack>
     </Box>
   );
-};
+});
 
 const GRID_GAP = 'gap-1.5' as const;
 
-const WeekHeading = () => {
+const WeekHeading = observer(() => {
   const dayElems = [];
-  const now = calendarStore.get.now();
+  const now = calendarStore$.now.get();
 
   for (let i = 0; i < 7; i++) {
     dayElems.push(
@@ -81,11 +82,11 @@ const WeekHeading = () => {
   }
 
   return <Box tw={`flex ${GRID_GAP}`}>{dayElems}</Box>;
-};
+});
 
-const Days = ({ renderDay }: Pick<CalendarProps, 'renderDay'>) => {
-  const now = calendarStore.use.now();
-  const active = calendarStore.use.active();
+const Days = observer(({ renderDay }: Pick<CalendarProps, 'renderDay'>) => {
+  const now = calendarStore$.now.get();
+  const active = calendarStore$.active.get();
   const days = useMemo(() => getAllDays(now), [now]);
   const dayElems: React.ReactNode[] = [];
 
@@ -94,7 +95,7 @@ const Days = ({ renderDay }: Pick<CalendarProps, 'renderDay'>) => {
     isActiveDay = !isActiveDay && d.date.isSame(active, 'day');
 
     const dayProps = {
-      onClick: () => calendarStore.set.activeDate(d.date),
+      onClick: () => calendarStore$.setActiveDate(d.date),
       children: d.day,
       className: tx([
         `flex h-7 w-8 items-center justify-center rounded`,
@@ -110,7 +111,7 @@ const Days = ({ renderDay }: Pick<CalendarProps, 'renderDay'>) => {
   });
 
   return <Box tw={`grid grid-cols-7 place-items-center ${GRID_GAP}`}>{dayElems}</Box>;
-};
+});
 
 const getAllDays = (now: dayjs.Dayjs) => {
   let currentDate = now.startOf('month').weekday(0);

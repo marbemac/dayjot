@@ -1,4 +1,4 @@
-import { editors, RichTextEditor } from '@libs/editor';
+import { editors$, RichTextEditor } from '@libs/editor';
 import { Box, Card, Heading, VStack } from '@supastack/ui-primitives';
 import { dayjs } from '@supastack/utils-dates';
 import { memo, useCallback } from 'react';
@@ -26,7 +26,7 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
   const handleStartEditor = useCallback(async () => {
     await upsertEntry(dayId);
 
-    editors.set.focusOnEditor(dayId);
+    editors$.focusOnEditor(dayId);
   }, [dayId, upsertEntry]);
 
   return (

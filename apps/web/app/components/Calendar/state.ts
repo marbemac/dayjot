@@ -1,34 +1,26 @@
+import { observable, opaqueObject } from '@legendapp/state';
 import { dayjs } from '@supastack/utils-dates';
-import { createStore } from 'zustand-x';
 
-type CalendarStore = {
-  now: dayjs.Dayjs;
-  active: dayjs.Dayjs;
-};
+export const calendarStore$ = observable({
+  now: opaqueObject(dayjs()),
+  active: opaqueObject(dayjs()),
 
-export const calendarStore = createStore('calendar')<CalendarStore>({
-  now: dayjs(),
-  active: dayjs(),
-})
-  .extendActions((set, get) => ({
-    activeDate: (date: dayjs.ConfigType) => {
-      const t = dayjs(date);
-      set.active(t);
-      set.now(t);
-    },
+  setActiveDate: (date: dayjs.ConfigType) => {
+    const t = dayjs(date);
+    calendarStore$.assign({ now: opaqueObject(t), active: opaqueObject(t) });
+  },
 
-    nextMonth: () => {
-      const next = get.now().add(1, 'month');
-      set.now(next);
-    },
+  goToNextMonth: () => {
+    const next = calendarStore$.now.get().add(1, 'month');
+    calendarStore$.now.set(opaqueObject(next));
+  },
 
-    prevMonth: () => {
-      const prev = get.now().subtract(1, 'month');
-      set.now(prev);
-    },
-  }))
-  .extendActions(set => ({
-    today: () => {
-      set.activeDate(dayjs());
-    },
-  }));
+  goToPrevMonth: () => {
+    const prev = calendarStore$.now.get().subtract(1, 'month');
+    calendarStore$.now.set(opaqueObject(prev));
+  },
+
+  goToToday: () => {
+    calendarStore$.setActiveDate(dayjs());
+  },
+});
