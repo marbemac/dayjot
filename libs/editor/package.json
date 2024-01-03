@@ -1,5 +1,5 @@
 {
-  "name": "@dayjot/editor",
+  "name": "@libs/editor",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -20,6 +20,7 @@
     "@supastack/ui-primitives": "workspace:*",
     "@supastack/ui-styles": "workspace:*",
     "@tiptap/core": "2.1.13",
+    "@tiptap/extension-code-block": "2.1.13",
     "@tiptap/extension-code-block-lowlight": "2.1.13",
     "@tiptap/extension-highlight": "2.1.13",
     "@tiptap/extension-image": "2.1.13",
@@ -36,7 +37,6 @@
     "@tiptap/pm": "2.1.13",
     "@tiptap/react": "2.1.13",
     "@tiptap/starter-kit": "2.1.13",
-    "@udecode/zustood": "2.0.0",
     "lowlight": "3.1.0",
     "markdown-it": "14.0.0",
     "markdown-it-mark": "4.0.0"

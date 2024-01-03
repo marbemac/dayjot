@@ -1,0 +1,22 @@
+{
+  "name": "@libs/settings",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@supastack/ui-theme": "workspace:*",
+    "@supastack/utils-dates": "workspace:*"
+  },
+  "devDependencies": {
+    "@supastack/eslint-config": "workspace:*",
+    "@supastack/tsconfig": "workspace:*"
+  }
+}

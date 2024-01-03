@@ -1,4 +1,4 @@
-import { editors } from '@dayjot/editor';
+import { editors } from '@libs/editor';
 import type { EditorEvents } from '@tiptap/react';
 import debounce from 'lodash.debounce';
 

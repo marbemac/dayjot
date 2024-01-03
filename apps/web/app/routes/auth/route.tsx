@@ -1,27 +1,32 @@
-import { Box } from '@supastack/ui-primitives';
+import { useObserveEffect } from '@legendapp/state/react';
+import { useNavigate } from '@remix-run/react';
+import { VStack } from '@supastack/ui-primitives';
+import { $path } from 'remix-routes';
 
-import { enforceSignedOut } from '~/auth.tsx';
-import { SiteNav } from '~/components/SiteNav.tsx';
+import { userStore$ } from '~/app-store.ts';
 import { EmailAuthForm } from '~/forms/EmailAuth.tsx';
-import type { LoaderFunctionArgs, MetaFunction } from '~/remix-types.ts';
+import type { MetaFunction } from '~/types.ts';
 
 export const meta: MetaFunction = () => {
-  return [{ title: 'Authenticate' }];
+  return [{ title: 'Login or Signup' }];
 };
 
-export async function loader({ context }: LoaderFunctionArgs) {
-  await enforceSignedOut(context);
+const useRedirectIfLoggedIn = () => {
+  const navigate = useNavigate();
 
-  return null;
-}
+  useObserveEffect(() => {
+    if (userStore$.isLoggedIn.get()) {
+      navigate($path('/a/journal'), { replace: true });
+    }
+  });
+};
 
 export default function Auth() {
+  useRedirectIfLoggedIn();
+
   return (
-    <>
-      <SiteNav />
-      <Box tw="flex flex-1 items-center justify-center p-20">
-        <EmailAuthForm />
-      </Box>
-    </>
+    <VStack center tw="min-h-screen">
+      <EmailAuthForm />
+    </VStack>
   );
 }

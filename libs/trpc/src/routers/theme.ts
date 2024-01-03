@@ -1,10 +1,9 @@
-import { wrap } from '@decs/typeschema';
 import type { ThemeConfig } from '@supastack/ui-theme';
 import { generateThemesForCookie, themeConfigSchema } from '@supastack/ui-theme';
+import { parse } from 'valibot';
 
-import { setReqTheme } from '~/server/utils/theme.ts';
-
-import { publicProcedure, router } from './trpc.ts';
+import { publicProcedure, router } from '../trpc.ts';
+import { setReqTheme } from '../utils/theme.ts';
 
 export const themeRouter = router({
   /**
@@ -17,19 +16,21 @@ export const themeRouter = router({
    * Mutations
    */
 
-  update: publicProcedure.input(wrap(themeConfigSchema)).mutation(async ({ input, ctx }) => {
-    const config = input as ThemeConfig;
+  update: publicProcedure
+    .input(i => parse(themeConfigSchema, i))
+    .mutation(async ({ input, ctx }) => {
+      const config = input as ThemeConfig;
 
-    if (ctx.user) {
-      // @TODO persist user's theme choice in db, use that to set initial cookie if not set (new browser, etc)
-    }
+      if (ctx.user) {
+        // @TODO persist user's theme choice in db, use that to set initial cookie if not set (new browser, etc)
+      }
 
-    setReqTheme({ theme: config, setCookie: ctx.setCookie, deleteCookie: ctx.deleteCookie });
+      setReqTheme({ theme: config, setCookie: ctx.setCookie, deleteCookie: ctx.deleteCookie });
 
-    const { generatedTheme, generatedDarkTheme } = generateThemesForCookie(config);
+      const { generatedTheme, generatedDarkTheme } = generateThemesForCookie(config);
 
-    return { theme: generatedTheme, darkTheme: generatedDarkTheme };
-  }),
+      return { theme: generatedTheme, darkTheme: generatedDarkTheme };
+    }),
 
   /**
    * Resets back to "system" (none) choice

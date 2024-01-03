@@ -1,7 +1,7 @@
 import type { ThemeConfig } from '@supastack/ui-theme';
 import { dayjs } from '@supastack/utils-dates';
 
-import type { ReqCtx } from '~/server/types.ts';
+import type { ReqCtx } from '../types.ts';
 
 const THEME_COOKIE = 'theme';
 

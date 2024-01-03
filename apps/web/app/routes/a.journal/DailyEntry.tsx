@@ -1,10 +1,10 @@
-import { editors, RichTextEditor } from '@dayjot/editor';
+import { editors, RichTextEditor } from '@libs/editor';
 import { Box, Card, Heading, VStack } from '@supastack/ui-primitives';
 import { dayjs } from '@supastack/utils-dates';
 import { memo, useCallback } from 'react';
 
-import { TableName, useDayEntry, useRxCollection } from '~/local-db/index.client.ts';
-import type { Entry, EntryDoc } from '~/local-db/schemas.client.ts';
+import { useDayEntry, useUpsertDayEntry } from '~/local-db/index.client.ts';
+import type { EntryDoc } from '~/local-db/schemas.client.ts';
 
 import { useEntryEditor } from './use-entry-editor.ts';
 
@@ -20,17 +20,14 @@ export const DailyEntry = memo((props: { day: dayjs.ConfigType }) => {
     sameElse: 'ddd, MMM D', // Everything else ( Wed, Jan 25 )
   });
 
-  const entries = useRxCollection<Entry>(TableName.Entries)!;
   const entry = useDayEntry(day);
 
+  const upsertEntry = useUpsertDayEntry();
   const handleStartEditor = useCallback(async () => {
-    await entries.upsert({
-      day: dayId,
-      content: '',
-    });
+    await upsertEntry(dayId);
 
     editors.set.focusOnEditor(dayId);
-  }, [dayId, entries]);
+  }, [dayId, upsertEntry]);
 
   return (
     <Box tw="mx-auto max-w-6xl px-10 pt-10">

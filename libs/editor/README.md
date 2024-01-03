@@ -1,1 +1,1 @@
-# @dayjot/editor
+# @libs/editor

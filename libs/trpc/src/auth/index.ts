@@ -3,11 +3,17 @@ import { lucia } from 'lucia';
 import { web } from 'lucia/middleware';
 import type { Sql } from 'postgres';
 
-export const initAuth = ({ sql }: { sql: Sql }) => {
+export type { SessionUser } from './types.ts';
+
+export const initAuth = ({ sql, isDev }: { sql: Sql; isDev?: boolean }) => {
   return lucia({
-    env: import.meta.env.DEV ? 'DEV' : 'PROD',
+    env: isDev ? 'DEV' : 'PROD',
 
     middleware: web(),
+
+    // Turn it off during development since api and frontend are on different hosts
+    // In prod the api and frontend are on the same host, so cors doesn't come into play
+    csrfProtection: isDev ? false : true,
 
     adapter: postgresAdapter(sql, {
       user: 'users',

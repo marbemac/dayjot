@@ -1,9 +1,8 @@
 {
-  "extends": "@supastack/tsconfig/tsconfig.base.json",
+  "extends": "@supastack/tsconfig/tsconfig.react.json",
   "include": ["env.d.ts", "**/*.ts", "**/*.tsx"],
   "compilerOptions": {
     "rootDir": ".",
-    "jsx": "react-jsx",
     "paths": {
       "~/*": ["./app/*"]
     },

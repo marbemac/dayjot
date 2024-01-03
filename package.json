@@ -15,7 +15,11 @@
   },
   "resolutions": {
     "react": "18.3.0-canary-587ae49d7-20230720",
-    "react-dom": "18.3.0-canary-587ae49d7-20230720"
+    "react-dom": "18.3.0-canary-587ae49d7-20230720",
+    "@remix-run/dev": "file:.yalc/@remix-run/dev",
+    "@remix-run/react": "file:.yalc/@remix-run/react",
+    "@remix-run/server-runtime": "file:.yalc/@remix-run/server-runtime",
+    "zustand-x": "file:.yalc/zustand-x"
   },
   "scripts": {
     "--deps--": "",
@@ -40,13 +44,13 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20231218.0",
-    "@types/node": "^20.10.5",
-    "@types/react": "18.2.45",
+    "@types/node": "^20.10.6",
+    "@types/react": "18.2.46",
     "@types/react-dom": "18.2.18",
     "@yarnpkg/types": "~4.0.0",
     "happy-dom": "^12.10.3",
     "jsdom": "23.0.1",
-    "nx": "17.2.7",
+    "nx": "17.2.8",
     "nx-cloud": "16.5.2",
     "prettier": "3.1.1",
     "typescript": "5.3.3"

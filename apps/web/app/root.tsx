@@ -2,7 +2,8 @@ import './globals.css';
 
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 
-import { Providers } from '~/providers.tsx';
+import { Modals } from './modals/index.tsx';
+import { Providers } from './providers.tsx';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
       <body>
         <Providers>
           <Outlet />
+          <Modals />
         </Providers>
 
         <ScrollRestoration />

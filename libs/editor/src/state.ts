@@ -1,5 +1,5 @@
 import type { Editor } from '@tiptap/react';
-import { createStore } from '@udecode/zustood';
+import { createStore } from 'zustand-x';
 
 import { createEditor, type CreateEditorOpts, type EditorId } from './create-editor.ts';
 

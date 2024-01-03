@@ -1,4 +1,4 @@
-import { htmlToJSON } from '@dayjot/editor/html';
+import { htmlToJSON } from '@libs/editor/html';
 import { dayjs } from '@supastack/utils-dates';
 import fs from 'fs/promises';
 import path from 'path';

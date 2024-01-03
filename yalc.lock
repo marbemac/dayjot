@@ -1,0 +1,21 @@
+{
+  "version": "v1",
+  "packages": {
+    "@remix-run/dev": {
+      "signature": "4fa8d410f02fe7319138b8b4b69838b5",
+      "pure": true
+    },
+    "@remix-run/react": {
+      "signature": "5ac6b4451434593cb2e11f095acf1d57",
+      "pure": true
+    },
+    "@remix-run/server-runtime": {
+      "signature": "6a45760633c2483459328ba15bd9de58",
+      "pure": true
+    },
+    "zustand-x": {
+      "signature": "c092594e9b03c2061d41ed7879eca112",
+      "file": true
+    }
+  }
+}

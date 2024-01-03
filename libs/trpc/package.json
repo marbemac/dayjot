@@ -1,0 +1,28 @@
+{
+  "name": "@libs/trpc",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@libs/db": "workspace:*",
+    "@lucia-auth/adapter-postgresql": "^2.0.2",
+    "@supastack/ui-theme": "workspace:*",
+    "@supastack/utils-dates": "workspace:*",
+    "@trpc/server": "10.45.0",
+    "lucia": "^2.7.6",
+    "postgres": "~3.4.3",
+    "valibot": "~0.25.0"
+  },
+  "devDependencies": {
+    "@supastack/eslint-config": "workspace:*",
+    "@supastack/tsconfig": "workspace:*"
+  }
+}

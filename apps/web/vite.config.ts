@@ -13,12 +13,8 @@ const DO_ANAlYZE = process.env['ANALYZE'];
 
 // https://vitejs.dev/config/
 export default defineConfig(({ isSsrBuild, command }) => ({
-  ssr: {
-    noExternal: ['@ssrx/plugin-tanstack-query', '@ssrx/plugin-trpc-react', '@ssrx/remix'],
-  },
-
   plugins: [
-    remix(),
+    remix({ ssr: false }),
     tsconfigPaths(),
 
     !isSsrBuild &&
@@ -44,10 +40,6 @@ export default defineConfig(({ isSsrBuild, command }) => ({
 function manualChunks(id: string) {
   if (id.match(/node_modules\/(react\/|react-dom\/)/)) {
     return 'vendor-rendering';
-  }
-
-  if (id.match(/node_modules\/(@ssrx)/)) {
-    return 'vendor-ssrx';
   }
 
   if (id.match(/node_modules\/(@remix-run|react-router)/)) {

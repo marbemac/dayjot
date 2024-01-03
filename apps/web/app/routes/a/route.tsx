@@ -1,17 +1,29 @@
-import { Box, ClientOnly } from '@supastack/ui-primitives';
+import { useObserveEffect } from '@legendapp/state/react';
+import { useNavigate } from '@remix-run/react';
+import { $path } from 'remix-routes';
 
-import { enforceAuthenticated } from '~/auth.tsx';
-import type { LoaderFunctionArgs } from '~/remix-types.ts';
+import { userStore$ } from '~/app-store.ts';
 
-/**
- * The entire `/a/*` route tree is protected by authentication.
- */
-export async function loader({ context }: LoaderFunctionArgs) {
-  await enforceAuthenticated(context);
+import { AppLayout } from './Layout.tsx';
+import { Loading } from './Loading.tsx';
 
-  return null;
-}
+const useRedirectIfNotLoggedIn = () => {
+  const navigate = useNavigate();
+
+  useObserveEffect(() => {
+    if (!userStore$.isLoggedIn.get()) {
+      navigate($path('/auth'), { replace: true });
+    }
+  });
+};
 
 export default function AuthedLayout() {
-  return <ClientOnly component={() => import('./Layout.tsx')} fallback={<Box tw="p-8">Initializing...</Box>} />;
+  useRedirectIfNotLoggedIn();
+
+  return (
+    <>
+      <AppLayout />
+      <Loading />
+    </>
+  );
 }

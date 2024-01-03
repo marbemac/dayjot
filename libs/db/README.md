@@ -1,1 +1,1 @@
-# @dayjot/db
+# @libs/db

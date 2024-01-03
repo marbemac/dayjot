@@ -1,0 +1,7 @@
+{
+  "extends": "@supastack/tsconfig/tsconfig.workerd.json",
+  "include": ["**/*.ts"],
+  "compilerOptions": {
+    "rootDir": "."
+  }
+}
