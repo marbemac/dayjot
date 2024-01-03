@@ -1,0 +1,26 @@
+#########################################################
+## common
+
+name = "dayjot-api-dev"
+main = "src/index.js"
+compatibility_date = "2023-12-27"
+compatibility_flags = [ "nodejs_compat" ]
+
+workers_dev = false
+
+# kv_namespaces = [
+#   { binding = "<MY_NAMESPACE>", id = "<KV_ID>" }
+# ]
+
+#########################################################
+## development
+
+[dev]
+ip = "127.0.0.1"
+port = 3009
+
+#########################################################
+## production
+
+[env.production]
+name = "dayjot-api-production"

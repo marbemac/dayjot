@@ -1,0 +1,10 @@
+{
+  "extends": "@supastack/tsconfig/tsconfig.workerd.json",
+  "include": ["env.d.ts", "**/*.ts"],
+  "compilerOptions": {
+    "rootDir": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  }
+}

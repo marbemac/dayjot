@@ -1,0 +1,25 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev src/index.ts",
+    "deploy": "wrangler deploy src/index.ts",
+    "lint": "eslint .",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@libs/db": "workspace:*",
+    "@libs/trpc": "workspace:*",
+    "@supastack/utils-types": "workspace:*",
+    "@trpc/server": "10.45.0",
+    "hono": "3.11.12",
+    "postgres": "~3.4.3"
+  },
+  "devDependencies": {
+    "@supastack/eslint-config": "workspace:*",
+    "@supastack/tsconfig": "workspace:*",
+    "wrangler": "3.22.2"
+  }
+}

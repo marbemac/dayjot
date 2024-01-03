@@ -1,14 +1,12 @@
+import { RemixBrowser } from '@remix-run/react';
 import { startTransition, StrictMode } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 
-import { clientHandler } from '~/app.ts';
-
-async function hydrate() {
-  const renderApp = await clientHandler();
-
-  startTransition(() => {
-    hydrateRoot(document, <StrictMode>{renderApp()}</StrictMode>);
-  });
-}
-
-void hydrate();
+startTransition(() => {
+  hydrateRoot(
+    document,
+    <StrictMode>
+      <RemixBrowser />
+    </StrictMode>,
+  );
+});

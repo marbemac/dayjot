@@ -1,5 +1,5 @@
 import { dayjs } from '@supastack/utils-dates';
-import { createStore } from '@udecode/zustood';
+import { createStore } from 'zustand-x';
 
 type CalendarStore = {
   now: dayjs.Dayjs;

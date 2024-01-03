@@ -1,36 +1,17 @@
-import type { EntryContext } from '@remix-run/server-runtime';
+import type { EntryContext } from '@remix-run/node';
+import { RemixServer } from '@remix-run/react';
+import { renderToString } from 'react-dom/server';
 
-import { serverHandler } from '~/app.ts';
-import type { AppLoadContext } from '~/remix-types.ts';
-import { appRouter } from '~/server/trpc/index.ts';
-import { getReqTheme } from '~/server/utils/theme.ts';
-
-export default async function handleRequest(
+export default function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
   remixContext: EntryContext,
-  loadContext: AppLoadContext,
 ) {
-  const theme = getReqTheme({ getCookie: loadContext.getCookie });
+  const html = renderToString(<RemixServer context={remixContext} url={request.url} />);
 
-  const stream = await serverHandler({
-    req: request,
-    meta: {
-      // used by @ssrx/remix
-      remixContext,
-      loadContext,
-
-      // used by the ssrx-theme plugin
-      theme,
-
-      // used by @ssrx/plugin-trpc-react
-      trpcCaller: appRouter.createCaller(loadContext),
-    },
-  });
-
-  return new Response(stream, {
-    headers: responseHeaders,
+  return new Response(html, {
+    headers: { 'Content-Type': 'text/html' },
     status: responseStatusCode,
   });
 }

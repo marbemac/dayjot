@@ -1,12 +1,12 @@
 import { valibotResolver } from '@hookform/resolvers/valibot';
-import { useRevalidator } from '@remix-run/react';
 import { Box, Button } from '@supastack/ui-primitives';
 import { Form, FormInputField } from '@supastack/ui-primitives/forms';
 import { useCallback, useEffect, useState } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import { email, type Input, object, optional, string } from 'valibot';
 
-import { ctx } from '~/app.ts';
+import { userStore$ } from '~/app-store.ts';
+import { useTrpc } from '~/providers.tsx';
 
 const emailSchema = string('Must be a valid email address', [email()]);
 
@@ -20,18 +20,22 @@ const EmailPassSchema = object({
   password: string(),
 });
 
-export function EmailAuthForm() {
+type EmailAuthFormProps = {
+  onLoggedIn?: () => void;
+};
+
+export function EmailAuthForm({ onLoggedIn }: EmailAuthFormProps) {
   const [step, setStep] = useState<'listOptions' | 'authenticate'>('listOptions');
   const [hasAccount, setHasAccount] = useState(false);
   const [passwordSignInEnabled, setPasswordSignInEnabled] = useState(false);
   const [error, setError] = useState<Error | null>(null);
+  const { trpc } = useTrpc();
 
-  const revalidator = useRevalidator();
-  const listLoginOptions = ctx.trpc.auth.listLoginOptions.useMutation();
-  const sendMagicLink = ctx.trpc.auth.sendMagicLink.useMutation();
-  const withMagicToken = ctx.trpc.auth.withMagicToken.useMutation({
+  const listLoginOptions = trpc.auth.listLoginOptions.useMutation();
+  const sendMagicLink = trpc.auth.sendMagicLink.useMutation();
+  const withMagicToken = trpc.auth.withMagicToken.useMutation({
     // invalidate entire cache on login
-    onSuccess: () => ctx.trpc.$invalidate(),
+    onSuccess: () => trpc.$invalidate(),
   });
 
   const isPending = listLoginOptions.isPending || sendMagicLink.isPending || withMagicToken.isPending;
@@ -48,10 +52,10 @@ export function EmailAuthForm() {
     step === 'listOptions'
       ? 'Continue with email'
       : hasAccount
-      ? passwordSignInEnabled
-        ? 'Continue with password'
-        : 'Continue with login code'
-      : 'Create new account';
+        ? passwordSignInEnabled
+          ? 'Continue with password'
+          : 'Continue with login code'
+        : 'Create new account';
 
   const tokenText =
     step === 'authenticate' && !passwordSignInEnabled
@@ -96,19 +100,16 @@ export function EmailAuthForm() {
             token: data.password!,
           });
 
-          /**
-           * Special case.. when logging in/out we need to trigger
-           * any loader redirects, etc. Normally we don't need to use router revalidate, and can just leverage the
-           * tanstack query cache.
-           */
-          revalidator.revalidate();
+          userStore$.isLoggedIn.set(true);
+
+          if (onLoggedIn) onLoggedIn();
         }
       } catch (err: any) {
         console.error(err);
         setError(err);
       }
     },
-    [listLoginOptions, passwordSignInEnabled, revalidator, sendMagicLink, step, withMagicToken],
+    [listLoginOptions, passwordSignInEnabled, sendMagicLink, step, withMagicToken, onLoggedIn],
   );
 
   return (
