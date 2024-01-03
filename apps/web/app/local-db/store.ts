@@ -18,8 +18,10 @@ export const localDbStore$ = observable({
   },
 
   isReady: computed((): boolean => !!localDbStore$.db.get()),
+});
 
-  isSettingsLoaded: false,
+export const settingsStore$ = observable({
+  isLoaded: false,
   settings: {
     theme: settingDefault('theme'),
     timeZone: settingDefault('timeZone'),

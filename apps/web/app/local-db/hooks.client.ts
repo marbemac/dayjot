@@ -8,7 +8,7 @@ import { initLocalDb, TableName, useRxCollection, useRxData } from './index.clie
 import type { LocalSyncInfo } from './RemoteSync.client.tsx';
 import { LocalDocId } from './RemoteSync.client.tsx';
 import type { Entry, EntryDoc, Setting } from './schemas.client.ts';
-import { localDbStore$ } from './store.ts';
+import { localDbStore$, settingsStore$ } from './store.ts';
 
 /**
  * General
@@ -71,13 +71,13 @@ export const useUpsertDayEntry = () => {
 };
 
 /**
- * Setting
+ * Settings
  */
 
 // Syncs settings from rxjs to localDbStore$ for ease of use across
 // the app (in read-only context, writes still must go to rxdb)
 export const useSubscribeSettings = () => {
-  const isSettingsLoaded = localDbStore$.isSettingsLoaded.get();
+  const isSettingsLoaded = settingsStore$.isLoaded.get();
 
   const q = useCallback((c: RxCollection<Setting>) => c.find(), []);
   const { isFetching, result } = useRxData<Setting>(TableName.Settings, q);
@@ -85,13 +85,13 @@ export const useSubscribeSettings = () => {
   useEffect(() => {
     for (const setting of result) {
       const data = setting.toJSON();
-      localDbStore$.settings[data.name as SettingName].set(safeParse(data.value));
+      settingsStore$.settings[data.name as SettingName].set(safeParse(data.value));
     }
   }, [result]);
 
   useEffect(() => {
     if (!isSettingsLoaded && !isFetching) {
-      localDbStore$.isSettingsLoaded.set(true);
+      settingsStore$.isLoaded.set(true);
     }
   }, [isFetching, isSettingsLoaded]);
 };

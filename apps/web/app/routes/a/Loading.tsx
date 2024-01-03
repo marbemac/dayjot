@@ -1,11 +1,11 @@
 import { observer } from '@legendapp/state/react';
 import { Box } from '@supastack/ui-primitives';
 
-import { localDbStore$ } from '~/local-db/store.ts';
+import { localDbStore$, settingsStore$ } from '~/local-db/store.ts';
 
 export const useLoadingState = () => {
   const localDbInitialized = localDbStore$.isReady.get();
-  const settingsReady = localDbStore$.isSettingsLoaded.get();
+  const settingsReady = settingsStore$.isLoaded.get();
   const isAppReady = localDbInitialized && settingsReady;
 
   return { localDbInitialized, settingsReady, isAppReady };

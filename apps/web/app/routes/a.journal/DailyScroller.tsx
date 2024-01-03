@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 
 import { calendarStore$ } from '~/components/Calendar/state.ts';
-import { localDbStore$ } from '~/local-db/store.ts';
+import { settingsStore$ } from '~/local-db/store.ts';
 
 import { DailyEntry } from './DailyEntry.tsx';
 
@@ -19,7 +19,7 @@ const COUNT_PER_APPEND = 20;
 export default observer(function DailyScroller() {
   // const anchorDate = dayjs('2023-10-20');
   const anchorDate = calendarStore$.active.get();
-  const journalDays = localDbStore$.settings.journalDays.get();
+  const journalDays = settingsStore$.settings.journalDays.get();
 
   const hasBeenRendered = useRef(false);
   const [days, setDays] = useState(generateDaysWindow(anchorDate, journalDays));
