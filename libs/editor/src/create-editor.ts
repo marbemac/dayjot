@@ -2,6 +2,7 @@ import { tx } from '@supastack/ui-styles';
 import { Editor } from '@tiptap/react';
 
 import { initExtensions } from './init-extensions.ts';
+import { editors$ } from './state.ts';
 
 export type EditorId = string;
 
@@ -28,6 +29,12 @@ export const createEditor = (id: EditorId, { initialContent, placeholder, size, 
     extensions,
     content: jsonContent,
     ...rest,
+    onFocus() {
+      editors$.focusedEditor.set(id);
+    },
+    onBlur() {
+      editors$.focusedEditor.set(null);
+    },
     editorProps: {
       attributes: {
         class: tx('ui-prose', size === 'sm' && 'ui-prose-sm'),

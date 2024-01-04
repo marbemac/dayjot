@@ -7,7 +7,7 @@ import type { RxCollection, RxLocalDocument } from 'rxdb';
 import { initLocalDb, TableName, useRxCollection, useRxData } from './index.client.ts';
 import type { LocalSyncInfo } from './RemoteSync.client.tsx';
 import { LocalDocId } from './RemoteSync.client.tsx';
-import type { Entry, EntryDoc, Setting } from './schemas.client.ts';
+import { type Entry, type EntryDoc, formatEntryDay, type Setting } from './schemas.client.ts';
 import { localDbStore$, settingsStore$ } from './store.ts';
 
 /**
@@ -55,7 +55,7 @@ export const useLocalSyncInfo = (collectionName: TableName) => {
  */
 
 export const useDayEntry = (day: dayjs.Dayjs) => {
-  const dayId = day.format('YYYY-MM-DD');
+  const dayId = formatEntryDay(day);
 
   const q = useCallback((c: RxCollection<Entry>) => c.findOne(dayId), [dayId]);
 

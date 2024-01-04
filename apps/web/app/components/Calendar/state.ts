@@ -4,10 +4,11 @@ import { dayjs } from '@supastack/utils-dates';
 export const calendarStore$ = observable({
   now: opaqueObject(dayjs()),
   active: opaqueObject(dayjs()),
+  activeSetAt: Date.now(),
 
   setActiveDate: (date: dayjs.ConfigType) => {
     const t = dayjs(date);
-    calendarStore$.assign({ now: opaqueObject(t), active: opaqueObject(t) });
+    calendarStore$.assign({ now: opaqueObject(t), active: opaqueObject(t), activeSetAt: Date.now() });
   },
 
   goToNextMonth: () => {

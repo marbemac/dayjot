@@ -15,6 +15,8 @@ export const useEntryEditor = (entry: EntryDoc): EntryEditor => {
   return entryDoc;
 };
 
+const UPDATE_DEBOUNCE = 1000 * 3;
+
 export class EntryEditor {
   #lastContent: string | undefined;
   #disposables: (() => void)[] = [];
@@ -22,7 +24,7 @@ export class EntryEditor {
   constructor(public readonly entry: EntryDoc) {
     const editor = this.editor;
 
-    const onUpdate = debounce(this.onEditorUpdate, 1000);
+    const onUpdate = debounce(this.onEditorUpdate, UPDATE_DEBOUNCE);
     editor.on('update', onUpdate);
 
     const watchContent = entry.get$('content').subscribe(newContent => {

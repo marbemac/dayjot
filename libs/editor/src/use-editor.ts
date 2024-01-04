@@ -22,7 +22,7 @@ export const useTipTapEditor = (
   deps: DependencyList = [],
   externalEditor?: Editor,
 ) => {
-  const [editor, setEditor] = useState<Editor | null>(externalEditor || null);
+  const [editor, setEditor] = useState<Editor | null>(externalEditor ?? null);
 
   const forceUpdate = useForceUpdate();
 
@@ -107,7 +107,7 @@ export const useTipTapEditor = (
   useEffect(() => {
     let isMounted = true;
 
-    const instance = externalEditor || new Editor(options);
+    const instance = externalEditor ?? new Editor(options);
 
     setEditor(instance);
 

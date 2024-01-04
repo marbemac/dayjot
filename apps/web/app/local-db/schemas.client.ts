@@ -1,14 +1,20 @@
+import { dayjs } from '@supastack/utils-dates';
 import type { RxCollection, RxDocument, RxJsonSchema } from 'rxdb';
 
 /**
  * Entries
  */
 
+// Day is a string in the format YYYY-MM-DD
+export type EntryDay = string;
+
 export type Entry = {
-  day: string;
+  day: EntryDay;
   content: string;
   updatedAt: string;
 };
+
+export const formatEntryDay = (day: dayjs.ConfigType) => dayjs(day).format('YYYY-MM-DD');
 
 export const entrySchema: RxJsonSchema<Entry> = {
   version: 0,

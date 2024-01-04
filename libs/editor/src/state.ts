@@ -9,13 +9,14 @@ export type FindOrCreateOpts = CreateEditorOpts & {
 };
 
 export const editors$ = observable({
-  focusedEditor: null as EditorId | null,
   editors: {} as Record<EditorId, OpaqueObject<Editor>>,
+  focusedEditor: null as EditorId | null,
+  shouldFocusOnEditor: null as EditorId | null,
 
-  shouldFocus: (id: EditorId) => computed(() => editors$.focusedEditor.get() === id),
+  shouldFocus: (id: EditorId) => computed(() => editors$.shouldFocusOnEditor.get() === id),
 
   focusOnEditor: (id: EditorId) => {
-    editors$.focusedEditor.set(id);
+    editors$.shouldFocusOnEditor.set(id);
   },
 
   findOrCreate: (id: EditorId, { onCreate, ...opts }: FindOrCreateOpts = {}) => {
