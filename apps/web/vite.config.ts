@@ -14,7 +14,7 @@ const DO_ANAlYZE = process.env['ANALYZE'];
 // https://vitejs.dev/config/
 export default defineConfig(({ isSsrBuild, command }) => ({
   plugins: [
-    remix({ ssr: false }),
+    remix({ unstable_ssr: false }),
     tsconfigPaths(),
 
     !isSsrBuild &&

@@ -68,6 +68,26 @@ const $initLocalDb = async () => {
   //   return d;
   // }, true);
 
+  rxdb.entries.preSave(d => {
+    console.log('preSave', d.day);
+    return d;
+  }, true);
+
+  rxdb.entries.postSave(d => {
+    console.log('postSave', d.day);
+    return d;
+  }, true);
+
+  rxdb.entries.preInsert(d => {
+    console.log('preInsert', d.day);
+    return d;
+  }, true);
+
+  rxdb.entries.postInsert(d => {
+    console.log('postInsert', d.day);
+    return d;
+  }, true);
+
   void rxdb.waitForLeadership().then(() => {
     console.debug('DB.isLeader');
   });
