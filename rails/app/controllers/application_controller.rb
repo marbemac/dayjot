@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   around_action :user_time_zone, if: :current_user
 
   def index
-    render file: 'public/index.html'
+    render file: 'public/index.html', formats: [:html]
   end
 
   protected

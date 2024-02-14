@@ -87,3 +87,7 @@ Please direct any questions, concerns, or general chat to hi@dayjot.com. I'm als
 [mb]: http://twitter.com/marbemac
 [ol]: http://ohlife.com
 [dep]: https://github.com/thoughtbot/laptop
+
+## Thanks
+
+- @krastanoel for responsibly disclosing a security vulnerability and mitigation recommendation.
